@@ -1,15 +1,27 @@
-<nav>
-  <ng-container *ngFor="let item of menuItems">
-    <a
-      [routerLink]="item.link"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: !!item.exact }"
-      #rla="routerLinkActive"
-      [class.active]="rla.isActive"
-      [attr.tabindex]="rla.isActive ? -1 : null"
-      (click)="rla.isActive ? $event.preventDefault() : null"
-    >
-      {{ item.label }}
-    </a>
-  </ng-container>
+<button
+  class="open-nav"
+  (click)="togglenav()"
+  [class.rotated]="navActive"
+  [attr.aria-label]="navActive ? 'Cerrar menú' : 'Abrir menú'"
+>
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" y="10" width="26" height="3.5" rx="1.5" fill="white" />
+    <rect x="6" y="18" width="26" height="3.5" rx="1.5" fill="white" />
+    <rect x="6" y="26" width="26" height="3.5" rx="1.5" fill="white" />
+  </svg>
+</button>
+<div class="nav-overlay" [style.display]="navActive ? 'block' : 'none'" (click)="closenav()"></div>
+<nav [class.active]="navActive">
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a
+        [routerLink]="item.link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: !!item.exact }"
+        (click)="closenav()"
+      >
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
 </nav>
