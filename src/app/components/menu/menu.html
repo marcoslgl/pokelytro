@@ -1,0 +1,15 @@
+<nav>
+  <ng-container *ngFor="let item of menuItems">
+    <a
+      [routerLink]="item.link"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: !!item.exact }"
+      #rla="routerLinkActive"
+      [class.active]="rla.isActive"
+      [attr.tabindex]="rla.isActive ? -1 : null"
+      (click)="rla.isActive ? $event.preventDefault() : null"
+    >
+      {{ item.label }}
+    </a>
+  </ng-container>
+</nav>

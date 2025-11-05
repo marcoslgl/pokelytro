@@ -1,0 +1,30 @@
+* {
+  background-color: black;
+}
+
+nav {
+  position: fixed;
+  height: 100vh;
+  min-width: 10vw;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  padding: 2rem 1.5rem;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #1e90ff;
+}
+nav a.active {
+  color: #1e90ff;
+  pointer-events: none;
+  cursor: default;
+  scale: 1.05;
+}
