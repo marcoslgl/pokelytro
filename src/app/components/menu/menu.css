@@ -50,14 +50,15 @@ nav ul li a:hover {
 }
 .open-nav {
   position: fixed;
-  top: 1rem;
+  top: 1.9rem;
   left: 1rem;
   color: #fff;
-  border: 1px solid #fff;
+  border: none;
   font-size: 2rem;
-  border-radius: 2rem;
-  width: 3.5rem;
-  height: 3.5rem;
+  border-radius: 10rem;
+  --open-nav-size: 3.5rem;
+  width: var(--open-nav-size);
+  height: var(--open-nav-size);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,5 +68,79 @@ nav ul li a:hover {
   transition: transform 0.3s;
 }
 .open-nav.rotated {
-  transform: rotate(180deg);
+  transform: rotate(360deg);
+}
+
+.pokeball {
+  box-sizing: border-box;
+  width: var(--open-nav-size, 3.5rem);
+  height: var(--open-nav-size, 3.5rem);
+  --pokeball-border-size: calc(var(--open-nav-size, 3.5rem) * 0.055);
+  --pokeball-inner-size: calc(var(--open-nav-size, 3.5rem) * 0.34);
+
+  --before-diameter: var(--pokeball-inner-size);
+  --after-diameter: calc(var(--before-diameter) - (var(--pokeball-border-size) * 3));
+
+  border: var(--pokeball-border-size) solid #121212;
+  border-radius: 100%;
+  margin: 0;
+  position: relative;
+  background: linear-gradient(
+    150deg,
+    #ba0c2f 0%,
+    #ba0c2f 44%,
+    #121212 44%,
+    #121212 56%,
+    #fff 56%,
+    #fff 100%
+  );
+  /* ensure hover in/out transitions use the same easing */
+  transform: rotate(0deg);
+  transform-origin: center;
+  /* faster, smoother timing */
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.pokeball:before,
+.pokeball:after {
+  content: ' ';
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+}
+
+.pokeball:before {
+  width: var(--before-diameter);
+  height: var(--before-diameter);
+  top: calc(50% - var(--before-diameter) / 2);
+  left: calc(50% - var(--before-diameter) / 2);
+  background: #121212;
+}
+
+.pokeball:after {
+  width: var(--after-diameter);
+  height: var(--after-diameter);
+
+  top: calc(
+    50% -
+      (
+        ((var(--before-diameter) - (var(--pokeball-border-size) * 3)) / 2) +
+          var(--pokeball-border-size)
+      )
+  );
+  left: calc(
+    50% -
+      (
+        ((var(--before-diameter) - (var(--pokeball-border-size) * 3)) / 2) +
+          var(--pokeball-border-size)
+      )
+  );
+
+  background: #fff;
+  border: double var(--pokeball-border-size) #262122;
+}
+
+.pokeball:hover {
+  transform: rotate(30deg);
 }
