@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterModule, NgFor],
+  imports: [RouterModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })

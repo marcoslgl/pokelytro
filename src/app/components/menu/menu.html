@@ -1,27 +1,30 @@
-<button
-  class="open-nav"
-  (click)="togglenav()"
-  [class.rotated]="navActive"
-  [attr.aria-label]="navActive ? 'Cerrar menú' : 'Abrir menú'"
->
+<button class="open-nav" (click)="togglenav()" [class.rotated]="navActive">
   <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="10" width="26" height="3.5" rx="1.5" fill="white" />
-    <rect x="6" y="18" width="26" height="3.5" rx="1.5" fill="white" />
-    <rect x="6" y="26" width="26" height="3.5" rx="1.5" fill="white" />
+    <rect x="6" y="10" width="26" height="2.5" rx="1.5" fill="white" />
+    <rect x="6" y="18" width="26" height="2.5" rx="1.5" fill="white" />
+    <rect x="6" y="26" width="26" height="2.5" rx="1.5" fill="white" />
   </svg>
 </button>
 <div class="nav-overlay" [style.display]="navActive ? 'block' : 'none'" (click)="closenav()"></div>
 <nav [class.active]="navActive">
   <ul>
-    <li *ngFor="let item of menuItems">
+    <li>
       <a
-        [routerLink]="item.link"
+        [routerLink]="'/'"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: !!item.exact }"
+        [routerLinkActiveOptions]="{ exact: true }"
         (click)="closenav()"
+        >Home</a
       >
-        {{ item.label }}
-      </a>
+    </li>
+    <li>
+      <a [routerLink]="'/quiz'" routerLinkActive="active" (click)="closenav()">Quiz</a>
+    </li>
+    <li>
+      <a [routerLink]="'/showdown'" routerLinkActive="active" (click)="closenav()">Showdown</a>
+    </li>
+    <li>
+      <a [routerLink]="'/about'" routerLinkActive="active" (click)="closenav()">About</a>
     </li>
   </ul>
 </nav>
