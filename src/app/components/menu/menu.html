@@ -5,22 +5,24 @@
 <nav [class.active]="navActive">
   <ul>
     <li>
-      <a
-        [routerLink]="'/'"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="closenav()"
-        >Home</a
+      <a [routerLink]="'/'" routerLinkActive="active" (click)="closenav()">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="'/pokedex'" routerLinkActive="active" (click)="closenav()">Pokedex</a>
+    </li>
+    <li>
+      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()"
+        >Team Builder</a
       >
     </li>
     <li>
-      <a [routerLink]="'/quiz'" routerLinkActive="active" (click)="closenav()">Quiz</a>
+      <a [routerLink]="'/quiz'" routerLinkActive="active" (click)="closenav()">Poke Quiz</a>
     </li>
     <li>
       <a [routerLink]="'/showdown'" routerLinkActive="active" (click)="closenav()">Showdown</a>
     </li>
     <li>
-      <a [routerLink]="'/about'" routerLinkActive="active" (click)="closenav()">About</a>
+      <a [routerLink]="'/about'" routerLinkActive="active" (click)="closenav()">About Us</a>
     </li>
   </ul>
 </nav>

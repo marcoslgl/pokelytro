@@ -35,7 +35,8 @@ nav.active {
 nav ul {
   list-style: none;
   padding: 0;
-  margin-top: 5rem;
+  margin-left: 0.3rem;
+  margin-top: 6rem;
 }
 nav ul li {
   margin: 1.5rem 0;
@@ -50,7 +51,7 @@ nav ul li a:hover {
 }
 .open-nav {
   position: fixed;
-  top: 1.9rem;
+  top: 1.5rem;
   left: 1rem;
   color: #fff;
   border: none;
