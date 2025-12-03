@@ -1,6 +1,5 @@
 export class Pokemon {
-  _id!: string;
-  dex!: number;
+  id!: number;
   name!: string;
   generation!: number;
   pokemon_type!: string[];
@@ -66,7 +65,7 @@ export class Pokemon {
   Speed_EVs?: number;
 
   // Other
-  expereience_value!: number;
+  experience_value!: number;
   catch_rate!: number;
   experience_growth!: string;
   base_friendship!: number;

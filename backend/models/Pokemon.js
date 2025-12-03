@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PokemonSchema = new Schema({
-  dex: { type: Number, required: true, unique: true },
+  id: { type: Number, required: true, unique: true },
   name: { type: String, required: true },
   generation: { type: Number, required: true },
   pokemon_type: { type: [String], required: true },
@@ -56,7 +56,7 @@ const PokemonSchema = new Schema({
   Special_Attack_EVs: { type: Number, required: false },
   Special_Defense_EVs: { type: Number, required: false },
   Speed_EVs: { type: Number, required: false },
-  expereience_value: { type: Number, required: true },
+  experience_value: { type: Number, required: true },
   catch_rate: { type: Number, required: true },
   experience_growth: { type: String, required: true },
   base_friendship: { type: Number, required: true },

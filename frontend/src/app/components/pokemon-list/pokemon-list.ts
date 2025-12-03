@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
+import { Pokemon } from '../../models/pokemon/pokemon';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -10,9 +11,11 @@ import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
   styleUrls: ['./pokemon-list.css'],
 })
 export class PokemonList implements OnInit {
+  // Inject the Pokemon service
   private pokemonService = inject(PokemonService);
+  //  Pokemon list
 
-  pokemons: any[] = [];
+  pokemons!: Pokemon[]
 
   ngOnInit(): void {
     this.pokemonService.get().subscribe(
