@@ -1,0 +1,86 @@
+/* grid container for pokemon cards */
+.pokemon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0.5rem;
+}
+
+.pokemon-card {
+  padding: 0.6rem;
+  margin: 0;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  background: transparent;
+  flex: 0 1 50vh;
+}
+span {
+  font-weight: bold;
+}
+.type {
+  font-weight: normal;
+  border: 0.5px solid;
+  border-radius: 0.3rem;
+  padding-left: 0.4rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.1rem;
+  margin-left: 0.5rem;
+}
+
+/* Type color classes */
+.Fire {
+  background: #ff2600;
+}
+.Water {
+  background: #4aa3ff;
+}
+.Grass {
+  background: #5e8f47;
+}
+.Electric {
+  background: #a09145;
+}
+.Ice {
+  background: #618896;
+}
+.Fighting {
+  background: #d56b5a;
+}
+.Poison {
+  background: #5d3b6e;
+}
+.Ground {
+  background: #aa9467;
+}
+.Flying {
+  background: #9fbfff;
+}
+.Psychic {
+  background: #c0879f;
+}
+.Bug {
+  background: #808f47;
+}
+.Rock {
+  background: #886c4d;
+}
+.Ghost {
+  background: #8b6bd6;
+}
+.Dark {
+  background: #35312c;
+}
+.Dragon {
+  background: #7fb3ff;
+}
+.Steel {
+  background: #617486;
+}
+.Fairy {
+  background: #c76cbb;
+}
+.Normal {
+  background: #8f8f8f;
+}

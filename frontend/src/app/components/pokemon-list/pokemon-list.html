@@ -1,4 +1,7 @@
-<div *ngFor="let pokemon of pokemons">
-  {{ pokemon.id }}
-  {{ pokemon.name }}
+<div class="pokemon-grid">
+  <div class="pokemon-card" *ngFor="let pokemon of pokemons">
+    <span>{{ pokemon.id }} - {{ pokemon.name }} |</span>
+    <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+    <span *ngIf="pokemon.type2" class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+  </div>
 </div>
