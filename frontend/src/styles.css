@@ -32,3 +32,6 @@ body.menu-open .app-container {
   transform: translateX(var(--sidebar-w));
   width: calc(100vw - var(--sidebar-w));
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

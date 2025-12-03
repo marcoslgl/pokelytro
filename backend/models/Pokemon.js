@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PokemonSchema = new Schema({
-  id: { type: Number, required: true, unique: true },
+  dex: { type: Number, required: true, unique: true },
   name: { type: String, required: true },
   generation: { type: Number, required: true },
   pokemon_type: { type: [String], required: true },
