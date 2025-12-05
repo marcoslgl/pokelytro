@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -15,18 +16,17 @@ export class PokemonList implements OnInit {
   private pokemonService = inject(PokemonService);
   //  Pokemon list
 
-  pokemons!: Pokemon[]
+  pokemons!: Pokemon[];
 
   ngOnInit(): void {
-    this.pokemonService.get().subscribe(
-      (data: any) => {
-        console.log('Number of pokemons:', data.length);
-        this.pokemons = data;
-      },
-      (error: any) => {
-        console.error('Error:', error);
-      }
-    );
+    this.pokemonService
+      .get()
+      .pipe(
+        tap((data: any) => {
+          this.pokemons = data;
+          console.log('Number of pokemons:', data.length);
+        })
+      )
+      .subscribe();
   }
-
 }
