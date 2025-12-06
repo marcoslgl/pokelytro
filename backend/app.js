@@ -1,9 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -29,7 +30,7 @@ app.listen(PORT, (error) => {
 main().catch((err) => console.error("Failed to connect to MongoDB", err));
 async function main() {
   const connectionString =
-    "mongodb+srv://lytronix:ZxB4f4qzCqmnhZs4@cluster0.iwwsild.mongodb.net/?appName=Cluster0";
+    process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/pokelytro";
   await mongoose.connect(connectionString);
   mongoose.set("strictQuery", true);
   console.log("Connected to MongoDB");
