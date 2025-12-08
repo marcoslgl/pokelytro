@@ -1,0 +1,62 @@
+<div class="equipo-detail-container">
+  @if (selectedEquipo) {
+  <div class="header">
+    <button (click)="onGoBack()" class="btn-back">← Volver</button>
+    <h2>Equipo Pokémon ({{ selectedEquipo.pokemons.length }}/6)</h2>
+  </div>
+
+  <section class="equipo-actual">
+    <h3>Detalles del Equipo {{ selectedEquipo.id }}</h3>
+    <ul class="team-list">
+      @for (pokemon of selectedEquipo.pokemons; track pokemon.id) {
+      <li class="team-item">
+        <div class="pokemon-info">
+          <strong>{{ pokemon.name }}</strong>
+          <div class="pokemon-types">
+            @if (pokemon.pokemon_type && pokemon.pokemon_type.length > 1) {
+            <span>{{ pokemon.pokemon_type[0] }} / {{ pokemon.pokemon_type[1] }}</span>
+            } @else if (pokemon.pokemon_type && pokemon.pokemon_type.length === 1) {
+            <span>{{ pokemon.pokemon_type[0] }}</span>
+            }
+          </div>
+        </div>
+        @if (!showPokemons) {
+        <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">Reemplazar</button>
+        }
+      </li>
+      }
+    </ul>
+  </section>
+
+  @if (showPokemons) {
+  <section class="todos-pokemons">
+    <h3>Reemplazar "{{ selectedPokemonToReplace?.name }}" por:</h3>
+    <button (click)="showPokemons = false; selectedPokemonToReplace = null" class="btn-cancel">
+      Cancelar
+    </button>
+
+    <ul class="replacement-list">
+      @for (pokemon of pokemons; track pokemon.id) {
+      <li class="replacement-item">
+        <div class="pokemon-info">
+          <strong>{{ pokemon.name }}</strong>
+          <div class="pokemon-types">
+            @if (pokemon.pokemon_type && pokemon.pokemon_type.length > 1) {
+            <span>{{ pokemon.pokemon_type[0] }} / {{ pokemon.pokemon_type[1] }}</span>
+            } @else if (pokemon.pokemon_type && pokemon.pokemon_type.length === 1) {
+            <span>{{ pokemon.pokemon_type[0] }}</span>
+            }
+          </div>
+        </div>
+        <button (click)="onReplacePokemon(pokemon)" class="btn-select">Seleccionar</button>
+      </li>
+      }
+    </ul>
+  </section>
+  } } @else {
+  <div class="no-equipo">
+    <p>Equipo no encontrado</p>
+    <button (click)="onGoBack()">Volver a Equipos</button>
+  </div>
+  }
+</div>

@@ -1,0 +1,165 @@
+.equipo-detail-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.btn-back {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-back:hover {
+  background-color: #5a6268;
+}
+
+.equipo-actual {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.equipo-actual h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+}
+
+.team-item {
+  background: white;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid #007bff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pokemon-info {
+  flex: 1;
+}
+
+.pokemon-info strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.pokemon-types {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.btn-replace {
+  background-color: #ffc107;
+  color: #333;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 15px;
+}
+
+.btn-replace:hover {
+  background-color: #e0a800;
+}
+
+.todos-pokemons {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.todos-pokemons h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+.replacement-list {
+  list-style: none;
+  padding: 0;
+}
+
+.replacement-item {
+  background: white;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid #28a745;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-select {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 15px;
+}
+
+.btn-select:hover {
+  background-color: #218838;
+}
+
+.no-equipo {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.no-equipo button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.2s;
+}
+
+.no-equipo button:hover {
+  background-color: #0056b3;
+}

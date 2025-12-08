@@ -1,1 +1,76 @@
-<p>team-builder works!</p>
+<div class="team-builder-container">
+  <h1>Constructor de Equipos</h1>
+
+  @if (error) {
+  <div class="error-message">{{ error }}</div>
+  }
+
+  <section class="pokemons-disponibles">
+    <h2>Pokémon Disponibles</h2>
+    <ul class="pokemon-grid">
+      @for (pokemon of allPokemons; track pokemon.id) {
+      <li class="pokemon-item">
+        <div class="pokemon-name">{{ pokemon.name }}</div>
+        <div class="pokemon-types">
+          @if (pokemon.type2) {
+          <span>{{ pokemon.type1 }} / {{ pokemon.type2 }}</span>
+          } @else {
+          <span>{{ pokemon.type1 }}</span>
+          }
+        </div>
+        <button (click)="onAddPokemon(pokemon)" [disabled]="equipo.length >= 6">Añadir</button>
+      </li>
+      }
+    </ul>
+  </section>
+
+  <section class="equipo-actual">
+    <h2>Equipo Actual ({{ equipo.length }}/6)</h2>
+
+    @if (equipo.length === 0) {
+    <p>No hay Pokémon en el equipo todavía.</p>
+    } @else {
+    <ul class="equipo-list">
+      @for (pokemon of equipo; track pokemon.id) {
+      <li class="equipo-item">
+        <span>{{ pokemon.name }}</span>
+        <div class="pokemon-types">
+          @if (pokemon.type2) {
+          <span>{{ pokemon.type1 }} / {{ pokemon.type2 }}</span>
+          } @else {
+          <span>{{ pokemon.type1 }}</span>
+          }
+        </div>
+        <button (click)="onRemoveFromTeam(pokemon.id)" class="btn-remove">Eliminar</button>
+      </li>
+      }
+    </ul>
+
+    <button (click)="onSaveTeam()" [disabled]="equipo.length < 6" class="btn-save">
+      Guardar Equipo
+    </button>
+    }
+  </section>
+
+  <section class="equipos-guardados">
+    <h2>Equipos Guardados</h2>
+
+    @if (equipos.length === 0) {
+    <p>Aún no hay equipos guardados.</p>
+    } @else {
+    <ul class="equipos-list">
+      @for (saved of equipos; let i = $index; track i) {
+      <li class="equipo-card">
+        <h3>Equipo {{ saved.id }}</h3>
+        <ul class="team-preview">
+          @for (pokemon of saved.pokemons; track pokemon.id) {
+          <li>{{ pokemon.name }}</li>
+          }
+        </ul>
+        <button (click)="onSelectEquipo(saved.id)">Ver Detalles</button>
+      </li>
+      }
+    </ul>
+    }
+  </section>
+</div>
