@@ -1,7 +1,26 @@
+<div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+  <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+  <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
+    <input #pageInput type="number" placeholder="Página" />
+  </form>
+  <button (click)="goToPage(pageInput.value)">Ir</button>
+</div>
+
 <div class="pokemon-grid">
-  <div class="pokemon-card" *ngFor="let pokemon of pokemons">
-    <span>{{ pokemon.id }} - {{ pokemon.name }} |</span>
-    <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-    <span *ngIf="pokemon.type2" class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+  @for (pokemon of pagedPokemons; track pokemon.id) {
+  <div class="pokemon-card">
+    <img [src]="'/images/' + ('' + pokemon.id).padStart(4, '0') + '.png'" [alt]="pokemon.name" />
+    <div class="card-info">
+      <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
+      <div class="card-types">
+        <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+        @if (pokemon.type2) {
+        <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+        }
+      </div>
+    </div>
   </div>
+  }
 </div>

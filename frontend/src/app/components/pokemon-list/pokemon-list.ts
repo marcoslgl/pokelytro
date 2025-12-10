@@ -17,6 +17,15 @@ export class PokemonList implements OnInit {
   //  Pokemon list
 
   pokemons!: Pokemon[];
+  page = 1;
+  pageSize = 24;
+  totalPages = 1;
+
+  get pagedPokemons(): Pokemon[] {
+    if (!this.pokemons) return [];
+    const start = (this.page - 1) * this.pageSize;
+    return this.pokemons.slice(start, start + this.pageSize);
+  }
 
   ngOnInit(): void {
     this.pokemonService
@@ -24,9 +33,40 @@ export class PokemonList implements OnInit {
       .pipe(
         tap((data: any) => {
           this.pokemons = data;
+          this.totalPages = Math.max(1, Math.ceil(this.pokemons.length / this.pageSize));
           console.log('Number of pokemons:', data.length);
         })
       )
       .subscribe();
+  }
+
+  nextPage(): void {
+    if (this.page < this.totalPages) {
+      this.page++;
+    }
+  }
+
+  prevPage(): void {
+    if (this.page > 1) {
+      this.page--;
+    }
+  }
+
+  setPageSize(size: number | string): void {
+    this.pageSize = Number(size);
+    this.totalPages = Math.max(1, Math.ceil((this.pokemons?.length ?? 0) / this.pageSize));
+    this.page = 1;
+  }
+
+  goToPage(target: number | string): void {
+    const desired = Number(target);
+    if (!Number.isFinite(desired)) return;
+    if (desired < 1) {
+      this.page = 1;
+    } else if (desired > this.totalPages) {
+      this.page = this.totalPages;
+    } else {
+      this.page = desired;
+    }
   }
 }
