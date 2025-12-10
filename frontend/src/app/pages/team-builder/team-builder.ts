@@ -43,9 +43,11 @@ export class TeamBuilder implements OnInit {
     this.equipo = this.equipoService.getEquipo();
   }
 
-  onRemoveFromTeam(pokemonId: number) {
-    this.equipoService.removePokemon(pokemonId);
+  onRemoveFromTeam(pokemon: Pokemon) {
+    if (confirm(`¿Estás seguro de que deseas eliminar a ${pokemon.name} del equipo?`)) {
+    this.equipoService.removePokemon(pokemon.id);
     this.equipo = this.equipoService.getEquipo();
+    }
   }
 
   onSaveTeam() {

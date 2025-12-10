@@ -13,10 +13,10 @@
         <div class="pokemon-info">
           <strong>{{ pokemon.name }}</strong>
           <div class="pokemon-types">
-            @if (pokemon.pokemon_type && pokemon.pokemon_type.length > 1) {
-            <span>{{ pokemon.pokemon_type[0] }} / {{ pokemon.pokemon_type[1] }}</span>
-            } @else if (pokemon.pokemon_type && pokemon.pokemon_type.length === 1) {
-            <span>{{ pokemon.pokemon_type[0] }}</span>
+            @if (pokemon.type2) {
+            <span>{{ pokemon.type1 }} / {{ pokemon.type2 }}</span>
+            } @else{
+            <span>{{ pokemon.type1 }}</span>
             }
           </div>
         </div>
