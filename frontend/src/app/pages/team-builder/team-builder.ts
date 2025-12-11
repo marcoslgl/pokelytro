@@ -1,9 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EquipoService, EquipoGuardado } from '../../services/equipo/equipo';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { Router } from '@angular/router';
+
+import { Team as TeamService } from '../../services/team/team';
+import { Team as TeamModel } from '../../models/team/team';
 
 @Component({
   selector: 'app-team-builder',
@@ -13,20 +15,42 @@ import { Router } from '@angular/router';
   styleUrl: './team-builder.css',
 })
 export class TeamBuilder implements OnInit {
-  private equipoService = inject(EquipoService);
+  private teamService = inject(TeamService);
   private pokemonService = inject(PokemonService);
   private router = inject(Router);
 
-  equipos: EquipoGuardado[] = [];
-  equipo: Pokemon[] = [];
+  teams: TeamModel[] = [];
+  currentTeam: Pokemon[] = [];
   allPokemons: Pokemon[] = [];
-  error: string | null = null;
+  pokemonMap = new Map<number, Pokemon>();
+  isSaving: boolean = false;
+
+  // Paginado
+  page = 1;
+  pageSize = 24;
+  totalPages = 1;
+
+  get pagedPokemons(): Pokemon[] {
+    if (!this.allPokemons) return [];
+    const start = (this.page - 1) * this.pageSize;
+    return this.allPokemons.slice(start, start + this.pageSize);
+  }
 
   ngOnInit(): void {
-    this.equipo = this.equipoService.getEquipo();
-    this.equipos = this.equipoService.getEquipos();
     this.pokemonService.get().subscribe((data: any) => {
-      this.allPokemons = data;
+      this.allPokemons = data as Pokemon[];
+      this.pokemonMap = new Map(this.allPokemons.map((p) => [p.id, p]));
+      this.totalPages = Math.max(1, Math.ceil(this.allPokemons.length / this.pageSize));
+    });
+
+    this.refreshTeams();
+  }
+
+  private refreshTeams() {
+    this.teamService.get().subscribe({
+      next: (teams: any) => {
+        this.teams = teams as TeamModel[];
+      },
     });
   }
 
@@ -35,32 +59,83 @@ export class TeamBuilder implements OnInit {
   }
 
   onAddPokemon(pokemon: Pokemon) {
-    const message = this.equipoService.addPokemon(pokemon);
-    if (message && message !== 'Pokémon añadido al equipo correctamente.') {
-      this.error = message;
-      setTimeout(() => (this.error = null), 3000);
+    if (this.currentTeam.length >= 6) {
+      alert('El equipo ya tiene 6 Pokémon.');
     }
-    this.equipo = this.equipoService.getEquipo();
+    if (this.currentTeam.some((p) => p.id === pokemon.id)) {
+      alert('Este Pokémon ya está en el equipo.');
+    }
+    this.currentTeam = [...this.currentTeam, pokemon];
   }
 
   onRemoveFromTeam(pokemon: Pokemon) {
-    if (confirm(`¿Estás seguro de que deseas eliminar a ${pokemon.name} del equipo?`)) {
-    this.equipoService.removePokemon(pokemon.id);
-    this.equipo = this.equipoService.getEquipo();
+    if (confirm(`¿Eliminar a ${pokemon.name} del equipo?`)) {
+      this.currentTeam = this.currentTeam.filter((p) => p.id !== pokemon.id);
     }
   }
 
   onSaveTeam() {
-    this.equipoService.saveEquipo();
-    this.equipo = this.equipoService.getEquipo();
-    this.equipos = this.equipoService.getEquipos();
-  }
+    if (this.currentTeam.length < 6) {
+      alert('El equipo debe tener 6 Pokémon para guardarlo.');
+    }
 
-  onSelectEquipo(equipoId: number) {
-    this.router.navigate(['/team-detail'], {
-      queryParams: {
-        equipoId: equipoId,
+    this.isSaving = true;
+
+    // Generar el siguiente ID disponible
+    const nextId = this.teams.length > 0 ? Math.max(...this.teams.map((t) => t.id || 0)) + 1 : 1;
+
+    const payload = new TeamModel({
+      id: nextId,
+      name: `Team ${nextId}`,
+      pokemons: this.currentTeam.map((p) => p.id),
+    });
+
+    this.teamService.post(payload as any).subscribe({
+      next: () => {
+        this.currentTeam = [];
+        this.isSaving = false;
+        this.refreshTeams();
       },
     });
+  }
+
+  onSelectEquipo(teamId: number) {
+    this.router.navigate(['/team-detail'], {
+      queryParams: { teamId },
+    });
+  }
+
+  pokemonName(id: number): string {
+    return this.pokemonMap.get(id)?.name ?? `#${id}`;
+  }
+
+  nextPage(): void {
+    if (this.page < this.totalPages) {
+      this.page++;
+    }
+  }
+
+  prevPage(): void {
+    if (this.page > 1) {
+      this.page--;
+    }
+  }
+
+  setPageSize(size: number | string): void {
+    this.pageSize = Number(size);
+    this.totalPages = Math.max(1, Math.ceil((this.allPokemons?.length ?? 0) / this.pageSize));
+    this.page = 1;
+  }
+
+  goToPage(target: number | string): void {
+    const desired = Number(target);
+    if (!Number.isFinite(desired)) return;
+    if (desired < 1) {
+      this.page = 1;
+    } else if (desired > this.totalPages) {
+      this.page = this.totalPages;
+    } else {
+      this.page = desired;
+    }
   }
 }

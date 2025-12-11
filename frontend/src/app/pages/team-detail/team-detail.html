@@ -1,26 +1,32 @@
 <div class="equipo-detail-container">
-  @if (selectedEquipo) {
+  @if (team) {
   <div class="header">
     <button (click)="onGoBack()" class="btn-back">← Volver</button>
-    <h2>Equipo Pokémon ({{ selectedEquipo.pokemons.length }}/6)</h2>
+    <h2>Equipo Pokémon ({{ teamPokemons.length }}/6)</h2>
   </div>
 
   <section class="equipo-actual">
-    <h3>Detalles del Equipo {{ selectedEquipo.id }}</h3>
+    <h3>Detalles del {{ team.name || 'Equipo ' + team.id }}</h3>
     <ul class="team-list">
-      @for (pokemon of selectedEquipo.pokemons; track pokemon.id) {
+      @for (pokemon of teamPokemons; track pokemon.id) {
       <li class="team-item">
-        <div class="pokemon-info">
-          <strong>{{ pokemon.name }}</strong>
-          <div class="pokemon-types">
-            @if (pokemon.type2) {
-            <span>{{ pokemon.type1 }} / {{ pokemon.type2 }}</span>
-            } @else{
-            <span>{{ pokemon.type1 }}</span>
-            }
+        <div class="team-pokemon-info">
+          <img
+            [src]="'/images/' + ('' + pokemon.id).padStart(4, '0') + '.png'"
+            [alt]="pokemon.name"
+            class="team-img"
+          />
+          <div>
+            <strong class="team-name">{{ pokemon.id }} - {{ pokemon.name }}</strong>
+            <div class="pokemon-types">
+              <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+              @if (pokemon.type2) {
+              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+              }
+            </div>
           </div>
         </div>
-        @if (!showPokemons) {
+        @if (!selectedPokemonToReplace) {
         <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">Reemplazar</button>
         }
       </li>
@@ -28,24 +34,40 @@
     </ul>
   </section>
 
-  @if (showPokemons) {
+  @if (selectedPokemonToReplace) {
   <section class="todos-pokemons">
-    <h3>Reemplazar "{{ selectedPokemonToReplace?.name }}" por:</h3>
-    <button (click)="showPokemons = false; selectedPokemonToReplace = null" class="btn-cancel">
+    <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
+    <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn-cancel">
       Cancelar
     </button>
 
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+      <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+      <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
+        <input #pageInput type="number" placeholder="Página" />
+      </form>
+      <button (click)="goToPage(pageInput.value)">Ir</button>
+    </div>
+
     <ul class="replacement-list">
-      @for (pokemon of pokemons; track pokemon.id) {
+      @for (pokemon of pagedAvailablePokemons; track pokemon.id) {
       <li class="replacement-item">
-        <div class="pokemon-info">
-          <strong>{{ pokemon.name }}</strong>
-          <div class="pokemon-types">
-            @if (pokemon.pokemon_type && pokemon.pokemon_type.length > 1) {
-            <span>{{ pokemon.pokemon_type[0] }} / {{ pokemon.pokemon_type[1] }}</span>
-            } @else if (pokemon.pokemon_type && pokemon.pokemon_type.length === 1) {
-            <span>{{ pokemon.pokemon_type[0] }}</span>
-            }
+        <div class="replacement-pokemon-info">
+          <img
+            [src]="'/images/' + ('' + pokemon.id).padStart(4, '0') + '.png'"
+            [alt]="pokemon.name"
+            class="replacement-img"
+          />
+          <div>
+            <strong class="replacement-name">{{ pokemon.id }} - {{ pokemon.name }}</strong>
+            <div class="pokemon-types">
+              <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+              @if (pokemon.type2) {
+              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+              }
+            </div>
           </div>
         </div>
         <button (click)="onReplacePokemon(pokemon)" class="btn-select">Seleccionar</button>

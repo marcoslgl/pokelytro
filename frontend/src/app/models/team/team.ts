@@ -1,5 +1,6 @@
 export class Team {
   id!: number;
+  name!: string;
   pokemons!: number[]; // Array of Pokemon IDs
 
   constructor(init?: Partial<Team>) {

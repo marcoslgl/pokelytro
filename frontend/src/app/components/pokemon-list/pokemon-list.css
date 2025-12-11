@@ -1,32 +1,172 @@
 /* grid container for pokemon cards */
+body {
+  height: 80vh;
+}
 .pokemon-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 0.8rem;
+  align-items: stretch;
   padding: 0.5rem;
+  margin-left: 6vw;
+  margin-right: 2vw;
+}
+
+@media (max-width: 900px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .pokemon-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pokemon-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
   padding: 0.6rem;
   margin: 0;
   border: 1px solid white;
   border-radius: 0.5rem;
   background: transparent;
-  flex: 0 1 60vh;
+  height: 100%;
+  width: 25vw;
+  flex-wrap: wrap;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pokemon-card img {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.25rem;
+}
+
+/* Pagination */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  margin: 0.5rem 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 6vw;
+  padding-right: 3vw;
+}
+
+.pagination-controls button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.pagination-controls button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-controls select {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.pagination-controls input[type='number'] {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  width: 4.5rem;
+}
+
+/* Integrated page jump control */
+.page-jump {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.page-jump input[type='number'] {
+  border: 0;
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  width: 5.2rem;
+}
+
+.page-jump-button {
+  border: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+}
+
+/* Remove number input arrows (spinners) */
+.pagination-controls input[type='number']::-webkit-outer-spin-button,
+.pagination-controls input[type='number']::-webkit-inner-spin-button,
+.page-jump input[type='number']::-webkit-outer-spin-button,
+.page-jump input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pagination-controls input[type='number'],
+.page-jump input[type='number'] {
+  appearance: none; /* Standard */
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.pagination-controls .page-indicator {
+  display: inline-block;
+  min-width: 16ch;
+  text-align: center;
 }
 span {
   font-weight: bold;
+  word-break: break-word;
 }
 .type {
   font-weight: normal;
   border: 0.5px solid;
   border-radius: 0.3rem;
-  padding-left: 0.4rem;
-  padding-right: 0.5rem;
-  padding-bottom: 0.1rem;
-  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem 0.15rem 0.4rem;
+  margin: 0;
+  display: inline-block;
+  max-width: 100%;
 }
 
 /* Type color classes */
