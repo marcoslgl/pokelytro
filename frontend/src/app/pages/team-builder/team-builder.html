@@ -19,10 +19,7 @@
     <ul class="pokemon-grid">
       @for (pokemon of pagedPokemons; track pokemon.id) {
       <li class="pokemon-card">
-        <img
-          [src]="'/images/' + ('' + pokemon.id).padStart(4, '0') + '.png'"
-          [alt]="pokemon.name"
-        />
+        <img [src]="'/images/' + ('' + pokemon.id) + '.png'" [alt]="pokemon.name" />
         <div class="card-info">
           <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
           <div class="card-types">
