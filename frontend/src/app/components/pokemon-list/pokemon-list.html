@@ -1,12 +1,72 @@
 <h1>Pokedex</h1>
 
 <div class="pagination-controls">
-  <input
-    class="search-input"
-    type="text"
-    placeholder="Buscar por nombre"
-    (input)="onSearch($any($event.target).value)"
-  />
+  <div class="left-controls">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Buscar por nombre"
+      (input)="onSearch($any($event.target).value)"
+    />
+    <button
+      #filterButton
+      class="filter-button"
+      type="button"
+      (click)="toggleFilters()"
+      aria-label="Filtros"
+      title="Filtros"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+        focusable="false"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M3 4h18l-7 9v6l-4-2v-4z" />
+      </svg>
+    </button>
+    @if (showFilters) {
+    <div class="filters-panel" #filtersPanel>
+      <div class="filters-row">
+        <label>
+          Tipo
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedType"
+            (ngModelChange)="onTypeChange($event)"
+            aria-label="Filtrar por tipo"
+          >
+            <option value="">Todos</option>
+            @for (t of types; track t) {
+            <option [value]="t">{{ t }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          Generación
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedGen"
+            (ngModelChange)="onGenChange($event)"
+            aria-label="Filtrar por generación"
+          >
+            <option value="">Todas</option>
+            @for (g of generations; track g) {
+            <option [value]="g">Gen {{ g }}</option>
+            }
+          </select>
+        </label>
+        <button type="button" class="clear-filters" (click)="clearFilters()">Limpiar</button>
+      </div>
+    </div>
+    }
+  </div>
   <div class="pagination-actions">
     <button (click)="prevPage()" [disabled]="page === 1" aria-label="Anterior">&#9664;</button>
     <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>

@@ -1,4 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
@@ -7,7 +8,7 @@ import { tap } from 'rxjs';
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './pokemon-list.html',
   styleUrls: ['./pokemon-list.css'],
 })
@@ -18,15 +19,30 @@ export class PokemonList implements OnInit {
 
   pokemons!: Pokemon[];
   searchTerm = '';
+  selectedType = '';
+  selectedGen = '';
+  types: string[] = [];
+  generations: number[] = [];
+  showFilters = false;
   page = 1;
   pageSize = 24;
   totalPages = 1;
 
+  @ViewChild('filtersPanel') filtersPanel?: ElementRef<HTMLElement>;
+  @ViewChild('filterButton') filterButton?: ElementRef<HTMLElement>;
+
   get filteredPokemons(): Pokemon[] {
     if (!this.pokemons) return [];
     const q = this.searchTerm.trim().toLowerCase();
-    if (!q) return this.pokemons;
-    return this.pokemons.filter((p) => p.name.toLowerCase().includes(q));
+    const list = this.pokemons.filter((p) => {
+      const matchesSearch = !q || p.name.toLowerCase().includes(q);
+      const matchesType =
+        !this.selectedType || p.type1 === this.selectedType || p.type2 === this.selectedType;
+      const genNum = this.selectedGen ? Number(this.selectedGen) : undefined;
+      const matchesGen = !genNum || p.generation === genNum;
+      return matchesSearch && matchesType && matchesGen;
+    });
+    return list;
   }
 
   get pagedPokemons(): Pokemon[] {
@@ -41,6 +57,16 @@ export class PokemonList implements OnInit {
       .pipe(
         tap((data: any) => {
           this.pokemons = data;
+          // Build filter options
+          const typeSet = new Set<string>();
+          for (const p of data as Pokemon[]) {
+            if (p.type1) typeSet.add(p.type1);
+            if (p.type2) typeSet.add(p.type2);
+          }
+          this.types = Array.from(typeSet).sort();
+          this.generations = Array.from(
+            new Set<number>(data.map((p: Pokemon) => p.generation))
+          ).sort((a, b) => a - b);
           this.recomputeTotalPages();
           console.log('Number of pokemons:', data.length);
         })
@@ -80,6 +106,41 @@ export class PokemonList implements OnInit {
 
   onSearch(term: string): void {
     this.searchTerm = term;
+    this.page = 1;
+    this.recomputeTotalPages();
+  }
+
+  onTypeChange(type: string): void {
+    this.selectedType = type;
+    this.page = 1;
+    this.recomputeTotalPages();
+  }
+
+  onGenChange(gen: string): void {
+    this.selectedGen = gen;
+    this.page = 1;
+    this.recomputeTotalPages();
+  }
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.showFilters) return;
+    const target = event.target as Node | null;
+    const panel = this.filtersPanel?.nativeElement;
+    const button = this.filterButton?.nativeElement;
+    if (target && (panel?.contains(target) || button?.contains(target))) {
+      return;
+    }
+    this.showFilters = false;
+  }
+
+  clearFilters(): void {
+    this.selectedType = '';
+    this.selectedGen = '';
     this.page = 1;
     this.recomputeTotalPages();
   }
