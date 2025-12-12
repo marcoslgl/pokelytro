@@ -1,11 +1,23 @@
+<h1>Pokedex</h1>
+
 <div class="pagination-controls">
-  <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
-  <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
-  <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
-  <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-    <input #pageInput type="number" placeholder="Página" />
-  </form>
-  <button (click)="goToPage(pageInput.value)">Ir</button>
+  <input
+    class="search-input"
+    type="text"
+    placeholder="Buscar por nombre"
+    (input)="onSearch($any($event.target).value)"
+  />
+  <div class="pagination-actions">
+    <button (click)="prevPage()" [disabled]="page === 1" aria-label="Anterior">&#9664;</button>
+    <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Siguiente">
+      &#9654;
+    </button>
+    <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
+      <input #pageInput type="number" placeholder="Página" />
+    </form>
+    <button (click)="goToPage(pageInput.value)">Ir</button>
+  </div>
 </div>
 
 <div class="pokemon-grid">

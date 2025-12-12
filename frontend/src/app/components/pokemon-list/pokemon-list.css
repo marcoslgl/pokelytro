@@ -24,6 +24,12 @@ body {
   }
 }
 
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .pokemon-card {
   display: flex;
   align-items: flex-start;
@@ -70,12 +76,18 @@ body {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin: 0.5rem 0 1rem;
   width: 100%;
   box-sizing: border-box;
   padding-left: 6vw;
   padding-right: 3vw;
+}
+
+.pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .pagination-controls button {
@@ -110,21 +122,40 @@ body {
   width: 4.5rem;
 }
 
+.pagination-controls .search-input {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  min-width: 14rem;
+}
+
+.search-input {
+  margin-left: 1%;
+}
+
 /* Integrated page jump control */
 .page-jump {
   display: inline-flex;
   align-items: stretch;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: none;
   border-radius: 0.4rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .page-jump input[type='number'] {
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.06);
   color: inherit;
   padding: 0.3rem 0.6rem;
   width: 5.2rem;
+  border-radius: 0.4rem;
+}
+
+input[type='number'] {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-left: 3vw;
 }
 
 .page-jump-button {
@@ -152,7 +183,6 @@ body {
 
 .pagination-controls .page-indicator {
   display: inline-block;
-  min-width: 16ch;
   text-align: center;
 }
 span {

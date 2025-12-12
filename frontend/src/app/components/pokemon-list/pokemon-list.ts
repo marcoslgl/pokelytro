@@ -17,14 +17,22 @@ export class PokemonList implements OnInit {
   //  Pokemon list
 
   pokemons!: Pokemon[];
+  searchTerm = '';
   page = 1;
   pageSize = 24;
   totalPages = 1;
 
-  get pagedPokemons(): Pokemon[] {
+  get filteredPokemons(): Pokemon[] {
     if (!this.pokemons) return [];
+    const q = this.searchTerm.trim().toLowerCase();
+    if (!q) return this.pokemons;
+    return this.pokemons.filter((p) => p.name.toLowerCase().includes(q));
+  }
+
+  get pagedPokemons(): Pokemon[] {
+    const list = this.filteredPokemons;
     const start = (this.page - 1) * this.pageSize;
-    return this.pokemons.slice(start, start + this.pageSize);
+    return list.slice(start, start + this.pageSize);
   }
 
   ngOnInit(): void {
@@ -33,7 +41,7 @@ export class PokemonList implements OnInit {
       .pipe(
         tap((data: any) => {
           this.pokemons = data;
-          this.totalPages = Math.max(1, Math.ceil(this.pokemons.length / this.pageSize));
+          this.recomputeTotalPages();
           console.log('Number of pokemons:', data.length);
         })
       )
@@ -54,7 +62,7 @@ export class PokemonList implements OnInit {
 
   setPageSize(size: number | string): void {
     this.pageSize = Number(size);
-    this.totalPages = Math.max(1, Math.ceil((this.pokemons?.length ?? 0) / this.pageSize));
+    this.recomputeTotalPages();
     this.page = 1;
   }
 
@@ -68,5 +76,16 @@ export class PokemonList implements OnInit {
     } else {
       this.page = desired;
     }
+  }
+
+  onSearch(term: string): void {
+    this.searchTerm = term;
+    this.page = 1;
+    this.recomputeTotalPages();
+  }
+
+  private recomputeTotalPages(): void {
+    const count = this.filteredPokemons.length;
+    this.totalPages = Math.max(1, Math.ceil(count / this.pageSize));
   }
 }
