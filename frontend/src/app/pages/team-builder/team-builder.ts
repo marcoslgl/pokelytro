@@ -61,22 +61,23 @@ export class TeamBuilder implements OnInit {
   onAddPokemon(pokemon: Pokemon) {
     if (this.currentTeam.length >= 6) {
       alert('El equipo ya tiene 6 Pokémon.');
+      return;
     }
     if (this.currentTeam.some((p) => p.id === pokemon.id)) {
       alert('Este Pokémon ya está en el equipo.');
+      return;
     }
     this.currentTeam = [...this.currentTeam, pokemon];
   }
 
   onRemoveFromTeam(pokemon: Pokemon) {
-    if (confirm(`¿Eliminar a ${pokemon.name} del equipo?`)) {
-      this.currentTeam = this.currentTeam.filter((p) => p.id !== pokemon.id);
-    }
+    this.currentTeam = this.currentTeam.filter((p) => p.id !== pokemon.id);
   }
 
   onSaveTeam() {
     if (this.currentTeam.length < 6) {
       alert('El equipo debe tener 6 Pokémon para guardarlo.');
+      return;
     }
 
     this.isSaving = true;
@@ -104,6 +105,17 @@ export class TeamBuilder implements OnInit {
       queryParams: { teamId },
     });
   }
+
+  onDeleteEquipo(equipo: TeamModel) {
+    if (confirm('¿Estás seguro de que deseas eliminar el equipo: "' + equipo.name + '"?')) {
+      this.teamService.delete(equipo.id).subscribe({
+        next: () => {
+          this.refreshTeams();
+        },
+      });
+    }
+  }
+
 
   pokemonName(id: number): string {
     return this.pokemonMap.get(id)?.name ?? `#${id}`;

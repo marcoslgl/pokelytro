@@ -3,44 +3,6 @@
 
   <br /><br />
 
-  <section class="pokemons-disponibles">
-    <h2>Pokémon Disponibles</h2>
-
-    <div class="pagination-controls">
-      <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
-      <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
-      <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
-      <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-        <input #pageInput type="number" placeholder="Página" />
-      </form>
-      <button (click)="goToPage(pageInput.value)">Ir</button>
-    </div>
-
-    <ul class="pokemon-grid">
-      @for (pokemon of pagedPokemons; track pokemon.id) {
-      <li class="pokemon-card">
-        <img [src]="'/images/' + ('' + pokemon.id) + '.png'" [alt]="pokemon.name" />
-        <div class="card-info">
-          <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
-          <div class="card-types">
-            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-            @if (pokemon.type2) {
-            <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
-            }
-          </div>
-          <button
-            class="btn-add"
-            (click)="onAddPokemon(pokemon)"
-            [disabled]="currentTeam.length >= 6"
-          >
-            Añadir
-          </button>
-        </div>
-      </li>
-      }
-    </ul>
-  </section>
-
   <section class="equipo-actual">
     <h2>Equipo Actual ({{ currentTeam.length }}/6)</h2>
 
@@ -52,7 +14,7 @@
       <li class="equipo-item">
         <div class="equipo-pokemon-info">
           <img
-            [src]="'/images/' + ('' + pokemon.id).padStart(4, '0') + '.png'"
+            [src]="'/images/' + ('' + pokemon.id) + '.png'"
             [alt]="pokemon.name"
             class="equipo-img"
           />
@@ -93,9 +55,50 @@
           }
         </ul>
         <button (click)="onSelectEquipo(team.id)">Ver Detalles</button>
+        <button class="btn-delete" (click)="onDeleteEquipo(team)">Eliminar</button>
       </li>
       }
     </ul>
     }
+  </section>
+
+      <br/><br/>
+
+    <section class="pokemons-disponibles">
+    <h2>Pokémon Disponibles</h2>
+
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+      <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+      <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
+        <input #pageInput type="number" placeholder="Página" />
+      </form>
+      <button (click)="goToPage(pageInput.value)">Ir</button>
+    </div>
+
+    <ul class="pokemon-grid">
+      @for (pokemon of pagedPokemons; track pokemon.id) {
+      <li class="pokemon-card">
+        <img [src]="'/images/' + ('' + pokemon.id) + '.png'" [alt]="pokemon.name" />
+        <div class="card-info">
+          <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
+          <div class="card-types">
+            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+            @if (pokemon.type2) {
+            <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+            }
+          </div>
+          <button
+            class="btn-add"
+            (click)="onAddPokemon(pokemon)"
+            [disabled]="currentTeam.length >= 6"
+          >
+            Añadir
+          </button>
+        </div>
+      </li>
+      }
+    </ul>
   </section>
 </div>

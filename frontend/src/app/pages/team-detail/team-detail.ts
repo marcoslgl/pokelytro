@@ -46,6 +46,7 @@ export class TeamDetail implements OnInit {
       if (!teamId) {
         alert('No teamId provided');
         this.router.navigate(['/team-builder']);
+        return;
       }
 
       // Cargar todos los pokemons
@@ -61,6 +62,7 @@ export class TeamDetail implements OnInit {
               if (!this.team) {
                 alert('Team not found');
                 this.router.navigate(['/team-builder']);
+                return;
               }
 
               // Mapear IDs a objetos Pokemon
