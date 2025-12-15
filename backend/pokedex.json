@@ -3,9 +3,7 @@
     "id": 1,
     "name": "Bulbasaur",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 1,
     "LGPE": 1,
     "GSC": 226,
@@ -71,9 +69,7 @@
     "id": 2,
     "name": "Ivysaur",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 2,
     "LGPE": 2,
     "GSC": 227,
@@ -139,9 +135,7 @@
     "id": 3,
     "name": "Venusaur",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 3,
     "LGPE": 3,
     "GSC": 228,
@@ -207,10 +201,7 @@
     "id": 3.1,
     "name": "Venusaur (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -276,9 +267,7 @@
     "id": 4,
     "name": "Charmander",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 4,
     "LGPE": 4,
     "GSC": 229,
@@ -344,9 +333,7 @@
     "id": 5,
     "name": "Charmeleon",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 5,
     "LGPE": 5,
     "GSC": 230,
@@ -412,9 +399,7 @@
     "id": 6,
     "name": "Charizard",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 6,
     "LGPE": 6,
     "GSC": 231,
@@ -480,10 +465,7 @@
     "id": 6.1,
     "name": "Charizard (Mega X)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -549,10 +531,7 @@
     "id": 6.2,
     "name": "Charizard (Mega Y)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -618,9 +597,7 @@
     "id": 7,
     "name": "Squirtle",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 7,
     "LGPE": 7,
     "GSC": 232,
@@ -686,9 +663,7 @@
     "id": 8,
     "name": "Wartortle",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 8,
     "LGPE": 8,
     "GSC": 233,
@@ -754,9 +729,7 @@
     "id": 9,
     "name": "Blastoise",
     "generation": 1,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": 9,
     "LGPE": 9,
     "GSC": 234,
@@ -822,10 +795,7 @@
     "id": 9.1,
     "name": "Blastoise (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -1287,9 +1257,7 @@
     "id": 15.1,
     "name": "Beedrill (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -1553,9 +1521,7 @@
     "id": 18.1,
     "name": "Pidgeot (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -1687,9 +1653,7 @@
     "id": 19.1,
     "name": "Rattata (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -1821,9 +1785,7 @@
     "id": 20.1,
     "name": "Raticate (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -2285,9 +2247,7 @@
     "id": 26.1,
     "name": "Raichu (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -2419,9 +2379,7 @@
     "id": 27.1,
     "name": "Sandshrew (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -2553,9 +2511,7 @@
     "id": 28.1,
     "name": "Sandslash (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -3215,9 +3171,7 @@
     "id": 37.1,
     "name": "Vulpix (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -3349,9 +3303,7 @@
     "id": 38.1,
     "name": "Ninetales (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -4209,9 +4161,7 @@
     "id": 50.1,
     "name": "Diglett (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -4343,9 +4293,7 @@
     "id": 51.1,
     "name": "Dugtrio (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -4477,9 +4425,7 @@
     "id": 52.1,
     "name": "Meowth (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -4545,9 +4491,7 @@
     "id": 52.2,
     "name": "Meowth (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -4679,9 +4623,7 @@
     "id": 53.1,
     "name": "Persian (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -5077,9 +5019,7 @@
     "id": 58.1,
     "name": "Growlithe (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -5211,9 +5151,7 @@
     "id": 59.1,
     "name": "Arcanine (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -5675,9 +5613,7 @@
     "id": 65.1,
     "name": "Alakazam (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -6337,9 +6273,7 @@
     "id": 74.1,
     "name": "Geodude (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -6471,9 +6405,7 @@
     "id": 75.1,
     "name": "Graveler (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -6605,9 +6537,7 @@
     "id": 76.1,
     "name": "Golem (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -6739,9 +6669,7 @@
     "id": 77.1,
     "name": "Ponyta (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -6873,9 +6801,7 @@
     "id": 78.1,
     "name": "Rapidash (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -7007,9 +6933,7 @@
     "id": 79.1,
     "name": "Slowpoke (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -7141,9 +7065,7 @@
     "id": 80.1,
     "name": "Slowbro (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -7209,9 +7131,7 @@
     "id": 80.2,
     "name": "Slowbro (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -7475,9 +7395,7 @@
     "id": 83.1,
     "name": "Farfetch'd (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -7873,9 +7791,7 @@
     "id": 88.1,
     "name": "Grimer (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -8007,9 +7923,7 @@
     "id": 89.1,
     "name": "Muk (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -8405,9 +8319,7 @@
     "id": 94.1,
     "name": "Gengar (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -8869,9 +8781,7 @@
     "id": 100.1,
     "name": "Voltorb (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -9003,9 +8913,7 @@
     "id": 101.1,
     "name": "Electrode (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -9203,9 +9111,7 @@
     "id": 103.1,
     "name": "Exeggutor (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -9403,9 +9309,7 @@
     "id": 105.1,
     "name": "Marowak (Alolan)",
     "generation": 7,
-    "pokemon_type": [
-      "Alolan Form"
-    ],
+    "pokemon_type": ["Alolan Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -9801,9 +9705,7 @@
     "id": 110.1,
     "name": "Weezing (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -10199,9 +10101,7 @@
     "id": 115.1,
     "name": "Kangaskhan (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -10729,9 +10629,7 @@
     "id": 122.1,
     "name": "Mr. Mime (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -11127,9 +11025,7 @@
     "id": 127.1,
     "name": "Pinsir (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -11261,9 +11157,7 @@
     "id": 128.1,
     "name": "Tauros (Paldean, Combat)",
     "generation": 9,
-    "pokemon_type": [
-      "Paldean Form"
-    ],
+    "pokemon_type": ["Paldean Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -11329,9 +11223,7 @@
     "id": 128.2,
     "name": "Tauros (Paldean, Blaze)",
     "generation": 9,
-    "pokemon_type": [
-      "Paldean Form"
-    ],
+    "pokemon_type": ["Paldean Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -11397,9 +11289,7 @@
     "id": 128.3,
     "name": "Tauros (Paldean, Aqua)",
     "generation": 9,
-    "pokemon_type": [
-      "Paldean Form"
-    ],
+    "pokemon_type": ["Paldean Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -11597,9 +11487,7 @@
     "id": 130.1,
     "name": "Gyarados (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -11863,9 +11751,7 @@
     "id": 134,
     "name": "Vaporeon",
     "generation": 1,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": 134,
     "LGPE": 134,
     "GSC": 181,
@@ -11931,9 +11817,7 @@
     "id": 135,
     "name": "Jolteon",
     "generation": 1,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": 135,
     "LGPE": 135,
     "GSC": 182,
@@ -11999,9 +11883,7 @@
     "id": 136,
     "name": "Flareon",
     "generation": 1,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": 136,
     "LGPE": 136,
     "GSC": 183,
@@ -12133,9 +12015,7 @@
     "id": 138,
     "name": "Omanyte",
     "generation": 1,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": 138,
     "LGPE": 138,
     "GSC": 220,
@@ -12201,9 +12081,7 @@
     "id": 139,
     "name": "Omastar",
     "generation": 1,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": 139,
     "LGPE": 139,
     "GSC": 221,
@@ -12269,9 +12147,7 @@
     "id": 140,
     "name": "Kabuto",
     "generation": 1,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": 140,
     "LGPE": 140,
     "GSC": 222,
@@ -12337,9 +12213,7 @@
     "id": 141,
     "name": "Kabutops",
     "generation": 1,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": 141,
     "LGPE": 141,
     "GSC": 223,
@@ -12405,9 +12279,7 @@
     "id": 142,
     "name": "Aerodactyl",
     "generation": 1,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": 142,
     "LGPE": 142,
     "GSC": 224,
@@ -12473,9 +12345,7 @@
     "id": 142.1,
     "name": "Aerodactyl (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -12607,9 +12477,7 @@
     "id": 144,
     "name": "Articuno",
     "generation": 1,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": 144,
     "LGPE": 144,
     "GSC": 235,
@@ -12675,10 +12543,7 @@
     "id": 144.1,
     "name": "Articuno (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary",
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Legendary", "Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -12744,9 +12609,7 @@
     "id": 145,
     "name": "Zapdos",
     "generation": 1,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": 145,
     "LGPE": 145,
     "GSC": 236,
@@ -12812,10 +12675,7 @@
     "id": 145.1,
     "name": "Zapdos (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary",
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Legendary", "Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -12881,9 +12741,7 @@
     "id": 146,
     "name": "Moltres",
     "generation": 1,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": 146,
     "LGPE": 146,
     "GSC": 237,
@@ -12949,10 +12807,7 @@
     "id": 146.1,
     "name": "Moltres (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary",
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Legendary", "Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -13018,9 +12873,7 @@
     "id": 147,
     "name": "Dratini",
     "generation": 1,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": 147,
     "LGPE": 147,
     "GSC": 241,
@@ -13086,9 +12939,7 @@
     "id": 148,
     "name": "Dragonair",
     "generation": 1,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": 148,
     "LGPE": 148,
     "GSC": 242,
@@ -13154,9 +13005,7 @@
     "id": 149,
     "name": "Dragonite",
     "generation": 1,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": 149,
     "LGPE": 149,
     "GSC": 243,
@@ -13222,9 +13071,7 @@
     "id": 150,
     "name": "Mewtwo",
     "generation": 1,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": 150,
     "LGPE": 150,
     "GSC": 249,
@@ -13290,10 +13137,7 @@
     "id": 150.1,
     "name": "Mewtwo (Mega X)",
     "generation": 6,
-    "pokemon_type": [
-      "Special",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Special", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -13359,10 +13203,7 @@
     "id": 150.2,
     "name": "Mewtwo (Mega Y)",
     "generation": 6,
-    "pokemon_type": [
-      "Special",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Special", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -13428,9 +13269,7 @@
     "id": 151,
     "name": "Mew",
     "generation": 1,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": 151,
     "LGPE": 151,
     "GSC": 250,
@@ -13496,9 +13335,7 @@
     "id": 152,
     "name": "Chikorita",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 1,
@@ -13564,9 +13401,7 @@
     "id": 153,
     "name": "Bayleef",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 2,
@@ -13632,9 +13467,7 @@
     "id": 154,
     "name": "Meganium",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 3,
@@ -13700,9 +13533,7 @@
     "id": 155,
     "name": "Cyndaquil",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 4,
@@ -13768,9 +13599,7 @@
     "id": 156,
     "name": "Quilava",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 5,
@@ -13836,9 +13665,7 @@
     "id": 157,
     "name": "Typhlosion",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 6,
@@ -13904,10 +13731,7 @@
     "id": 157.1,
     "name": "Typhlosion (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Starter",
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Starter", "Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -13973,9 +13797,7 @@
     "id": 158,
     "name": "Totodile",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 7,
@@ -14041,9 +13863,7 @@
     "id": 159,
     "name": "Croconaw",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 8,
@@ -14109,9 +13929,7 @@
     "id": 160,
     "name": "Feraligatr",
     "generation": 2,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 9,
@@ -14903,9 +14721,7 @@
     "id": 172,
     "name": "Pichu",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 21,
@@ -14971,9 +14787,7 @@
     "id": 173,
     "name": "Cleffa",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 40,
@@ -15039,9 +14853,7 @@
     "id": 174,
     "name": "Igglybuff",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 43,
@@ -15107,9 +14919,7 @@
     "id": 175,
     "name": "Togepi",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 46,
@@ -15571,9 +15381,7 @@
     "id": 181.1,
     "name": "Ampharos (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -16497,9 +16305,7 @@
     "id": 194.1,
     "name": "Wooper (Paldean)",
     "generation": 9,
-    "pokemon_type": [
-      "Paldean Form"
-    ],
+    "pokemon_type": ["Paldean Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -16631,9 +16437,7 @@
     "id": 196,
     "name": "Espeon",
     "generation": 2,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 184,
@@ -16699,9 +16503,7 @@
     "id": 197,
     "name": "Umbreon",
     "generation": 2,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 185,
@@ -16899,9 +16701,7 @@
     "id": 199.1,
     "name": "Slowking (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -17561,9 +17361,7 @@
     "id": 208.1,
     "name": "Steelix (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -17827,9 +17625,7 @@
     "id": 211.1,
     "name": "Qwilfish (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -17961,9 +17757,7 @@
     "id": 212.1,
     "name": "Scizor (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -18161,9 +17955,7 @@
     "id": 214.1,
     "name": "Heracross (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -18295,9 +18087,7 @@
     "id": 215.1,
     "name": "Sneasel (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -18825,9 +18615,7 @@
     "id": 222.1,
     "name": "Corsola (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -19355,9 +19143,7 @@
     "id": 229.1,
     "name": "Houndoom (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -19819,9 +19605,7 @@
     "id": 236,
     "name": "Tyrogue",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 143,
@@ -19953,9 +19737,7 @@
     "id": 238,
     "name": "Smoochum",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 152,
@@ -20021,9 +19803,7 @@
     "id": 239,
     "name": "Elekid",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 154,
@@ -20089,9 +19869,7 @@
     "id": 240,
     "name": "Magby",
     "generation": 2,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 150,
@@ -20289,9 +20067,7 @@
     "id": 243,
     "name": "Raikou",
     "generation": 2,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 238,
@@ -20357,9 +20133,7 @@
     "id": 244,
     "name": "Entei",
     "generation": 2,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 239,
@@ -20425,9 +20199,7 @@
     "id": 245,
     "name": "Suicune",
     "generation": 2,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 240,
@@ -20493,9 +20265,7 @@
     "id": 246,
     "name": "Larvitar",
     "generation": 2,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 244,
@@ -20561,9 +20331,7 @@
     "id": 247,
     "name": "Pupitar",
     "generation": 2,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 245,
@@ -20629,9 +20397,7 @@
     "id": 248,
     "name": "Tyranitar",
     "generation": 2,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 246,
@@ -20697,10 +20463,7 @@
     "id": 248.1,
     "name": "Tyranitar (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Psuedo Legendary",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Psuedo Legendary", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -20766,9 +20529,7 @@
     "id": 249,
     "name": "Lugia",
     "generation": 2,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 247,
@@ -20834,9 +20595,7 @@
     "id": 250,
     "name": "Ho-oh",
     "generation": 2,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 248,
@@ -20902,9 +20661,7 @@
     "id": 251,
     "name": "Celebi",
     "generation": 2,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": 251,
@@ -20970,9 +20727,7 @@
     "id": 252,
     "name": "Treecko",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21038,9 +20793,7 @@
     "id": 253,
     "name": "Grovyle",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21106,9 +20859,7 @@
     "id": 254,
     "name": "Sceptile",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21174,10 +20925,7 @@
     "id": 254.1,
     "name": "Sceptile (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21243,9 +20991,7 @@
     "id": 255,
     "name": "Torchic",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21311,9 +21057,7 @@
     "id": 256,
     "name": "Combusken",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21379,9 +21123,7 @@
     "id": 257,
     "name": "Blaziken",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21447,10 +21189,7 @@
     "id": 257.1,
     "name": "Blaziken (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21516,9 +21255,7 @@
     "id": 258,
     "name": "Mudkip",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21584,9 +21321,7 @@
     "id": 259,
     "name": "Marshtomp",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21652,9 +21387,7 @@
     "id": 260,
     "name": "Swampert",
     "generation": 3,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21720,10 +21453,7 @@
     "id": 260.1,
     "name": "Swampert (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Starter",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Starter", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -21987,9 +21717,7 @@
     "id": 263.1,
     "name": "Zigzagoon (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -22121,9 +21849,7 @@
     "id": 264.1,
     "name": "Linoone (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -23377,9 +23103,7 @@
     "id": 282.1,
     "name": "Gardevoir (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -24435,9 +24159,7 @@
     "id": 298,
     "name": "Azurill",
     "generation": 3,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -24767,9 +24489,7 @@
     "id": 302.1,
     "name": "Sableye (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -24901,9 +24621,7 @@
     "id": 303.1,
     "name": "Mawile (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -25167,9 +24885,7 @@
     "id": 306.1,
     "name": "Aggron (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -25367,9 +25083,7 @@
     "id": 308.1,
     "name": "Medicham (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -25567,9 +25281,7 @@
     "id": 310.1,
     "name": "Manetric (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -26229,9 +25941,7 @@
     "id": 319.1,
     "name": "Sharpedo (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -26561,9 +26271,7 @@
     "id": 323.1,
     "name": "Camerupt (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -27355,9 +27063,7 @@
     "id": 334.1,
     "name": "Altaria (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -28083,9 +27789,7 @@
     "id": 345,
     "name": "Lileep",
     "generation": 3,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -28151,9 +27855,7 @@
     "id": 346,
     "name": "Cradily",
     "generation": 3,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -28219,9 +27921,7 @@
     "id": 347,
     "name": "Anorith",
     "generation": 3,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -28287,9 +27987,7 @@
     "id": 348,
     "name": "Armaldo",
     "generation": 3,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -28949,9 +28647,7 @@
     "id": 354.1,
     "name": "Banette (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -29347,9 +29043,7 @@
     "id": 359.1,
     "name": "Absol (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -29415,9 +29109,7 @@
     "id": 360,
     "name": "Wynaut",
     "generation": 3,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -29615,9 +29307,7 @@
     "id": 362.1,
     "name": "Glalie (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30211,9 +29901,7 @@
     "id": 371,
     "name": "Bagon",
     "generation": 3,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30279,9 +29967,7 @@
     "id": 372,
     "name": "Shelgon",
     "generation": 3,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30347,9 +30033,7 @@
     "id": 373,
     "name": "Salamence",
     "generation": 3,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30415,10 +30099,7 @@
     "id": 373.1,
     "name": "Salamence (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Psuedo Legendary",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Psuedo Legendary", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30484,9 +30165,7 @@
     "id": 374,
     "name": "Beldum",
     "generation": 3,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30552,9 +30231,7 @@
     "id": 375,
     "name": "Metang",
     "generation": 3,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30620,9 +30297,7 @@
     "id": 376,
     "name": "Metagross",
     "generation": 3,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30688,10 +30363,7 @@
     "id": 376.1,
     "name": "Metagross (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Psuedo Legendary",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Psuedo Legendary", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30757,9 +30429,7 @@
     "id": 377,
     "name": "Regirock",
     "generation": 3,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30825,9 +30495,7 @@
     "id": 378,
     "name": "Regice",
     "generation": 3,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30893,9 +30561,7 @@
     "id": 379,
     "name": "Registeel",
     "generation": 3,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -30961,9 +30627,7 @@
     "id": 380,
     "name": "Latias",
     "generation": 3,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31029,10 +30693,7 @@
     "id": 380.1,
     "name": "Latias",
     "generation": 6,
-    "pokemon_type": [
-      "Legendary",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Legendary", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31098,9 +30759,7 @@
     "id": 381,
     "name": "Latios",
     "generation": 3,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31166,10 +30825,7 @@
     "id": 381.1,
     "name": "Latios",
     "generation": 6,
-    "pokemon_type": [
-      "Legendary",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Legendary", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31235,9 +30891,7 @@
     "id": 382,
     "name": "Kyogre",
     "generation": 3,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31303,10 +30957,7 @@
     "id": 382.1,
     "name": "Kyogre (Primal)",
     "generation": 6,
-    "pokemon_type": [
-      "Special",
-      "Primal Reversion"
-    ],
+    "pokemon_type": ["Special", "Primal Reversion"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31372,9 +31023,7 @@
     "id": 383,
     "name": "Groudon",
     "generation": 3,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31440,10 +31089,7 @@
     "id": 383.1,
     "name": "Groudon (Primal)",
     "generation": 6,
-    "pokemon_type": [
-      "Special",
-      "Primal Reversion"
-    ],
+    "pokemon_type": ["Special", "Primal Reversion"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31509,9 +31155,7 @@
     "id": 384,
     "name": "Rayquaza",
     "generation": 3,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31577,10 +31221,7 @@
     "id": 384.1,
     "name": "Rayquaza",
     "generation": 6,
-    "pokemon_type": [
-      "Special",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Special", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31646,9 +31287,7 @@
     "id": 385,
     "name": "Jirachi",
     "generation": 3,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31714,9 +31353,7 @@
     "id": 386,
     "name": "Deoxys (Normal)",
     "generation": 3,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31782,9 +31419,7 @@
     "id": 386.1,
     "name": "Deoxys (Attack)",
     "generation": 3,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31850,9 +31485,7 @@
     "id": 386.2,
     "name": "Deoxys (Defense)",
     "generation": 3,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31918,9 +31551,7 @@
     "id": 386.3,
     "name": "Deoxys (Speed)",
     "generation": 3,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -31986,9 +31617,7 @@
     "id": 387,
     "name": "Turtwig",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32054,9 +31683,7 @@
     "id": 388,
     "name": "Grotle",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32122,9 +31749,7 @@
     "id": 389,
     "name": "Torterra",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32190,9 +31815,7 @@
     "id": 390,
     "name": "Chimchar",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32258,9 +31881,7 @@
     "id": 391,
     "name": "Monferno",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32326,9 +31947,7 @@
     "id": 392,
     "name": "Infernape",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32394,9 +32013,7 @@
     "id": 393,
     "name": "Piplup",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32462,9 +32079,7 @@
     "id": 394,
     "name": "Prinplup",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -32530,9 +32145,7 @@
     "id": 395,
     "name": "Empoleon",
     "generation": 4,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -33258,9 +32871,7 @@
     "id": 406,
     "name": "Budew",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -33392,9 +33003,7 @@
     "id": 408,
     "name": "Cranidos",
     "generation": 4,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -33460,9 +33069,7 @@
     "id": 409,
     "name": "Rampardos",
     "generation": 4,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -33528,9 +33135,7 @@
     "id": 410,
     "name": "Shieldon",
     "generation": 4,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -33596,9 +33201,7 @@
     "id": 411,
     "name": "Bastiodon",
     "generation": 4,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -35248,9 +34851,7 @@
     "id": 428.1,
     "name": "Lopunny (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -35580,9 +35181,7 @@
     "id": 433,
     "name": "Chingling",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -35912,9 +35511,7 @@
     "id": 438,
     "name": "Bonsly",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -35980,9 +35577,7 @@
     "id": 439,
     "name": "Mime Jr.",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36048,9 +35643,7 @@
     "id": 440,
     "name": "Happiny",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36248,9 +35841,7 @@
     "id": 443,
     "name": "Gible",
     "generation": 4,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36316,9 +35907,7 @@
     "id": 444,
     "name": "Gabite",
     "generation": 4,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36384,9 +35973,7 @@
     "id": 445,
     "name": "Garchomp",
     "generation": 4,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36452,10 +36039,7 @@
     "id": 445.1,
     "name": "Garchomp (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Psuedo Legendary",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Psuedo Legendary", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36521,9 +36105,7 @@
     "id": 446,
     "name": "Munchlax",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36589,9 +36171,7 @@
     "id": 447,
     "name": "Riolu",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -36723,9 +36303,7 @@
     "id": 448.1,
     "name": "Lucario (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -37385,9 +36963,7 @@
     "id": 458,
     "name": "Mantyke",
     "generation": 4,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -37585,9 +37161,7 @@
     "id": 460.1,
     "name": "Abomasnow (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -38247,9 +37821,7 @@
     "id": 470,
     "name": "Leafeon",
     "generation": 4,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -38315,9 +37887,7 @@
     "id": 471,
     "name": "Glaceon",
     "generation": 4,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -38647,9 +38217,7 @@
     "id": 475.1,
     "name": "Gallade (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39309,9 +38877,7 @@
     "id": 480,
     "name": "Uxie",
     "generation": 4,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39377,9 +38943,7 @@
     "id": 481,
     "name": "Mesprit",
     "generation": 4,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39445,9 +39009,7 @@
     "id": 482,
     "name": "Azelf",
     "generation": 4,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39513,9 +39075,7 @@
     "id": 483,
     "name": "Dialga (Altered)",
     "generation": 4,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39581,9 +39141,7 @@
     "id": 483.1,
     "name": "Dialga (Origin)",
     "generation": 4,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39649,9 +39207,7 @@
     "id": 484,
     "name": "Palkia (Altered)",
     "generation": 4,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39717,9 +39273,7 @@
     "id": 484.1,
     "name": "Palkia (Origin)",
     "generation": 4,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39785,9 +39339,7 @@
     "id": 485,
     "name": "Heatran",
     "generation": 4,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39853,9 +39405,7 @@
     "id": 486,
     "name": "Regigigas",
     "generation": 4,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39921,9 +39471,7 @@
     "id": 487,
     "name": "Giratina (Altered)",
     "generation": 4,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -39989,9 +39537,7 @@
     "id": 487.1,
     "name": "Giratina (Origin)",
     "generation": 4,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40057,9 +39603,7 @@
     "id": 488,
     "name": "Cresselia",
     "generation": 4,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40125,9 +39669,7 @@
     "id": 489,
     "name": "Phione",
     "generation": 4,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40193,9 +39735,7 @@
     "id": 490,
     "name": "Manaphy",
     "generation": 4,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40261,9 +39801,7 @@
     "id": 491,
     "name": "Darkrai",
     "generation": 4,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40329,9 +39867,7 @@
     "id": 492,
     "name": "Shaymin (Land)",
     "generation": 4,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40397,9 +39933,7 @@
     "id": 492.1,
     "name": "Shaymin (Sky)",
     "generation": 4,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40465,9 +39999,7 @@
     "id": 493,
     "name": "Arceus",
     "generation": 4,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40533,9 +40065,7 @@
     "id": 494,
     "name": "Victini",
     "generation": 5,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40601,9 +40131,7 @@
     "id": 495,
     "name": "Snivy",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40669,9 +40197,7 @@
     "id": 496,
     "name": "Servine",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40737,9 +40263,7 @@
     "id": 497,
     "name": "Serperior",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40805,9 +40329,7 @@
     "id": 498,
     "name": "Tepig",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40873,9 +40395,7 @@
     "id": 499,
     "name": "Pignite",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -40941,9 +40461,7 @@
     "id": 500,
     "name": "Emboar",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -41009,9 +40527,7 @@
     "id": 501,
     "name": "Oshawott",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -41077,9 +40593,7 @@
     "id": 502,
     "name": "Dewott",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -41145,9 +40659,7 @@
     "id": 503,
     "name": "Samurott",
     "generation": 5,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -41213,10 +40725,7 @@
     "id": 503.1,
     "name": "Samurott (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Starter",
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Starter", "Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -43130,9 +42639,7 @@
     "id": 531.1,
     "name": "Audino (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -44386,9 +43893,7 @@
     "id": 549.1,
     "name": "Lilligant (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -44586,9 +44091,7 @@
     "id": 550.2,
     "name": "Basculin (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -44918,9 +44421,7 @@
     "id": 554.1,
     "name": "Darumaka (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -45118,9 +44619,7 @@
     "id": 555.2,
     "name": "Darmanitan (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -45186,9 +44685,7 @@
     "id": 555.3,
     "name": "Darmanitan (Galarian, Zen Mode)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -45716,9 +45213,7 @@
     "id": 562.1,
     "name": "Yamask (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -45850,9 +45345,7 @@
     "id": 564,
     "name": "Tirtouga",
     "generation": 5,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -45918,9 +45411,7 @@
     "id": 565,
     "name": "Carracosta",
     "generation": 5,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -45986,9 +45477,7 @@
     "id": 566,
     "name": "Archen",
     "generation": 5,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -46054,9 +45543,7 @@
     "id": 567,
     "name": "Archeops",
     "generation": 5,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -46320,9 +45807,7 @@
     "id": 570.1,
     "name": "Zorua (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -46454,9 +45939,7 @@
     "id": 571.1,
     "name": "Zoroark (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -47642,7 +47125,7 @@
   },
   {
     "id": 586,
-    "name": "Sawsbuck",
+    "name": "Sawsbuck (Spring)",
     "generation": 5,
     "pokemon_type": [],
     "RBYFRLG": null,
@@ -47700,6 +47183,204 @@
     "experience_growth": "Med Fast",
     "base_friendship": 50,
     "pokedex_color": "Brown",
+    "gender_ratio": "Neutral",
+    "egg_cycles": 20,
+    "egg_group1": "Field",
+    "egg_group2": null,
+    "evolution_method": null
+  },
+  {
+    "id": 586.1,
+    "name": "Sawsbuck (Summer)",
+    "generation": 5,
+    "pokemon_type": [],
+    "RBYFRLG": null,
+    "LGPE": null,
+    "GSC": null,
+    "HGSS": null,
+    "RSE": null,
+    "ORAS": null,
+    "DPBDSP": null,
+    "Pt": null,
+    "BW": 92,
+    "B2W2": 160,
+    "XY_Central": null,
+    "XY_Coastal": null,
+    "XY_Mount": null,
+    "SM_Alola": null,
+    "SM_Melemele": null,
+    "SM_Akala": null,
+    "SM_Ulaula": null,
+    "SM_Poni": null,
+    "USUM_Alola": null,
+    "USUM_Melemele": null,
+    "USUM_Akala": null,
+    "USUM_Ulaula": null,
+    "USUM_Poni": null,
+    "SwSh_Galar": null,
+    "SwSh_Isle": null,
+    "SwSh_Crown": null,
+    "LA": null,
+    "SV_Paldea": 191,
+    "SV_Kitakami": null,
+    "SV_Blueberry": 39,
+    "hp": 80,
+    "attack": 100,
+    "defense": 70,
+    "special_attack": 60,
+    "special_defense": 70,
+    "speed": 95,
+    "total": 475,
+    "type1": "Normal",
+    "type2": "Grass",
+    "ability1": "Chlorophyll",
+    "ability2": "Sap Sipper",
+    "hidden_ability": "Serene Grace",
+    "height": 1.9,
+    "weight": 92.5,
+    "HP_EVs": null,
+    "Attack_EVs": 2,
+    "Defense_EVs": null,
+    "Special_Attack_EVs": null,
+    "Special_Defense_EVs": null,
+    "Speed_EVs": null,
+    "experience_value": 166,
+    "catch_rate": 75,
+    "experience_growth": "Med Fast",
+    "base_friendship": 50,
+    "pokedex_color": "Green",
+    "gender_ratio": "Neutral",
+    "egg_cycles": 20,
+    "egg_group1": "Field",
+    "egg_group2": null,
+    "evolution_method": null
+  },
+  {
+    "id": 586.2,
+    "name": "Sawsbuck (Autumn)",
+    "generation": 5,
+    "pokemon_type": [],
+    "RBYFRLG": null,
+    "LGPE": null,
+    "GSC": null,
+    "HGSS": null,
+    "RSE": null,
+    "ORAS": null,
+    "DPBDSP": null,
+    "Pt": null,
+    "BW": 92,
+    "B2W2": 160,
+    "XY_Central": null,
+    "XY_Coastal": null,
+    "XY_Mount": null,
+    "SM_Alola": null,
+    "SM_Melemele": null,
+    "SM_Akala": null,
+    "SM_Ulaula": null,
+    "SM_Poni": null,
+    "USUM_Alola": null,
+    "USUM_Melemele": null,
+    "USUM_Akala": null,
+    "USUM_Ulaula": null,
+    "USUM_Poni": null,
+    "SwSh_Galar": null,
+    "SwSh_Isle": null,
+    "SwSh_Crown": null,
+    "LA": null,
+    "SV_Paldea": 191,
+    "SV_Kitakami": null,
+    "SV_Blueberry": 39,
+    "hp": 80,
+    "attack": 100,
+    "defense": 70,
+    "special_attack": 60,
+    "special_defense": 70,
+    "speed": 95,
+    "total": 475,
+    "type1": "Normal",
+    "type2": "Grass",
+    "ability1": "Chlorophyll",
+    "ability2": "Sap Sipper",
+    "hidden_ability": "Serene Grace",
+    "height": 1.9,
+    "weight": 92.5,
+    "HP_EVs": null,
+    "Attack_EVs": 2,
+    "Defense_EVs": null,
+    "Special_Attack_EVs": null,
+    "Special_Defense_EVs": null,
+    "Speed_EVs": null,
+    "experience_value": 166,
+    "catch_rate": 75,
+    "experience_growth": "Med Fast",
+    "base_friendship": 50,
+    "pokedex_color": "Red",
+    "gender_ratio": "Neutral",
+    "egg_cycles": 20,
+    "egg_group1": "Field",
+    "egg_group2": null,
+    "evolution_method": null
+  },
+  {
+    "id": 586.3,
+    "name": "Sawsbuck (Winter)",
+    "generation": 5,
+    "pokemon_type": [],
+    "RBYFRLG": null,
+    "LGPE": null,
+    "GSC": null,
+    "HGSS": null,
+    "RSE": null,
+    "ORAS": null,
+    "DPBDSP": null,
+    "Pt": null,
+    "BW": 92,
+    "B2W2": 160,
+    "XY_Central": null,
+    "XY_Coastal": null,
+    "XY_Mount": null,
+    "SM_Alola": null,
+    "SM_Melemele": null,
+    "SM_Akala": null,
+    "SM_Ulaula": null,
+    "SM_Poni": null,
+    "USUM_Alola": null,
+    "USUM_Melemele": null,
+    "USUM_Akala": null,
+    "USUM_Ulaula": null,
+    "USUM_Poni": null,
+    "SwSh_Galar": null,
+    "SwSh_Isle": null,
+    "SwSh_Crown": null,
+    "LA": null,
+    "SV_Paldea": 191,
+    "SV_Kitakami": null,
+    "SV_Blueberry": 39,
+    "hp": 80,
+    "attack": 100,
+    "defense": 70,
+    "special_attack": 60,
+    "special_defense": 70,
+    "speed": 95,
+    "total": 475,
+    "type1": "Normal",
+    "type2": "Grass",
+    "ability1": "Chlorophyll",
+    "ability2": "Sap Sipper",
+    "hidden_ability": "Serene Grace",
+    "height": 1.9,
+    "weight": 92.5,
+    "HP_EVs": null,
+    "Attack_EVs": 2,
+    "Defense_EVs": null,
+    "Special_Attack_EVs": null,
+    "Special_Defense_EVs": null,
+    "Speed_EVs": null,
+    "experience_value": 166,
+    "catch_rate": 75,
+    "experience_growth": "Med Fast",
+    "base_friendship": 50,
+    "pokedex_color": "White",
     "gender_ratio": "Neutral",
     "egg_cycles": 20,
     "egg_group1": "Field",
@@ -49822,9 +49503,7 @@
     "id": 618.1,
     "name": "Stunfisk (Galarian)",
     "generation": 8,
-    "pokemon_type": [
-      "Galarian Form"
-    ],
+    "pokemon_type": ["Galarian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -50550,9 +50229,7 @@
     "id": 628.1,
     "name": "Braviary (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -50882,9 +50559,7 @@
     "id": 633,
     "name": "Deino",
     "generation": 5,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -50950,9 +50625,7 @@
     "id": 634,
     "name": "Zweilous",
     "generation": 5,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51018,9 +50691,7 @@
     "id": 635,
     "name": "Hydreigon",
     "generation": 5,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51218,9 +50889,7 @@
     "id": 638,
     "name": "Cobalion",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51286,9 +50955,7 @@
     "id": 639,
     "name": "Terrakion",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51354,9 +51021,7 @@
     "id": 640,
     "name": "Virizion",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51422,9 +51087,7 @@
     "id": 641,
     "name": "Tornadus (Incarnate)",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51490,9 +51153,7 @@
     "id": 641.1,
     "name": "Tornadus (Therian)",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51558,9 +51219,7 @@
     "id": 642,
     "name": "Thundurus (Incarnate)",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51626,9 +51285,7 @@
     "id": 642.1,
     "name": "Thundurus (Therian)",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51694,9 +51351,7 @@
     "id": 643,
     "name": "Reshiram",
     "generation": 5,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51762,9 +51417,7 @@
     "id": 644,
     "name": "Zekrom",
     "generation": 5,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51830,9 +51483,7 @@
     "id": 645,
     "name": "Landorus (Incarnate)",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51898,9 +51549,7 @@
     "id": 645.1,
     "name": "Landorus (Therian)",
     "generation": 5,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -51966,9 +51615,7 @@
     "id": 646,
     "name": "Kyurem",
     "generation": 5,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52034,9 +51681,7 @@
     "id": 646.1,
     "name": "Kyurem (Black)",
     "generation": 5,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52102,9 +51747,7 @@
     "id": 646.2,
     "name": "Kyurem (White)",
     "generation": 5,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52170,9 +51813,7 @@
     "id": 647,
     "name": "Keldeo",
     "generation": 5,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52238,9 +51879,7 @@
     "id": 648,
     "name": "Meloetta (Aria)",
     "generation": 5,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52306,9 +51945,7 @@
     "id": 648.1,
     "name": "Meloetta (Pirouette)",
     "generation": 5,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52374,9 +52011,7 @@
     "id": 649,
     "name": "Genesect",
     "generation": 5,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52442,9 +52077,7 @@
     "id": 650,
     "name": "Chespin",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52510,9 +52143,7 @@
     "id": 651,
     "name": "Quilladin",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52578,9 +52209,7 @@
     "id": 652,
     "name": "Chesnaught",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52646,9 +52275,7 @@
     "id": 653,
     "name": "Fennekin",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52714,9 +52341,7 @@
     "id": 654,
     "name": "Braixen",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52782,9 +52407,7 @@
     "id": 655,
     "name": "Delphox",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52850,9 +52473,7 @@
     "id": 656,
     "name": "Froakie",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52918,9 +52539,7 @@
     "id": 657,
     "name": "Frogadier",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -52986,9 +52605,7 @@
     "id": 658,
     "name": "Greninja",
     "generation": 6,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56222,9 +55839,7 @@
     "id": 696,
     "name": "Tyrunt",
     "generation": 6,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56290,9 +55905,7 @@
     "id": 697,
     "name": "Tyrantrum",
     "generation": 6,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56358,9 +55971,7 @@
     "id": 698,
     "name": "Amaura",
     "generation": 6,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56426,9 +56037,7 @@
     "id": 699,
     "name": "Aurorus",
     "generation": 6,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56494,9 +56103,7 @@
     "id": 700,
     "name": "Sylveon",
     "generation": 6,
-    "pokemon_type": [
-      "Eeveelution"
-    ],
+    "pokemon_type": ["Eeveelution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56760,9 +56367,7 @@
     "id": 704,
     "name": "Goomy",
     "generation": 6,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56828,9 +56433,7 @@
     "id": 705,
     "name": "Sliggoo",
     "generation": 6,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56896,10 +56499,7 @@
     "id": 705.1,
     "name": "Sliggoo (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Pseudo Legendary",
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Pseudo Legendary", "Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -56965,9 +56565,7 @@
     "id": 706,
     "name": "Goodra",
     "generation": 6,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -57033,10 +56631,7 @@
     "id": 706.1,
     "name": "Goodra (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Pseudo Legendary",
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Pseudo Legendary", "Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -57960,9 +57555,7 @@
     "id": 713.1,
     "name": "Avalugg (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58160,9 +57753,7 @@
     "id": 716,
     "name": "Xerneas",
     "generation": 6,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58228,9 +57819,7 @@
     "id": 717,
     "name": "Yveltal",
     "generation": 6,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58296,9 +57885,7 @@
     "id": 718,
     "name": "Zygarde (10%)",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58364,9 +57951,7 @@
     "id": 718.1,
     "name": "Zygarde (50%)",
     "generation": 6,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58432,9 +58017,7 @@
     "id": 718.2,
     "name": "Zygarde (Complete)",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58500,9 +58083,7 @@
     "id": 719,
     "name": "Diancie",
     "generation": 6,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58568,10 +58149,7 @@
     "id": 719.1,
     "name": "Diancie (Mega)",
     "generation": 6,
-    "pokemon_type": [
-      "Mythical",
-      "Mega Evolution"
-    ],
+    "pokemon_type": ["Mythical", "Mega Evolution"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58637,9 +58215,7 @@
     "id": 720,
     "name": "Hoopa (Confined)",
     "generation": 6,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58705,9 +58281,7 @@
     "id": 720.1,
     "name": "Hoopa (Unbound)",
     "generation": 6,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58773,9 +58347,7 @@
     "id": 721,
     "name": "Volcanion",
     "generation": 6,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58841,9 +58413,7 @@
     "id": 722,
     "name": "Rowlet",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58909,9 +58479,7 @@
     "id": 723,
     "name": "Dartrix",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -58977,9 +58545,7 @@
     "id": 724,
     "name": "Decidueye",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59045,10 +58611,7 @@
     "id": 724.1,
     "name": "Decidueye (Hisuian)",
     "generation": 8,
-    "pokemon_type": [
-      "Starter",
-      "Hisuian Form"
-    ],
+    "pokemon_type": ["Starter", "Hisuian Form"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59114,9 +58677,7 @@
     "id": 725,
     "name": "Litten",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59182,9 +58743,7 @@
     "id": 726,
     "name": "Torracat",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59250,9 +58809,7 @@
     "id": 727,
     "name": "Incineroar",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59318,9 +58875,7 @@
     "id": 728,
     "name": "Popplio",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59386,9 +58941,7 @@
     "id": 729,
     "name": "Brionne",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -59454,9 +59007,7 @@
     "id": 730,
     "name": "Primarina",
     "generation": 7,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -62690,9 +62241,7 @@
     "id": 772,
     "name": "Type: Null",
     "generation": 7,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -62758,9 +62307,7 @@
     "id": 773,
     "name": "Silvally",
     "generation": 7,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -63816,9 +63363,7 @@
     "id": 782,
     "name": "Jangmo-o",
     "generation": 7,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -63884,9 +63429,7 @@
     "id": 783,
     "name": "Hakamo-o",
     "generation": 7,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -63952,9 +63495,7 @@
     "id": 784,
     "name": "Kommo-o",
     "generation": 7,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64020,9 +63561,7 @@
     "id": 785,
     "name": "Tapu Koko",
     "generation": 7,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64088,9 +63627,7 @@
     "id": 786,
     "name": "Tapu Lele",
     "generation": 7,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64156,9 +63693,7 @@
     "id": 787,
     "name": "Tapu Bulu",
     "generation": 7,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64224,9 +63759,7 @@
     "id": 788,
     "name": "Tapu Fini",
     "generation": 7,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64292,9 +63825,7 @@
     "id": 789,
     "name": "Cosmog",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64360,9 +63891,7 @@
     "id": 790,
     "name": "Cosmoem",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64428,9 +63957,7 @@
     "id": 791,
     "name": "Solgaleo",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64496,9 +64023,7 @@
     "id": 792,
     "name": "Lunala",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64564,9 +64089,7 @@
     "id": 793,
     "name": "Nihilego",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64632,9 +64155,7 @@
     "id": 794,
     "name": "Buzzwole",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64700,9 +64221,7 @@
     "id": 795,
     "name": "Pheromosa",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64768,9 +64287,7 @@
     "id": 796,
     "name": "Xurkitree",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64836,9 +64353,7 @@
     "id": 797,
     "name": "Celesteela",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64904,9 +64419,7 @@
     "id": 798,
     "name": "Kartana",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -64972,9 +64485,7 @@
     "id": 799,
     "name": "Guzzlord",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65040,9 +64551,7 @@
     "id": 800,
     "name": "Necrozma",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65108,9 +64617,7 @@
     "id": 800.1,
     "name": "Necrozma (Dusk Mane)",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65176,9 +64683,7 @@
     "id": 800.2,
     "name": "Necrozma (Dawn Wings)",
     "generation": 7,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65244,10 +64749,7 @@
     "id": 800.3,
     "name": "Necrozma (Ultra)",
     "generation": 7,
-    "pokemon_type": [
-      "Special",
-      "Ultra Burst"
-    ],
+    "pokemon_type": ["Special", "Ultra Burst"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65313,9 +64815,7 @@
     "id": 801,
     "name": "Magearna",
     "generation": 7,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65381,9 +64881,7 @@
     "id": 801.1,
     "name": "Magearna (Original Color)",
     "generation": 8,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65449,9 +64947,7 @@
     "id": 802,
     "name": "Marshadow",
     "generation": 7,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65517,9 +65013,7 @@
     "id": 803,
     "name": "Poipole",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65585,9 +65079,7 @@
     "id": 804,
     "name": "Naganadel",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65653,9 +65145,7 @@
     "id": 805,
     "name": "Stakataka",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65721,9 +65211,7 @@
     "id": 806,
     "name": "Blacephalon",
     "generation": 7,
-    "pokemon_type": [
-      "Ultra Beast"
-    ],
+    "pokemon_type": ["Ultra Beast"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65789,9 +65277,7 @@
     "id": 807,
     "name": "Zeraora",
     "generation": 7,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -65857,9 +65343,7 @@
     "id": 808,
     "name": "Meltan",
     "generation": 7,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": 152,
     "GSC": null,
@@ -65925,9 +65409,7 @@
     "id": 809,
     "name": "Melmetal",
     "generation": 7,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": 153,
     "GSC": null,
@@ -65993,9 +65475,7 @@
     "id": 810,
     "name": "Grookey",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66061,9 +65541,7 @@
     "id": 811,
     "name": "Thwackey",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66129,9 +65607,7 @@
     "id": 812,
     "name": "Rillaboom",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66197,9 +65673,7 @@
     "id": 813,
     "name": "Scorbunny",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66265,9 +65739,7 @@
     "id": 814,
     "name": "Raboot",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66333,9 +65805,7 @@
     "id": 815,
     "name": "Cinderace",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66401,9 +65871,7 @@
     "id": 816,
     "name": "Sobble",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66469,9 +65937,7 @@
     "id": 817,
     "name": "Drizzile",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -66537,9 +66003,7 @@
     "id": 818,
     "name": "Inteleon",
     "generation": 8,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -68519,9 +67983,7 @@
     "id": 848,
     "name": "Toxel",
     "generation": 8,
-    "pokemon_type": [
-      "Baby"
-    ],
+    "pokemon_type": ["Baby"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71227,9 +70689,7 @@
     "id": 880,
     "name": "Dracozolt",
     "generation": 8,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71295,9 +70755,7 @@
     "id": 881,
     "name": "Arctozolt",
     "generation": 8,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71363,9 +70821,7 @@
     "id": 882,
     "name": "Dracovish",
     "generation": 8,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71431,9 +70887,7 @@
     "id": 883,
     "name": "Arctovish",
     "generation": 8,
-    "pokemon_type": [
-      "Fossil"
-    ],
+    "pokemon_type": ["Fossil"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71565,9 +71019,7 @@
     "id": 885,
     "name": "Dreepy",
     "generation": 8,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71633,9 +71085,7 @@
     "id": 886,
     "name": "Drakloak",
     "generation": 8,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71701,9 +71151,7 @@
     "id": 887,
     "name": "Dragapult",
     "generation": 8,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71769,9 +71217,7 @@
     "id": 888,
     "name": "Zacian (Hero)",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71837,9 +71283,7 @@
     "id": 888.1,
     "name": "Zacian (Crowned)",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71905,9 +71349,7 @@
     "id": 889,
     "name": "Zamazenta (Hero)",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -71973,9 +71415,7 @@
     "id": 889.1,
     "name": "Zamazenta (Crowned)",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72041,9 +71481,7 @@
     "id": 890,
     "name": "Eternatus",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72109,9 +71547,7 @@
     "id": 891,
     "name": "Kubfu",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72177,9 +71613,7 @@
     "id": 892,
     "name": "Urshifu (Single Strike)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72245,9 +71679,7 @@
     "id": 892.1,
     "name": "Urshifu (Rapid Strike)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72313,9 +71745,7 @@
     "id": 893,
     "name": "Zarude",
     "generation": 8,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72381,9 +71811,7 @@
     "id": 894,
     "name": "Regieleki",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72449,9 +71877,7 @@
     "id": 895,
     "name": "Regidrago",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72517,9 +71943,7 @@
     "id": 896,
     "name": "Glastrier",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72585,9 +72009,7 @@
     "id": 897,
     "name": "Spectrier",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72653,9 +72075,7 @@
     "id": 898,
     "name": "Calyrex",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72721,9 +72141,7 @@
     "id": 898.1,
     "name": "Calyrex (Ice Rider)",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -72789,9 +72207,7 @@
     "id": 898.2,
     "name": "Calyrex (Shadow Rider)",
     "generation": 8,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73385,9 +72801,7 @@
     "id": 905,
     "name": "Enamorus (Incarnate)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73453,9 +72867,7 @@
     "id": 905.1,
     "name": "Enamorus (Therian)",
     "generation": 8,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73521,9 +72933,7 @@
     "id": 906,
     "name": "Sprigatito",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73589,9 +72999,7 @@
     "id": 907,
     "name": "Floragato",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73657,9 +73065,7 @@
     "id": 908,
     "name": "Meowscarada",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73725,9 +73131,7 @@
     "id": 909,
     "name": "Fuecoco",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73793,9 +73197,7 @@
     "id": 910,
     "name": "Crocalor",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73861,9 +73263,7 @@
     "id": 911,
     "name": "Skeledirge",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73929,9 +73329,7 @@
     "id": 912,
     "name": "Quaxly",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -73997,9 +73395,7 @@
     "id": 913,
     "name": "Quaxwell",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -74065,9 +73461,7 @@
     "id": 914,
     "name": "Quaquaval",
     "generation": 9,
-    "pokemon_type": [
-      "Starter"
-    ],
+    "pokemon_type": ["Starter"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79281,9 +78675,7 @@
     "id": 984,
     "name": "Great Tusk",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79349,9 +78741,7 @@
     "id": 985,
     "name": "Scream Tail",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79417,9 +78807,7 @@
     "id": 986,
     "name": "Brute Bonnet",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79485,9 +78873,7 @@
     "id": 987,
     "name": "Flutter Mane",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79553,9 +78939,7 @@
     "id": 988,
     "name": "Slither Wing",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79621,9 +79005,7 @@
     "id": 989,
     "name": "Sandy Shocks",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79689,9 +79071,7 @@
     "id": 990,
     "name": "Iron Treads",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79757,9 +79137,7 @@
     "id": 991,
     "name": "Iron Bundle",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79825,9 +79203,7 @@
     "id": 992,
     "name": "Iron Hands",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79893,9 +79269,7 @@
     "id": 993,
     "name": "Iron Jugulis",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -79961,9 +79335,7 @@
     "id": 994,
     "name": "Iron Moth",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80029,9 +79401,7 @@
     "id": 995,
     "name": "Iron Thorns",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80097,9 +79467,7 @@
     "id": 996,
     "name": "Frigibax",
     "generation": 9,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80165,9 +79533,7 @@
     "id": 997,
     "name": "Arctibax",
     "generation": 9,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80233,9 +79599,7 @@
     "id": 998,
     "name": "Baxcalibur",
     "generation": 9,
-    "pokemon_type": [
-      "Pseudo Legendary"
-    ],
+    "pokemon_type": ["Pseudo Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80499,9 +79863,7 @@
     "id": 1001,
     "name": "Wo-Chien",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80567,9 +79929,7 @@
     "id": 1002,
     "name": "Chien-Pao",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80635,9 +79995,7 @@
     "id": 1003,
     "name": "Ting-Lu",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80703,9 +80061,7 @@
     "id": 1004,
     "name": "Chi-Yu",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80771,9 +80127,7 @@
     "id": 1005,
     "name": "Roaring Moon",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80839,9 +80193,7 @@
     "id": 1006,
     "name": "Iron Valiant",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80907,9 +80259,7 @@
     "id": 1007,
     "name": "Koraidon",
     "generation": 9,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -80975,9 +80325,7 @@
     "id": 1008,
     "name": "Miraidon",
     "generation": 9,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81043,9 +80391,7 @@
     "id": 1009,
     "name": "Walking Wake",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81111,9 +80457,7 @@
     "id": 1010,
     "name": "Iron Leaves",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81377,9 +80721,7 @@
     "id": 1014,
     "name": "Okidogi",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81445,9 +80787,7 @@
     "id": 1015,
     "name": "Munkidori",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81513,9 +80853,7 @@
     "id": 1016,
     "name": "Fezandipiti",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81581,9 +80919,7 @@
     "id": 1017,
     "name": "Ogerpon (Teal Mask)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81649,9 +80985,7 @@
     "id": 1017.1,
     "name": "Ogerpon (Wellspring Mask)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81717,9 +81051,7 @@
     "id": 1017.2,
     "name": "Ogerpon (Hearthflame Mask)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81785,9 +81117,7 @@
     "id": 1017.3,
     "name": "Ogerpon (Cornerstone Mask)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81853,9 +81183,7 @@
     "id": 1017.4,
     "name": "Ogerpon (Teal Mask Tera)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81921,9 +81249,7 @@
     "id": 1017.5,
     "name": "Ogerpon (Wellspring Mask Tera)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -81989,9 +81315,7 @@
     "id": 1017.6,
     "name": "Ogerpon (Hearthflame Mask Tera)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82057,9 +81381,7 @@
     "id": 1017.7,
     "name": "Ogerpon (Cornerstone Mask Tera)",
     "generation": 9,
-    "pokemon_type": [
-      "Legendary"
-    ],
+    "pokemon_type": ["Legendary"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82257,9 +81579,7 @@
     "id": 1020,
     "name": "Gouging Fire",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82325,9 +81645,7 @@
     "id": 1021,
     "name": "Raging Bolt",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82393,9 +81711,7 @@
     "id": 1022,
     "name": "Iron Boulder",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82461,9 +81777,7 @@
     "id": 1023,
     "name": "Iron Crown",
     "generation": 9,
-    "pokemon_type": [
-      "Paradox"
-    ],
+    "pokemon_type": ["Paradox"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82529,9 +81843,7 @@
     "id": 1024,
     "name": "Terapagos",
     "generation": 9,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82597,9 +81909,7 @@
     "id": 1024.1,
     "name": "Terapagos (Terastal)",
     "generation": 9,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82665,9 +81975,7 @@
     "id": 1024.2,
     "name": "Terapagos (Stellar)",
     "generation": 9,
-    "pokemon_type": [
-      "Special"
-    ],
+    "pokemon_type": ["Special"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
@@ -82733,9 +82041,7 @@
     "id": 1025,
     "name": "Pecharunt",
     "generation": 9,
-    "pokemon_type": [
-      "Mythical"
-    ],
+    "pokemon_type": ["Mythical"],
     "RBYFRLG": null,
     "LGPE": null,
     "GSC": null,
