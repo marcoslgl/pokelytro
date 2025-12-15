@@ -15,6 +15,9 @@ app.use("/api/pokemons", pokemonRoutes);
 const typeRoutes = require("./routes/types");
 app.use("/api/types", typeRoutes);
 
+const userRoutes = require("./routes/User");
+app.use("/api/users", userRoutes);
+
 app.get("/", (req, res) => {
   res.send("Hello from the backend!");
 });
