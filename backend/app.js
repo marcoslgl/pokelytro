@@ -15,7 +15,7 @@ app.use("/api/pokemons", pokemonRoutes);
 const typeRoutes = require("./routes/types");
 app.use("/api/types", typeRoutes);
 
-const userRoutes = require("./routes/User");
+const userRoutes = require("./routes/user"); // ¡CORREGIDO!
 app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {

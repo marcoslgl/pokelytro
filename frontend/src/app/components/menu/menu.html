@@ -10,13 +10,39 @@
     <li>
       <a [routerLink]="'/pokedex'" routerLinkActive="active" (click)="closenav()">Pokedex</a>
     </li>
+
+    @if (isAuthenticated()) {
     <li>
-      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()"
-        >Team Builder</a
-      >
+      <a [routerLink]="'/profile'" routerLinkActive="active" (click)="closenav()">
+        Perfil ({{ currentUser()?.username }})
+      </a>
     </li>
     <li>
-      <a [routerLink]="'/quiz'" routerLinkActive="active" (click)="closenav()">Poke Quiz</a>
+      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()">
+        Team Builder
+      </a>
+    </li>
+    <li>
+      <a (click)="onLogout()">
+        Cerrar Sesión
+      </a>
+    </li>
+    }
+    @else {
+    <li>
+      <a [routerLink]="'/login'" routerLinkActive="active" (click)="closenav()">
+        Iniciar Sesión
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="'/register'" routerLinkActive="active" (click)="closenav()">
+        Registrarse
+      </a>
+    </li>
+    }
+
+    <li>
+      <a [routerLink]="'/poke-quiz'" routerLinkActive="active" (click)="closenav()">Poke Quiz</a>
     </li>
     <li>
       <a [routerLink]="'/showdown'" routerLinkActive="active" (click)="closenav()">Showdown</a>
@@ -24,5 +50,6 @@
     <li>
       <a [routerLink]="'/about'" routerLinkActive="active" (click)="closenav()">About Us</a>
     </li>
+
   </ul>
 </nav>
