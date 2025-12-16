@@ -1,7 +1,7 @@
 @if (teamBuilding) {
-  <h1>Pokemons Disponibles</h1>
+<h1>Pokemons Disponibles</h1>
 } @else {
-  <h1>Pokedex</h1>
+<h1>Pokedex</h1>
 }
 
 <div class="pagination-controls">
@@ -85,9 +85,11 @@
 </div>
 
 <div class="pokemon-grid">
-  @for (pokemon of pagedPokemons; track pokemon.id) {
+  @for (pokemon of pagedPokemons; track (pokemon.id + '-' + pokemon.name)) {
   <div class="pokemon-card">
-    <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+    <div class="card-img-col">
+      <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+    </div>
     <div class="card-info">
       <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
       <div class="card-types">
@@ -95,7 +97,8 @@
         @if (pokemon.type2) {
         <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
         }
-        @if (teamBuilding) {
+        <div class="card-actions">
+          @if (teamBuilding) {
           <button
             class="btn-add"
             (click)="onAddPokemon(pokemon)"
@@ -103,10 +106,10 @@
           >
             Añadir
           </button>
-        }
-        @if (replacePokemon) {
+          } @if (replacePokemon) {
           <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Reemplazar</button>
-        }
+          }
+        </div>
       </div>
     </div>
   </div>

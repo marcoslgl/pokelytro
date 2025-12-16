@@ -25,6 +25,7 @@ export class TeamBuilder implements OnInit {
   allPokemons: Pokemon[] = [];
   pokemonMap = new Map<number, Pokemon>();
   isSaving: boolean = false;
+  showSavedTeams: boolean = false;
 
   // Paginado
   page = 1;

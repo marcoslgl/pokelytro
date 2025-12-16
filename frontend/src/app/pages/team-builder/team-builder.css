@@ -1,24 +1,16 @@
-.team-builder-container {
-  padding: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
 .team-builder-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   color: white;
   text-align: center;
 }
 
-
-
 /* Equipo Actual Section */
 .equipo-actual {
-
   padding: 2rem;
   border-radius: 12px;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   border: 2px solid #ddd;
 }
 
@@ -64,16 +56,8 @@
 }
 
 .equipo-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: all 0.3s ease;
+  border: 2px solid #ffffff;
+  border-radius: 0.5rem;
 }
 
 .equipo-card:hover {
@@ -164,7 +148,6 @@
 }
 
 .equipos-guardados h2 {
-  margin-bottom: 1.5rem;
   color: rgb(255, 255, 255);
   font-size: 1.5rem;
 }
@@ -179,6 +162,7 @@
 
 .equipo-card {
   border: 2px solid #ddd;
+  margin-top: 1.5rem;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -201,43 +185,32 @@
   margin: 1rem 0;
   font-size: 0.95rem;
   color: #555;
-  padding: 1rem;
   border-radius: 8px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem 0.75rem;
 }
 
 .team-preview li {
-  padding: 0.5rem;
   border: 1px solid #eee;
   border-radius: 6px;
-  background: black;
-  text-align: center;
 }
 
 .equipo-card button {
-  width: 100%;
-  background-color: #28a745;
+  width: 45%;
   color: white;
   border: none;
-  padding: 12px;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-weight: 600;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  margin-left: 0.4rem;
+  margin-right: 0.3rem;
 }
 
 .equipo-card button:hover {
   background-color: #218838;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
-}
-
-.equipos-guardados h2 {
-  margin-bottom: 20px;
 }
 
 .equipos-list {
@@ -267,39 +240,40 @@
 }
 
 .team-preview li {
-  padding: 5px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.equipo-card button {
-  width: 100%;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.2s;
+  padding: 0.3rem 0.7rem;
 }
 
 .equipo-card button:hover {
   background-color: #0056b3;
 }
 
-
+.btn-details {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  vertical-align: middle;
+  font-size: 18px;
+  line-height: 1;
+}
 .btn-delete {
   background-color: #e74c3c !important;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  vertical-align: middle;
   font-size: 18px;
   line-height: 1;
-  padding: 0;
-  margin: 0;
 }
 
 .btn-delete:hover {
@@ -308,15 +282,28 @@
 }
 
 /* TYPE COLORS */
+.pokemon-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .type {
   font-weight: normal;
   border: 0.5px solid;
   border-radius: 0.3rem;
-  padding: 0.1rem 0.5rem 0.15rem 0.4rem;
-  margin: 0;
-  display: inline-block;
-  max-width: 100%;
-  margin-right: 2%;
+  padding: 0.1rem 0.4rem 0.1rem 0.4rem;
+  margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-width: 3rem;
+  max-width: 8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 
 /* Type color classes */
@@ -373,4 +360,46 @@
 }
 .Normal {
   background: #8f8f8f;
+}
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  gap: 1rem;
+}
+.dropdown-arrow {
+  color: white;
+  font-size: 1.1em;
+  font-weight: 400;
+  margin-left: auto;
+  color: #ccc;
+  letter-spacing: -0.1em;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.4, 1.6, 0.6, 1), color 0.2s;
+}
+
+.dropdown-arrow:hover {
+  scale: 1.2;
+  transform: translateX(2px);
+}
+
+.dropdown-header.closed .dropdown-arrow {
+  transform: rotate(0deg);
+}
+.dropdown-header.open .dropdown-arrow {
+  transform: rotate(90deg);
+}
+
+.equipo-card {
+  min-width: 380px;
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.equipos-list {
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
 }
