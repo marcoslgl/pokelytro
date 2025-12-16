@@ -1,3 +1,6 @@
+/* =====================
+  Grid de Pokémon
+  ===================== */
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(350px, 1fr));
@@ -31,15 +34,19 @@
   }
 }
 
+/* =====================
+  Títulos
+  ===================== */
 h1 {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
+/* =====================
+   Tarjeta de Pokémon
+   ===================== */
 .pokemon-card {
-  display: flex;
-  align-items: flex-start;
   gap: 0.75rem;
   padding: 0.6rem;
   margin: 0;
@@ -48,14 +55,27 @@ h1 {
   background: transparent;
   height: 100%;
   width: 100%;
+  display: flex; /* Imagen a la izquierda, info a la derecha */
+  align-items: center;
   flex-wrap: wrap;
   min-width: 0;
 }
 
+/* Columna de imagen para asegurar posición a la izquierda */
+.card-img-col {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.6rem;
+}
+
+/* Info y tipos dentro de la tarjeta */
 .card-info {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  flex: 1 1 auto; /* ocupar el espacio disponible al lado de la imagen */
   min-width: 0;
 }
 
@@ -68,8 +88,10 @@ h1 {
   flex-wrap: wrap;
   gap: 0.4rem;
   align-items: center;
+  width: 100%; /* permite que .card-actions empuje hasta la derecha */
 }
 
+/* Imagen dentro de la tarjeta */
 .pokemon-card img {
   flex: 0 0 auto;
   width: 56px;
@@ -80,20 +102,25 @@ h1 {
   padding: 0.25rem;
 }
 
+/* Fila inferior de la tarjeta */
 .card-bottom {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
+/* Acciones dentro de la tarjeta (botones) */
 .card-actions {
   margin-left: auto;
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
+  max-width: max-content;
 }
 
-/* Pagination */
+/* =====================
+  Paginación y Filtros
+  ===================== */
 .pagination-controls {
   display: flex;
   align-items: center;
@@ -191,6 +218,7 @@ h1 {
   background: transparent;
 }
 
+/* Panel de filtros desplegable */
 .filters-panel {
   position: absolute;
   top: calc(100% + 8px);
@@ -206,16 +234,19 @@ h1 {
   backdrop-filter: blur(3px);
 }
 
+/* Fila de filtros */
 .filters-row {
   display: flex;
   gap: 0.6rem;
 }
 
+/* Acciones de filtros */
 .filters-actions {
   display: flex;
   justify-content: flex-end;
 }
 
+/* Botón limpiar filtros */
 .clear-filters {
   appearance: none;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -226,11 +257,12 @@ h1 {
   cursor: pointer;
 }
 
+/* Input de búsqueda (posición) */
 .search-input {
   margin-left: 1%;
 }
 
-/* Integrated page jump control */
+/* Control de salto de página */
 .page-jump {
   display: inline-flex;
   align-items: stretch;
@@ -261,7 +293,7 @@ input[type='number'] {
   cursor: pointer;
 }
 
-/* Remove number input arrows (spinners) */
+/* Quitar flechas de inputs numéricos (spinners) */
 .pagination-controls input[type='number']::-webkit-outer-spin-button,
 .pagination-controls input[type='number']::-webkit-inner-spin-button,
 .page-jump input[type='number']::-webkit-outer-spin-button,
@@ -280,15 +312,17 @@ input[type='number'] {
   display: inline-block;
   text-align: center;
 }
+/* =====================
+  Tipografía general
+  ===================== */
 span {
   font-weight: bold;
   word-break: break-word;
 }
 
-.card-actions {
-  max-width: max-content;
-}
-
+/* =====================
+  Badge de tipo Pokémon
+  ===================== */
 .type {
   font-weight: normal;
   border: 0.5px solid;
@@ -301,7 +335,7 @@ span {
   max-width: 100%;
 }
 
-/* Type color classes */
+/* Colores por tipo */
 .Fire {
   background: #ff2600;
 }
@@ -357,7 +391,10 @@ span {
   background: #8f8f8f;
 }
 
-/* Boton Añadir al equipo */
+/* =====================
+  Botones: Añadir y Seleccionar
+  ===================== */
+/* Botón Añadir al equipo */
 .btn-add {
   background-color: #28a745;
   border: 1px solid white;
@@ -384,6 +421,7 @@ span {
 }
 
 /* Boton Seleccionar para reemplazar */
+/* Botón Seleccionar para reemplazar */
 .btn-select {
   background-color: #28a745;
   border: none;

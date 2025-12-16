@@ -8,7 +8,7 @@
     } @else {
     <div class="equipo-grid">
       @for (pokemon of currentTeam; track (pokemon.id + '-' + pokemon.name)) {
-      <div class="equipo-card">
+      <div class="actual-card">
         <img
           [src]="'/images/' + ('' + pokemon.id) + '.png'"
           [alt]="pokemon.name"
@@ -21,9 +21,11 @@
             @if (pokemon.type2) {
             <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
             }
+            <div class="card-actions">
+              <button (click)="onRemoveFromTeam(pokemon)" class="btn-remove">Eliminar</button>
+            </div>
           </div>
         </div>
-        <button (click)="onRemoveFromTeam(pokemon)" class="btn-remove">Eliminar</button>
       </div>
       }
     </div>

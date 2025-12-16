@@ -19,9 +19,9 @@
           <div>
             <strong class="team-name">{{ pokemon.id }} - {{ pokemon.name }}</strong>
             <div class="pokemon-types">
-            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-            @if (pokemon.type2) {
-            <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+              <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+              @if (pokemon.type2) {
+              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
               }
             </div>
           </div>
@@ -35,18 +35,13 @@
   </section>
 
   @if (selectedPokemonToReplace) {
-    <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
-    <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn-cancel">
-      Cancelar
-    </button>
-    <app-pokemon-list
+  <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
+  <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn-cancel">
+    Cancelar
+  </button>
+  <app-pokemon-list
     [replacePokemon]="true"
     (onReplacePokemon)="onReplacePokemon($event)"
-    ></app-pokemon-list>
-  } } @else {
-  <div class="no-equipo">
-    <p>Equipo no encontrado</p>
-    <button (click)="onGoBack()">Volver a Equipos</button>
-  </div>
-  }
+  ></app-pokemon-list>
+  } }
 </div>
