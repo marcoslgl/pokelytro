@@ -1,14 +1,13 @@
 /* grid container for pokemon cards */
 body {
-  height: 80vh;
+  height: 90vh;
 }
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
   gap: 0.8rem;
   align-items: stretch;
   padding: 0.5rem;
-  margin-left: 6vw;
   margin-right: 2vw;
 }
 
@@ -40,8 +39,9 @@ h1 {
   border-radius: 0.5rem;
   background: transparent;
   height: 100%;
-  width: 25vw;
+  width: 100%;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .card-info {
@@ -328,4 +328,47 @@ span {
 }
 .Normal {
   background: #8f8f8f;
+}
+
+
+/* Boton Añadir al equipo */
+.btn-add {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-add:hover:not(:disabled) {
+  background-color: #218838;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
+}
+
+.btn-add:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Boton Seleccionar para reemplazar */
+.btn-select {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-select:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
 }

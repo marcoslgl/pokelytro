@@ -19,9 +19,9 @@
           <div>
             <strong class="team-name">{{ pokemon.id }} - {{ pokemon.name }}</strong>
             <div class="pokemon-types">
-              <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-              @if (pokemon.type2) {
-              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+            @if (pokemon.type2) {
+            <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
               }
             </div>
           </div>
@@ -35,46 +35,14 @@
   </section>
 
   @if (selectedPokemonToReplace) {
-  <section class="todos-pokemons">
     <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
     <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn-cancel">
       Cancelar
     </button>
-
-    <div class="pagination-controls">
-      <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
-      <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
-      <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
-      <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-        <input #pageInput type="number" placeholder="Página" />
-      </form>
-      <button (click)="goToPage(pageInput.value)">Ir</button>
-    </div>
-
-    <ul class="replacement-list">
-      @for (pokemon of pagedAvailablePokemons; track pokemon.id) {
-      <li class="replacement-item">
-        <div class="replacement-pokemon-info">
-          <img
-            [src]="'/images/' + ('' + pokemon.id) + '.png'"
-            [alt]="pokemon.name"
-            class="replacement-img"
-          />
-          <div>
-            <strong class="replacement-name">{{ pokemon.id }} - {{ pokemon.name }}</strong>
-            <div class="pokemon-types">
-              <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-              @if (pokemon.type2) {
-              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
-              }
-            </div>
-          </div>
-        </div>
-        <button (click)="onReplacePokemon(pokemon)" class="btn-select">Seleccionar</button>
-      </li>
-      }
-    </ul>
-  </section>
+    <app-pokemon-list
+    [replacePokemon]="true"
+    (onReplacePokemon)="onReplacePokemon($event)"
+    ></app-pokemon-list>
   } } @else {
   <div class="no-equipo">
     <p>Equipo no encontrado</p>

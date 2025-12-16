@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { Router } from '@angular/router';
+import { PokemonList } from '../../components/pokemon-list/pokemon-list';
 
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
@@ -10,7 +11,7 @@ import { Team as TeamModel } from '../../models/team/team';
 @Component({
   selector: 'app-team-builder',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PokemonList],
   templateUrl: './team-builder.html',
   styleUrl: './team-builder.css',
 })

@@ -1,4 +1,8 @@
-<h1>Pokedex</h1>
+@if (teamBuilding) {
+  <h1>Pokemons Disponibles</h1>
+} @else {
+  <h1>Pokedex</h1>
+}
 
 <div class="pagination-controls">
   <div class="left-controls">
@@ -90,6 +94,18 @@
         <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
         @if (pokemon.type2) {
         <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+        }
+        @if (teamBuilding) {
+          <button
+            class="btn-add"
+            (click)="onAddPokemon(pokemon)"
+            [disabled]="currentTeam.length >= 6"
+          >
+            Añadir
+          </button>
+        }
+        @if (replacePokemon) {
+          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Reemplazar</button>
         }
       </div>
     </div>

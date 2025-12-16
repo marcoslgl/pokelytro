@@ -1,4 +1,14 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
@@ -25,8 +35,15 @@ export class PokemonList implements OnInit {
   generations: number[] = [];
   showFilters = false;
   page = 1;
-  pageSize = 24;
+  pageSize = 32;
   totalPages = 1;
+  @Input() teamBuilding = false;
+  @Input() currentTeam: Pokemon[] = [];
+  @Output() addPokemon = new EventEmitter<Pokemon>();
+
+  @Input() replacePokemon= false;
+  @Output() onReplacePokemon = new EventEmitter<Pokemon>();
+
 
   @ViewChild('filtersPanel') filtersPanel?: ElementRef<HTMLElement>;
   @ViewChild('filterButton') filterButton?: ElementRef<HTMLElement>;
@@ -120,6 +137,14 @@ export class PokemonList implements OnInit {
     this.selectedGen = gen;
     this.page = 1;
     this.recomputeTotalPages();
+  }
+
+  onAddPokemon(pokemon: Pokemon): void {
+    this.addPokemon.emit(pokemon);
+  }
+
+  onReplacePokemonClick(pokemon: Pokemon): void {
+    this.onReplacePokemon.emit(pokemon);
   }
 
   toggleFilters(): void {

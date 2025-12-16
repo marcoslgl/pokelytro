@@ -11,266 +11,11 @@
   text-align: center;
 }
 
-.error-message {
-  background-color: #ff6b6b;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
-}
 
-.pokemons-disponibles {
-  margin-bottom: 3rem;
-}
-
-.pokemons-disponibles h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  color: white;
-  text-align: center;
-}
-
-/* Pagination Controls */
-.pagination-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.pagination-controls button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
-}
-
-.pagination-controls button:hover:not(:disabled) {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 56, 179, 0.3);
-}
-
-.pagination-controls button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.page-indicator {
-  font-weight: 600;
-  color: white;
-  min-width: 120px;
-  text-align: center;
-}
-
-.page-jump {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.page-jump input {
-  width: 70px;
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-/* Pokemon Grid */
-.pokemon-grid {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 1400px) {
-  .pokemon-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1024px) {
-  .pokemon-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .pokemon-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .pokemon-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-.pokemon-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 2rem;
-  border: 2px solid #ddd;
-  border-radius: 16px;
-  background: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  height: 100%;
-  min-height: 380px;
-}
-
-.pokemon-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  border-color: #007bff;
-}
-
-.pokemon-card img {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  background: linear-gradient(135deg, #f5f5f5, #e9e9e9);
-  border-radius: 12px;
-  padding: 1.5rem;
-}
-
-.card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  text-align: center;
-}
-
-.card-title {
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: white;
-}
-
-.card-types {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.type {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: white;
-  text-transform: capitalize;
-}
-
-/* Type Colors */
-.type.fire {
-  background-color: #f08030;
-}
-.type.water {
-  background-color: #6890f0;
-}
-.type.grass {
-  background-color: #78c850;
-}
-.type.electric {
-  background-color: #f8d030;
-  color: white;
-}
-.type.ice {
-  background-color: #98d8d8;
-}
-.type.fighting {
-  background-color: #c03028;
-}
-.type.poison {
-  background-color: #a040a0;
-}
-.type.ground {
-  background-color: #e0c068;
-}
-.type.flying {
-  background-color: #a890f0;
-}
-.type.psychic {
-  background-color: #f85888;
-}
-.type.bug {
-  background-color: #a8b820;
-}
-.type.rock {
-  background-color: #b8a038;
-}
-.type.ghost {
-  background-color: #705898;
-}
-.type.dragon {
-  background-color: #7038f8;
-}
-.type.dark {
-  background-color: #705848;
-}
-.type.steel {
-  background-color: #b8b8d0;
-}
-.type.fairy {
-  background-color: #ee99ac;
-}
-.type.normal {
-  background-color: #a8a878;
-}
-
-.btn-add {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  width: 100%;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
-}
-
-.btn-add:hover:not(:disabled) {
-  background-color: #218838;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
-}
-
-.btn-add:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
 
 /* Equipo Actual Section */
 .equipo-actual {
-  background: linear-gradient(135deg, #f0f8ff, #f5f5f5);
+
   padding: 2rem;
   border-radius: 12px;
   margin-bottom: 3rem;
@@ -279,19 +24,31 @@
 
 .equipo-actual h2 {
   margin-bottom: 1.5rem;
-  background-color: white;
-  color: black;
+
+  color: rgb(255, 255, 255);
   font-size: 1.5rem;
 }
 
-.equipo-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1.5rem;
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .equipo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .equipo-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .equipo-item {
-  background-color: white;
   padding: 1.5rem;
   margin-bottom: 1rem;
   border-radius: 10px;
@@ -304,6 +61,31 @@
 
 .equipo-item:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.equipo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.equipo-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #007bff;
+}
+
+.equipo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .equipo-pokemon-info {
@@ -377,15 +159,13 @@
 /* Equipos Guardados Section */
 .equipos-guardados {
   padding: 2rem;
-  background: linear-gradient(135deg, #fff9e6, #f5f5f5);
   border-radius: 12px;
   border: 2px solid #ddd;
 }
 
 .equipos-guardados h2 {
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #fff9e6, #f5f5f5);
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 1.5rem;
 }
 
@@ -398,7 +178,6 @@
 }
 
 .equipo-card {
-  background: white;
   border: 2px solid #ddd;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -412,8 +191,7 @@
 .equipo-card h3 {
   margin-top: 0;
   margin-bottom: 1rem;
-  background-color: white;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 1.3rem;
 }
 
@@ -423,7 +201,6 @@
   margin: 1rem 0;
   font-size: 0.95rem;
   color: #555;
-  background: #f9f9f9;
   padding: 1rem;
   border-radius: 8px;
   display: grid;
@@ -472,8 +249,7 @@
 }
 
 .equipo-card {
-  background: white;
-  border: 1px solid #ddd;
+  border: 1.5px solid #ddd;
   padding: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -529,4 +305,72 @@
 .btn-delete:hover {
   background-color: #c0392b !important;
   transform: scale(1.1);
+}
+
+/* TYPE COLORS */
+.type {
+  font-weight: normal;
+  border: 0.5px solid;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.5rem 0.15rem 0.4rem;
+  margin: 0;
+  display: inline-block;
+  max-width: 100%;
+  margin-right: 2%;
+}
+
+/* Type color classes */
+.Fire {
+  background: #ff2600;
+}
+.Water {
+  background: #4aa3ff;
+}
+.Grass {
+  background: #5e8f47;
+}
+.Electric {
+  background: #a09145;
+}
+.Ice {
+  background: #618896;
+}
+.Fighting {
+  background: #d56b5a;
+}
+.Poison {
+  background: #5d3b6e;
+}
+.Ground {
+  background: #aa9467;
+}
+.Flying {
+  background: #9fbfff;
+}
+.Psychic {
+  background: #c0879f;
+}
+.Bug {
+  background: #808f47;
+}
+.Rock {
+  background: #886c4d;
+}
+.Ghost {
+  background: #8b6bd6;
+}
+.Dark {
+  background: #35312c;
+}
+.Dragon {
+  background: #7fb3ff;
+}
+.Steel {
+  background: #617486;
+}
+.Fairy {
+  background: #c76cbb;
+}
+.Normal {
+  background: #8f8f8f;
 }
