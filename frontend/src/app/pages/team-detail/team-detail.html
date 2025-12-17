@@ -1,47 +1,54 @@
 <div class="equipo-detail-container">
   @if (team) {
   <div class="header">
-    <button (click)="onGoBack()" class="btn-back">← Volver</button>
+    <button (click)="onGoBack()" class="btn">← Volver</button>
     <h2>Equipo Pokémon ({{ teamPokemons.length }}/6)</h2>
   </div>
 
   <section class="equipo-actual">
-    <h3>Detalles del {{ team.name || 'Equipo ' + team.id }}</h3>
-    <ul class="team-list">
-      @for (pokemon of teamPokemons; track pokemon.id) {
-      <li class="team-item">
-        <div class="team-pokemon-info">
-          <img
-            [src]="'/images/' + ('' + pokemon.id) + '.png'"
-            [alt]="pokemon.name"
-            class="team-img"
-          />
-          <div>
-            <strong class="team-name">{{ pokemon.id }} - {{ pokemon.name }}</strong>
-            <div class="pokemon-types">
-              <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-              @if (pokemon.type2) {
-              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
-              }
+    <div class="team">
+      <h3>Detalles del {{ team.name || 'Equipo ' + team.id }}</h3>
+      <ul class="team-list">
+        @for (pokemon of teamPokemons; track pokemon.id) {
+        <li class="team-item">
+          <div class="actual-card">
+            <img
+              [src]="'/images/' + ('' + pokemon.id) + '.png'"
+              [alt]="pokemon.name"
+              class="equipo-img"
+            />
+            <div class="equipo-info">
+              <span class="equipo-name">{{ pokemon.id }} - {{ pokemon.name }}</span>
+              <div class="pokemon-types">
+                <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+                @if (pokemon.type2) {
+                <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+                }
+                <div class="card-actions">
+                  <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">Cambiar</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        @if (!selectedPokemonToReplace) {
-        <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">Reemplazar</button>
+        </li>
         }
-      </li>
-      }
-    </ul>
+      </ul>
+    </div>
   </section>
 
-  @if (selectedPokemonToReplace) {
-  <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
-  <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn-cancel">
-    Cancelar
-  </button>
-  <app-pokemon-list
-    [replacePokemon]="true"
-    (onReplacePokemon)="onReplacePokemon($event)"
-  ></app-pokemon-list>
-  } }
+  <div class="replace-section">
+    @if (selectedPokemonToReplace) {
+    <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
+    <br />
+    <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn">
+      Cancelar
+    </button>
+    }
+    <app-pokemon-list
+      [teamDetails]="true"
+      [replacePokemon]="!!selectedPokemonToReplace"
+      (onReplacePokemon)="onReplacePokemon($event)"
+    ></app-pokemon-list>
+  </div>
+  }
 </div>

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { tap } from 'rxjs';
+import { I } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -38,6 +39,7 @@ export class PokemonList implements OnInit {
   pageSize = 32;
   totalPages = 1;
   @Input() teamBuilding = false;
+  @Input() teamDetails = false;
   @Input() currentTeam: Pokemon[] = [];
   @Output() addPokemon = new EventEmitter<Pokemon>();
 
