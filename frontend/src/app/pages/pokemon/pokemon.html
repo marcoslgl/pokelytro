@@ -1,0 +1,119 @@
+@if (pokemon) {
+<ul>
+  <li><b>id:</b> {{ pokemon.id }}</li>
+  <li><b>name:</b> {{ pokemon.name }}</li>
+  <li><b>generation:</b> {{ pokemon.generation }}</li>
+  @if (pokemon.pokemon_type && pokemon.pokemon_type.length) {
+  <li>
+    <b>pokemon_type:</b>
+    @for (t of pokemon.pokemon_type; track $index) {
+    {{ t }}@if (!$last) {, } }
+  </li>
+  } @if (pokemon.RBYFRLG) {
+  <li><b>RBYFRLG:</b> {{ pokemon.RBYFRLG }}</li>
+  } @if (pokemon.LGPE) {
+  <li><b>LGPE:</b> {{ pokemon.LGPE }}</li>
+  } @if (pokemon.GSC) {
+  <li><b>GSC:</b> {{ pokemon.GSC }}</li>
+  } @if (pokemon.HGSS) {
+  <li><b>HGSS:</b> {{ pokemon.HGSS }}</li>
+  } @if (pokemon.RSE) {
+  <li><b>RSE:</b> {{ pokemon.RSE }}</li>
+  } @if (pokemon.ORAS) {
+  <li><b>ORAS:</b> {{ pokemon.ORAS }}</li>
+  } @if (pokemon.DPBDSP) {
+  <li><b>DPBDSP:</b> {{ pokemon.DPBDSP }}</li>
+  } @if (pokemon.Pt) {
+  <li><b>Pt:</b> {{ pokemon.Pt }}</li>
+  } @if (pokemon.BW) {
+  <li><b>BW:</b> {{ pokemon.BW }}</li>
+  } @if (pokemon.B2W2) {
+  <li><b>B2W2:</b> {{ pokemon.B2W2 }}</li>
+  } @if (pokemon.XY_Central) {
+  <li><b>XY_Central:</b> {{ pokemon.XY_Central }}</li>
+  } @if (pokemon.XY_Coastal) {
+  <li><b>XY_Coastal:</b> {{ pokemon.XY_Coastal }}</li>
+  } @if (pokemon.XY_Mount) {
+  <li><b>XY_Mount:</b> {{ pokemon.XY_Mount }}</li>
+  } @if (pokemon.SM_Alola) {
+  <li><b>SM_Alola:</b> {{ pokemon.SM_Alola }}</li>
+  } @if (pokemon.SM_Melemele) {
+  <li><b>SM_Melemele:</b> {{ pokemon.SM_Melemele }}</li>
+  } @if (pokemon.SM_Akala) {
+  <li><b>SM_Akala:</b> {{ pokemon.SM_Akala }}</li>
+  } @if (pokemon.SM_Ulaula) {
+  <li><b>SM_Ulaula:</b> {{ pokemon.SM_Ulaula }}</li>
+  } @if (pokemon.SM_Poni) {
+  <li><b>SM_Poni:</b> {{ pokemon.SM_Poni }}</li>
+  } @if (pokemon.USUM_Alola) {
+  <li><b>USUM_Alola:</b> {{ pokemon.USUM_Alola }}</li>
+  } @if (pokemon.USUM_Melemele) {
+  <li><b>USUM_Melemele:</b> {{ pokemon.USUM_Melemele }}</li>
+  } @if (pokemon.USUM_Akala) {
+  <li><b>USUM_Akala:</b> {{ pokemon.USUM_Akala }}</li>
+  } @if (pokemon.USUM_Ulaula) {
+  <li><b>USUM_Ulaula:</b> {{ pokemon.USUM_Ulaula }}</li>
+  } @if (pokemon.USUM_Poni) {
+  <li><b>USUM_Poni:</b> {{ pokemon.USUM_Poni }}</li>
+  } @if (pokemon.SwSh_Galar) {
+  <li><b>SwSh_Galar:</b> {{ pokemon.SwSh_Galar }}</li>
+  } @if (pokemon.SwSh_Isle) {
+  <li><b>SwSh_Isle:</b> {{ pokemon.SwSh_Isle }}</li>
+  } @if (pokemon.SwSh_Crown) {
+  <li><b>SwSh_Crown:</b> {{ pokemon.SwSh_Crown }}</li>
+  } @if (pokemon.LA) {
+  <li><b>LA:</b> {{ pokemon.LA }}</li>
+  } @if (pokemon.SV_Paldea) {
+  <li><b>SV_Paldea:</b> {{ pokemon.SV_Paldea }}</li>
+  } @if (pokemon.SV_Kitakami) {
+  <li><b>SV_Kitakami:</b> {{ pokemon.SV_Kitakami }}</li>
+  } @if (pokemon.SV_Blueberry) {
+  <li><b>SV_Blueberry:</b> {{ pokemon.SV_Blueberry }}</li>
+  }
+  <li><b>hp:</b> {{ pokemon.hp }}</li>
+  <li><b>attack:</b> {{ pokemon.attack }}</li>
+  <li><b>defense:</b> {{ pokemon.defense }}</li>
+  <li><b>special_attack:</b> {{ pokemon.special_attack }}</li>
+  <li><b>special_defense:</b> {{ pokemon.special_defense }}</li>
+  <li><b>speed:</b> {{ pokemon.speed }}</li>
+  <li><b>total:</b> {{ pokemon.total }}</li>
+  <li><b>type1:</b> {{ pokemon.type1 }}</li>
+  @if (pokemon.type2) {
+  <li><b>type2:</b> {{ pokemon.type2 }}</li>
+  }
+  <li><b>ability1:</b> {{ pokemon.ability1 }}</li>
+  @if (pokemon.ability2) {
+  <li><b>ability2:</b> {{ pokemon.ability2 }}</li>
+  } @if (pokemon.hidden_ability) {
+  <li><b>hidden_ability:</b> {{ pokemon.hidden_ability }}</li>
+  }
+  <li><b>height:</b> {{ pokemon.height }}</li>
+  <li><b>weight:</b> {{ pokemon.weight }}</li>
+  @if (pokemon.HP_EVs) {
+  <li><b>HP_EVs:</b> {{ pokemon.HP_EVs }}</li>
+  } @if (pokemon.Attack_EVs) {
+  <li><b>Attack_EVs:</b> {{ pokemon.Attack_EVs }}</li>
+  } @if (pokemon.Defense_EVs) {
+  <li><b>Defense_EVs:</b> {{ pokemon.Defense_EVs }}</li>
+  } @if (pokemon.Special_Attack_EVs) {
+  <li><b>Special_Attack_EVs:</b> {{ pokemon.Special_Attack_EVs }}</li>
+  } @if (pokemon.Special_Defense_EVs) {
+  <li><b>Special_Defense_EVs:</b> {{ pokemon.Special_Defense_EVs }}</li>
+  } @if (pokemon.Speed_EVs) {
+  <li><b>Speed_EVs:</b> {{ pokemon.Speed_EVs }}</li>
+  }
+  <li><b>experience_value:</b> {{ pokemon.experience_value }}</li>
+  <li><b>catch_rate:</b> {{ pokemon.catch_rate }}</li>
+  <li><b>experience_growth:</b> {{ pokemon.experience_growth }}</li>
+  <li><b>base_friendship:</b> {{ pokemon.base_friendship }}</li>
+  <li><b>pokedex_color:</b> {{ pokemon.pokedex_color }}</li>
+  <li><b>gender_ratio:</b> {{ pokemon.gender_ratio }}</li>
+  <li><b>egg_cycles:</b> {{ pokemon.egg_cycles }}</li>
+  <li><b>egg_group1:</b> {{ pokemon.egg_group1 }}</li>
+  @if (pokemon.egg_group2) {
+  <li><b>egg_group2:</b> {{ pokemon.egg_group2 }}</li>
+  } @if (pokemon.evolution_method) {
+  <li><b>evolution_method:</b> {{ pokemon.evolution_method }}</li>
+  }
+</ul>
+}

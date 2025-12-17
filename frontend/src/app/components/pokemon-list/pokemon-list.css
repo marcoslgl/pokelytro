@@ -61,6 +61,18 @@ h1 {
   min-width: 0;
 }
 
+a.pokemon-card {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+a.pokemon-card:hover {
+  scale: 1.03;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
 /* Columna de imagen para asegurar posición a la izquierda */
 .card-img-col {
   flex: 0 0 auto;
@@ -80,6 +92,7 @@ h1 {
 }
 
 .card-title {
+  text-align: left;
   font-weight: bold;
 }
 

@@ -14,12 +14,12 @@ import { CommonModule } from '@angular/common';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { tap } from 'rxjs';
-import { I } from '@angular/cdk/keycodes';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './pokemon-list.html',
   styleUrls: ['./pokemon-list.css'],
 })
