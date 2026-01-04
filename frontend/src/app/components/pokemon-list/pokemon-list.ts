@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { tap } from 'rxjs';
 import { RouterModule } from '@angular/router';
+import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -24,8 +24,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./pokemon-list.css'],
 })
 export class PokemonList implements OnInit {
-  // Inject the Pokemon service
-  private pokemonService = inject(PokemonService);
+  private pokemonListStore = inject(PokemonListStore);
   //  Pokemon list
 
   pokemons!: Pokemon[];
@@ -71,8 +70,8 @@ export class PokemonList implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pokemonService
-      .get()
+    this.pokemonListStore
+      .getList()
       .pipe(
         tap((data: any) => {
           this.pokemons = data;

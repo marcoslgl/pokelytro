@@ -7,13 +7,19 @@ import { Pokedex } from './pages/pokedex/pokedex';
 import { TeamBuilder } from './pages/team-builder/team-builder';
 import { TeamDetail } from './pages/team-detail/team-detail';
 import { Pokemon } from './pages/pokemon/pokemon';
+import { pokemonListResolver } from './resolvers/pokemon-list.resolver';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'pokedex', component: Pokedex },
+  { path: 'pokedex', component: Pokedex, resolve: { pokemonList: pokemonListResolver } },
   { path: 'pokedex/:id', component: Pokemon },
-  { path: 'team-builder', component: TeamBuilder },
-  { path: 'team-detail', component: TeamDetail },
+  { path: 'team-builder', component: TeamBuilder, resolve: { pokemonList: pokemonListResolver } },
+  {
+    path: 'team-detail',
+    component: TeamDetail,
+    resolve: { pokemonList: pokemonListResolver },
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+  },
   { path: 'quiz', component: Quiz },
   { path: 'showdown', component: Showdown },
   { path: 'about', component: About },
