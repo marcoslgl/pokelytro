@@ -10,6 +10,7 @@
       class="search-input"
       type="text"
       placeholder="Buscar por nombre"
+      [value]="searchTerm"
       (input)="onSearch($any($event.target).value)"
     />
     <button
