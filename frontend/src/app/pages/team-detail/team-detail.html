@@ -1,26 +1,26 @@
 <div class="equipo-detail-container">
   @if (team) {
   <div class="header">
-    <button (click)="onGoBack()" class="btn">← Volver</button>
-    <h2>Equipo Pokémon ({{ teamPokemons.length }}/6)</h2>
+    <button (click)="onGoBack()" class="btn">← Back</button>
+    <h2>Pokémon Team ({{ teamPokemons.length }}/6)</h2>
   </div>
 
   <section class="equipo-actual">
     <div class="team">
       <div class="team-header">
         @if (!isEditingName) {
-        <h3>Detalles de {{ team.name || 'Equipo ' + team._id }}</h3>
-        <button (click)="onEditName()" class="btn-edit-name">✏️ Cambiar nombre</button>
+        <h3>Details for {{ team.name || 'Team ' + team._id }}</h3>
+        <button (click)="onEditName()" class="btn-edit-name">✏️ Rename</button>
         } @else {
         <div class="edit-name-form">
           <input
             type="text"
             [(ngModel)]="newTeamName"
-            placeholder="Nuevo nombre del equipo"
+            placeholder="New team name"
             class="name-input"
           />
-          <button (click)="onSaveName()" class="btn-save">Guardar</button>
-          <button (click)="onCancelEditName()" class="btn-cancel">Cancelar</button>
+          <button (click)="onSaveName()" class="btn-save">Save</button>
+          <button (click)="onCancelEditName()" class="btn-cancel">Cancel</button>
         </div>
         }
       </div>
@@ -41,7 +41,7 @@
                 <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
                 }
                 <div class="card-actions">
-                  <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">Cambiar</button>
+                  <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">Replace</button>
                 </div>
               </div>
             </div>
@@ -56,9 +56,9 @@
     @if (errorMessage) {
     <div class="error-banner">{{ errorMessage }}</div>
     } @if (selectedPokemonToReplace) {
-    <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
+    <h3>Replace "{{ selectedPokemonToReplace.name }}" with:</h3>
     <br />
-    <button (click)="selectedPokemonToReplace = null" class="btn">Cancelar</button>
+    <button (click)="selectedPokemonToReplace = null" class="btn">Cancel</button>
     }
     <app-pokemon-list
       [teamDetails]="true"

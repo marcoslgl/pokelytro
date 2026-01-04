@@ -50,11 +50,11 @@ export class TeamBuilder implements OnInit {
 
   onAddPokemon(pokemon: Pokemon) {
     if (this.currentTeam.length >= 6) {
-      alert('El equipo ya tiene 6 Pokémon.');
+      alert('The team already has 6 Pokémon.');
       return;
     }
     if (this.currentTeam.some((p) => p.id === pokemon.id)) {
-      alert('Este Pokémon ya está en el equipo.');
+      alert('This Pokémon is already in the team.');
       return;
     }
     this.currentTeam = [...this.currentTeam, pokemon];
@@ -66,7 +66,7 @@ export class TeamBuilder implements OnInit {
 
   onSaveTeam() {
     if (this.currentTeam.length < 6) {
-      alert('El equipo debe tener 6 Pokémon para guardarlo.');
+      alert('The team must have 6 Pokémon to save it.');
       return;
     }
 
@@ -97,7 +97,7 @@ export class TeamBuilder implements OnInit {
   }
 
   onDeleteEquipo(equipo: TeamModel) {
-    if (confirm('¿Estás seguro de que deseas eliminar el equipo: "' + equipo.name + '"?')) {
+    if (confirm(`Are you sure you want to delete the team: "${equipo.name}"?`)) {
       this.teamService.delete(equipo._id!).subscribe({
         next: () => {
           this.refreshTeams();

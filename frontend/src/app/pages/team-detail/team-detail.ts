@@ -95,7 +95,7 @@ export class TeamDetail implements OnInit {
         this.errorMessage = null;
       },
       error: (err) => {
-        this.errorMessage = err?.error?.message || 'No se pudo actualizar el equipo';
+        this.errorMessage = err?.error?.message || 'Could not update the team';
         this.team!.pokemons = previousIds;
         this.selectedPokemonToReplace = null;
       },
@@ -113,7 +113,7 @@ export class TeamDetail implements OnInit {
 
   onSaveName() {
     if (!this.team || !this.newTeamName.trim()) {
-      this.errorMessage = 'El nombre del equipo no puede estar vacío';
+      this.errorMessage = 'Team name cannot be empty';
       return;
     }
 
@@ -127,7 +127,7 @@ export class TeamDetail implements OnInit {
           this.errorMessage = null;
         },
         error: (err) => {
-          this.errorMessage = err?.error?.message || 'No se pudo actualizar el nombre del equipo';
+          this.errorMessage = err?.error?.message || 'Could not update the team name';
         },
       });
   }

@@ -1,10 +1,10 @@
 <div class="team-builder-container">
-  <h1>Constructor de Equipos</h1>
+  <h1>Team Builder</h1>
   <section class="equipo-actual">
-    <h2>Equipo Actual ({{ currentTeam.length }}/6)</h2>
+    <h2>Current Team ({{ currentTeam.length }}/6)</h2>
 
     @if (currentTeam.length === 0) {
-    <p>No hay Pokémon en el equipo todavía.</p>
+    <p>There are no Pokémon in the team yet.</p>
     } @else {
     <div class="equipo-grid">
       @for (pokemon of currentTeam; track (pokemon.id + '-' + pokemon.name)) {
@@ -22,7 +22,7 @@
             <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
             }
             <div class="card-actions">
-              <button (click)="onRemoveFromTeam(pokemon)" class="btn-remove">Eliminar</button>
+              <button (click)="onRemoveFromTeam(pokemon)" class="btn-remove">Remove</button>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
     </div>
 
     <button (click)="onSaveTeam()" [disabled]="currentTeam.length < 6 || isSaving" class="btn-save">
-      {{ isSaving ? 'Guardando...' : 'Guardar Equipo' }}
+      {{ isSaving ? 'Saving...' : 'Save Team' }}
     </button>
     }
   </section>
@@ -41,16 +41,16 @@
       class="dropdown-header {{ showSavedTeams ? 'open' : 'closed' }}"
       (click)="showSavedTeams = !showSavedTeams"
     >
-      <span>Equipos Guardados</span>
+      <span>Saved Teams</span>
       <span class="dropdown-arrow">&#8594;</span>
     </h2>
     @if (showSavedTeams) { @if (teams.length === 0) {
-    <p>Aún no hay equipos guardados.</p>
+    <p>There are no saved teams yet.</p>
     } @else {
     <ul class="equipos-list">
       @for (team of teams; track (team._id + '-' + team.name)) {
       <li class="equipo-card">
-        <h3>{{ team.name || 'Equipo ' + team._id }}</h3>
+        <h3>{{ team.name || 'Team ' + team._id }}</h3>
         <ul class="team-preview">
           @for (id of team.pokemons; track $index) {
           <li>
@@ -67,8 +67,8 @@
           }
         </ul>
         <div class="equipo-card-buttons">
-          <button class="btn-details" (click)="onSelectEquipo(team._id!)">Detalles</button>
-          <button class="btn-delete" (click)="onDeleteEquipo(team)">Eliminar</button>
+          <button class="btn-details" (click)="onSelectEquipo(team._id!)">Details</button>
+          <button class="btn-delete" (click)="onDeleteEquipo(team)">Delete</button>
         </div>
       </li>
       }

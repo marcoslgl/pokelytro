@@ -1,5 +1,5 @@
 @if (teamBuilding || teamDetails) {
-<h1>Pokemons Disponibles</h1>
+<h1>Available Pokémon</h1>
 } @else {
 <h1>Pokedex</h1>
 }
@@ -9,7 +9,7 @@
     <input
       class="search-input"
       type="text"
-      placeholder="Buscar por nombre"
+      placeholder="Search by name"
       [value]="searchTerm"
       (input)="onSearch($any($event.target).value)"
     />
@@ -18,8 +18,8 @@
       class="filter-button"
       type="button"
       (click)="toggleFilters()"
-      aria-label="Filtros"
-      title="Filtros"
+      aria-label="Filters"
+      title="Filters"
     >
       <svg
         viewBox="0 0 24 24"
@@ -40,48 +40,48 @@
     <div class="filters-panel" #filtersPanel>
       <div class="filters-row">
         <label>
-          Tipo
+          Type
           <select
             class="filter-select"
             [(ngModel)]="selectedType"
             (ngModelChange)="onTypeChange($event)"
-            aria-label="Filtrar por tipo"
+            aria-label="Filter by type"
           >
-            <option value="">Todos</option>
+            <option value="">All</option>
             @for (t of types; track t) {
             <option [value]="t">{{ t }}</option>
             }
           </select>
         </label>
         <label>
-          Generación
+          Generation
           <select
             class="filter-select"
             [(ngModel)]="selectedGen"
             (ngModelChange)="onGenChange($event)"
-            aria-label="Filtrar por generación"
+            aria-label="Filter by generation"
           >
-            <option value="">Todas</option>
+            <option value="">All</option>
             @for (g of generations; track g) {
             <option [value]="g">Gen {{ g }}</option>
             }
           </select>
         </label>
-        <button type="button" class="clear-filters" (click)="clearFilters()">Limpiar</button>
+        <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
       </div>
     </div>
     }
   </div>
   <div class="pagination-actions">
-    <button (click)="prevPage()" [disabled]="page === 1" aria-label="Anterior">&#9664;</button>
-    <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Siguiente">
+    <button (click)="prevPage()" [disabled]="page === 1" aria-label="Previous">&#9664;</button>
+    <span class="page-indicator">Page {{ page }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">
       &#9654;
     </button>
     <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-      <input #pageInput type="number" placeholder="Página" />
+      <input #pageInput type="number" placeholder="Page" />
     </form>
-    <button (click)="goToPage(pageInput.value)">Ir</button>
+    <button (click)="goToPage(pageInput.value)">Go</button>
   </div>
 </div>
 
@@ -106,10 +106,10 @@
             (click)="onAddPokemon(pokemon)"
             [disabled]="currentTeam.length >= 6"
           >
-            Añadir
+            Add
           </button>
           } @if (replacePokemon) {
-          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Cambiar</button>
+          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
           }
         </div>
       </div>
@@ -134,10 +134,10 @@
             (click)="onAddPokemon(pokemon)"
             [disabled]="currentTeam.length >= 6"
           >
-            Añadir
+            Add
           </button>
           } @if (replacePokemon) {
-          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Cambiar</button>
+          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
           }
         </div>
       </div>
