@@ -1,0 +1,264 @@
+@if (pokemon) {
+<div class="pokemon-container">
+  <h1>{{ pokemon.name }}</h1>
+  <div class="pokedex-data">
+    <div class="pokemon-media">
+      <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+    </div>
+    <div>
+      <p>Pokedex Data</p>
+      <table>
+        <tbody>
+          <tr>
+            <th>National Nº</th>
+            <td>
+              <b>{{ formatId(pokemon.id) }}</b>
+            </td>
+          </tr>
+          @if(pokemon.pokemon_type.length>0){
+          <tr>
+            <th>@if(pokemon.pokemon_type.length<2){Form}@else{Forms}</th>
+            <td>
+              @for(p of pokemon.pokemon_type; track $index){ <b>{{ p }}@if (!$last) {, }</b> }
+            </td>
+          </tr>
+          <tr>
+            <th>@if(!pokemon.type2){Type}@else{Types}</th>
+            <td>
+              <b class="{{ pokemon.type1 }}">{{ pokemon.type1 }}</b>
+              @if(pokemon.type2) { &nbsp;/&nbsp;
+              <b class="{{ pokemon.type2 }}">{{ pokemon.type2 }}</b>
+              }
+            </td>
+          </tr>
+          }
+
+          <tr>
+            <th>Height</th>
+            <td>
+              <b>{{ pokemon.height }} m</b>
+            </td>
+          </tr>
+          <tr>
+            <th>Weight</th>
+            <td>
+              <b>{{ pokemon.weight }} kg</b>
+            </td>
+          </tr>
+          @if(pokemon.ability1 || pokemon.ability2){
+          <tr>
+            <th>@if(pokemon.ability2){Abilities}@else{Ability}</th>
+            <td>
+              @if(pokemon.ability1){
+              <b>{{ pokemon.ability1 }}</b>
+              } @if(pokemon.ability2){ &nbsp;/&nbsp; <b>{{ pokemon.ability2 }}</b> }
+            </td>
+          </tr>
+          } @if(pokemon.hidden_ability){
+          <tr>
+            <th>Hidden Ability</th>
+            <td>
+              <b>{{ pokemon.hidden_ability }}</b>
+            </td>
+          </tr>
+          }
+          <tr>
+            <th>Local Nº</th>
+            <td class="dex"><span [innerHTML]="getAndFormatDexNumbers()"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="training-breeding">
+      <div class="tb-grid">
+        <div class="tb-section">
+          <table>
+            <tbody>
+              <tr class="tb-heading">
+                <th colspan="2">Training</th>
+              </tr>
+              <tr>
+                <th>EV yeild</th>
+                <td>
+                  @if(pokemon.HP_EVs){
+                  <b>{{ pokemon.HP_EVs }}HP</b>
+                  } @if(pokemon.Attack_EVs){ &nbsp;<b>{{ pokemon.Attack_EVs }}Atk</b> }
+                  @if(pokemon.Defense_EVs){ &nbsp;<b>{{ pokemon.Defense_EVs }} Def</b> }
+                  @if(pokemon.Special_Attack_EVs){ &nbsp;<b
+                    >{{ pokemon.Special_Attack_EVs }} SpAtk</b
+                  >
+                  } @if(pokemon.Special_Defense_EVs){ &nbsp;<b
+                    >{{ pokemon.Special_Defense_EVs }} SpDef</b
+                  >
+                  } @if(pokemon.Speed_EVs){ &nbsp;<b>{{ pokemon.Speed_EVs }} Speed</b> }
+                </td>
+              </tr>
+              <tr>
+                <th>Catch Rate</th>
+                <td>
+                  <b>{{ pokemon.catch_rate }}</b>
+                </td>
+              </tr>
+              <tr>
+                <th>Base Friendship</th>
+                <td>
+                  <b>{{ pokemon.base_friendship }}</b>
+                </td>
+              </tr>
+              <tr>
+                <th>Base Experience</th>
+                <td>
+                  <b>{{ pokemon.experience_value }}</b>
+                </td>
+              </tr>
+              <tr>
+                <th>Growth Rate</th>
+                <td>
+                  <b>{{ pokemon.experience_growth }}</b>
+                </td>
+              </tr>
+              @if(pokemon.evolution_method){
+              <tr>
+                <th>Evolution method</th>
+                <td>
+                  <b>{{ pokemon.evolution_method }}</b>
+                </td>
+              </tr>
+              }
+              <tr class="tb-heading tb-heading-secondary">
+                <th colspan="2">Breeding</th>
+              </tr>
+              <tr>
+                <th>@if (!pokemon.egg_group2) {Egg Group}@else {Egg Groups}</th>
+                <td>
+                  <b
+                    >{{ pokemon.egg_group1 }}@if (pokemon.egg_group2) { &nbsp;/&nbsp;
+                    {{ pokemon.egg_group2 }} }</b
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>Gender Ratio</th>
+                <td>
+                  <span [innerHTML]="formatGenderRate(pokemon.gender_ratio)"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>Egg Cycles</th>
+                <td>
+                  <b>{{ pokemon.egg_cycles }}</b>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="typesStats">
+    <div>
+      <p>Base Stats</p>
+      <table class="stats">
+        <tbody class="stats-tbody">
+          <tr>
+            <th>HP</th>
+            <td class="stat-value">{{ pokemon.hp }}</td>
+            <td class="stat-bar-cell">
+              <div class="stat-bar" role="img" aria-label="HP stat bar">
+                <div
+                  [class]="'stat-bar-fill ' + statBarClass(pokemon.hp)"
+                  [style.width.%]="statBarWidth(pokemon.hp)"
+                ></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Attack</th>
+            <td class="stat-value">{{ pokemon.attack }}</td>
+            <td class="stat-bar-cell">
+              <div class="stat-bar" role="img" aria-label="Attack stat bar">
+                <div
+                  [class]="'stat-bar-fill ' + statBarClass(pokemon.attack)"
+                  [style.width.%]="statBarWidth(pokemon.attack)"
+                ></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Defense</th>
+            <td class="stat-value">{{ pokemon.defense }}</td>
+            <td class="stat-bar-cell">
+              <div class="stat-bar" role="img" aria-label="Defense stat bar">
+                <div
+                  [class]="'stat-bar-fill ' + statBarClass(pokemon.defense)"
+                  [style.width.%]="statBarWidth(pokemon.defense)"
+                ></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Special Attack</th>
+            <td class="stat-value">{{ pokemon.special_attack }}</td>
+            <td class="stat-bar-cell">
+              <div class="stat-bar" role="img" aria-label="Special Attack stat bar">
+                <div
+                  [class]="'stat-bar-fill ' + statBarClass(pokemon.special_attack)"
+                  [style.width.%]="statBarWidth(pokemon.special_attack)"
+                ></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Special Defense</th>
+            <td class="stat-value">{{ pokemon.special_defense }}</td>
+            <td class="stat-bar-cell">
+              <div class="stat-bar" role="img" aria-label="Special Defense stat bar">
+                <div
+                  [class]="'stat-bar-fill ' + statBarClass(pokemon.special_defense)"
+                  [style.width.%]="statBarWidth(pokemon.special_defense)"
+                ></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Speed</th>
+            <td class="stat-value">{{ pokemon.speed }}</td>
+            <td class="stat-bar-cell">
+              <div class="stat-bar" role="img" aria-label="Speed stat bar">
+                <div
+                  [class]="'stat-bar-fill ' + statBarClass(pokemon.speed)"
+                  [style.width.%]="statBarWidth(pokemon.speed)"
+                ></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="total-row">
+            <th>Total</th>
+            <td class="stat-value stat-total">{{ pokemon.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p>Type Defenses</p>
+      @if (pokemon) {
+      <div class="type-defenses-sub">
+        The effectiveness of each type on <i>{{ pokemon.name }}</i
+        >.
+      </div>
+      } @if (typeDefenses.length) {
+      <div class="type-grid" aria-label="Type effectiveness grid">
+        @for (t of typeDefenses; track t.type) {
+        <div class="type-cell">
+          <div class="type-chip {{ t.typeClass }}">
+            <span class="type-chip-text">{{ t.abbr }}</span>
+          </div>
+          <div class="type-multiplier {{ t.effectClass }}">{{ t.label }}</div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</div>
+}

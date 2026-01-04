@@ -85,7 +85,8 @@
 </div>
 
 <div class="pokemon-grid">
-  @for (pokemon of pagedPokemons; track (pokemon.id + '-' + pokemon.name)) {
+  @if(teamBuilding||teamDetails) { @for (pokemon of pagedPokemons; track (pokemon.id + '-' +
+  pokemon.name)) {
   <div class="pokemon-card">
     <div class="card-img-col">
       <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
@@ -113,5 +114,33 @@
       </div>
     </div>
   </div>
-  }
+  }} @else { @for (pokemon of pagedPokemons; track (pokemon.id + '-' + pokemon.name)) {
+  <a class="pokemon-card" [routerLink]="['/pokedex', pokemon.id]">
+    <div class="card-img-col">
+      <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+    </div>
+    <div class="card-info">
+      <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
+      <div class="card-types">
+        <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+        @if (pokemon.type2) {
+        <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+        }
+        <div class="card-actions">
+          @if (teamBuilding) {
+          <button
+            class="btn-add"
+            (click)="onAddPokemon(pokemon)"
+            [disabled]="currentTeam.length >= 6"
+          >
+            Añadir
+          </button>
+          } @if (replacePokemon) {
+          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Cambiar</button>
+          }
+        </div>
+      </div>
+    </div>
+  </a>
+  }}
 </div>

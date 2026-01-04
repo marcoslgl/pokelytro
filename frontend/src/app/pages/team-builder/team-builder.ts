@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { Router } from '@angular/router';
 import { PokemonList } from '../../components/pokemon-list/pokemon-list';
+import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
 
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
@@ -17,7 +17,7 @@ import { Team as TeamModel } from '../../models/team/team';
 })
 export class TeamBuilder implements OnInit {
   private teamService = inject(TeamService);
-  private pokemonService = inject(PokemonService);
+  private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
 
   teams: TeamModel[] = [];
@@ -39,7 +39,7 @@ export class TeamBuilder implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pokemonService.get().subscribe((data: any) => {
+    this.pokemonListStore.getList().subscribe((data: any) => {
       this.allPokemons = data as Pokemon[];
       this.pokemonMap = new Map(this.allPokemons.map((p) => [p.id, p]));
       this.totalPages = Math.max(1, Math.ceil(this.allPokemons.length / this.pageSize));

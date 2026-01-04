@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { PokemonList } from '../../components/pokemon-list/pokemon-list';
+import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
 
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
@@ -18,7 +18,7 @@ import { Team as TeamModel } from '../../models/team/team';
 export class TeamDetail implements OnInit {
   private teamService = inject(TeamService);
   private route = inject(ActivatedRoute);
-  private pokemonService = inject(PokemonService);
+  private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
 
   team: TeamModel | null = null;
@@ -51,7 +51,7 @@ export class TeamDetail implements OnInit {
       }
 
       // Cargar todos los pokemons
-      this.pokemonService.get().subscribe({
+      this.pokemonListStore.getList().subscribe({
         next: (data: any) => {
           this.allPokemons = data as Pokemon[];
 

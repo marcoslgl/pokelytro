@@ -1,0 +1,381 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pokemon-container {
+  width: 100%;
+  max-width: none;
+  min-height: 100%;
+  padding: 2rem 2rem 3.5rem;
+}
+
+body.menu-open .pokemon-container {
+  /* When the sidebar is open, the page is already shifted right */
+  padding-left: 2rem;
+}
+
+h1 {
+  margin-top: 0.5rem;
+  margin-bottom: 1.75rem;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  font-size: 2.2rem;
+  letter-spacing: 0.02em;
+}
+
+.pokemon-container img {
+  display: block;
+  color: rgba(255, 255, 255, 0.06);
+  border: 2px solid white;
+  box-shadow: 10px 10px 10px rgba(31, 38, 135, 0.37);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: contain;
+}
+.pokedex-data {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.pokedex-data > div {
+  min-width: 0;
+}
+
+.pokedex-data > div,
+.pokemon-media,
+.typesStats > div {
+  border: 1px solid rgb(41, 41, 41);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.pokemon-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-media img {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.pokedex-data div {
+  height: auto;
+}
+.pokedex-data p {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  padding: 0 0 0.75rem;
+  text-align: start;
+  border-bottom: rgb(41, 41, 41) 2px solid;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.pokedex-data tbody {
+  display: table-row-group;
+  vertical-align: middle;
+}
+
+.pokedex-data tr {
+  border-bottom: rgb(41, 41, 41) 0.5px solid;
+  height: 2.5rem;
+}
+
+.pokedex-data th {
+  font-weight: normal;
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+.pokedex-data td {
+  padding-left: 0.5rem;
+  text-align: left;
+}
+
+.training-breeding .tb-heading th {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  padding: 0 0 0.75rem;
+  text-align: start;
+  border-bottom: rgb(41, 41, 41) 2px solid;
+}
+
+.training-breeding .tb-heading-secondary th {
+  padding-top: 1rem;
+}
+
+.training-breeding tr.tb-heading {
+  border-bottom: 0;
+  height: auto;
+}
+
+.dex {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.typesStats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(22rem, 1fr));
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.typesStats p {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+  border-bottom: rgb(41, 41, 41) 2px solid;
+}
+
+.stats {
+  width: 100%;
+  max-width: none;
+}
+
+.stats-tbody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.stats-tbody tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-tbody th {
+  flex: 0 0 9rem;
+  text-align: left;
+}
+
+.stat-value {
+  flex: 0 0 3rem;
+  text-align: right;
+}
+
+.stats-tbody tr.total-row .stat-value {
+  flex: 1 1 auto;
+}
+
+.stats-tbody tr.total-row th,
+.stats-tbody tr.total-row .stat-total {
+  font-weight: 600;
+}
+
+.stat-total {
+  padding-top: 1rem;
+}
+
+.stat-bar-cell {
+  flex: 1 1 auto;
+  padding-left: 0.75rem;
+}
+
+.stat-bar {
+  width: 100%;
+  height: 0.75rem;
+  background: rgb(41, 41, 41);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.stat-bar-fill.stat-very-low {
+  background: #f34444;
+}
+
+.stat-bar-fill.stat-low {
+  background: #ff7f0f;
+}
+
+.stat-bar-fill.stat-mid {
+  background: #ffdd57;
+}
+
+.stat-bar-fill.stat-high {
+  background: #a0e515;
+}
+
+.stat-bar-fill.stat-very-high {
+  background: #00c2b8;
+}
+
+.type-defenses-sub {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(3rem, 1fr));
+  gap: 0.6rem;
+}
+
+.type-cell {
+  display: grid;
+  grid-template-rows: 2rem 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .pokemon-container {
+    padding: 1.25rem 1rem 2.75rem;
+    padding-left: clamp(4.75rem, 6vw, 5.5rem);
+  }
+
+  body.menu-open .pokemon-container {
+    padding-left: 1rem;
+  }
+
+  .pokedex-data {
+    grid-template-columns: repeat(2, minmax(16rem, 1fr));
+  }
+
+  .typesStats {
+    grid-template-columns: 1fr;
+  }
+
+  .type-grid {
+    grid-template-columns: repeat(6, minmax(2.8rem, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .pokedex-data p,
+  .typesStats p {
+    font-size: 1.25rem;
+  }
+
+  .pokedex-data {
+    grid-template-columns: 1fr;
+  }
+
+  .type-grid {
+    grid-template-columns: repeat(4, minmax(2.8rem, 1fr));
+  }
+}
+
+@media (min-width: 1400px) {
+  .pokemon-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.type-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  background: currentColor;
+  color: inherit;
+}
+
+.type-chip-text {
+  color: white;
+  background: transparent;
+}
+
+.type-multiplier {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  background: transparent;
+  color: #c2c2c2;
+}
+.Fire {
+  color: #ff2600;
+}
+.Water {
+  color: #4aa3ff;
+}
+.Grass {
+  color: #5e8f47;
+}
+.Electric {
+  color: #a09145;
+}
+.Ice {
+  color: #618896;
+}
+.Fighting {
+  color: #d56b5a;
+}
+.Poison {
+  color: #5d3b6e;
+}
+.Ground {
+  color: #aa9467;
+}
+.Flying {
+  color: #9fbfff;
+}
+.Psychic {
+  color: #c0879f;
+}
+.Bug {
+  color: #808f47;
+}
+.Rock {
+  color: #886c4d;
+}
+.Ghost {
+  color: #8b6bd6;
+}
+.Dark {
+  color: #35312c;
+}
+.Dragon {
+  color: #7fb3ff;
+}
+.Steel {
+  color: #617486;
+}
+.Fairy {
+  color: #c76cbb;
+}
+.Normal {
+  color: #8f8f8f;
+}
+
+:host ::ng-deep .male-text {
+  color: #2196f3 !important;
+  font-weight: bold;
+}
+:host ::ng-deep .female-text {
+  color: #e946c0 !important;
+  font-weight: bold;
+}
