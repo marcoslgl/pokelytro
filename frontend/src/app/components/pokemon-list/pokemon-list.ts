@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { tap } from 'rxjs';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
 
 @Component({
@@ -25,6 +25,8 @@ import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list
 })
 export class PokemonList implements OnInit {
   private pokemonListStore = inject(PokemonListStore);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
   //  Pokemon list
 
   pokemons!: Pokemon[];
@@ -49,6 +51,44 @@ export class PokemonList implements OnInit {
   @ViewChild('filtersPanel') filtersPanel?: ElementRef<HTMLElement>;
   @ViewChild('filterButton') filterButton?: ElementRef<HTMLElement>;
 
+  private shouldSyncToUrl(): boolean {
+    // Only sync when used as the main Pokédex page.
+    return !this.teamBuilding && !this.teamDetails;
+  }
+
+  private restoreFromUrl(): void {
+    const qp = this.route.snapshot.queryParamMap;
+
+    const page = Number(qp.get('page'));
+    const pageSize = Number(qp.get('pageSize'));
+    const q = qp.get('q');
+    const type = qp.get('type');
+    const gen = qp.get('gen');
+
+    if (Number.isFinite(page) && page >= 1) this.page = page;
+    if (Number.isFinite(pageSize) && pageSize >= 1) this.pageSize = pageSize;
+    if (typeof q === 'string') this.searchTerm = q;
+    if (typeof type === 'string') this.selectedType = type;
+    if (typeof gen === 'string') this.selectedGen = gen;
+  }
+
+  private syncUrl(): void {
+    if (!this.shouldSyncToUrl()) return;
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: this.page,
+        pageSize: this.pageSize === 32 ? null : this.pageSize,
+        q: this.searchTerm ? this.searchTerm : null,
+        type: this.selectedType ? this.selectedType : null,
+        gen: this.selectedGen ? this.selectedGen : null,
+      },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }
+
   get filteredPokemons(): Pokemon[] {
     if (!this.pokemons) return [];
     const q = this.searchTerm.trim().toLowerCase();
@@ -70,6 +110,10 @@ export class PokemonList implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.shouldSyncToUrl()) {
+      this.restoreFromUrl();
+    }
+
     this.pokemonListStore
       .getList()
       .pipe(
@@ -86,6 +130,10 @@ export class PokemonList implements OnInit {
             new Set<number>(data.map((p: Pokemon) => p.generation))
           ).sort((a, b) => a - b);
           this.recomputeTotalPages();
+          // Clamp the restored page to available pages
+          if (this.page > this.totalPages) this.page = this.totalPages;
+          if (this.page < 1) this.page = 1;
+          this.syncUrl();
           console.log('Number of pokemons:', data.length);
         })
       )
@@ -95,12 +143,14 @@ export class PokemonList implements OnInit {
   nextPage(): void {
     if (this.page < this.totalPages) {
       this.page++;
+      this.syncUrl();
     }
   }
 
   prevPage(): void {
     if (this.page > 1) {
       this.page--;
+      this.syncUrl();
     }
   }
 
@@ -108,6 +158,7 @@ export class PokemonList implements OnInit {
     this.pageSize = Number(size);
     this.recomputeTotalPages();
     this.page = 1;
+    this.syncUrl();
   }
 
   goToPage(target: number | string): void {
@@ -120,24 +171,28 @@ export class PokemonList implements OnInit {
     } else {
       this.page = desired;
     }
+    this.syncUrl();
   }
 
   onSearch(term: string): void {
     this.searchTerm = term;
     this.page = 1;
     this.recomputeTotalPages();
+    this.syncUrl();
   }
 
   onTypeChange(type: string): void {
     this.selectedType = type;
     this.page = 1;
     this.recomputeTotalPages();
+    this.syncUrl();
   }
 
   onGenChange(gen: string): void {
     this.selectedGen = gen;
     this.page = 1;
     this.recomputeTotalPages();
+    this.syncUrl();
   }
 
   onAddPokemon(pokemon: Pokemon): void {
@@ -169,6 +224,7 @@ export class PokemonList implements OnInit {
     this.selectedGen = '';
     this.page = 1;
     this.recomputeTotalPages();
+    this.syncUrl();
   }
 
   private recomputeTotalPages(): void {
