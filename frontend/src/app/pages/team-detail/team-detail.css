@@ -224,3 +224,16 @@
 .replace-placeholder {
   height: 600px;
 }
+
+/* =====================
+   Error Banner
+   ===================== */
+.error-banner {
+  background-color: #ff4d4f;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}

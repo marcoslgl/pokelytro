@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PokemonList } from '../../components/pokemon-list/pokemon-list';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
+import { PokemonList } from '../../components/pokemon-list/pokemon-list';
 
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
@@ -24,19 +24,8 @@ export class TeamDetail implements OnInit {
   team: TeamModel | null = null;
   teamPokemons: Pokemon[] = [];
   allPokemons: Pokemon[] = [];
-  availablePokemons: Pokemon[] = [];
   selectedPokemonToReplace: Pokemon | null = null;
-
-  // Paginado
-  page = 1;
-  pageSize = 24;
-  totalPages = 1;
-
-  get pagedAvailablePokemons(): Pokemon[] {
-    if (!this.availablePokemons) return [];
-    const start = (this.page - 1) * this.pageSize;
-    return this.availablePokemons.slice(start, start + this.pageSize);
-  }
+  errorMessage: string | null = null;
 
   ngOnInit() {
     // Leer queryParams primero
@@ -80,60 +69,37 @@ export class TeamDetail implements OnInit {
 
   onUpdatePokemon(pokemon: Pokemon) {
     this.selectedPokemonToReplace = pokemon;
-
-    const usedIds = new Set<number>(this.team?.pokemons || []);
-    this.availablePokemons = this.allPokemons.filter((p) => !usedIds.has(p.id));
-    this.totalPages = Math.max(1, Math.ceil(this.availablePokemons.length / this.pageSize));
-    this.page = 1;
   }
 
   onReplacePokemon(newPokemon: Pokemon) {
-    const oldId = this.selectedPokemonToReplace!.id;
-    const idx = this.team?.pokemons.findIndex((id) => id === oldId);
+    if (!this.team || !this.selectedPokemonToReplace) return;
 
-    // Actualizar IDs en el modelo y objetos en la vista
-    this.team!.pokemons[idx!] = newPokemon.id;
-    this.teamPokemons[idx!] = newPokemon;
+    const oldId = this.selectedPokemonToReplace.id;
+    const idx = this.team.pokemons.findIndex((id) => id === oldId);
+    if (idx === -1) return;
 
-    this.teamService.put(this.team!.id, this.team as any).subscribe({
-      next: (response) => {
+    const previousIds = [...this.team.pokemons];
+    const previousTeamPokemons = [...this.teamPokemons];
+    const updatedIds = [...this.team.pokemons];
+    updatedIds[idx] = newPokemon.id;
+
+    this.teamService.put(this.team.id, { ...this.team, pokemons: updatedIds } as any).subscribe({
+      next: (response: any) => {
+        this.team = response as TeamModel;
+        this.teamPokemons = [...previousTeamPokemons];
+        this.teamPokemons[idx] = newPokemon;
         this.selectedPokemonToReplace = null;
-        this.availablePokemons = [];
+        this.errorMessage = null;
+      },
+      error: (err) => {
+        this.errorMessage = err?.error?.message || 'No se pudo actualizar el equipo';
+        this.team!.pokemons = previousIds;
+        this.selectedPokemonToReplace = null;
       },
     });
   }
 
   onGoBack() {
     this.router.navigate(['/team-builder']);
-  }
-
-  nextPage(): void {
-    if (this.page < this.totalPages) {
-      this.page++;
-    }
-  }
-
-  prevPage(): void {
-    if (this.page > 1) {
-      this.page--;
-    }
-  }
-
-  setPageSize(size: number | string): void {
-    this.pageSize = Number(size);
-    this.totalPages = Math.max(1, Math.ceil((this.availablePokemons?.length ?? 0) / this.pageSize));
-    this.page = 1;
-  }
-
-  goToPage(target: number | string): void {
-    const desired = Number(target);
-    if (!Number.isFinite(desired)) return;
-    if (desired < 1) {
-      this.page = 1;
-    } else if (desired > this.totalPages) {
-      this.page = this.totalPages;
-    } else {
-      this.page = desired;
-    }
   }
 }

@@ -27,22 +27,10 @@ export class TeamBuilder implements OnInit {
   isSaving: boolean = false;
   showSavedTeams: boolean = false;
 
-  // Paginado
-  page = 1;
-  pageSize = 24;
-  totalPages = 1;
-
-  get pagedPokemons(): Pokemon[] {
-    if (!this.allPokemons) return [];
-    const start = (this.page - 1) * this.pageSize;
-    return this.allPokemons.slice(start, start + this.pageSize);
-  }
-
   ngOnInit(): void {
     this.pokemonListStore.getList().subscribe((data: any) => {
       this.allPokemons = data as Pokemon[];
       this.pokemonMap = new Map(this.allPokemons.map((p) => [p.id, p]));
-      this.totalPages = Math.max(1, Math.ceil(this.allPokemons.length / this.pageSize));
     });
 
     this.refreshTeams();
@@ -118,38 +106,7 @@ export class TeamBuilder implements OnInit {
     }
   }
 
-
   pokemonName(id: number): string {
     return this.pokemonMap.get(id)?.name ?? `#${id}`;
-  }
-
-  nextPage(): void {
-    if (this.page < this.totalPages) {
-      this.page++;
-    }
-  }
-
-  prevPage(): void {
-    if (this.page > 1) {
-      this.page--;
-    }
-  }
-
-  setPageSize(size: number | string): void {
-    this.pageSize = Number(size);
-    this.totalPages = Math.max(1, Math.ceil((this.allPokemons?.length ?? 0) / this.pageSize));
-    this.page = 1;
-  }
-
-  goToPage(target: number | string): void {
-    const desired = Number(target);
-    if (!Number.isFinite(desired)) return;
-    if (desired < 1) {
-      this.page = 1;
-    } else if (desired > this.totalPages) {
-      this.page = this.totalPages;
-    } else {
-      this.page = desired;
-    }
   }
 }

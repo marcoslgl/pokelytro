@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
     const team = await Team.findOne({ id: id });
 
     if (!team) {
-      return res.status(404).json({ message: "Team not found" });
+      return res.status(404).json({ message: "Equipo no encontrado" });
     }
 
     res.status(200).json(team);
@@ -31,6 +31,20 @@ router.get("/:id", async (req, res) => {
 // POST: create
 router.post("/", async (req, res) => {
   try {
+    if (!Array.isArray(req.body.pokemons)) {
+      return res
+        .status(400)
+        .json({ message: "El campo 'pokemons' debe ser un array" });
+    }
+
+    const hasDuplicates =
+      new Set(req.body.pokemons).size !== req.body.pokemons.length;
+    if (hasDuplicates) {
+      return res
+        .status(400)
+        .json({ message: "Pokémon duplicado en el equipo" });
+    }
+
     const team = new Team(req.body);
     const savedTeam = await team.save();
     res.status(200).json(savedTeam);
@@ -43,6 +57,21 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
+
+    if (!Array.isArray(req.body.pokemons)) {
+      return res
+        .status(400)
+        .json({ message: "El campo 'pokemons' debe ser un array" });
+    }
+
+    const hasDuplicates =
+      new Set(req.body.pokemons).size !== req.body.pokemons.length;
+    if (hasDuplicates) {
+      return res
+        .status(400)
+        .json({ message: "Pokémon duplicado en el equipo" });
+    }
+
     const updatedTeam = await Team.findOneAndUpdate(
       { id: id }, // Buscar por el campo 'id'
       { $set: req.body },
@@ -50,7 +79,7 @@ router.put("/:id", async (req, res) => {
     );
 
     if (!updatedTeam) {
-      return res.status(404).json({ message: "Team not found" });
+      return res.status(404).json({ message: "Equipo no encontrado" });
     }
 
     res.status(200).json(updatedTeam);
@@ -66,7 +95,7 @@ router.delete("/:id", async (req, res) => {
     let deletedTeam = await Team.deleteOne({ id: id });
 
     if (deletedTeam.deletedCount === 0) {
-      return res.status(404).json({ message: "Team not found" });
+      return res.status(404).json({ message: "Equipo no encontrado" });
     }
 
     res.status(200).json(deletedTeam);

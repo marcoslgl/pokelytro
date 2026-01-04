@@ -37,12 +37,12 @@
   </section>
 
   <div class="replace-section">
-    @if (selectedPokemonToReplace) {
+    @if (errorMessage) {
+    <div class="error-banner">{{ errorMessage }}</div>
+    } @if (selectedPokemonToReplace) {
     <h3>Reemplazar "{{ selectedPokemonToReplace.name }}" por:</h3>
     <br />
-    <button (click)="selectedPokemonToReplace = null; availablePokemons = []" class="btn">
-      Cancelar
-    </button>
+    <button (click)="selectedPokemonToReplace = null" class="btn">Cancelar</button>
     }
     <app-pokemon-list
       [teamDetails]="true"
