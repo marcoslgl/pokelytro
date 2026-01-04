@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const team = await Team.findOne({ id: id });
+    const team = await Team.findById(id);
 
     if (!team) {
       return res.status(404).json({ message: "Equipo no encontrado" });
@@ -45,10 +45,18 @@ router.post("/", async (req, res) => {
         .json({ message: "Pokémon duplicado en el equipo" });
     }
 
-    const team = new Team(req.body);
+    // Generar el siguiente _id automáticamente
+    const lastTeam = await Team.findOne().sort({ _id: -1 }).lean();
+    const newId = lastTeam ? lastTeam._id + 1 : 1;
+
+    const team = new Team({
+      _id: newId,
+      ...req.body,
+    });
     const savedTeam = await team.save();
-    res.status(200).json(savedTeam);
+    res.status(201).json(savedTeam);
   } catch (err) {
+    console.error("Error creating team:", err);
     res.status(500).json({ message: err.message });
   }
 });
@@ -72,8 +80,8 @@ router.put("/:id", async (req, res) => {
         .json({ message: "Pokémon duplicado en el equipo" });
     }
 
-    const updatedTeam = await Team.findOneAndUpdate(
-      { id: id }, // Buscar por el campo 'id'
+    const updatedTeam = await Team.findByIdAndUpdate(
+      id,
       { $set: req.body },
       { new: true }
     );
@@ -92,9 +100,9 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    let deletedTeam = await Team.deleteOne({ id: id });
+    let deletedTeam = await Team.findByIdAndDelete(id);
 
-    if (deletedTeam.deletedCount === 0) {
+    if (!deletedTeam) {
       return res.status(404).json({ message: "Equipo no encontrado" });
     }
 

@@ -7,7 +7,23 @@
 
   <section class="equipo-actual">
     <div class="team">
-      <h3>Detalles del {{ team.name || 'Equipo ' + team.id }}</h3>
+      <div class="team-header">
+        @if (!isEditingName) {
+        <h3>Detalles de {{ team.name || 'Equipo ' + team._id }}</h3>
+        <button (click)="onEditName()" class="btn-edit-name">✏️ Cambiar nombre</button>
+        } @else {
+        <div class="edit-name-form">
+          <input
+            type="text"
+            [(ngModel)]="newTeamName"
+            placeholder="Nuevo nombre del equipo"
+            class="name-input"
+          />
+          <button (click)="onSaveName()" class="btn-save">Guardar</button>
+          <button (click)="onCancelEditName()" class="btn-cancel">Cancelar</button>
+        </div>
+        }
+      </div>
       <ul class="team-list">
         @for (pokemon of teamPokemons; track pokemon.id) {
         <li class="team-item">

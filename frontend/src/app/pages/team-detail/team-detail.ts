@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
@@ -11,7 +12,7 @@ import { Team as TeamModel } from '../../models/team/team';
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, PokemonList],
+  imports: [CommonModule, FormsModule, PokemonList],
   templateUrl: './team-detail.html',
   styleUrls: ['./team-detail.css'],
 })
@@ -26,6 +27,8 @@ export class TeamDetail implements OnInit {
   allPokemons: Pokemon[] = [];
   selectedPokemonToReplace: Pokemon | null = null;
   errorMessage: string | null = null;
+  isEditingName: boolean = false;
+  newTeamName: string = '';
 
   ngOnInit() {
     // Leer queryParams primero
@@ -83,7 +86,7 @@ export class TeamDetail implements OnInit {
     const updatedIds = [...this.team.pokemons];
     updatedIds[idx] = newPokemon.id;
 
-    this.teamService.put(this.team.id, { ...this.team, pokemons: updatedIds } as any).subscribe({
+    this.teamService.put(this.team._id!, { ...this.team, pokemons: updatedIds } as any).subscribe({
       next: (response: any) => {
         this.team = response as TeamModel;
         this.teamPokemons = [...previousTeamPokemons];
@@ -101,5 +104,36 @@ export class TeamDetail implements OnInit {
 
   onGoBack() {
     this.router.navigate(['/team-builder']);
+  }
+
+  onEditName() {
+    this.isEditingName = true;
+    this.newTeamName = this.team?.name || '';
+  }
+
+  onSaveName() {
+    if (!this.team || !this.newTeamName.trim()) {
+      this.errorMessage = 'El nombre del equipo no puede estar vacío';
+      return;
+    }
+
+    this.teamService
+      .put(this.team._id!, { ...this.team, name: this.newTeamName } as any)
+      .subscribe({
+        next: (response: any) => {
+          this.team = response as TeamModel;
+          this.isEditingName = false;
+          this.newTeamName = '';
+          this.errorMessage = null;
+        },
+        error: (err) => {
+          this.errorMessage = err?.error?.message || 'No se pudo actualizar el nombre del equipo';
+        },
+      });
+  }
+
+  onCancelEditName() {
+    this.isEditingName = false;
+    this.newTeamName = '';
   }
 }
