@@ -48,9 +48,9 @@
     <p>Aún no hay equipos guardados.</p>
     } @else {
     <ul class="equipos-list">
-      @for (team of teams; track (team.id + '-' + team.name)) {
+      @for (team of teams; track (team._id + '-' + team.name)) {
       <li class="equipo-card">
-        <h3>{{ team.name || 'Equipo ' + team.id }}</h3>
+        <h3>{{ team.name || 'Equipo ' + team._id }}</h3>
         <ul class="team-preview">
           @for (id of team.pokemons; track $index) {
           <li>
@@ -67,7 +67,7 @@
           }
         </ul>
         <div class="equipo-card-buttons">
-          <button class="btn-details" (click)="onSelectEquipo(team.id)">Detalles</button>
+          <button class="btn-details" (click)="onSelectEquipo(team._id!)">Detalles</button>
           <button class="btn-delete" (click)="onDeleteEquipo(team)">Eliminar</button>
         </div>
       </li>

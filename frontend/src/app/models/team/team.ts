@@ -1,5 +1,5 @@
 export class Team {
-  id!: number;
+  _id?: number;
   name!: string;
   pokemons!: number[]; // Array of Pokemon IDs
 

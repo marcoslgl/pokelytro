@@ -73,10 +73,10 @@ export class TeamBuilder implements OnInit {
     this.isSaving = true;
 
     // Generar el siguiente ID disponible
-    const nextId = this.teams.length > 0 ? Math.max(...this.teams.map((t) => t.id || 0)) + 1 : 1;
+    const nextId = this.teams.length > 0 ? Math.max(...this.teams.map((t) => t._id || 0)) + 1 : 1;
 
     const payload = new TeamModel({
-      id: nextId,
+      _id: nextId,
       name: `Team ${nextId}`,
       pokemons: this.currentTeam.map((p) => p.id),
     });
@@ -98,7 +98,7 @@ export class TeamBuilder implements OnInit {
 
   onDeleteEquipo(equipo: TeamModel) {
     if (confirm('¿Estás seguro de que deseas eliminar el equipo: "' + equipo.name + '"?')) {
-      this.teamService.delete(equipo.id).subscribe({
+      this.teamService.delete(equipo._id!).subscribe({
         next: () => {
           this.refreshTeams();
         },
