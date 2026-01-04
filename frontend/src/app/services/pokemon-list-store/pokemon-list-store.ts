@@ -21,10 +21,6 @@ export class PokemonListStore {
     return this.list$!;
   }
 
-  prefetch(): Observable<Pokemon[]> {
-    return this.getList();
-  }
-
   clearCache(): void {
     this.list$ = undefined;
   }

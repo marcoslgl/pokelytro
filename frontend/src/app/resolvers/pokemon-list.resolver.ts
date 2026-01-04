@@ -4,5 +4,5 @@ import { Pokemon } from '../models/pokemon/pokemon';
 import { PokemonListStore } from '../services/pokemon-list-store/pokemon-list-store';
 
 export const pokemonListResolver: ResolveFn<Pokemon[]> = () => {
-  return inject(PokemonListStore).prefetch();
+  return inject(PokemonListStore).getList();
 };
