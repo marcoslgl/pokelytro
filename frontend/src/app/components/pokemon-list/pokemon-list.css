@@ -11,9 +11,9 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .pokemon-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, minmax(370px, 1fr));
     gap: 1rem;
     padding: 1rem 1vw;
   }
