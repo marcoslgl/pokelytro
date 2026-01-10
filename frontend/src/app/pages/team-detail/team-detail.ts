@@ -34,7 +34,7 @@ export class TeamDetail implements OnInit {
     // Leer queryParams primero
     this.route.queryParams.subscribe((params) => {
       const idParam = params['teamId'] ?? params['equipoId'];
-      const teamId = +idParam;
+      const teamId = idParam as string;
 
       if (!teamId) {
         alert('No teamId provided');

@@ -14,17 +14,17 @@ export class Team {
   get(): Observable<Team[]> {
     return this.http.get<Team[]>(this.api);
   }
-  getById(id: number): Observable<Team> {
+  getById(id: string): Observable<Team> {
     return this.http.get<Team>(`${this.api}/${id}`);
   }
   // Create, Update, Delete methods
   post(team: Team): Observable<Team> {
     return this.http.post<Team>(this.api, team);
   }
-  put(id: number, team: Team): Observable<Team> {
+  put(id: string, team: Team): Observable<Team> {
     return this.http.put<Team>(`${this.api}/${id}`, team);
   }
-  delete(id: number): Observable<Team> {
+  delete(id: string): Observable<Team> {
     return this.http.delete<Team>(`${this.api}/${id}`);
   }
 }

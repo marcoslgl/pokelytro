@@ -15,8 +15,7 @@ router.get("/", async (req, res) => {
 // GET: by id
 router.get("/:id", async (req, res) => {
   try {
-    const id = parseInt(req.params.id, 10);
-    const team = await Team.findById(id);
+    const team = await Team.findById(req.params.id);
 
     if (!team) {
       return res.status(404).json({ message: "Team not found" });
@@ -24,7 +23,7 @@ router.get("/:id", async (req, res) => {
 
     res.status(200).json(team);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(400).json({ message: "Invalid ID format" });
   }
 });
 
@@ -39,46 +38,53 @@ router.post("/", async (req, res) => {
 
     const hasDuplicates =
       new Set(req.body.pokemons).size !== req.body.pokemons.length;
+
     if (hasDuplicates) {
       return res.status(400).json({ message: "Duplicate Pokémon in the team" });
     }
 
-    // Generar el siguiente _id automáticamente
-    const lastTeam = await Team.findOne().sort({ _id: -1 }).lean();
-    const newId = lastTeam ? lastTeam._id + 1 : 1;
-
-    const team = new Team({
-      _id: newId,
-      ...req.body,
-    });
+    const team = new Team(req.body);
     const savedTeam = await team.save();
+
     res.status(201).json(savedTeam);
   } catch (err) {
-    console.error("Error creating team:", err);
     res.status(500).json({ message: err.message });
   }
 });
 
-// PUT: update (usa findOneAndUpdate en lugar de findByIdAndUpdate)
+// PUT: update
 router.put("/:id", async (req, res) => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const updateData = {};
 
-    if (!Array.isArray(req.body.pokemons)) {
-      return res
-        .status(400)
-        .json({ message: "The 'pokemons' field must be an array" });
+    // Validar pokemons SOLO si vienen
+    if (req.body.pokemons !== undefined) {
+      if (!Array.isArray(req.body.pokemons)) {
+        return res
+          .status(400)
+          .json({ message: "The 'pokemons' field must be an array" });
+      }
+
+      const hasDuplicates =
+        new Set(req.body.pokemons).size !== req.body.pokemons.length;
+
+      if (hasDuplicates) {
+        return res
+          .status(400)
+          .json({ message: "Duplicate Pokémon in the team" });
+      }
+
+      updateData.pokemons = req.body.pokemons;
     }
 
-    const hasDuplicates =
-      new Set(req.body.pokemons).size !== req.body.pokemons.length;
-    if (hasDuplicates) {
-      return res.status(400).json({ message: "Duplicate Pokémon in the team" });
+    // Validar nombre SOLO si viene
+    if (req.body.name !== undefined) {
+      updateData.name = req.body.name;
     }
 
     const updatedTeam = await Team.findByIdAndUpdate(
-      id,
-      { $set: req.body },
+      req.params.id,
+      { $set: updateData },
       { new: true }
     );
 
@@ -95,8 +101,7 @@ router.put("/:id", async (req, res) => {
 // DELETE: delete
 router.delete("/:id", async (req, res) => {
   try {
-    const id = parseInt(req.params.id, 10);
-    let deletedTeam = await Team.findByIdAndDelete(id);
+    const deletedTeam = await Team.findByIdAndDelete(req.params.id);
 
     if (!deletedTeam) {
       return res.status(404).json({ message: "Team not found" });
@@ -104,7 +109,7 @@ router.delete("/:id", async (req, res) => {
 
     res.status(200).json(deletedTeam);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(400).json({ message: "Invalid ID format" });
   }
 });
 

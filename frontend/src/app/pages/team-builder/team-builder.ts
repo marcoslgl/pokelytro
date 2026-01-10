@@ -73,10 +73,13 @@ export class TeamBuilder implements OnInit {
     this.isSaving = true;
 
     // Generar el siguiente ID disponible
-    const nextId = this.teams.length > 0 ? Math.max(...this.teams.map((t) => t._id || 0)) + 1 : 1;
+    let nextId = this.teams.length + 1;
+
+    while (this.teams.some((team) => team.name === `Team ${nextId}`)) {
+      nextId++;
+    }
 
     const payload = new TeamModel({
-      _id: nextId,
       name: `Team ${nextId}`,
       pokemons: this.currentTeam.map((p) => p.id),
     });
@@ -90,7 +93,7 @@ export class TeamBuilder implements OnInit {
     });
   }
 
-  onSelectEquipo(teamId: number) {
+  onSelectEquipo(teamId: string) {
     this.router.navigate(['/team-detail'], {
       queryParams: { teamId },
     });

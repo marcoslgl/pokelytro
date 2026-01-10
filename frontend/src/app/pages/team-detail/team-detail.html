@@ -8,12 +8,12 @@
   <section class="equipo-actual">
     <div class="team">
       <div class="team-header">
-        <h3>Details for {{ team.name || 'Team ' + team._id }}</h3>
         @if (!isEditingName) {
+        <h3>Details for {{ team.name || 'Team ' + team._id }}</h3>
         <button (click)="onEditName()" class="btn-edit-name">Rename</button>
         } @else {
         <div class="edit-name-form">
-          <input [(ngModel)]="team.name" placeholder="New team name" class="name-input" />
+          <input [(ngModel)]="newTeamName" placeholder="New team name" class="name-input" />
           <button (click)="onSaveName()" class="btn-save">Save</button>
           <button (click)="onCancelEditName()" class="btn-cancel">Cancel</button>
         </div>
