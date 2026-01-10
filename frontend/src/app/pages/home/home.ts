@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,16 +8,42 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnDestroy {
   private readonly maxPokemonId = 1025;
   private readonly totalCards = 12;
-  readonly visibleCount = 3;
+  private isNarrow = false;
+  private mql?: MediaQueryList;
+  private mqlListener?: () => void;
 
   pokemonIds: number[] = [];
   startIndex = 0;
 
   constructor() {
     this.reshuffle();
+    this.setupResponsiveVisibleCount();
+  }
+
+  private setupResponsiveVisibleCount(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+
+    this.mql = window.matchMedia('(max-width: 1299px)');
+    const apply = () => {
+      this.isNarrow = !!this.mql?.matches;
+    };
+    apply();
+
+    this.mqlListener = () => apply();
+    this.mql.addEventListener('change', this.mqlListener);
+  }
+
+  private get visibleCount(): number {
+    return this.isNarrow ? 3 : 5;
+  }
+
+  ngOnDestroy(): void {
+    if (this.mql && this.mqlListener) {
+      this.mql.removeEventListener('change', this.mqlListener);
+    }
   }
 
   get visiblePokemonIds(): number[] {
