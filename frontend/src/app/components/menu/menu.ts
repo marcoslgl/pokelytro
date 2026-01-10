@@ -13,8 +13,6 @@ export class Menu {
     { label: 'Home', link: '/', exact: true },
     { label: 'Pokedex', link: '/pokedex' },
     { label: 'Team Builder', link: '/team-builder' },
-    { label: 'Quiz', link: '/quiz' },
-    { label: 'Showdown', link: '/showdown' },
     { label: 'About', link: '/about' },
   ];
   navActive = false;

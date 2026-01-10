@@ -1,3 +1,33 @@
+.pokemon-title-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  font-size: 2.2rem;
+  margin-bottom: 0.5em;
+}
+
+.pokemon-title-text {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nav-arrow {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+.nav-arrow:hover {
+  scale: 1.3;
+  transition: scale 0.2s;
+}
 :host {
   display: block;
   width: 100%;
