@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
     const team = await Team.findById(id);
 
     if (!team) {
-      return res.status(404).json({ message: "Equipo no encontrado" });
+      return res.status(404).json({ message: "Team not found" });
     }
 
     res.status(200).json(team);
@@ -34,15 +34,13 @@ router.post("/", async (req, res) => {
     if (!Array.isArray(req.body.pokemons)) {
       return res
         .status(400)
-        .json({ message: "El campo 'pokemons' debe ser un array" });
+        .json({ message: "The 'pokemons' field must be an array" });
     }
 
     const hasDuplicates =
       new Set(req.body.pokemons).size !== req.body.pokemons.length;
     if (hasDuplicates) {
-      return res
-        .status(400)
-        .json({ message: "Pokémon duplicado en el equipo" });
+      return res.status(400).json({ message: "Duplicate Pokémon in the team" });
     }
 
     // Generar el siguiente _id automáticamente
@@ -69,15 +67,13 @@ router.put("/:id", async (req, res) => {
     if (!Array.isArray(req.body.pokemons)) {
       return res
         .status(400)
-        .json({ message: "El campo 'pokemons' debe ser un array" });
+        .json({ message: "The 'pokemons' field must be an array" });
     }
 
     const hasDuplicates =
       new Set(req.body.pokemons).size !== req.body.pokemons.length;
     if (hasDuplicates) {
-      return res
-        .status(400)
-        .json({ message: "Pokémon duplicado en el equipo" });
+      return res.status(400).json({ message: "Duplicate Pokémon in the team" });
     }
 
     const updatedTeam = await Team.findByIdAndUpdate(
@@ -87,7 +83,7 @@ router.put("/:id", async (req, res) => {
     );
 
     if (!updatedTeam) {
-      return res.status(404).json({ message: "Equipo no encontrado" });
+      return res.status(404).json({ message: "Team not found" });
     }
 
     res.status(200).json(updatedTeam);
@@ -103,7 +99,7 @@ router.delete("/:id", async (req, res) => {
     let deletedTeam = await Team.findByIdAndDelete(id);
 
     if (!deletedTeam) {
-      return res.status(404).json({ message: "Equipo no encontrado" });
+      return res.status(404).json({ message: "Team not found" });
     }
 
     res.status(200).json(deletedTeam);
