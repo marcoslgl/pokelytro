@@ -9,7 +9,7 @@
 }
 
 .team-builder-container {
-  width: min(1400px, 100%);
+  width: min(auto-fill, 100%);
   display: flex;
   flex-direction: column;
   gap: 14px;
