@@ -3,6 +3,7 @@
     #pikachuVideo
     class="home-video"
     autoplay
+    muted
     loop
     playsinline
     preload="metadata"
@@ -19,21 +20,27 @@
   </header>
 
   <div class="carousel-body">
-    <button type="button" class="carousel-arrow" (click)="prev()" aria-label="Anterior">←</button>
-
-    <div class="carousel-track" role="list">
-      <a
-        class="carousel-card"
-        role="listitem"
-        *ngFor="let id of visiblePokemonIds"
-        [routerLink]="['/pokedex', id]"
-        [attr.aria-label]="'Abrir Pokémon #' + id"
+    <div class="carousel-viewport" #carouselViewport [style.--visible-count]="visibleCount">
+      <div
+        class="carousel-track"
+        #carouselTrack
+        role="list"
+        [class.is-animating]="isAnimating"
+        [style.transform]="trackTransform"
+        (transitionend)="onTrackTransitionEnd()"
       >
-        <img class="carousel-img" [src]="imgSrc(id)" [alt]="'Pokémon #' + id" loading="lazy" />
-        <div class="carousel-meta">#{{ id }}</div>
-      </a>
+        @for (p of renderedPokemons; track $index) {
+        <a
+          class="carousel-card"
+          role="listitem"
+          [routerLink]="['/pokedex', p.id]"
+          [attr.aria-label]="'Abrir ' + p.name"
+        >
+          <img class="carousel-img" [src]="imgSrc(p.id)" [alt]="p.name" loading="lazy" />
+          <div class="carousel-meta">{{ p.name }}</div>
+        </a>
+        }
+      </div>
     </div>
-
-    <button type="button" class="carousel-arrow" (click)="next()" aria-label="Siguiente">→</button>
   </div>
 </section>
