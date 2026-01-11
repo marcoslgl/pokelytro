@@ -1,6 +1,24 @@
 @if (pokemon) {
 <div class="pokemon-container">
-  <h1>{{ pokemon.name }}</h1>
+  <h1 class="pokemon-title-nav">
+    @if (pokemon.id > 1) {
+    <a
+      [routerLink]="['/pokedex', pokemon.id - 1]"
+      class="nav-arrow nav-arrow-prev"
+      aria-label="Anterior Pokémon"
+      >←</a
+    >
+    }
+    <span class="pokemon-title-text">{{ pokemon.name }}</span>
+    @if (pokemon.id < 1025) {
+    <a
+      [routerLink]="['/pokedex', pokemon.id + 1]"
+      class="nav-arrow nav-arrow-next"
+      aria-label="Siguiente Pokémon"
+      >→</a
+    >
+    }
+  </h1>
   <div class="pokedex-data">
     <div class="pokemon-media">
       <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />

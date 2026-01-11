@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon as PokemonModel } from '../../models/pokemon/pokemon';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
@@ -18,7 +19,7 @@ type TypeDefenseCell = {
 @Component({
   selector: 'app-pokemon',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './pokemon.html',
   styleUrls: ['./pokemon.css'],
 })

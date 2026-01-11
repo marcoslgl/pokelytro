@@ -1,5 +1,5 @@
 @if (teamBuilding || teamDetails) {
-<h1>Available Pokémon</h1>
+<h1 class="title">Available Pokemons</h1>
 } @else {
 <h1>Pokedex</h1>
 }
@@ -75,9 +75,7 @@
   <div class="pagination-actions">
     <button (click)="prevPage()" [disabled]="page === 1" aria-label="Previous">&#9664;</button>
     <span class="page-indicator">Page {{ page }} / {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">
-      &#9654;
-    </button>
+    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">&#9654;</button>
     <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
       <input #pageInput type="number" placeholder="Page" />
     </form>

@@ -1,6 +1,20 @@
 /* =====================
    Layout & Page Container
    ===================== */
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.team-builder-container {
+  width: min(1400px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .team-builder-container h1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -15,8 +29,9 @@
   padding: 2rem;
   border-radius: 12px;
   margin-top: 2rem;
-  margin-bottom: 2rem;
-  border: 2px solid #ddd;
+  margin-bottom: 0.5rem;
+  background: rgb(17, 23, 39);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .equipo-actual h2 {
   margin-bottom: 1.5rem;
@@ -45,9 +60,9 @@
   gap: 0.75rem;
   padding: 0.6rem;
   margin: 0;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.5rem;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   height: 100%;
   width: 100%;
   flex-wrap: wrap;
@@ -96,7 +111,8 @@
 .equipos-guardados {
   padding: 2rem;
   border-radius: 12px;
-  border: 2px solid #ddd;
+  background: rgb(17, 23, 39);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .equipos-guardados h2 {
   color: rgb(255, 255, 255);
@@ -150,15 +166,16 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  border: 1.5px solid #ddd;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.5rem;
   margin-top: 1.5rem;
   padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 .equipo-card:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  border-color: #28a745;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  border-color: rgba(59, 130, 246, 0.55);
 }
 .equipo-card h3 {
   margin-top: 0;
@@ -188,13 +205,13 @@
   padding: 0;
   margin: 1rem 0;
   font-size: 0.95rem;
-  color: #555;
+  color: rgba(255, 255, 255, 0.82);
   border-radius: 8px;
   display: grid;
   gap: 0.5rem 0.75rem;
 }
 .team-preview li {
-  border: 1px solid #eee;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
   padding: 0.3rem 0.7rem;
   display: flex;
@@ -207,7 +224,7 @@
 .btn-remove {
   background-color: #dc3545;
   color: white;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
@@ -223,7 +240,7 @@
 .btn-save {
   background-color: #007bff;
   color: white;
-  border: none;
+  border: 1px solid rgba(59, 130, 246, 0.55);
   padding: 15px 30px;
   border-radius: 6px;
   cursor: pointer;
