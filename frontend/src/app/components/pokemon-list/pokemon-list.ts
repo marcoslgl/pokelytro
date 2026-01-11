@@ -130,7 +130,6 @@ export class PokemonList implements OnInit {
             new Set<number>(data.map((p: Pokemon) => p.generation))
           ).sort((a, b) => a - b);
           this.recomputeTotalPages();
-          // Clamp the restored page to available pages
           if (this.page > this.totalPages) this.page = this.totalPages;
           if (this.page < 1) this.page = 1;
           this.syncUrl();

@@ -1,10 +1,26 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.equipo-detail-container {
+  width: min(1400px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid #ddd;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgb(17, 23, 39);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header h2 {
@@ -17,8 +33,9 @@
    Team list grid (3 per row)
    ===================== */
 .team {
-  border: 2px solid #ddd;
-  border-radius: 0.5rem;
+  background: rgb(17, 23, 39);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   padding: 1.5rem;
 }
 
@@ -34,6 +51,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  background: rgb(17, 23, 39);
 }
 @media (max-width: 1024px) {
   .team-list {
@@ -46,6 +64,10 @@
   }
 }
 
+.team-item {
+  border-radius: 0.5rem;
+}
+
 /* =====================
    Cards (match Equipo Actual)
    ===================== */
@@ -55,9 +77,9 @@
   gap: 0.75rem;
   padding: 0.6rem;
   margin: 0;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.5rem;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   width: 100%;
   flex-wrap: wrap;
   min-width: 0;
@@ -103,7 +125,6 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
 }
 .btn-replace:hover {
   background-color: #0056b3;
@@ -213,7 +234,7 @@
    ===================== */
 .replace-section {
   margin-top: 1.5rem;
-  border-top: 2px solid #ddd;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1rem;
   min-height: 600px;
 }
@@ -275,10 +296,12 @@
 
 .name-input {
   padding: 0.5rem;
-  border: 2px solid #1890ff;
+  border: 1px solid rgba(59, 130, 246, 0.55);
   border-radius: 0.5rem;
   font-size: 1rem;
   min-width: 200px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .name-input:focus {

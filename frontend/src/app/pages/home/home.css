@@ -41,7 +41,6 @@
   padding: 0.5rem;
   justify-content: center;
   margin-bottom: 12px;
-  background: transparent;
 }
 
 .carousel-title {
@@ -52,7 +51,6 @@
 
 .carousel-body {
   display: block;
-  background: transparent;
 }
 
 .carousel-viewport {
@@ -64,7 +62,6 @@
 .carousel-track {
   display: flex;
   gap: 12px;
-  background: transparent;
   will-change: transform;
   background: rgb(17, 23, 39);
 }
@@ -102,7 +99,6 @@
 .carousel-meta {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.92);
-  background: transparent;
 }
 
 @media (max-width: 520px) {

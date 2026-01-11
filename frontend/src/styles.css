@@ -6,9 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #121212;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #ffffff;
 }
 img {
   max-width: 100%;
@@ -39,5 +37,10 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+html {
+  background-color: #121212;
 }
