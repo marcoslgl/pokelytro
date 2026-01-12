@@ -1,0 +1,333 @@
+/* Layout */
+.types {
+  padding: 1rem;
+}
+
+.title {
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.state {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #d7d7d7;
+  max-width: 48rem;
+}
+
+.state-error {
+  background: rgba(255, 0, 0, 0.08);
+  color: #ffb3b3;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  color: #cfcfcf;
+  font-size: 0.95rem;
+}
+
+.toggle {
+  display: flex;
+  gap: 0.5rem;
+  width: fit-content;
+  margin: 0 auto 0.75rem;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #eaeaea;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.btn.on {
+  background: rgba(120, 190, 255, 0.18);
+  border-color: rgba(120, 190, 255, 0.35);
+}
+
+.legend-item {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.box {
+  overflow: auto;
+  max-width: 100%;
+  min-height: 28rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* Arrows view */
+.ar {
+  width: max-content;
+  min-width: 100%;
+}
+
+.arRow {
+  display: grid;
+  grid-template-columns: 1fr 2.2rem 12rem 2.2rem 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 0.35rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.arSide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  min-height: 2.1rem;
+}
+
+.arMid {
+  display: flex;
+  justify-content: center;
+}
+
+.arArrow {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.55);
+  user-select: none;
+}
+
+.arArrow.off {
+  visibility: hidden;
+}
+
+.arSide.empty {
+  min-height: 2.1rem;
+}
+
+.mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.55rem;
+  padding: 0 0.45rem;
+  border-radius: 0.35rem;
+  font-weight: 900;
+  background: currentColor;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  user-select: none;
+}
+
+.miniText {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.dash {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 800;
+}
+
+/* Table */
+.chart {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content;
+  min-width: 100%;
+}
+
+.chart th,
+.chart td {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  padding: 0;
+}
+
+.chart thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: rgba(18, 18, 18, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.chart th.rowHead {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: rgba(18, 18, 18, 0.92);
+  backdrop-filter: blur(6px);
+  padding: 0.3rem 0.75rem;
+}
+
+.corner {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background: rgba(18, 18, 18, 0.95);
+  color: #cfcfcf;
+  font-weight: 700;
+  padding: 0.75rem 0.5rem;
+  min-width: 7rem;
+}
+
+.colHead {
+  min-width: 2.4rem;
+  height: 2.4rem;
+}
+
+/* Type chips */
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-weight: 800;
+  background: currentColor;
+  color: inherit;
+}
+
+.chipText {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.chipTop {
+  padding: 0.35rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  height: 1.7rem;
+  width: auto;
+}
+
+.chipLeft {
+  justify-content: flex-start;
+  padding: 0.4rem 0.6rem;
+  gap: 0.5rem;
+  min-height: 2rem;
+}
+
+/* Cells */
+.cell {
+  width: 2.4rem;
+  height: 2.4rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #eaeaea;
+}
+
+.weak {
+  background: rgba(25, 202, 25, 0.432);
+}
+
+.neutral {
+  background: rgb(34, 34, 34);
+}
+
+.resist {
+  background: rgba(110, 31, 31, 0.74);
+}
+
+.immune {
+  background: rgba(24, 24, 24, 0.836);
+  color: #d0d0d0;
+}
+
+/* Make dots match */
+.dot.weak {
+  background: rgba(25, 202, 25, 0.432);
+}
+.dot.neutral {
+  background: rgb(34, 34, 34);
+}
+.dot.resist {
+  background: rgba(110, 31, 31, 0.74);
+}
+.dot.immune {
+  background: rgba(24, 24, 24, 0.836);
+}
+
+/* Type colors (copied from the app's existing palette) */
+.Fire {
+  color: #ff2600;
+}
+.Water {
+  color: #4aa3ff;
+}
+.Grass {
+  color: #5e8f47;
+}
+.Electric {
+  color: #a09145;
+}
+.Ice {
+  color: #618896;
+}
+.Fighting {
+  color: #d56b5a;
+}
+.Poison {
+  color: #5d3b6e;
+}
+.Ground {
+  color: #aa9467;
+}
+.Flying {
+  color: #9fbfff;
+}
+.Psychic {
+  color: #c0879f;
+}
+.Bug {
+  color: #808f47;
+}
+.Rock {
+  color: #886c4d;
+}
+.Ghost {
+  color: #8b6bd6;
+}
+.Dark {
+  color: #35312c;
+}
+.Dragon {
+  color: #7fb3ff;
+}
+.Steel {
+  color: #617486;
+}
+.Fairy {
+  color: #c76cbb;
+}
+.Normal {
+  color: #8f8f8f;
+}
