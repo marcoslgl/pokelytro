@@ -12,26 +12,43 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1550px) {
   .pokemon-grid {
     grid-template-columns: repeat(3, minmax(370px, 1fr));
     gap: 1rem;
     padding: 1rem 1vw;
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1220px) {
   .pokemon-grid {
-    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, minmax(370px, 1fr));
     gap: 0.8rem;
     padding: 0.5rem 0.5vw;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 810px) {
   .pokemon-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
     gap: 0.6rem;
     padding: 0.5rem 0.5vw;
+  }
+}
+
+@media (max-width: 685px) {
+  .left-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(1, minmax(180px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem 0.5vw;
+  }
+  .left-controls {
+    display: none !important;
   }
 }
 
@@ -215,6 +232,10 @@ a.pokemon-card:hover {
   color: inherit;
   padding: 0.3rem 0.5rem;
   border-radius: 0.4rem;
+}
+
+option {
+  background: rgb(17, 23, 39);
 }
 
 .filter-button {
