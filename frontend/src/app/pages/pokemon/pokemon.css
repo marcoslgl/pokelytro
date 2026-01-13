@@ -36,7 +36,7 @@
 }
 
 .pokemon-container {
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
   min-height: 100%;
   padding: 2rem 2rem 3.5rem;
@@ -271,6 +271,18 @@ table {
   grid-template-rows: 2rem 1.75rem;
 }
 
+@media (max-width: 1220px) {
+  .type-grid {
+    grid-template-columns: repeat(6, minmax(2.8rem, 1fr));
+  }
+}
+
+@media (max-width: 1120px) {
+  .pokedex-data {
+    grid-template-columns: repeat(2, minmax(16rem, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .pokemon-container {
     padding: 1.25rem 1rem 2.75rem;
@@ -281,16 +293,17 @@ table {
     padding-left: 1rem;
   }
 
-  .pokedex-data {
-    grid-template-columns: repeat(2, minmax(16rem, 1fr));
-  }
-
   .typesStats {
     grid-template-columns: 1fr;
   }
 
   .type-grid {
     grid-template-columns: repeat(6, minmax(2.8rem, 1fr));
+  }
+}
+@media (max-width: 800px) {
+  .pokedex-data {
+    grid-template-columns: repeat(1, minmax(16rem, 1fr));
   }
 }
 
@@ -302,10 +315,6 @@ table {
   .pokedex-data p,
   .typesStats p {
     font-size: 1.25rem;
-  }
-
-  .pokedex-data {
-    grid-template-columns: 1fr;
   }
 
   .type-grid {
