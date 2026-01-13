@@ -4,6 +4,7 @@ import { Pokemon } from '../../models/pokemon/pokemon';
 import { Router } from '@angular/router';
 import { PokemonList } from '../../components/pokemon-list/pokemon-list';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
+import { SessionService } from '../../services/session/session';
 
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
@@ -19,9 +20,10 @@ export class TeamBuilder implements OnInit {
   private teamService = inject(TeamService);
   private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
+  private sessionService = inject(SessionService);
 
   teams: TeamModel[] = [];
-  currentTeam: Pokemon[] = [];
+  currentTeam: Pokemon[] = this.sessionService.getData('currentTeam') || [];
   allPokemons: Pokemon[] = [];
   pokemonMap = new Map<number, Pokemon>();
   isSaving: boolean = false;
@@ -58,10 +60,12 @@ export class TeamBuilder implements OnInit {
       return;
     }
     this.currentTeam = [...this.currentTeam, pokemon];
+    this.sessionService.setData('currentTeam', this.currentTeam);
   }
 
   onRemoveFromTeam(pokemon: Pokemon) {
     this.currentTeam = this.currentTeam.filter((p) => p.id !== pokemon.id);
+    this.sessionService.setData('currentTeam', this.currentTeam);
   }
 
   onSaveTeam() {
@@ -88,6 +92,7 @@ export class TeamBuilder implements OnInit {
       next: () => {
         this.currentTeam = [];
         this.isSaving = false;
+        this.sessionService.removeData('currentTeam');
         this.refreshTeams();
       },
     });
