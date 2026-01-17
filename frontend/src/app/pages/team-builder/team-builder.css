@@ -133,7 +133,9 @@
   margin-left: auto;
   letter-spacing: -0.1em;
   display: inline-block;
-  transition: transform 0.25s cubic-bezier(0.4, 1.6, 0.6, 1), color 0.2s;
+  transition:
+    transform 0.25s cubic-bezier(0.4, 1.6, 0.6, 1),
+    color 0.2s;
 }
 .dropdown-arrow:hover {
   scale: 1.2;
@@ -388,4 +390,8 @@
 }
 .Normal {
   background: #8f8f8f;
+}
+
+.pokemon-img-link:hover {
+  cursor: pointer;
 }

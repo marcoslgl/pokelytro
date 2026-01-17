@@ -337,3 +337,7 @@
 .btn-cancel:hover {
   background-color: #d9363e;
 }
+
+.pokemon-img-link:hover {
+  cursor: pointer;
+}

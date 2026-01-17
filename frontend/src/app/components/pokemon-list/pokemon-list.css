@@ -87,7 +87,9 @@ h1 {
 a.pokemon-card {
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 a.pokemon-card:hover {
@@ -103,6 +105,16 @@ a.pokemon-card:hover {
   align-items: center;
   justify-content: center;
   margin-right: 0.6rem;
+}
+
+.pokemon-img-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pokemon-img-link:hover {
+  cursor: pointer;
 }
 
 /* Info y tipos dentro de la tarjeta */
@@ -445,7 +457,10 @@ span {
   border-radius: 0.4rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
   display: inline-flex;
   align-items: center;
 }
@@ -472,7 +487,10 @@ span {
   border-radius: 0.4rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .btn-select:hover {

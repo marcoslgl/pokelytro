@@ -4,35 +4,45 @@
     <h2>Current Team ({{ currentTeam.length }}/6)</h2>
 
     @if (currentTeam.length === 0) {
-    <p>There are no Pokémon in the team yet.</p>
+      <p>There are no Pokémon in the team yet.</p>
     } @else {
-    <div class="equipo-grid">
-      @for (pokemon of currentTeam; track (pokemon.id + '-' + pokemon.name)) {
-      <div class="actual-card">
-        <img
-          [src]="'/images/' + ('' + pokemon.id) + '.png'"
-          [alt]="pokemon.name"
-          class="equipo-img"
-        />
-        <div class="equipo-info">
-          <span class="equipo-name">{{ pokemon.id }} - {{ pokemon.name }}</span>
-          <div class="pokemon-types">
-            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-            @if (pokemon.type2) {
-            <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
-            }
-            <div class="card-actions">
-              <button (click)="onRemoveFromTeam(pokemon)" class="btn-remove">Remove</button>
+      <div class="equipo-grid">
+        @for (pokemon of currentTeam; track pokemon.id + '-' + pokemon.name) {
+          <div class="actual-card">
+            <a
+              class="pokemon-img-link"
+              [routerLink]="['/pokedex', pokemon.id]"
+              title="Open in Pokédex"
+            >
+              <img
+                [src]="'/images/' + pokemon.id + '.png'"
+                [alt]="pokemon.name"
+                class="equipo-img"
+              />
+            </a>
+            <div class="equipo-info">
+              <span class="equipo-name">{{ pokemon.id }} - {{ pokemon.name }}</span>
+              <div class="pokemon-types">
+                <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+                @if (pokemon.type2) {
+                  <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+                }
+                <div class="card-actions">
+                  <button (click)="onRemoveFromTeam(pokemon)" class="btn-remove">Remove</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
-      }
-    </div>
 
-    <button (click)="onSaveTeam()" [disabled]="currentTeam.length < 6 || isSaving" class="btn-save">
-      {{ isSaving ? 'Saving...' : 'Save Team' }}
-    </button>
+      <button
+        (click)="onSaveTeam()"
+        [disabled]="currentTeam.length < 6 || isSaving"
+        class="btn-save"
+      >
+        {{ isSaving ? 'Saving...' : 'Save Team' }}
+      </button>
     }
   </section>
 
@@ -44,36 +54,40 @@
       <span>Saved Teams</span>
       <span class="dropdown-arrow">&#8594;</span>
     </h2>
-    @if (showSavedTeams) { @if (teams.length === 0) {
-    <p>There are no saved teams yet.</p>
-    } @else {
-    <ul class="equipos-list">
-      @for (team of teams; track (team._id + '-' + team.name)) {
-      <li class="equipo-card">
-        <h3>{{ team.name || 'Team ' + team._id }}</h3>
-        <ul class="team-preview">
-          @for (id of team.pokemons; track $index) {
-          <li>
-            {{ pokemonName(id) }} @if (pokemonMap.get(id)) {
-            <span class="type" [ngClass]="pokemonMap.get(id)?.type1">{{
-              pokemonMap.get(id)?.type1
-            }}</span>
-            @if (pokemonMap.get(id)?.type2) {
-            <span class="type" [ngClass]="pokemonMap.get(id)?.type2">{{
-              pokemonMap.get(id)?.type2
-            }}</span>
-            } }
-          </li>
+    @if (showSavedTeams) {
+      @if (teams.length === 0) {
+        <p>There are no saved teams yet.</p>
+      } @else {
+        <ul class="equipos-list">
+          @for (team of teams; track team._id + '-' + team.name) {
+            <li class="equipo-card">
+              <h3>{{ team.name || 'Team ' + team._id }}</h3>
+              <ul class="team-preview">
+                @for (id of team.pokemons; track $index) {
+                  <li>
+                    {{ pokemonName(id) }}
+                    @if (pokemonMap.get(id)) {
+                      <span class="type" [ngClass]="pokemonMap.get(id)?.type1">{{
+                        pokemonMap.get(id)?.type1
+                      }}</span>
+                      @if (pokemonMap.get(id)?.type2) {
+                        <span class="type" [ngClass]="pokemonMap.get(id)?.type2">{{
+                          pokemonMap.get(id)?.type2
+                        }}</span>
+                      }
+                    }
+                  </li>
+                }
+              </ul>
+              <div class="equipo-card-buttons">
+                <button class="btn-details" (click)="onSelectEquipo(team._id!)">Details</button>
+                <button class="btn-delete" (click)="onDeleteEquipo(team)">Delete</button>
+              </div>
+            </li>
           }
         </ul>
-        <div class="equipo-card-buttons">
-          <button class="btn-details" (click)="onSelectEquipo(team._id!)">Details</button>
-          <button class="btn-delete" (click)="onDeleteEquipo(team)">Delete</button>
-        </div>
-      </li>
       }
-    </ul>
-    } }
+    }
   </section>
 
   <app-pokemon-list
