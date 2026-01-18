@@ -24,7 +24,9 @@
   cursor: pointer;
   text-decoration: none;
   border-radius: 12px;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 .nav-arrow:hover {
   transform: scale(1.3);
@@ -394,7 +396,7 @@ table {
   color: #35312c;
 }
 .Dragon {
-  color: #7fb3ff;
+  color: #4c3097;
 }
 .Steel {
   color: #617486;
