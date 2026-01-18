@@ -1,7 +1,7 @@
 @if (teamBuilding || teamDetails) {
-  <h1 class="title">Available Pokemons</h1>
+<h1 class="title">Available Pokemons</h1>
 } @else {
-  <h1>Pokedex</h1>
+<h1>Pokedex</h1>
 }
 
 <div class="pagination-controls">
@@ -37,39 +37,39 @@
       </svg>
     </button>
     @if (showFilters) {
-      <div class="filters-panel" #filtersPanel>
-        <div class="filters-row">
-          <label>
-            Type
-            <select
-              class="filter-select"
-              [(ngModel)]="selectedType"
-              (ngModelChange)="onTypeChange($event)"
-              aria-label="Filter by type"
-            >
-              <option value="">All</option>
-              @for (t of types; track t) {
-                <option [value]="t">{{ t }}</option>
-              }
-            </select>
-          </label>
-          <label>
-            Generation
-            <select
-              class="filter-select"
-              [(ngModel)]="selectedGen"
-              (ngModelChange)="onGenChange($event)"
-              aria-label="Filter by generation"
-            >
-              <option value="">All</option>
-              @for (g of generations; track g) {
-                <option [value]="g">Gen {{ g }}</option>
-              }
-            </select>
-          </label>
-          <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
-        </div>
+    <div class="filters-panel" #filtersPanel>
+      <div class="filters-row">
+        <label>
+          Type
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedType"
+            (ngModelChange)="onTypeChange($event)"
+            aria-label="Filter by type"
+          >
+            <option value="">All</option>
+            @for (t of types; track t) {
+            <option [value]="t">{{ t }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          Generation
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedGen"
+            (ngModelChange)="onGenChange($event)"
+            aria-label="Filter by generation"
+          >
+            <option value="">All</option>
+            @for (g of generations; track g) {
+            <option [value]="g">Gen {{ g }}</option>
+            }
+          </select>
+        </label>
+        <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
       </div>
+    </div>
     }
   </div>
   <div class="pagination-actions">
@@ -84,74 +84,56 @@
 </div>
 
 <div class="pokemon-grid">
-  @if (teamBuilding || teamDetails) {
-    @for (pokemon of pagedPokemons; track pokemon.id + '-' + pokemon.name) {
-      <div class="pokemon-card">
-        <div class="card-img-col">
-          <a
-            class="pokemon-img-link"
-            [routerLink]="['/pokedex', pokemon.id]"
-            [attr.aria-label]="'Open ' + pokemon.name + ' in Pokédex'"
-            title="Open in Pokédex"
+  @if (teamBuilding || teamDetails) { @for (pokemon of pagedPokemons; track pokemon.id + '-' +
+  pokemon.name) {
+  <div class="pokemon-card">
+    <div class="card-img-col">
+      <a
+        class="pokemon-img-link"
+        [routerLink]="['/pokedex', pokemon.id]"
+        [attr.aria-label]="'Open ' + pokemon.name + ' in Pokédex'"
+        title="Open in Pokédex"
+      >
+        <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+      </a>
+    </div>
+    <div class="card-info">
+      <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
+      <div class="card-types">
+        <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+        @if (pokemon.type2) {
+        <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+        }
+        <div class="card-actions">
+          @if (teamBuilding) {
+          <button
+            class="btn-add"
+            (click)="onAddPokemon(pokemon)"
+            [disabled]="currentTeam.length >= 6"
           >
-            <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
-          </a>
-        </div>
-        <div class="card-info">
-          <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
-          <div class="card-types">
-            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-            @if (pokemon.type2) {
-              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
-            }
-            <div class="card-actions">
-              @if (teamBuilding) {
-                <button
-                  class="btn-add"
-                  (click)="onAddPokemon(pokemon)"
-                  [disabled]="currentTeam.length >= 6"
-                >
-                  Add
-                </button>
-              }
-              @if (replacePokemon) {
-                <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
-              }
-            </div>
-          </div>
+            Add
+          </button>
+          } @if (replacePokemon) {
+          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
+          }
         </div>
       </div>
-    }
-  } @else {
-    @for (pokemon of pagedPokemons; track pokemon.id + '-' + pokemon.name) {
-      <a class="pokemon-card" [routerLink]="['/pokedex', pokemon.id]">
-        <div class="card-img-col">
-          <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
-        </div>
-        <div class="card-info">
-          <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
-          <div class="card-types">
-            <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
-            @if (pokemon.type2) {
-              <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
-            }
-            <div class="card-actions">
-              @if (teamBuilding) {
-                <button
-                  class="btn-add"
-                  (click)="onAddPokemon(pokemon)"
-                  [disabled]="currentTeam.length >= 6"
-                >
-                  Add
-                </button>
-              }
-              @if (replacePokemon) {
-                <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
-              }
-            </div>
-          </div>
-        </div>
-      </a>
-    }
-  }
+    </div>
+  </div>
+  } } @else { @for (pokemon of pagedPokemons; track pokemon.id + '-' + pokemon.name) {
+  <a class="pokemon-card" [routerLink]="['/pokedex', pokemon.id]">
+    <div class="card-img-col">
+      <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+    </div>
+    <div class="card-info">
+      <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
+      <div class="card-types">
+        <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+        @if (pokemon.type2) {
+        <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+        }
+      </div>
+    </div>
+  </a>
+  } }
 </div>

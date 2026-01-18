@@ -51,9 +51,8 @@ export class PokemonList implements OnInit {
   @ViewChild('filtersPanel') filtersPanel?: ElementRef<HTMLElement>;
   @ViewChild('filterButton') filterButton?: ElementRef<HTMLElement>;
 
-  private shouldSyncToUrl(): boolean {
-    // Only sync when used as the main Pokédex page.
-    return !this.teamBuilding && !this.teamDetails;
+  private SyncToUrl(): boolean {
+    return true;
   }
 
   private restoreFromUrl(): void {
@@ -73,7 +72,7 @@ export class PokemonList implements OnInit {
   }
 
   private syncUrl(): void {
-    if (!this.shouldSyncToUrl()) return;
+    if (!this.SyncToUrl()) return;
 
     this.router.navigate([], {
       relativeTo: this.route,
@@ -110,7 +109,7 @@ export class PokemonList implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.shouldSyncToUrl()) {
+    if (this.SyncToUrl()) {
       this.restoreFromUrl();
     }
 
