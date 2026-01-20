@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon as PokemonModel } from '../../models/pokemon/pokemon';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
+import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
 import { Type as TypeService, TypeModel as TypeEffectivenessRow } from '../../services/type/type';
 
 type TypeDefenseCell = {
@@ -26,6 +27,7 @@ type TypeDefenseCell = {
 export class Pokemon implements OnInit {
   private route = inject(ActivatedRoute);
   private pokemonService = inject(PokemonService);
+  private pokemonListStore = inject(PokemonListStore);
   private typeService = inject(TypeService);
   private sanitizer = inject(DomSanitizer);
 
@@ -77,6 +79,97 @@ export class Pokemon implements OnInit {
     Fairy: 'FAI',
   };
 
+  private baseIdToIds = new Map<number, number[]>();
+  private sortedBaseIds: number[] = [];
+
+  private getCurrentNavId(): number | null {
+    const rawId = this.pokemon?.id ?? this.id;
+    const parsed = Number(rawId);
+    if (!Number.isFinite(parsed)) return null;
+    return parsed;
+  }
+
+  private getFallbackPrevId(): number | null {
+    const currentId = this.getCurrentNavId();
+    if (currentId === null) return null;
+    const baseId = Math.trunc(currentId);
+    if (baseId <= 1) return null;
+    return baseId - 1;
+  }
+
+  private getFallbackNextId(maxId = 1025): number | null {
+    const currentId = this.getCurrentNavId();
+    if (currentId === null) return null;
+    const baseId = Math.trunc(currentId);
+    if (baseId >= maxId) return null;
+    return baseId + 1;
+  }
+
+  private findPrevBaseId(baseId: number): number | null {
+    if (this.sortedBaseIds.length === 0) return null;
+    const idx = this.sortedBaseIds.indexOf(baseId);
+    if (idx > 0) return this.sortedBaseIds[idx - 1];
+    if (idx === 0) return null;
+
+    let candidate: number | null = null;
+    for (const b of this.sortedBaseIds) {
+      if (b < baseId) candidate = b;
+      else break;
+    }
+    return candidate;
+  }
+
+  private findNextBaseId(baseId: number): number | null {
+    if (this.sortedBaseIds.length === 0) return null;
+    const idx = this.sortedBaseIds.indexOf(baseId);
+    if (idx !== -1) {
+      return idx < this.sortedBaseIds.length - 1 ? this.sortedBaseIds[idx + 1] : null;
+    }
+
+    for (const b of this.sortedBaseIds) {
+      if (b > baseId) return b;
+    }
+    return null;
+  }
+
+  navPrevId(): number | null {
+    const currentId = this.getCurrentNavId();
+    if (currentId === null) return null;
+
+    if (this.baseIdToIds.size === 0) return this.getFallbackPrevId();
+
+    const baseId = Math.trunc(currentId);
+    const group = this.baseIdToIds.get(baseId);
+    if (!group || group.length === 0) return this.getFallbackPrevId();
+
+    const idx = group.indexOf(currentId);
+    if (idx > 0) return group[idx - 1];
+
+    const prevBase = this.findPrevBaseId(baseId);
+    if (prevBase === null) return null;
+    const prevGroup = this.baseIdToIds.get(prevBase);
+    return prevGroup && prevGroup.length > 0 ? prevGroup[prevGroup.length - 1] : prevBase;
+  }
+
+  navNextId(): number | null {
+    const currentId = this.getCurrentNavId();
+    if (currentId === null) return null;
+
+    if (this.baseIdToIds.size === 0) return this.getFallbackNextId();
+
+    const baseId = Math.trunc(currentId);
+    const group = this.baseIdToIds.get(baseId);
+    if (!group || group.length === 0) return this.getFallbackNextId();
+
+    const idx = group.indexOf(currentId);
+    if (idx !== -1 && idx < group.length - 1) return group[idx + 1];
+
+    const nextBase = this.findNextBaseId(baseId);
+    if (nextBase === null) return null;
+    const nextGroup = this.baseIdToIds.get(nextBase);
+    return nextGroup && nextGroup.length > 0 ? nextGroup[0] : nextBase;
+  }
+
   statBarWidth(value?: number, max = 200): number {
     const safeValue = typeof value === 'number' && Number.isFinite(value) ? value : 0;
     const safeMax = typeof max === 'number' && Number.isFinite(max) && max > 0 ? max : 1;
@@ -86,11 +179,9 @@ export class Pokemon implements OnInit {
 
   statBarClass(
     value?: number,
-    max = 255
+    max = 255,
   ): 'stat-very-low' | 'stat-low' | 'stat-mid' | 'stat-high' | 'stat-very-high' {
     const pct = this.statBarWidth(value, max);
-    // Scale inspired by the classic Pokémon stat bars:
-    // very low (red) -> oranges -> yellow -> green.
     if (pct >= 55) return 'stat-very-high';
     if (pct >= 35) return 'stat-high';
     if (pct >= 25) return 'stat-mid';
@@ -98,8 +189,28 @@ export class Pokemon implements OnInit {
     return 'stat-very-low';
   }
 
-
   ngOnInit(): void {
+    this.pokemonListStore.getList().subscribe((list: PokemonModel[]) => {
+      const map = new Map<number, number[]>();
+      for (const p of list ?? []) {
+        const id = Number((p as any)?.id);
+        if (!Number.isFinite(id)) continue;
+        const base = Math.trunc(id);
+        if (base < 1) continue;
+        const arr = map.get(base);
+        if (arr) arr.push(id);
+        else map.set(base, [id]);
+      }
+
+      for (const [base, ids] of map.entries()) {
+        const uniqueSorted = Array.from(new Set(ids)).sort((a, b) => a - b);
+        map.set(base, uniqueSorted);
+      }
+
+      this.baseIdToIds = map;
+      this.sortedBaseIds = Array.from(map.keys()).sort((a, b) => a - b);
+    });
+
     this.typeService.get().subscribe((rows: any[]) => {
       this.typeRows = (rows ?? [])
         .map((r) => this.normalizeTypeRow(r))
@@ -111,10 +222,10 @@ export class Pokemon implements OnInit {
       const idParam = params.get('id');
       this.id = idParam ? Number(idParam) : undefined;
       if (this.id !== undefined) {
-          this.pokemonService.getById(this.id).subscribe((pokemon: any) => {
-            this.pokemon = pokemon as PokemonModel;
-            this.recomputeTypeDefenses();
-          });
+        this.pokemonService.getById(this.id).subscribe((pokemon: any) => {
+          this.pokemon = pokemon as PokemonModel;
+          this.recomputeTypeDefenses();
+        });
       }
     });
   }
@@ -130,7 +241,7 @@ export class Pokemon implements OnInit {
 
     const multiplierFor = (attacking: string, defender: string): number => {
       const row = this.typeRows.find(
-        (r) => r.attacking_type === attacking && r.defender_type === defender
+        (r) => r.attacking_type === attacking && r.defender_type === defender,
       );
       return typeof row?.multiplier === 'number' ? row.multiplier : 1;
     };
@@ -156,18 +267,10 @@ export class Pokemon implements OnInit {
     if (!row || typeof row !== 'object') return null;
 
     const attacking =
-      row.attacking_type ??
-      row.attackingType ??
-      row.atacante ??
-      row.attacker ??
-      row.attacking;
+      row.attacking_type ?? row.attackingType ?? row.atacante ?? row.attacker ?? row.attacking;
 
     const defender =
-      row.defender_type ??
-      row.defenderType ??
-      row.defensor ??
-      row.defender ??
-      row.defending;
+      row.defender_type ?? row.defenderType ?? row.defensor ?? row.defender ?? row.defending;
 
     const multiplier =
       row.multiplier ?? row.multiplicador ?? row.effectiveness ?? row.efectividad ?? row.mult;
@@ -196,7 +299,9 @@ export class Pokemon implements OnInit {
     if (approx(multiplier, 2)) return 'x2';
     if (approx(multiplier, 4)) return 'x4';
 
-    const cleaned = Number.isInteger(multiplier) ? `${multiplier}` : `${multiplier}`.replace(/\.0+$/, '');
+    const cleaned = Number.isInteger(multiplier)
+      ? `${multiplier}`
+      : `${multiplier}`.replace(/\.0+$/, '');
     return `x${cleaned}`;
   }
 
@@ -219,11 +324,14 @@ export class Pokemon implements OnInit {
       return this.sanitizer.bypassSecurityTrustHtml('Genderless');
     }
     if (rate.toLowerCase() === 'neutral') {
-      return this.sanitizer.bypassSecurityTrustHtml("<span class='male-text'>Male</span> 50% / <span class='female-text'>Female</span> 50% ");
+      return this.sanitizer.bypassSecurityTrustHtml(
+        "<span class='male-text'>Male</span> 50% / <span class='female-text'>Female</span> 50% ",
+      );
     }
     const mMatch = rate.match(/m\s*[\(]?\s*(\d+(?:\.\d+)?)%[\)]?/i);
     const fMatch = rate.match(/f\s*[\(]?\s*(\d+(?:\.\d+)?)%[\)]?/i);
-    let male = 0, female = 0;
+    let male = 0,
+      female = 0;
     if (mMatch) {
       male = parseFloat(mMatch[1]);
       female = 100 - male;
@@ -241,7 +349,9 @@ export class Pokemon implements OnInit {
     }
     const maleStr = Math.round(male * 10) / 10;
     const femaleStr = Math.round(female * 10) / 10;
-    return this.sanitizer.bypassSecurityTrustHtml(`<span class='male-text'>Male</span> ${maleStr}% / <span class='female-text'>Female</span> ${femaleStr}%`);
+    return this.sanitizer.bypassSecurityTrustHtml(
+      `<span class='male-text'>Male</span> ${maleStr}% / <span class='female-text'>Female</span> ${femaleStr}%`,
+    );
   }
 
   getAndFormatDexNumbers(): string {
@@ -277,7 +387,7 @@ export class Pokemon implements OnInit {
       LA: '(Legends: Arceus)',
       SV_Paldea: '(Scarlet/Violet Paldea)',
       SV_Kitakami: '(Scarlet/Violet Kitakami)',
-      SV_Blueberry: '(Scarlet/Violet Blueberry Academy)'
+      SV_Blueberry: '(Scarlet/Violet Blueberry Academy)',
     };
     for (const [key, label] of Object.entries(gameDexMap)) {
       const value = (this.pokemon as any)[key];
@@ -285,8 +395,6 @@ export class Pokemon implements OnInit {
         dexNumbers.push(`<b>${value}</b> ${label}`);
       }
     }
-    return dexNumbers.map(d => `<div>${d}</div>`).join('');
+    return dexNumbers.map((d) => `<div>${d}</div>`).join('');
   }
-
-
 }

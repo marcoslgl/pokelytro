@@ -87,7 +87,9 @@ h1 {
 a.pokemon-card {
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 a.pokemon-card:hover {
@@ -386,62 +388,9 @@ span {
   align-items: center;
   justify-content: center;
   max-width: 100%;
-}
-
-/* Colores por tipo */
-.Fire {
-  background: #ff2600;
-}
-.Water {
-  background: #4aa3ff;
-}
-.Grass {
-  background: #5e8f47;
-}
-.Electric {
-  background: #a09145;
-}
-.Ice {
-  background: #618896;
-}
-.Fighting {
-  background: #d56b5a;
-}
-.Poison {
-  background: #5d3b6e;
-}
-.Ground {
-  background: #aa9467;
-}
-.Flying {
-  background: #9fbfff;
-}
-.Psychic {
-  background: #c0879f;
-}
-.Bug {
-  background: #808f47;
-}
-.Rock {
-  background: #886c4d;
-}
-.Ghost {
-  background: #8b6bd6;
-}
-.Dark {
-  background: #35312c;
-}
-.Dragon {
-  background: #4c3097;
-}
-.Steel {
-  background: #617486;
-}
-.Fairy {
-  background: #c76cbb;
-}
-.Normal {
-  background: #8f8f8f;
+  background: var(--type-color, transparent);
+  border-color: var(--type-color, currentColor);
+  color: #fff;
 }
 
 /* =====================
@@ -456,7 +405,10 @@ span {
   border-radius: 0.4rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
   display: inline-flex;
   align-items: center;
 }
@@ -483,7 +435,10 @@ span {
   border-radius: 0.4rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .btn-select:hover {

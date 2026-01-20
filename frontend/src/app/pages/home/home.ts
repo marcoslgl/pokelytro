@@ -1,4 +1,11 @@
-import { Component, DestroyRef, ElementRef, ViewChild, afterNextRender, inject } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  ViewChild,
+  afterNextRender,
+  inject,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -33,7 +40,7 @@ export class Home {
   private mqlSmallListener?: () => void;
   private autoEnabled = true;
   private stepPx = 0;
-  private pendingDirection: 'next' | 'prev' | null = null;
+  private pendingAdvance = false;
 
   @ViewChild('carouselViewport') private carouselViewport?: ElementRef<HTMLElement>;
 
@@ -129,7 +136,6 @@ export class Home {
     this.setTrackOffset(1, false);
   }
 
-
   private get visiblePokemonIds(): number[] {
     if (this.pokemonIds.length === 0) return [];
 
@@ -144,46 +150,23 @@ export class Home {
     return `/images/${id}.png`;
   }
 
-  prev(): void {
-    this.slidePrev();
-  }
-
-  next(): void {
-    this.slideNext();
-  }
-
-  slidePrev(): void {
+  private slideNext(): void {
     if (this.pokemonIds.length === 0) return;
     if (this.isAnimating) return;
     if (this.stepPx <= 0) return;
 
     this.rebuildRendered();
-    this.pendingDirection = 'prev';
-    this.setTrackOffset(0, true);
-  }
-
-  slideNext(): void {
-    if (this.pokemonIds.length === 0) return;
-    if (this.isAnimating) return;
-    if (this.stepPx <= 0) return;
-
-    this.rebuildRendered();
-    this.pendingDirection = 'next';
+    this.pendingAdvance = true;
     this.setTrackOffset(2, true);
   }
 
   onTrackTransitionEnd(): void {
-    if (!this.pendingDirection) return;
+    if (!this.pendingAdvance) return;
     if (this.pokemonIds.length === 0) return;
 
     const len = this.pokemonIds.length;
-    if (this.pendingDirection === 'next') {
-      this.startIndex = (this.startIndex + 1) % len;
-    } else {
-      this.startIndex = (this.startIndex - 1 + len) % len;
-    }
-
-    this.pendingDirection = null;
+    this.startIndex = (this.startIndex + 1) % len;
+    this.pendingAdvance = false;
     this.rebuildRendered();
     this.setTrackOffset(1, false);
 

@@ -20,7 +20,9 @@ body {
 }
 
 .app-container {
-  transition: transform 0.3s ease, width 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    width 0.3s ease;
   will-change: transform, width;
   min-height: 100vh;
   width: 100vw;
@@ -43,4 +45,76 @@ body {
 
 html {
   background-color: #121212;
+}
+.Normal {
+  --type-color: #8f8f8f;
+  color: var(--type-color);
+}
+.Fire {
+  --type-color: #ff2600;
+  color: var(--type-color);
+}
+.Water {
+  --type-color: #4aa3ff;
+  color: var(--type-color);
+}
+.Grass {
+  --type-color: #5e8f47;
+  color: var(--type-color);
+}
+.Electric {
+  --type-color: #a09145;
+  color: var(--type-color);
+}
+.Ice {
+  --type-color: #618896;
+  color: var(--type-color);
+}
+.Fighting {
+  --type-color: #d56b5a;
+  color: var(--type-color);
+}
+.Poison {
+  --type-color: #5d3b6e;
+  color: var(--type-color);
+}
+.Ground {
+  --type-color: #aa9467;
+  color: var(--type-color);
+}
+.Flying {
+  --type-color: #9fbfff;
+  color: var(--type-color);
+}
+.Psychic {
+  --type-color: #c0879f;
+  color: var(--type-color);
+}
+.Bug {
+  --type-color: #808f47;
+  color: var(--type-color);
+}
+.Rock {
+  --type-color: #886c4d;
+  color: var(--type-color);
+}
+.Ghost {
+  --type-color: #8b6bd6;
+  color: var(--type-color);
+}
+.Dark {
+  --type-color: #35312c;
+  color: var(--type-color);
+}
+.Dragon {
+  --type-color: #4c3097;
+  color: var(--type-color);
+}
+.Steel {
+  --type-color: #617486;
+  color: var(--type-color);
+}
+.Fairy {
+  --type-color: #c76cbb;
+  color: var(--type-color);
 }

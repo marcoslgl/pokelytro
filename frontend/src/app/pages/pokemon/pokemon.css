@@ -353,60 +353,6 @@ table {
   font-weight: 700;
   color: #c2c2c2;
 }
-.Fire {
-  color: #ff2600;
-}
-.Water {
-  color: #4aa3ff;
-}
-.Grass {
-  color: #5e8f47;
-}
-.Electric {
-  color: #a09145;
-}
-.Ice {
-  color: #618896;
-}
-.Fighting {
-  color: #d56b5a;
-}
-.Poison {
-  color: #5d3b6e;
-}
-.Ground {
-  color: #aa9467;
-}
-.Flying {
-  color: #9fbfff;
-}
-.Psychic {
-  color: #c0879f;
-}
-.Bug {
-  color: #808f47;
-}
-.Rock {
-  color: #886c4d;
-}
-.Ghost {
-  color: #8b6bd6;
-}
-.Dark {
-  color: #35312c;
-}
-.Dragon {
-  color: #4c3097;
-}
-.Steel {
-  color: #617486;
-}
-.Fairy {
-  color: #c76cbb;
-}
-.Normal {
-  color: #8f8f8f;
-}
 
 :host ::ng-deep .male-text {
   color: #2196f3 !important;

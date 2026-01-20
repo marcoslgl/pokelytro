@@ -172,61 +172,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-}
-/* Type color classes */
-.Fire {
-  background: #ff2600;
-}
-.Water {
-  background: #4aa3ff;
-}
-.Grass {
-  background: #5e8f47;
-}
-.Electric {
-  background: #a09145;
-}
-.Ice {
-  background: #618896;
-}
-.Fighting {
-  background: #d56b5a;
-}
-.Poison {
-  background: #5d3b6e;
-}
-.Ground {
-  background: #aa9467;
-}
-.Flying {
-  background: #9fbfff;
-}
-.Psychic {
-  background: #c0879f;
-}
-.Bug {
-  background: #808f47;
-}
-.Rock {
-  background: #886c4d;
-}
-.Ghost {
-  background: #8b6bd6;
-}
-.Dark {
-  background: #35312c;
-}
-.Dragon {
-  background: #4c3097;
-}
-.Steel {
-  background: #617486;
-}
-.Fairy {
-  background: #c76cbb;
-}
-.Normal {
-  background: #8f8f8f;
+  background: var(--type-color, transparent);
+  border-color: var(--type-color, currentColor);
+  color: #fff;
 }
 
 /* =====================
