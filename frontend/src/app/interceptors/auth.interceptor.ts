@@ -1,12 +1,16 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-    const authService = inject(AuthService);
-    const authToken = authService.getToken();
+    const platformId = inject(PLATFORM_ID);
+    let authToken = null;
 
-    if (!authToken) {
+    if (isPlatformBrowser(platformId)) {
+        authToken = localStorage.getItem('authToken');
+    }
+
+    if (!authToken || req.url.includes('/api/pokemons')) {
         return next(req);
     }
 

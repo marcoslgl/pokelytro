@@ -12,9 +12,8 @@ import { tap } from 'rxjs';
   styleUrls: ['./pokemon-list.css'],
 })
 export class PokemonList implements OnInit {
-  // Inject the Pokemon service
+
   private pokemonService = inject(PokemonService);
-  //  Pokemon list
 
   pokemons!: Pokemon[];
   page = 1;
@@ -37,7 +36,12 @@ export class PokemonList implements OnInit {
           console.log('Number of pokemons:', data.length);
         })
       )
-      .subscribe();
+      .subscribe({
+        next: () => { },
+        error: (err) => {
+          console.error('Error loading pokemons:', err);
+        }
+      });
   }
 
   nextPage(): void {

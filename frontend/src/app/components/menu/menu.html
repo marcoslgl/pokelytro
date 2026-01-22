@@ -7,36 +7,28 @@
     <li>
       <a [routerLink]="'/'" routerLinkActive="active" (click)="closenav()">Home</a>
     </li>
-    <li>
-      <a [routerLink]="'/pokedex'" routerLinkActive="active" (click)="closenav()">Pokedex</a>
-    </li>
 
-    @if (isAuthenticated()) {
-    <li>
-      <a [routerLink]="'/profile'" routerLinkActive="active" (click)="closenav()">
-        Perfil ({{ currentUser()?.username }})
-      </a>
-    </li>
-    <li>
-      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()">
-        Team Builder
-      </a>
-    </li>
-    <li>
-      <a (click)="onLogout()">
-        Cerrar Sesión
-      </a>
-    </li>
-    }
-    @else {
+    @if (!authService.isAuthenticated()) {
     <li>
       <a [routerLink]="'/login'" routerLinkActive="active" (click)="closenav()">
         Iniciar Sesión
       </a>
     </li>
+    }
+
     <li>
-      <a [routerLink]="'/register'" routerLinkActive="active" (click)="closenav()">
-        Registrarse
+      <a [routerLink]="'/pokedex'" routerLinkActive="active" (click)="closenav()">Pokedex</a>
+    </li>
+
+    @if (authService.isAuthenticated()) {
+    <li>
+      <a [routerLink]="'/profile'" routerLinkActive="active" (click)="closenav()">
+        Perfil
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()">
+        Team Builder
       </a>
     </li>
     }

@@ -10,10 +10,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './menu.css',
 })
 export class Menu {
-  private authService = inject(AuthService);
+  public authService = inject(AuthService);
 
   isAuthenticated = this.authService.isAuthenticated;
   currentUser = this.authService.currentUser;
+
+  constructor() {
+  }
 
   navActive = false;
 

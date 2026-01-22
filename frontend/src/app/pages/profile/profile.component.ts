@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { User, Team } from '../../models/user/user';
@@ -14,9 +14,9 @@ import { tap } from 'rxjs/operators';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
-  private authService = inject(AuthService);
+  public authService = inject(AuthService);
   private router = inject(Router);
-  public isLoading = this.authService.isAuthenticated;
+  public isLoading = signal<boolean>(true);
   public userProfile$: Observable<User | null> = of(null);
   public currentUserBasic = this.authService.currentUser;
 

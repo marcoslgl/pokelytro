@@ -8,6 +8,7 @@ import { TeamBuilder } from './pages/team-builder/team-builder';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { authGuard } from './guards/auth.guard';
+import { guestGuard } from './guards/guest.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
@@ -16,8 +17,8 @@ export const routes: Routes = [
   { path: 'quiz', component: Quiz },
   { path: 'showdown', component: Showdown },
   { path: 'about', component: About },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [guestGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
 
   {
     path: 'team builder',
