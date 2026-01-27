@@ -1,1 +1,46 @@
-<p>home works!</p>
+<section class="home" aria-label="Portada">
+  <video
+    #pikachuVideo
+    class="home-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-label="Pikachu en bucle"
+  >
+    <source src="/pikachu_loop.mp4" type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
+</section>
+
+<section class="carousel" aria-label="Carrusel de Pokémon">
+  <header class="carousel-header">
+    <h2 class="carousel-title">Discover Pokemons</h2>
+  </header>
+
+  <div class="carousel-body">
+    <div class="carousel-viewport" #carouselViewport [style.--visible-count]="visibleCount">
+      <div
+        class="carousel-track"
+        #carouselTrack
+        role="list"
+        [class.is-animating]="isAnimating"
+        [style.transform]="trackTransform"
+        (transitionend)="onTrackTransitionEnd()"
+      >
+        @for (p of renderedPokemons; track $index) {
+        <a
+          class="carousel-card"
+          role="listitem"
+          [routerLink]="['/pokedex', p.id]"
+          [attr.aria-label]="'Abrir ' + p.name"
+        >
+          <img class="carousel-img" [src]="imgSrc(p.id)" [alt]="p.name" loading="lazy" />
+          <div class="carousel-meta">{{ p.name }}</div>
+        </a>
+        }
+      </div>
+    </div>
+  </div>
+</section>

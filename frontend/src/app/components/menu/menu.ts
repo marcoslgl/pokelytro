@@ -18,6 +18,12 @@ export class Menu {
   constructor() {
   }
 
+  menuItems = [
+    { label: 'Home', link: '/', exact: true },
+    { label: 'Pokedex', link: '/pokedex' },
+    { label: 'Team Builder', link: '/team-builder' },
+    { label: 'About', link: '/about' },
+  ];
   navActive = false;
 
   togglenav() {

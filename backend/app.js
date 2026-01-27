@@ -17,6 +17,8 @@ app.use("/api/types", typeRoutes);
 
 const userRoutes = require("./routes/user");
 app.use("/api/users", userRoutes);
+const teamRoutes = require("./routes/teams");
+app.use("/api/teams", teamRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello from the backend!");

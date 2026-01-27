@@ -1,51 +1,134 @@
-/* grid container for pokemon cards */
-body {
-  height: 80vh;
-}
+/* =====================
+  Grid de Pokémon
+  ===================== */
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
-  gap: 0.8rem;
+  grid-template-columns: repeat(4, minmax(370px, 1fr));
+  gap: 1.2rem;
   align-items: stretch;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1550px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(3, minmax(370px, 1fr));
+    gap: 1rem;
+    padding: 1rem 1vw;
+  }
+}
+@media (max-width: 1220px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(2, minmax(370px, 1fr));
+    gap: 0.8rem;
+    padding: 0.5rem 0.5vw;
+  }
+}
+
+@media (max-width: 810px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 0.6rem;
+    padding: 0.5rem 0.5vw;
+  }
+}
+
+@media (max-width: 685px) {
+  .left-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(1, minmax(180px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem 0.5vw;
+  }
+  .left-controls {
+    display: none !important;
+  }
+}
+
+/* =====================
+  Títulos
+  ===================== */
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.title {
   padding: 0.5rem;
-  margin-left: 6vw;
-  margin-right: 2vw;
 }
 
-@media (max-width: 900px) {
-  .pokemon-grid {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .pokemon-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* =====================
+   Tarjeta de Pokémon
+   ===================== */
 .pokemon-card {
-  display: flex;
-  align-items: flex-start;
   gap: 0.75rem;
   padding: 0.6rem;
   margin: 0;
-  border: 1px solid white;
-  border-radius: 0.5rem;
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
   height: 100%;
-  width: 25vw;
+  width: 100%;
+  display: flex; /* Imagen a la izquierda, info a la derecha */
+  align-items: center;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
+a.pokemon-card {
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+a.pokemon-card:hover {
+  scale: 1.03;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+/* Columna de imagen para asegurar posición a la izquierda */
+.card-img-col {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.6rem;
+}
+
+.pokemon-img-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pokemon-img-link:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+/* Info y tipos dentro de la tarjeta */
 .card-info {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  flex: 1 1 auto; /* ocupar el espacio disponible al lado de la imagen */
   min-width: 0;
 }
 
 .card-title {
+  text-align: left;
   font-weight: bold;
 }
 
@@ -53,8 +136,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  align-items: center;
+  width: 100%; /* permite que .card-actions empuje hasta la derecha */
 }
 
+/* Imagen dentro de la tarjeta */
 .pokemon-card img {
   flex: 0 0 auto;
   width: 56px;
@@ -65,17 +151,51 @@ body {
   padding: 0.25rem;
 }
 
-/* Pagination */
+/* Fila inferior de la tarjeta */
+.card-bottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Acciones dentro de la tarjeta (botones) */
+.card-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  max-width: max-content;
+}
+
+/* =====================
+  Paginación y Filtros
+  ===================== */
 .pagination-controls {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin: 0.5rem 0 1rem;
   width: 100%;
   box-sizing: border-box;
-  padding-left: 6vw;
-  padding-right: 3vw;
+  position: relative;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgb(17, 23, 39);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+}
+
+.pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .pagination-controls button {
@@ -110,21 +230,114 @@ body {
   width: 4.5rem;
 }
 
-/* Integrated page jump control */
+.pagination-controls .search-input {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  min-width: 14rem;
+}
+
+.pagination-controls .filter-select {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+option {
+  background: rgb(17, 23, 39);
+}
+
+.filter-button {
+  appearance: none;
+  border: none;
+  color: inherit;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.filter-button svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Panel de filtros desplegable */
+.filters-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(17, 23, 39, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+/* Fila de filtros */
+.filters-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* Acciones de filtros */
+.filters-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Botón limpiar filtros */
+.clear-filters {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+/* Input de búsqueda (posición) */
+.search-input {
+  margin-left: 1%;
+}
+
+/* Control de salto de página */
 .page-jump {
   display: inline-flex;
   align-items: stretch;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: none;
   border-radius: 0.4rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .page-jump input[type='number'] {
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.06);
   color: inherit;
   padding: 0.3rem 0.6rem;
   width: 5.2rem;
+  border-radius: 0.4rem;
+}
+
+input[type='number'] {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-left: 3vw;
 }
 
 .page-jump-button {
@@ -135,7 +348,7 @@ body {
   cursor: pointer;
 }
 
-/* Remove number input arrows (spinners) */
+/* Quitar flechas de inputs numéricos (spinners) */
 .pagination-controls input[type='number']::-webkit-outer-spin-button,
 .pagination-controls input[type='number']::-webkit-inner-spin-button,
 .page-jump input[type='number']::-webkit-outer-spin-button,
@@ -152,75 +365,84 @@ body {
 
 .pagination-controls .page-indicator {
   display: inline-block;
-  min-width: 16ch;
   text-align: center;
 }
+/* =====================
+  Tipografía general
+  ===================== */
 span {
   font-weight: bold;
   word-break: break-word;
 }
+
+/* =====================
+  Badge de tipo Pokémon
+  ===================== */
 .type {
   font-weight: normal;
   border: 0.5px solid;
   border-radius: 0.3rem;
   padding: 0.1rem 0.5rem 0.15rem 0.4rem;
   margin: 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
+  background: var(--type-color, transparent);
+  border-color: var(--type-color, currentColor);
+  color: #fff;
 }
 
-/* Type color classes */
-.Fire {
-  background: #ff2600;
+/* =====================
+  Botones: Añadir y Seleccionar
+  ===================== */
+/* Botón Añadir al equipo */
+.btn-add {
+  background: rgba(34, 197, 94, 0.22);
+  border: 1px solid rgba(34, 197, 94, 0.55);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
 }
-.Water {
-  background: #4aa3ff;
+
+.btn-add:hover:not(:disabled) {
+  background: rgba(34, 197, 94, 0.32);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
 }
-.Grass {
-  background: #5e8f47;
+
+.btn-add:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
-.Electric {
-  background: #a09145;
+
+/* Boton Seleccionar para reemplazar */
+/* Botón Seleccionar para reemplazar */
+.btn-select {
+  background: rgba(245, 158, 11, 0.22);
+  border: 1px solid rgba(245, 158, 11, 0.55);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
 }
-.Ice {
-  background: #618896;
-}
-.Fighting {
-  background: #d56b5a;
-}
-.Poison {
-  background: #5d3b6e;
-}
-.Ground {
-  background: #aa9467;
-}
-.Flying {
-  background: #9fbfff;
-}
-.Psychic {
-  background: #c0879f;
-}
-.Bug {
-  background: #808f47;
-}
-.Rock {
-  background: #886c4d;
-}
-.Ghost {
-  background: #8b6bd6;
-}
-.Dark {
-  background: #35312c;
-}
-.Dragon {
-  background: #7fb3ff;
-}
-.Steel {
-  background: #617486;
-}
-.Fairy {
-  background: #c76cbb;
-}
-.Normal {
-  background: #8f8f8f;
+
+.btn-select:hover {
+  background: rgba(245, 158, 11, 0.32);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
 }

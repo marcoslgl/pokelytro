@@ -5,7 +5,7 @@ const Pokemon = require("../models/Pokemon");
 // GET: list
 router.get("/", async (req, res) => {
   try {
-    const pokemons = await Pokemon.find();
+    const pokemons = await Pokemon.find().sort({ _id: 1 });
     res.status(200).json(pokemons);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -38,7 +38,11 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const updatedPokemon = await Pokemon.findByIdAndUpdate({ _id: id }, { $set: req.body }, { new: true });
+    const updatedPokemon = await Pokemon.findByIdAndUpdate(
+      { _id: id },
+      { $set: req.body },
+      { new: true },
+    );
     res.status(200).json(updatedPokemon);
   } catch (err) {
     res.status(500).json({ message: err.message });

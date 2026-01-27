@@ -55,6 +55,7 @@ nav ul li a:hover {
   left: 1rem;
   color: #fff;
   border: none;
+  outline: none;
   font-size: 2rem;
   border-radius: 10rem;
   --open-nav-size: 3.5rem;
@@ -67,6 +68,15 @@ nav ul li a:hover {
   cursor: pointer;
   z-index: 1100;
   transition: transform 0.3s;
+}
+
+.open-nav:focus {
+  outline: none;
+}
+
+.open-nav:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.35);
 }
 .open-nav.rotated {
   transform: rotate(360deg);
@@ -82,7 +92,7 @@ nav ul li a:hover {
   --before-diameter: var(--pokeball-inner-size);
   --after-diameter: calc(var(--before-diameter) - (var(--pokeball-border-size) * 3));
 
-  border: var(--pokeball-border-size) solid #121212;
+  border: 3px solid #000000;
   border-radius: 100%;
   margin: 0;
   position: relative;
@@ -92,8 +102,8 @@ nav ul li a:hover {
     #ba0c2f 44%,
     #121212 44%,
     #121212 56%,
-    #fff 56%,
-    #fff 100%
+    #ffffff 56%,
+    #ffffff 100%
   );
   /* ensure hover in/out transitions use the same easing */
   transform: rotate(0deg);
@@ -138,7 +148,7 @@ nav ul li a:hover {
       )
   );
 
-  background: #fff;
+  background: #ffffff;
   border: double var(--pokeball-border-size) #262122;
 }
 

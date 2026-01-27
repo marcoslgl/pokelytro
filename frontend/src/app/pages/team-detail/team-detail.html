@@ -1,0 +1,74 @@
+<div class="equipo-detail-container">
+  @if (team) {
+    <div class="header">
+      <button (click)="onGoBack()" class="btn">← Back</button>
+      <h2>Pokémon Team ({{ teamPokemons.length }}/6)</h2>
+    </div>
+
+    <section class="equipo-actual">
+      <div class="team">
+        <div class="team-header">
+          @if (!isEditingName) {
+            <h3>Details for {{ team.name || 'Team ' + team._id }}</h3>
+            <button (click)="onEditName()" class="btn-edit-name">Rename</button>
+          } @else {
+            <div class="edit-name-form">
+              <input [(ngModel)]="newTeamName" placeholder="New team name" class="name-input" />
+              <button (click)="onSaveName()" class="btn-save">Save</button>
+              <button (click)="onCancelEditName()" class="btn-cancel">Cancel</button>
+            </div>
+          }
+        </div>
+        <ul class="team-list">
+          @for (pokemon of teamPokemons; track pokemon.id) {
+            <li class="team-item">
+              <div class="actual-card">
+                <a
+                  class="pokemon-img-link"
+                  [routerLink]="['/pokedex', pokemon.id]"
+                  title="Open in Pokédex"
+                >
+                  <img
+                    [src]="'/images/' + pokemon.id + '.png'"
+                    [alt]="pokemon.name"
+                    class="equipo-img"
+                  />
+                </a>
+                <div class="equipo-info">
+                  <span class="equipo-name">{{ pokemon.id }} - {{ pokemon.name }}</span>
+                  <div class="pokemon-types">
+                    <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+                    @if (pokemon.type2) {
+                      <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+                    }
+                    <div class="card-actions">
+                      <button (click)="onUpdatePokemon(pokemon)" class="btn-replace">
+                        Replace
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <div class="replace-section">
+      @if (errorMessage) {
+        <div class="error-banner">{{ errorMessage }}</div>
+      }
+      @if (selectedPokemonToReplace) {
+        <h3>Replace "{{ selectedPokemonToReplace.name }}" with:</h3>
+        <br />
+        <button (click)="selectedPokemonToReplace = null" class="btn">Cancel</button>
+      }
+      <app-pokemon-list
+        [teamDetails]="true"
+        [replacePokemon]="!!selectedPokemonToReplace"
+        (onReplacePokemon)="onReplacePokemon($event)"
+      ></app-pokemon-list>
+    </div>
+  }
+</div>

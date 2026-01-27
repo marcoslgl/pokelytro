@@ -1,1 +1,122 @@
-<p>about works!</p>
+<section class="about" aria-label="About Us">
+  <header class="about-hero">
+    <div class="about-hero-inner">
+      <h1 class="about-title">About Us</h1>
+      <p class="about-subtitle">
+        Pokelytro is a modern Pokédex to discover Pokémon, explore types, and build teams. The idea
+        is simple: a fast, clean, and beautiful experience.
+      </p>
+
+      <div class="about-badges" aria-label="Technologies and focus">
+        <span class="badge">Angular 21</span>
+        <span class="badge">TypeScript</span>
+        <span class="badge">Express</span>
+        <span class="badge">MongoDB</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-section" aria-label="Team">
+    <div class="team-grid" role="list">
+      <article class="team-card" role="listitem" aria-label="Marco, Frontend & UI">
+        <img class="team-avatar" src="/images/25.png" alt="Marco" loading="lazy" />
+        <div class="team-meta">
+          <div class="team-name">Our Mission</div>
+          <p class="team-bio">
+            Make discovering Pokémon fast, clear, and enjoyable: simple search, clean screens, and a
+            consistent experience.
+          </p>
+        </div>
+      </article>
+
+      <article class="team-card" role="listitem" aria-label="Backend, API & Data">
+        <img class="team-avatar" src="/images/1.png" alt="Backend" loading="lazy" />
+        <div class="team-meta">
+          <div class="team-name">What We Build</div>
+          <p class="team-bio">
+            A Pokédex with useful details (types, stats, evolutions) and a team builder designed for
+            playing and learning.
+          </p>
+        </div>
+      </article>
+
+      <article class="team-card" role="listitem" aria-label="Product, Ideas & Polish">
+        <img class="team-avatar" src="/images/133.png" alt="Product" loading="lazy" />
+        <div class="team-meta">
+          <div class="team-name">The Experience</div>
+          <p class="team-bio">
+            Polished details and seamless improvements designed to make the app feel robust, fast,
+            and "pro".
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-section about-animated" aria-label="Built with">
+    <header class="section-header">
+      <h2 class="section-title">What you’ll find in Pokelytro</h2>
+    </header>
+
+    <div class="scan-layout">
+      <div class="scan-copy">
+        <ul class="scan-list">
+          <li>Fast navigation across all Pokemon</li>
+          <li>Polished and intuitive interface</li>
+          <li>Complete Pokemon search tool</li>
+          <li>Team Builder to save and manage your teams</li>
+          <li>Type effectiveness chart for strategy</li>
+        </ul>
+      </div>
+
+      <div class="scan-visual" aria-hidden="true">
+        <div class="scanner">
+          <div class="scanner-grid"></div>
+          <div class="scanner-sweep"></div>
+
+          <span class="blip" style="--x: 22%; --y: 32%; --d: 0.2s"></span>
+          <span class="blip" style="--x: 68%; --y: 26%; --d: 1.2s"></span>
+          <span class="blip" style="--x: 74%; --y: 64%; --d: 0.8s"></span>
+          <span class="blip" style="--x: 38%; --y: 70%; --d: 1.6s"></span>
+          <span class="blip" style="--x: 50%; --y: 50%; --d: 2.1s"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" aria-label="Get started">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">Gotta Catch 'Em All!</h2>
+        <p class="cta-text">
+          Browse the Pokédex, check the type charts or build a team in seconds.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" [routerLink]="['/pokedex']">Open Pokedex</a>
+        <a class="btn btn-primary" [routerLink]="['/team-builder']">Team Builder</a>
+        <a class="btn" [routerLink]="['/type-charts']">Open Type Charts</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="about-footer" aria-label="Footer">
+    <small class="footer-copy">© 2026 Pokelytro</small>
+
+    <a
+      class="btn btn-github footer-github"
+      href="https://github.com/pitumola/pokelytro"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open GitHub"
+    >
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          fill="currentColor"
+          d="M12 .5C5.73.5.75 5.65.75 12.02c0 5.11 3.29 9.44 7.86 10.97.58.11.79-.26.79-.57v-2.1c-3.2.71-3.88-1.58-3.88-1.58-.53-1.38-1.3-1.75-1.3-1.75-1.06-.74.08-.73.08-.73 1.17.09 1.79 1.23 1.79 1.23 1.05 1.84 2.75 1.31 3.42 1 .11-.77.41-1.31.74-1.61-2.56-.3-5.26-1.31-5.26-5.82 0-1.29.45-2.34 1.19-3.17-.12-.3-.52-1.51.11-3.16 0 0 .97-.32 3.18 1.21.92-.26 1.91-.39 2.89-.4.98.01 1.97.14 2.89.4 2.2-1.53 3.17-1.21 3.17-1.21.63 1.65.23 2.86.11 3.16.74.83 1.18 1.88 1.18 3.17 0 4.52-2.71 5.52-5.29 5.81.42.37.79 1.1.79 2.23v3.3c0 .31.21.68.8.57 4.56-1.54 7.84-5.86 7.84-10.97C23.25 5.65 18.27.5 12 .5z"
+        />
+      </svg>
+      <span>GitHub</span>
+    </a>
+  </footer>
+</section>

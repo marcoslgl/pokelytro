@@ -1,17 +1,130 @@
+@if (teamBuilding || teamDetails) {
+<h1 class="title">Available Pokemons</h1>
+} @else {
+<h1>Pokedex</h1>
+}
+
 <div class="pagination-controls">
-  <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
-  <span class="page-indicator">Página {{ page }} / {{ totalPages }}</span>
-  <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
-  <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-    <input #pageInput type="number" placeholder="Página" />
-  </form>
-  <button (click)="goToPage(pageInput.value)">Ir</button>
+  <div class="left-controls">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Search by name"
+      [value]="searchTerm"
+      (input)="onSearch($any($event.target).value)"
+    />
+    <button
+      #filterButton
+      class="filter-button"
+      type="button"
+      (click)="toggleFilters()"
+      aria-label="Filters"
+      title="Filters"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+        focusable="false"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M3 4h18l-7 9v6l-4-2v-4z" />
+      </svg>
+    </button>
+    @if (showFilters) {
+    <div class="filters-panel" #filtersPanel>
+      <div class="filters-row">
+        <label>
+          Type
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedType"
+            (ngModelChange)="onTypeChange($event)"
+            aria-label="Filter by type"
+          >
+            <option value="">All</option>
+            @for (t of types; track t) {
+            <option [value]="t">{{ t }}</option>
+            }
+          </select>
+        </label>
+        <label>
+          Generation
+          <select
+            class="filter-select"
+            [(ngModel)]="selectedGen"
+            (ngModelChange)="onGenChange($event)"
+            aria-label="Filter by generation"
+          >
+            <option value="">All</option>
+            @for (g of generations; track g) {
+            <option [value]="g">Gen {{ g }}</option>
+            }
+          </select>
+        </label>
+        <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="pagination-actions">
+    <button (click)="prevPage()" [disabled]="page === 1" aria-label="Previous">&#9664;</button>
+    <span class="page-indicator">Page {{ page }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">&#9654;</button>
+    <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
+      <input #pageInput type="number" placeholder="Page" />
+    </form>
+    <button (click)="goToPage(pageInput.value)">Go</button>
+  </div>
 </div>
 
 <div class="pokemon-grid">
-  @for (pokemon of pagedPokemons; track pokemon.id) {
+  @if (teamBuilding || teamDetails) { @for (pokemon of pagedPokemons; track pokemon.id + '-' +
+  pokemon.name) {
   <div class="pokemon-card">
-    <img [src]="'/images/' + ('' + pokemon.id) + '.png'" [alt]="pokemon.name" />
+    <div class="card-img-col">
+      <a
+        class="pokemon-img-link"
+        [routerLink]="['/pokedex', pokemon.id]"
+        [attr.aria-label]="'Open ' + pokemon.name + ' in Pokédex'"
+        title="Open in Pokédex"
+      >
+        <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+      </a>
+    </div>
+    <div class="card-info">
+      <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
+      <div class="card-types">
+        <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+        @if (pokemon.type2) {
+        <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+        }
+        <div class="card-actions">
+          @if (teamBuilding) {
+          <button
+            class="btn-add"
+            (click)="onAddPokemon(pokemon)"
+            [disabled]="currentTeam.length >= 6"
+          >
+            Add
+          </button>
+          } @if (replacePokemon) {
+          <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  } } @else { @for (pokemon of pagedPokemons; track pokemon.id + '-' + pokemon.name) {
+  <a class="pokemon-card" [routerLink]="['/pokedex', pokemon.id]">
+    <div class="card-img-col">
+      <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+    </div>
     <div class="card-info">
       <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
       <div class="card-types">
@@ -21,6 +134,6 @@
         }
       </div>
     </div>
-  </div>
-  }
+  </a>
+  } }
 </div>
