@@ -24,6 +24,8 @@ import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list
   styleUrls: ['./pokemon-list.css'],
 })
 export class PokemonList implements OnInit {
+
+  private pokemonService = inject(PokemonService);
   private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -135,7 +137,12 @@ export class PokemonList implements OnInit {
           console.log('Number of pokemons:', data.length);
         })
       )
-      .subscribe();
+      .subscribe({
+        next: () => { },
+        error: (err) => {
+          console.error('Error loading pokemons:', err);
+        }
+      });
   }
 
   nextPage(): void {
