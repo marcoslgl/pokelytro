@@ -1,1 +1,17 @@
-<h1>POKELYTRO</h1>
+<div class="home-container">
+  <h1>POKELYTRO</h1>
+
+  @if (!isAuthPage()) {
+    <div class="log">
+      @if (!authService.isAuthenticated()) {
+        <a [routerLink]="'/login'" routerLinkActive="active" class="user-icon">
+          <img src="/loginImages/user.png" alt="Sign In" />
+        </a>
+      } @else {
+        <a [routerLink]="'/profile'" routerLinkActive="active" class="user-icon">
+          <img src="/loginImages/user.png" alt="Profile" />
+        </a>
+      }
+    </div>
+  }
+</div>

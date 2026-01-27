@@ -1,6 +1,51 @@
-h1 {
+.home-container {
+  position: relative;
   background-color: #121212;
-  padding: 3vh;
+  padding: 3vh 0;
+}
+
+h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   text-align: center;
   font-size: 2.5rem;
+  margin: 0;
+}
+
+.log {
+  padding-top: 4vh;
+  padding-right: 0.5vw;
+  position: absolute;
+  right: 3vh;
+  top: 50%;
+  transform: translateY(-50%);
+  width: fit-content;
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.user-icon:hover {
+  background: #f5f5f5;
+  border-color: rgb(59, 130, 246);
+  transform: scale(1.1);
+}
+
+.user-icon img {
+  width: max-content;
+  height: auto;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 50%;
 }

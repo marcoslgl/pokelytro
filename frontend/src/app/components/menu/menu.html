@@ -8,41 +8,20 @@
       <a [routerLink]="'/'" routerLinkActive="active" (click)="closenav()">Home</a>
     </li>
 
-    @if (!authService.isAuthenticated()) {
-    <li>
-      <a [routerLink]="'/login'" routerLinkActive="active" (click)="closenav()">
-        Iniciar Sesión
-      </a>
-    </li>
-    }
-
     <li>
       <a [routerLink]="'/pokedex'" routerLinkActive="active" (click)="closenav()">Pokedex</a>
     </li>
-
-    @if (authService.isAuthenticated()) {
     <li>
-      <a [routerLink]="'/profile'" routerLinkActive="active" (click)="closenav()">
-        Perfil
-      </a>
+      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()"
+        >Team Builder</a
+      >
     </li>
-    <li>
-      <a [routerLink]="'/team-builder'" routerLinkActive="active" (click)="closenav()">
-        Team Builder
-      </a>
-    </li>
-    }
 
     <li>
-      <a [routerLink]="'/poke-quiz'" routerLinkActive="active" (click)="closenav()">Poke Quiz</a>
-    </li>
-    <li>
-      <a [routerLink]="'/showdown'" routerLinkActive="active" (click)="closenav()">Showdown</a>
       <a [routerLink]="'/type-chart'" routerLinkActive="active" (click)="closenav()">Type Chart</a>
     </li>
     <li>
       <a [routerLink]="'/about'" routerLinkActive="active" (click)="closenav()">About Us</a>
     </li>
-
   </ul>
 </nav>

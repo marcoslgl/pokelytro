@@ -1,60 +1,60 @@
 <div class="register-container">
-    <h2>Registro de Entrenador Pokémon</h2>
+  <h2>Pokémon Trainer Registration</h2>
 
-    @if (errorMessage) {
+  @if (errorMessage) {
     <div class="alert alert-error">{{ errorMessage }}</div>
-    }
+  }
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-        <div class="form-group">
-            <label for="username">Nombre de Usuario</label>
-            <input id="username" type="text" formControlName="username" placeholder="AshKetchum">
-            @if (username?.invalid && (username?.dirty || username?.touched)) {
-            <div class="error-message">
-                @if (username?.errors?.['required']) {
-                <span>El nombre de usuario es obligatorio.</span>
-                }
-            </div>
-            }
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" type="text" formControlName="username" placeholder="AshKetchum" />
+      @if (username?.invalid && (username?.dirty || username?.touched)) {
+        <div class="error-message">
+          @if (username?.errors?.['required']) {
+            <span>Username is required.</span>
+          }
         </div>
+      }
+    </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" formControlName="email" placeholder="tu@email.com">
-            @if (email?.invalid && (email?.dirty || email?.touched)) {
-            <div class="error-message">
-                @if (email?.errors?.['required']) {
-                <span>El email es obligatorio.</span>
-                }
-                @if (email?.errors?.['email']) {
-                <span>Formato de email inválido.</span>
-                }
-            </div>
-            }
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="your@email.com" />
+      @if (email?.invalid && (email?.dirty || email?.touched)) {
+        <div class="error-message">
+          @if (email?.errors?.['required']) {
+            <span>Email is required.</span>
+          }
+          @if (email?.errors?.['email']) {
+            <span>Invalid email format.</span>
+          }
         </div>
+      }
+    </div>
 
-        <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input id="password" type="password" formControlName="password" placeholder="Mínimo 6 caracteres">
-            @if (password?.invalid && (password?.dirty || password?.touched)) {
-            <div class="error-message">
-                @if (password?.errors?.['required']) {
-                <span>La contraseña es obligatoria.</span>
-                }
-                @if (password?.errors?.['minlength']) {
-                <span>Debe tener al menos 6 caracteres.</span>
-                }
-            </div>
-            }
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Minimum 6 characters"
+      />
+      @if (password?.invalid && (password?.dirty || password?.touched)) {
+        <div class="error-message">
+          @if (password?.errors?.['required']) {
+            <span>Password is required.</span>
+          }
+          @if (password?.errors?.['minlength']) {
+            <span>Must be at least 6 characters long.</span>
+          }
         </div>
+      }
+    </div>
 
-        <button type="submit" [disabled]="registerForm.invalid">
-            Crear Cuenta
-        </button>
-    </form>
+    <button type="submit" [disabled]="registerForm.invalid">Create Account</button>
+  </form>
 
-    <p class="login-link">
-        ¿Ya eres Entrenador? <a [routerLink]="['/login']">Inicia Sesión</a>
-    </p>
+  <p class="login-link">Already a Trainer? <a [routerLink]="['/login']">Sign In</a></p>
 </div>

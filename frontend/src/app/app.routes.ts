@@ -8,12 +8,6 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { authGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
-
-export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'pokedex', component: Pokedex },
-  { path: 'quiz', component: Quiz },
-  { path: 'showdown', component: Showdown },
 import { TeamDetail } from './pages/team-detail/team-detail';
 import { Pokemon } from './pages/pokemon/pokemon';
 import { pokemonListResolver } from './resolvers/pokemon-list.resolver';
@@ -23,30 +17,12 @@ export const routes: Routes = [
   { path: '', component: Home },
   { path: 'pokedex', component: Pokedex, resolve: { pokemonList: pokemonListResolver } },
   { path: 'pokedex/:id', component: Pokemon },
-  { path: 'team-builder', component: TeamBuilder, resolve: { pokemonList: pokemonListResolver } },
+  { path: 'team-builder', component: TeamBuilder, resolve: { pokemonList: pokemonListResolver }, canActivate: [authGuard] },
+  { path: 'team-detail', component: TeamDetail, resolve: { pokemonList: pokemonListResolver }, runGuardsAndResolvers: 'paramsOrQueryParamsChange' },
   { path: 'type-chart', component: Types },
-  {
-    path: 'team-detail',
-    component: TeamDetail,
-    resolve: { pokemonList: pokemonListResolver },
-    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-  },
   { path: 'about', component: About },
   { path: 'login', component: LoginComponent, canActivate: [guestGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
-
-  {
-    path: 'team builder',
-    component: TeamBuilder,
-    canActivate: [authGuard]
-  },
-
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [authGuard]
-  },
-
-
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '' }
 ];

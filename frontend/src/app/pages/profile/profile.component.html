@@ -1,69 +1,71 @@
 <div class="profile-page">
-    <div class="header">
-        <h2>Bienvenido, Entrenador {{ currentUserBasic()?.username }}</h2>
-        <button (click)="onLogout()" class="logout-btn">Cerrar Sesión</button>
-    </div>
+  <div class="header">
+    <h2>Welcome, Trainer {{ currentUserBasic()?.username }}</h2>
+    <button (click)="onLogout()" class="logout-btn">Sign Out</button>
+  </div>
 
-    @if (userProfile$ | async; as profile) {
+  @if (userProfile$ | async; as profile) {
     <div class="profile-details">
+      <section class="user-info">
+        <h3>Your Information</h3>
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Member since:</strong> {{ profile.createdAt | date: 'mediumDate' }}</p>
+        <button class="edit-btn">Edit Profile (Coming Soon)</button>
+      </section>
 
-        <section class="user-info">
-            <h3>Tus Datos</h3>
-            <p><strong>Email:</strong> {{ profile.email }}</p>
-            <p><strong>Miembro desde:</strong> {{ profile.createdAt | date:'mediumDate' }}</p>
-            <button class="edit-btn">Editar Perfil (Próximamente)</button>
-        </section>
+      <section class="favorites-list">
+        <h3>Favorite Pokémon ({{ profile.favorites.length }})</h3>
 
-        <section class="favorites-list">
-            <h3> Pokémon Favoritos ({{ profile.favorites.length }})</h3>
-
-            @if (profile.favorites.length > 0) {
-            <div class="pokemon-grid">
-                @for (pokeId of profile.favorites; track pokeId) {
-                <div class="pokemon-card">
-                    <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
-                    <span>#{{ pokeId }}</span>
-                </div>
-                }
-            </div>
-            } @else {
-            <p>Aún no has añadido ningún Pokémon favorito. Visita la <a [routerLink]="['/pokedex']">Pokedex</a>.</p>
+        @if (profile.favorites.length > 0) {
+          <div class="pokemon-grid">
+            @for (pokeId of profile.favorites; track pokeId) {
+              <div class="pokemon-card">
+                <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
+                <span>#{{ pokeId }}</span>
+              </div>
             }
-        </section>
+          </div>
+        } @else {
+          <p>
+            You haven't added any favorite Pokémon yet. Visit the
+            <a [routerLink]="['/pokedex']">Pokedex</a>.
+          </p>
+        }
+      </section>
 
-        <section class="teams-list">
-            <h3>🏆 Equipos Guardados ({{ profile.teams.length }})</h3>
-            <a [routerLink]="['/team builder']" class="btn-create-team">Crear Nuevo Equipo</a>
+      <section class="teams-list">
+        <h3>🏆 Saved Teams ({{ profile.teams.length }})</h3>
+        <a [routerLink]="['/team builder']" class="btn-create-team">Create New Team</a>
 
-            @if (profile.teams.length > 0) {
-            @for (team of profile.teams; track team.name) {
+        @if (profile.teams.length > 0) {
+          @for (team of profile.teams; track team.name) {
             <div class="team-card">
-                <h4>{{ team.name }}</h4>
-                <div class="team-members">
-                    @for (pokeId of team.pokemons; track $index) {
-                    <div class="pokemon-icon">
-                        <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
-                    </div>
-                    }
-                </div>
-                <div class="team-actions">
-                    <button class="edit-team-btn">Editar</button>
-                    <button class="delete-team-btn">Eliminar</button>
-                </div>
+              <h4>{{ team.name }}</h4>
+              <div class="team-members">
+                @for (pokeId of team.pokemons; track $index) {
+                  <div class="pokemon-icon">
+                    <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
+                  </div>
+                }
+              </div>
+              <div class="team-actions">
+                <button class="edit-team-btn">Edit</button>
+                <button class="delete-team-btn">Delete</button>
+              </div>
             </div>
-            }
-            } @else {
-            <p>No tienes equipos guardados. ¡Empieza a construir tu equipo ideal!</p>
-            }
-        </section>
+          }
+        } @else {
+          <p>You don't have any saved teams yet. Start building your ideal team!</p>
+        }
+      </section>
     </div>
-    } @else if (isLoading()) {
-    <p>Cargando perfil...</p>
-    } @else {
+  } @else if (isLoading()) {
+    <p>Loading profile...</p>
+  } @else {
     <div class="error-state">
-        <h3>Error de carga</h3>
-        <p>No se pudo cargar la información del perfil. Por favor, intenta iniciar sesión de nuevo.</p>
-        <button (click)="onLogout()">Ir a Login</button>
+      <h3>Loading Error</h3>
+      <p>Could not load profile information. Please try signing in again.</p>
+      <button (click)="onLogout()">Go to Login</button>
     </div>
-    }
+  }
 </div>

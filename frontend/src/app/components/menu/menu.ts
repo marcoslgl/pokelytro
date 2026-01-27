@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core'
+import { Component } from '@angular/core'
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,20 +9,6 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './menu.css',
 })
 export class Menu {
-  public authService = inject(AuthService);
-
-  isAuthenticated = this.authService.isAuthenticated;
-  currentUser = this.authService.currentUser;
-
-  constructor() {
-  }
-
-  menuItems = [
-    { label: 'Home', link: '/', exact: true },
-    { label: 'Pokedex', link: '/pokedex' },
-    { label: 'Team Builder', link: '/team-builder' },
-    { label: 'About', link: '/about' },
-  ];
   navActive = false;
 
   togglenav() {
@@ -34,10 +19,5 @@ export class Menu {
   closenav() {
     this.navActive = false;
     document.body.classList.remove('menu-open');
-  }
-
-  onLogout() {
-    this.authService.logout();
-    this.closenav();
   }
 }

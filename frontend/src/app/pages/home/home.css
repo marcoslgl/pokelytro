@@ -68,7 +68,7 @@
 }
 
 .carousel-track.is-animating {
-  transition: transform 3500ms linear;
+  transition: transform 4000ms linear;
 }
 
 .carousel-card {
