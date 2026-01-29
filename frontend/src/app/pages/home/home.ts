@@ -1,243 +1,58 @@
-import {
-  Component,
-  DestroyRef,
-  ElementRef,
-  ViewChild,
-  afterNextRender,
-  inject,
-} from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { catchError, of } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
-
-type CarouselPokemon = {
-  id: number;
-  name: string;
-};
+import { Pokemon } from '../../models/pokemon/pokemon';
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
+  imports: [RouterLink, RouterLinkActive],
 })
-export class Home {
-  private readonly maxPokemonId = 1025;
-  private readonly totalCards = 12;
-  private readonly cardGapPx = 12;
+export class Home implements AfterViewInit, OnInit {
+  @ViewChild('homeVideo') videoElement?: ElementRef<HTMLVideoElement>;
+  randomPokemons: Pokemon[] = [];
+  loading = true;
+  error: string | null = null;
 
-  private readonly destroyRef = inject(DestroyRef);
-  private readonly pokemonApi = inject(PokemonService);
-  private readonly nameCache = new Map<number, string>();
-  private readonly nameLoading = new Set<number>();
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private pokemonService: PokemonService
+  ) {}
 
-  private isNarrow = false;
-  private isSmall = false;
-  private mql?: MediaQueryList;
-  private mqlListener?: () => void;
-  private mqlSmall?: MediaQueryList;
-  private mqlSmallListener?: () => void;
-  private autoEnabled = true;
-  private stepPx = 0;
-  private pendingAdvance = false;
-
-  @ViewChild('carouselViewport') private carouselViewport?: ElementRef<HTMLElement>;
-
-  pokemonIds: number[] = [];
-  startIndex = 0;
-
-  renderedPokemons: CarouselPokemon[] = [];
-  isAnimating = false;
-  trackTransform = 'translateX(0px)';
-
-  constructor() {
-    this.reshuffle();
-    this.setupResponsiveVisibleCount();
-
-    afterNextRender(() => {
-      if (typeof window === 'undefined') return;
-      this.updateStepPx();
-      this.rebuildRendered();
-      this.setTrackOffset(1, false);
-      this.startAutoAdvance();
-      window.addEventListener('resize', this.onWindowResize, { passive: true });
-    });
-
-    this.destroyRef.onDestroy(() => {
-      this.autoEnabled = false;
-
-      if (this.mql && this.mqlListener) {
-        this.mql.removeEventListener('change', this.mqlListener);
-      }
-
-      if (this.mqlSmall && this.mqlSmallListener) {
-        this.mqlSmall.removeEventListener('change', this.mqlSmallListener);
-      }
-
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', this.onWindowResize);
-      }
-    });
+  ngOnInit(): void {
+    this.loadRandomPokemons();
   }
 
-  private readonly onWindowResize = () => {
-    this.updateStepPx();
-    this.setTrackOffset(1, false);
-  };
-
-  private startAutoAdvance(): void {
-    if (typeof window === 'undefined') return;
-    this.scheduleNextAutoStep();
-  }
-
-  private scheduleNextAutoStep(): void {
-    if (typeof window === 'undefined') return;
-    if (!this.autoEnabled) return;
-    if (this.isAnimating) return;
-
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        if (!this.autoEnabled) return;
-        if (this.isAnimating) return;
-        this.slideNext();
+  ngAfterViewInit(): void {
+    // Solo ejecutar en el navegador, no en SSR
+    if (isPlatformBrowser(this.platformId) && this.videoElement?.nativeElement) {
+      this.videoElement.nativeElement.play().catch((err) => {
+        console.error('Error al reproducir video:', err);
       });
+    }
+  }
+
+  loadRandomPokemons(): void {
+    this.pokemonService.get().subscribe({
+      next: (pokemons) => {
+        this.randomPokemons = this.getRandomPokemons(pokemons, 10);
+        this.loading = false;
+      },
+      error: (err) => {
+        this.loading = false;
+        this.error =
+          (typeof err?.error?.message === 'string' && err.error.message) ||
+          (typeof err?.message === 'string' && err.message) ||
+          'Failed to load pokémon carousel.';
+      }
     });
   }
 
-  private setupResponsiveVisibleCount(): void {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
-
-    this.mql = window.matchMedia('(max-width: 1299px)');
-    this.mqlSmall = window.matchMedia('(max-width: 520px)');
-    const apply = () => {
-      this.isNarrow = !!this.mql?.matches;
-      this.isSmall = !!this.mqlSmall?.matches;
-      this.onVisibleCountChanged();
-    };
-    apply();
-
-    this.mqlListener = () => apply();
-    this.mql.addEventListener('change', this.mqlListener);
-
-    this.mqlSmallListener = () => apply();
-    this.mqlSmall.addEventListener('change', this.mqlSmallListener);
-  }
-
-  get visibleCount(): number {
-    if (this.isSmall) return 2;
-    return this.isNarrow ? 3 : 5;
-  }
-
-  private onVisibleCountChanged(): void {
-    if (typeof window === 'undefined') return;
-    this.updateStepPx();
-    this.rebuildRendered();
-    this.setTrackOffset(1, false);
-  }
-
-  private get visiblePokemonIds(): number[] {
-    if (this.pokemonIds.length === 0) return [];
-
-    const visible: number[] = [];
-    for (let i = 0; i < this.visibleCount; i++) {
-      visible.push(this.pokemonIds[(this.startIndex + i) % this.pokemonIds.length]);
-    }
-    return visible;
-  }
-
-  imgSrc(id: number): string {
-    return `/images/${id}.png`;
-  }
-
-  private slideNext(): void {
-    if (this.pokemonIds.length === 0) return;
-    if (this.isAnimating) return;
-    if (this.stepPx <= 0) return;
-
-    this.rebuildRendered();
-    this.pendingAdvance = true;
-    this.setTrackOffset(2, true);
-  }
-
-  onTrackTransitionEnd(): void {
-    if (!this.pendingAdvance) return;
-    if (this.pokemonIds.length === 0) return;
-
-    const len = this.pokemonIds.length;
-    this.startIndex = (this.startIndex + 1) % len;
-    this.pendingAdvance = false;
-    this.rebuildRendered();
-    this.setTrackOffset(1, false);
-
-    this.scheduleNextAutoStep();
-  }
-
-  reshuffle(): void {
-    const picked = new Set<number>();
-    while (picked.size < this.totalCards) {
-      picked.add(1 + Math.floor(Math.random() * this.maxPokemonId));
-    }
-    this.pokemonIds = Array.from(picked);
-    this.startIndex = 0;
-    this.rebuildRendered();
-    this.setTrackOffset(1, false);
-  }
-
-  private rebuildRendered(): void {
-    if (this.pokemonIds.length === 0) {
-      this.renderedPokemons = [];
-      return;
-    }
-
-    const len = this.pokemonIds.length;
-    const prevId = this.pokemonIds[(this.startIndex - 1 + len) % len];
-    const nextId = this.pokemonIds[(this.startIndex + this.visibleCount) % len];
-    const ids = [prevId, ...this.visiblePokemonIds, nextId];
-    this.ensureNames(ids);
-    this.renderedPokemons = ids.map((id) => ({ id, name: this.nameCache.get(id) ?? `#${id}` }));
-  }
-
-  private ensureNames(ids: number[]): void {
-    for (const id of ids) {
-      if (this.nameCache.has(id)) continue;
-      if (this.nameLoading.has(id)) continue;
-
-      this.nameLoading.add(id);
-      this.pokemonApi
-        .getById(id)
-        .pipe(
-          catchError(() => of(null)),
-          takeUntilDestroyed(this.destroyRef)
-        )
-        .subscribe((pokemon) => {
-          this.nameLoading.delete(id);
-          const name = pokemon?.name ? String(pokemon.name) : `#${id}`;
-          this.nameCache.set(id, name);
-          this.rebuildRendered();
-        });
-    }
-  }
-
-  private updateStepPx(): void {
-    if (typeof window === 'undefined') return;
-    const viewport = this.carouselViewport?.nativeElement;
-    if (!viewport) return;
-
-    const viewportWidth = viewport.clientWidth;
-    if (viewportWidth <= 0) return;
-
-    this.stepPx = viewportWidth / this.visibleCount + this.cardGapPx / this.visibleCount;
-  }
-
-  private setTrackOffset(offset: number, animate: boolean): void {
-    if (this.stepPx <= 0) {
-      this.trackTransform = 'translateX(0px)';
-      this.isAnimating = false;
-      return;
-    }
-
-    this.isAnimating = animate;
-    this.trackTransform = `translateX(-${this.stepPx * offset}px)`;
+  private getRandomPokemons(pokemons: Pokemon[], count: number): Pokemon[] {
+    const shuffled = [...pokemons].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, count);
   }
 }

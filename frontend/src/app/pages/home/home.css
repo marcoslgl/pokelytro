@@ -9,7 +9,7 @@
 
 .home {
   position: relative;
-  width: min(900px, 100%);
+  width: min(900px, 80%);
   margin: 0;
   overflow: hidden;
   background: #121212;
@@ -27,84 +27,93 @@
 }
 
 .carousel {
-  width: 88%;
-  max-width: 1550px;
-  margin-top: 0;
-  padding: 16px;
-  padding-bottom: 1.5rem;
-  border-radius: 16px;
-  background: rgb(17, 23, 39);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.carousel-header {
   display: flex;
-  padding: 0.5rem;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.carousel-title {
-  margin: 0 auto 0 auto;
-  font-size: 22px;
-  background: none;
-}
-
-.carousel-body {
-  display: block;
-}
-
-.carousel-viewport {
-  width: 100%;
   overflow: hidden;
-  background: rgb(17, 23, 39);
-}
-
-.carousel-track {
-  display: flex;
-  gap: 12px;
-  will-change: transform;
-  background: rgb(17, 23, 39);
-}
-
-.carousel-track.is-animating {
-  transition: transform 4000ms linear;
-}
-
-.carousel-card {
-  flex: 0 0 calc((100% - (var(--visible-count) - 1) * 12px) / var(--visible-count));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 12px;
-  border-radius: 14px;
-  text-decoration: none;
-  background: #121212;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.carousel-card:hover {
-  background: rgba(255, 255, 255, 0.09);
-}
-
-.carousel-img {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
-  background: none;
-  border-radius: 12px;
-  padding: 8px;
-}
-
-.carousel-meta {
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-@media (max-width: 520px) {
-  .carousel-img {
-    width: 84px;
-    height: 84px;
+  width: 80%; /* O el 88% que prefieras */
+  user-select: none;
+  padding: 20px 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  &:hover .group {
+    animation-play-state: paused;
   }
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  animation: scrolling 20s linear infinite;
+}
+
+.card {
+  width: 15vw;
+  height: 15vw;
+  max-width: 250px;
+  max-height: 250px;
+  flex-shrink: 0;
+  margin: 0 10px;
+  background-color: #121212;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+@keyframes scrolling {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.card img {
+  width: 80%;
+  min-width: 170px;
+  height: auto;
+  padding: 2rem;
+}
+.card p {
+  font-size: 1rem;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  background-color: #151515;
+}
+
+@media (max-width: 1300px) {
+  .card p {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    min-width: 135px;
+    min-height: 135px;
+  }
+}
+
+.state {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #d7d7d7;
+  max-width: 48rem;
+}
+
+.state-error {
+  background: rgba(255, 0, 0, 0.08);
+  color: #ffb3b3;
 }

@@ -1,12 +1,11 @@
 <section class="home" aria-label="Portada">
   <video
-    #pikachuVideo
+    #homeVideo
     class="home-video"
-    autoplay
     muted
     loop
     playsinline
-    preload="metadata"
+    preload="auto"
     aria-label="Pikachu en bucle"
   >
     <source src="/pikachu_loop.mp4" type="video/mp4" />
@@ -14,33 +13,28 @@
   </video>
 </section>
 
-<section class="carousel" aria-label="Carrusel de Pokémon">
-  <header class="carousel-header">
-    <h2 class="carousel-title">Discover Pokemons</h2>
-  </header>
-
-  <div class="carousel-body">
-    <div class="carousel-viewport" #carouselViewport [style.--visible-count]="visibleCount">
-      <div
-        class="carousel-track"
-        #carouselTrack
-        role="list"
-        [class.is-animating]="isAnimating"
-        [style.transform]="trackTransform"
-        (transitionend)="onTrackTransitionEnd()"
-      >
-        @for (p of renderedPokemons; track $index) {
-        <a
-          class="carousel-card"
-          role="listitem"
-          [routerLink]="['/pokedex', p.id]"
-          [attr.aria-label]="'Abrir ' + p.name"
-        >
-          <img class="carousel-img" [src]="imgSrc(p.id)" [alt]="p.name" loading="lazy" />
-          <div class="carousel-meta">{{ p.name }}</div>
+@if (loading) {
+  <div class="state">Loading pokémon carousel…</div>
+} @else if (error) {
+  <div class="state state-error">{{ error }}</div>
+} @else {
+  <div class="carousel">
+    <div class="group">
+      @for (pokemon of randomPokemons; track pokemon.id) {
+        <a routerLink="/pokedex/{{ pokemon.id }}" routerLinkActive="active" class="card">
+          <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+          <p>{{ pokemon.name }}</p>
         </a>
-        }
-      </div>
+      }
+    </div>
+
+    <div class="group" aria-hidden="true" inert>
+      @for (pokemon of randomPokemons; track pokemon.id) {
+        <a routerLink="/pokedex/{{ pokemon.id }}" routerLinkActive="active" class="card">
+          <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+          <p>{{ pokemon.name }}</p>
+        </a>
+      }
     </div>
   </div>
-</section>
+}
