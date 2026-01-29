@@ -29,8 +29,8 @@ body {
 }
 
 body.menu-open .app-container {
-  transform: translateX(var(--sidebar-w));
-  width: calc(100vw - var(--sidebar-w));
+  transform: none;
+  width: 100vw;
 }
 
 html,

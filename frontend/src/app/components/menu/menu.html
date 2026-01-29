@@ -1,7 +1,7 @@
 <button class="open-nav" (click)="togglenav()" [class.rotated]="navActive">
   <div class="pokeball pokeball-animated"></div>
 </button>
-<div class="nav-overlay" [style.display]="navActive ? 'block' : 'none'" (click)="closenav()"></div>
+<div class="nav-overlay" [class.active]="navActive" (click)="closenav()"></div>
 <nav [class.active]="navActive">
   <ul>
     <li>

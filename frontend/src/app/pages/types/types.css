@@ -138,7 +138,7 @@
   border-radius: 0.35rem;
   font-weight: 900;
   background: currentColor;
-  color: inherit;
+
   border: 1px solid rgba(255, 255, 255, 0.14);
   user-select: none;
 }
@@ -273,6 +273,157 @@
 }
 .dot.immune {
   background: rgba(24, 24, 24, 0.836);
+}
+
+/* Responsive - Text toggle */
+.chipText.abbr {
+  display: none;
+}
+
+.chipText.full {
+  display: inline;
+}
+
+/* ========== RESPONSIVE: TABLE MODE ========== */
+@media (max-width: 950px) {
+  .chart .chipText.full {
+    display: none;
+  }
+
+  .chart .chipText.abbr {
+    display: inline;
+  }
+
+  .chart th.rowHead {
+    padding: 0.3rem 0.4rem;
+  }
+
+  .chipLeft {
+    padding: 0.4rem 0.45rem;
+    min-width: 2.4rem;
+    justify-content: center;
+  }
+
+  .corner {
+    min-width: 4rem;
+    padding: 0.5rem 0.3rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .types {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .legend {
+    font-size: 0.85rem;
+    gap: 0.4rem 0.75rem;
+    justify-content: center;
+  }
+
+  .cell {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.75rem;
+  }
+
+  .colHead {
+    min-width: 2rem;
+    height: 2rem;
+  }
+
+  .chipTop {
+    height: 1.5rem;
+    padding: 0.25rem;
+    font-size: 0.7rem;
+  }
+
+  .corner {
+    min-width: 3rem;
+    font-size: 0.65rem;
+  }
+}
+
+/* ========== RESPONSIVE: ARROWS MODE ========== */
+@media (max-width: 840px) {
+  .arRow {
+    grid-template-columns: 1fr 1.8rem 8rem 1.8rem 1fr;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .ar .chipText.full {
+    display: none;
+  }
+
+  .ar .chipText.abbr {
+    display: inline;
+  }
+
+  .ar .chipLeft {
+    padding: 0.35rem 0.5rem;
+    min-width: 3rem;
+    justify-content: center;
+  }
+
+  .mini {
+    min-width: 2rem;
+    height: 1.4rem;
+    padding: 0 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .arArrow {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .arRow {
+    grid-template-columns: 1fr 1.5rem 4rem 1.5rem 1fr;
+    padding: 0.25rem 0.35rem;
+    gap: 0.2rem;
+  }
+
+  .ar .chipLeft {
+    min-width: 2.5rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .mini {
+    min-width: 1.8rem;
+    height: 1.3rem;
+    padding: 0 0.25rem;
+    font-size: 0.7rem;
+  }
+
+  .arSide {
+    gap: 0.25rem;
+    min-height: 1.8rem;
+  }
+
+  .arArrow {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .arRow {
+    grid-template-columns: 1fr 1.2rem 3.5rem 1.2rem 1fr;
+  }
+
+  .toggle {
+    padding: 0.2rem;
+  }
+
+  .btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+  }
 }
 
 /* Type colors (copied from the app's existing palette) */

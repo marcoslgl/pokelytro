@@ -1,6 +1,6 @@
 <div class="profile-page">
   <div class="header">
-    <h2>Welcome, Trainer {{ currentUserBasic()?.username }}</h2>
+    <h2>Pokemon Trainer Profile: {{ currentUserBasic()?.username }}</h2>
     <button (click)="onLogout()" class="logout-btn">Sign Out</button>
   </div>
 
@@ -10,11 +10,10 @@
         <h3>Your Information</h3>
         <p><strong>Email:</strong> {{ profile.email }}</p>
         <p><strong>Member since:</strong> {{ profile.createdAt | date: 'mediumDate' }}</p>
-        <button class="edit-btn">Edit Profile (Coming Soon)</button>
       </section>
 
       <section class="favorites-list">
-        <h3>Favorite Pokémon ({{ profile.favorites.length }})</h3>
+        <h3>Favorite Pokemon ({{ profile.favorites.length }})</h3>
 
         @if (profile.favorites.length > 0) {
           <div class="pokemon-grid">
@@ -27,14 +26,14 @@
           </div>
         } @else {
           <p>
-            You haven't added any favorite Pokémon yet. Visit the
-            <a [routerLink]="['/pokedex']">Pokedex</a>.
+            You haven't added any favorite Pokemon yet. Visit the
+            <a [routerLink]="['/pokedex']">Pokedex</a>
           </p>
         }
       </section>
 
       <section class="teams-list">
-        <h3>🏆 Saved Teams ({{ teams.length }})</h3>
+        <h3>Saved Teams ({{ teams.length }})</h3>
         <a [routerLink]="['/team-builder']" class="btn-create-team">Create New Team</a>
 
         @if (teams.length > 0) {
@@ -43,9 +42,9 @@
               <h4>{{ team.name }}</h4>
               <div class="team-members">
                 @for (pokeId of team.pokemons; track $index) {
-                  <div class="pokemon-icon">
+                  <a routerLink="/pokedex/{{ pokeId }}" class="pokemon-icon">
                     <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
-                  </div>
+                  </a>
                 }
               </div>
               <div class="team-actions">

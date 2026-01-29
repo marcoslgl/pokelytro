@@ -33,6 +33,9 @@
     gap: 0.6rem;
     padding: 0.5rem 0.5vw;
   }
+  .filter-button {
+    display: none !important;
+  }
 }
 
 @media (max-width: 685px) {
@@ -41,11 +44,13 @@
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 640px) {
   .pokemon-grid {
     grid-template-columns: repeat(1, minmax(180px, 1fr));
     gap: 0.5rem;
     padding: 0.5rem 0.5vw;
+    min-height: 0;
+    overflow-y: auto;
   }
   .left-controls {
     display: none !important;

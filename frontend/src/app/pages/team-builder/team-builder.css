@@ -2,14 +2,13 @@
    Layout & Page Container
    ===================== */
 :host {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: center;
   padding: 16px;
 }
 
 .team-builder-container {
-  width: min(auto-fill, 100%);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -28,7 +27,7 @@
 .equipo-actual {
   padding: 2rem;
   border-radius: 12px;
-  margin-top: 2rem;
+
   margin-bottom: 0.5rem;
   background: rgb(17, 23, 39);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -114,6 +113,7 @@
   background: rgb(17, 23, 39);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .equipos-guardados h2 {
   color: rgb(255, 255, 255);
   font-size: 1.5rem;
@@ -129,7 +129,7 @@
 .dropdown-arrow {
   color: #ccc;
   font-size: 1.1em;
-  font-weight: 400;
+
   margin-left: auto;
   letter-spacing: -0.1em;
   display: inline-block;
@@ -159,11 +159,16 @@
   gap: 1.5rem;
 }
 
+@media (max-width: 640px) {
+  .equipos-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* =====================
    Tarjeta de equipo (equipo-card)
    ===================== */
 .equipo-card {
-  min-width: 380px;
   max-width: 600px;
   width: 100%;
   margin-left: auto;

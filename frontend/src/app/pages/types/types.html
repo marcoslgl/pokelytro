@@ -2,99 +2,104 @@
   <h1 class="title">Type Chart</h1>
 
   @if (loading) {
-  <div class="state">Loading type chart…</div>
+    <div class="state">Loading type chart…</div>
   } @else if (error) {
-  <div class="state state-error">{{ error }}</div>
+    <div class="state state-error">{{ error }}</div>
   } @else {
-  <div class="toggle">
-    <button type="button" class="btn" [class.on]="view === 'matrix'" (click)="view = 'matrix'">
-      Table
-    </button>
-    <button type="button" class="btn" [class.on]="view === 'arrows'" (click)="view = 'arrows'">
-      Arrows
-    </button>
-  </div>
-
-  @if (view === 'matrix') {
-  <div class="legend">
-    <span class="legend-item"><span class="dot weak"></span> 2×</span>
-    <span class="legend-item"><span class="dot neutral"></span> 1×</span>
-    <span class="legend-item"><span class="dot resist"></span> ½×</span>
-    <span class="legend-item"><span class="dot immune"></span> 0×</span>
-  </div>
-  <div class="box">
-    <table class="chart">
-      <thead>
-        <tr>
-          <th class="corner" scope="col">ATK \ DEF</th>
-          @for (def of types; track def) {
-          <th class="colHead" scope="col">
-            <div class="chip chipTop {{ def }}" title="{{ def }}">
-              <span class="chipText">{{ abbr(def) }}</span>
-            </div>
-          </th>
-          }
-        </tr>
-      </thead>
-      <tbody>
-        @for (atk of types; track atk; let i = $index) {
-        <tr>
-          <th class="rowHead" scope="row">
-            <div class="chip chipLeft {{ atk }}" title="{{ atk }}">
-              <span class="chipText">{{ atk }}</span>
-            </div>
-          </th>
-
-          @for (def of types; track def; let j = $index) {
-          <td [class]="cell(m(i, j))">
-            {{ label(m(i, j)) }}
-          </td>
-          }
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-  } @else {
-  <div class="box">
-    <div class="ar">
-      @for (row of arrows; track row.type) {
-      <div class="arRow">
-        <div class="arSide">
-          @if (row.weak.length === 0) {
-          <span class="dash">—</span>
-          } @else { @for (t of row.weak; track t) {
-          <span class="mini {{ t }}" title="{{ t }}">
-            <span class="miniText">{{ abbr(t) }}</span>
-          </span>
-          } }
-        </div>
-
-        <div class="arArrow">→</div>
-
-        <div class="arMid">
-          <div class="chip chipLeft {{ row.type }}" title="{{ row.type }}">
-            <span class="chipText">{{ row.type }}</span>
-          </div>
-        </div>
-
-        @if (row.strong.length) {
-        <div class="arArrow">→</div>
-
-        <div class="arSide">
-          @for (t of row.strong; track t) {
-          <span class="mini {{ t }}" title="{{ t }}">
-            <span class="miniText">{{ abbr(t) }}</span>
-          </span>
-          }
-        </div>
-        } @else {
-        <div class="arArrow off">→</div>
-        <div class="arSide empty"></div>
-        }
-      </div>
-      }
+    <div class="toggle">
+      <button type="button" class="btn" [class.on]="view === 'matrix'" (click)="view = 'matrix'">
+        Table
+      </button>
+      <button type="button" class="btn" [class.on]="view === 'arrows'" (click)="view = 'arrows'">
+        Arrows
+      </button>
     </div>
-  </div>
-  } }
+
+    @if (view === 'matrix') {
+      <div class="legend">
+        <span class="legend-item"><span class="dot weak"></span> 2×</span>
+        <span class="legend-item"><span class="dot neutral"></span> 1×</span>
+        <span class="legend-item"><span class="dot resist"></span> ½×</span>
+        <span class="legend-item"><span class="dot immune"></span> 0×</span>
+      </div>
+      <div class="box">
+        <table class="chart">
+          <thead>
+            <tr>
+              <th class="corner" scope="col">ATK \ DEF</th>
+              @for (def of types; track def) {
+                <th class="colHead" scope="col">
+                  <div class="chip chipTop {{ def }}" title="{{ def }}">
+                    <span class="chipText">{{ abbr(def) }}</span>
+                  </div>
+                </th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (atk of types; track atk; let i = $index) {
+              <tr>
+                <th class="rowHead" scope="row">
+                  <div class="chip chipLeft {{ atk }}" title="{{ atk }}">
+                    <span class="chipText full">{{ atk }}</span>
+                    <span class="chipText abbr">{{ abbr(atk) }}</span>
+                  </div>
+                </th>
+
+                @for (def of types; track def; let j = $index) {
+                  <td [class]="cell(m(i, j))">
+                    {{ label(m(i, j)) }}
+                  </td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <div class="box">
+        <div class="ar">
+          @for (row of arrows; track row.type) {
+            <div class="arRow">
+              <div class="arSide">
+                @if (row.weak.length === 0) {
+                  <span class="dash">—</span>
+                } @else {
+                  @for (t of row.weak; track t) {
+                    <span class="mini {{ t }}" title="{{ t }}">
+                      <span class="miniText">{{ abbr(t) }}</span>
+                    </span>
+                  }
+                }
+              </div>
+
+              <div class="arArrow">→</div>
+
+              <div class="arMid">
+                <div class="chip chipLeft {{ row.type }}" title="{{ row.type }}">
+                  <span class="chipText full">{{ row.type }}</span>
+                  <span class="chipText abbr">{{ abbr(row.type) }}</span>
+                </div>
+              </div>
+
+              @if (row.strong.length) {
+                <div class="arArrow">→</div>
+
+                <div class="arSide">
+                  @for (t of row.strong; track t) {
+                    <span class="mini {{ t }}" title="{{ t }}">
+                      <span class="miniText">{{ abbr(t) }}</span>
+                    </span>
+                  }
+                </div>
+              } @else {
+                <div class="arArrow off">→</div>
+                <div class="arSide empty"></div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
 </div>

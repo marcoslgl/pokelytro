@@ -9,11 +9,17 @@
   z-index: 999;
 }
 
+/* Overlay siempre visible cuando el menú está abierto */
+.nav-overlay.active {
+  display: block;
+  background: rgba(0, 0, 0, 0.4);
+}
+
 nav,
 ul,
 li,
 a {
-  background: #222;
+  background: transparent;
 }
 nav {
   position: fixed;
@@ -21,7 +27,7 @@ nav {
   left: 0;
   width: var(--sidebar-w);
   height: 100vh;
-  background: #222;
+  background: rgba(34, 34, 34, 0.95);
   color: #fff;
   box-shadow: 2px 0 8px #0004;
   transform: translateX(-100%);
