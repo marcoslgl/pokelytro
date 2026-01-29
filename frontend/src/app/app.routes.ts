@@ -17,12 +17,22 @@ export const routes: Routes = [
   { path: '', component: Home },
   { path: 'pokedex', component: Pokedex, resolve: { pokemonList: pokemonListResolver } },
   { path: 'pokedex/:id', component: Pokemon },
-  { path: 'team-builder', component: TeamBuilder, resolve: { pokemonList: pokemonListResolver }, canActivate: [authGuard] },
-  { path: 'team-detail', component: TeamDetail, resolve: { pokemonList: pokemonListResolver }, runGuardsAndResolvers: 'paramsOrQueryParamsChange' },
+  {
+    path: 'team-builder',
+    component: TeamBuilder,
+    resolve: { pokemonList: pokemonListResolver },
+    canActivate: [authGuard],
+  },
+  {
+    path: 'team-detail',
+    component: TeamDetail,
+    resolve: { pokemonList: pokemonListResolver },
+    canActivate: [authGuard],
+  },
   { path: 'type-chart', component: Types },
   { path: 'about', component: About },
   { path: 'login', component: LoginComponent, canActivate: [guestGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];

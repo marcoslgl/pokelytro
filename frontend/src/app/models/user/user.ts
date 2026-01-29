@@ -1,14 +1,8 @@
 export interface User {
-    _id: string;
-    username: string;
-    email: string;
-    favorites: number[];
-    teams: Team[];
-    createdAt?: string;
-    updatedAt?: string;
-}
-
-export interface Team {
-    name: string;
-    pokemons: number[];
+  _id: string;
+  username: string;
+  email: string;
+  favorites: number[];
+  createdAt?: string;
+  updatedAt?: string;
 }

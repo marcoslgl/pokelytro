@@ -34,11 +34,11 @@
       </section>
 
       <section class="teams-list">
-        <h3>🏆 Saved Teams ({{ profile.teams.length }})</h3>
-        <a [routerLink]="['/team builder']" class="btn-create-team">Create New Team</a>
+        <h3>🏆 Saved Teams ({{ teams.length }})</h3>
+        <a [routerLink]="['/team-builder']" class="btn-create-team">Create New Team</a>
 
-        @if (profile.teams.length > 0) {
-          @for (team of profile.teams; track team.name) {
+        @if (teams.length > 0) {
+          @for (team of teams; track team._id) {
             <div class="team-card">
               <h4>{{ team.name }}</h4>
               <div class="team-members">
@@ -49,8 +49,8 @@
                 }
               </div>
               <div class="team-actions">
-                <button class="edit-team-btn">Edit</button>
-                <button class="delete-team-btn">Delete</button>
+                <button (click)="onSelectEquipo(team._id!)" class="edit-team-btn">Edit</button>
+                <button (click)="onDeleteEquipo(team)" class="delete-team-btn">Delete</button>
               </div>
             </div>
           }

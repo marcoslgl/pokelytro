@@ -27,6 +27,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//GET : by userId
+router.get("/user/:userId", async (req, res) => {
+  try {
+    const teams = await Team.find({ userId: req.params.userId });
+    res.status(200).json(teams);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // POST: create
 router.post("/", async (req, res) => {
   try {
@@ -85,7 +95,7 @@ router.put("/:id", async (req, res) => {
     const updatedTeam = await Team.findByIdAndUpdate(
       req.params.id,
       { $set: updateData },
-      { new: true }
+      { new: true },
     );
 
     if (!updatedTeam) {

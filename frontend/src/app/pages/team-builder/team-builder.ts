@@ -10,6 +10,9 @@ import { RouterLink } from '@angular/router';
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
 
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user/user';
+
 @Component({
   selector: 'app-team-builder',
   standalone: true,
@@ -22,6 +25,7 @@ export class TeamBuilder implements OnInit {
   private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
   private sessionService = inject(SessionService);
+  private authService = inject(AuthService);
 
   teams: TeamModel[] = [];
   currentTeam: Pokemon[] = this.sessionService.getData('currentTeam') || [];
@@ -29,6 +33,7 @@ export class TeamBuilder implements OnInit {
   pokemonMap = new Map<number, Pokemon>();
   isSaving: boolean = false;
   showSavedTeams: boolean = false;
+  userData: User | null = this.authService.currentUser();
 
   ngOnInit(): void {
     this.pokemonListStore.getList().subscribe((data: any) => {
@@ -40,7 +45,13 @@ export class TeamBuilder implements OnInit {
   }
 
   private refreshTeams() {
-    this.teamService.get().subscribe({
+    const currentUser = this.authService.currentUser();
+    if (!currentUser) {
+      this.teams = [];
+      return;
+    }
+
+    this.teamService.getByUserId(currentUser._id).subscribe({
       next: (teams: any) => {
         this.teams = teams as TeamModel[];
       },
@@ -87,6 +98,7 @@ export class TeamBuilder implements OnInit {
     const payload = new TeamModel({
       name: `Team ${nextId}`,
       pokemons: this.currentTeam.map((p) => p.id),
+      userId: this.authService.currentUser()?._id || '',
     });
 
     this.teamService.post(payload as any).subscribe({

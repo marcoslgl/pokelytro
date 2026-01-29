@@ -51,7 +51,7 @@
       class="dropdown-header {{ showSavedTeams ? 'open' : 'closed' }}"
       (click)="showSavedTeams = !showSavedTeams"
     >
-      <span>Saved Teams</span>
+      <span>Saved Teams from {{ userData?.username }}</span>
       <span class="dropdown-arrow">&#8594;</span>
     </h2>
     @if (showSavedTeams) {

@@ -17,6 +17,9 @@ export class Team {
   getById(id: string): Observable<Team> {
     return this.http.get<Team>(`${this.api}/${id}`);
   }
+  getByUserId(userId: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.api}/user/${userId}`);
+  }
   // Create, Update, Delete methods
   post(team: Team): Observable<Team> {
     return this.http.post<Team>(this.api, team);
