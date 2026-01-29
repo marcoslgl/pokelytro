@@ -13,8 +13,8 @@ import { Team as TeamService } from '../../services/team/team';
   selector: 'app-profile',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
+  templateUrl: './profile.html',
+  styleUrl: './profile.css',
 })
 export class ProfileComponent implements OnInit {
   public authService = inject(AuthService);

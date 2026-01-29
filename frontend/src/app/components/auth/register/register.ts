@@ -15,8 +15,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-register',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  templateUrl: './register.html',
+  styleUrl: './register.css'
 })
 export class RegisterComponent {
   private fb = inject(FormBuilder);

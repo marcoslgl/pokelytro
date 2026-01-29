@@ -14,8 +14,8 @@ import { HttpErrorResponse } from '@angular/common/http';
     selector: 'app-login',
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule, RouterModule],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.css'
+    templateUrl: './login.html',
+    styleUrl: './login.css'
 })
 export class LoginComponent {
     private fb = inject(FormBuilder);
