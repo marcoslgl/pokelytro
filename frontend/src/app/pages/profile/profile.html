@@ -18,10 +18,9 @@
         @if (profile.favorites.length > 0) {
           <div class="pokemon-grid">
             @for (pokeId of profile.favorites; track pokeId) {
-              <div class="pokemon-card">
+              <a class="pokemon-card" routerLink="/pokedex/{{ pokeId }}" routerLinkActive="active">
                 <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
-                <span>#{{ pokeId }}</span>
-              </div>
+              </a>
             }
           </div>
         } @else {
