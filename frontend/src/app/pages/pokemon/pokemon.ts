@@ -1,12 +1,15 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { signal, effect } from '@angular/core';
 import { Pokemon as PokemonModel } from '../../models/pokemon/pokemon';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
+import { AuthService } from '../../services/auth.service';
 import { Type as TypeService, TypeModel as TypeEffectivenessRow } from '../../services/type/type';
+import { finalize } from 'rxjs/operators';
 
 type TypeDefenseCell = {
   type: string;
@@ -30,12 +33,17 @@ export class Pokemon implements OnInit {
   private pokemonListStore = inject(PokemonListStore);
   private typeService = inject(TypeService);
   private sanitizer = inject(DomSanitizer);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   pokemon?: PokemonModel;
   id?: number;
 
   typeDefenses: TypeDefenseCell[] = [];
   private typeRows: TypeEffectivenessRow[] = [];
+
+  private favorites = signal<Set<number>>(new Set<number>());
+  public favoritesLoading = signal<boolean>(false);
 
   private readonly typeOrder = [
     'Normal',
@@ -170,6 +178,50 @@ export class Pokemon implements OnInit {
     return nextGroup && nextGroup.length > 0 ? nextGroup[0] : nextBase;
   }
 
+  private loadUserFavorites(): void {
+    const current = this.authService.currentUser();
+
+    if (current?._id) {
+      this.favoritesLoading.set(true);
+      this.authService
+        .getFavorites(current._id)
+        .pipe(finalize(() => this.favoritesLoading.set(false)))
+        .subscribe({
+          next: (favorites) => {
+            this.favorites.set(new Set<number>(favorites ?? []));
+
+            const updatedUser = this.authService.currentUser();
+            if (updatedUser) {
+              this.authService.currentUser.set({ ...updatedUser, favorites: favorites ?? [] });
+            }
+          },
+          error: (err) => {
+            console.error('Error loading favorites:', err);
+          },
+        });
+      return;
+    }
+
+    // Si hay token pero no hay usuario cargado aún, intentamos recuperar el perfil
+    const token = this.authService.getToken();
+    if (token) {
+      this.favoritesLoading.set(true);
+      this.authService
+        .getProfile()
+        .pipe(finalize(() => this.favoritesLoading.set(false)))
+        .subscribe({
+          next: (profile) => {
+            this.authService.currentUser.set(profile);
+            this.authService.isAuthenticated.set(true);
+            this.favorites.set(new Set<number>(profile?.favorites ?? []));
+          },
+          error: () => {
+            // Si el token es inválido, AuthService ya acabará cerrando sesión en otros flujos
+          },
+        });
+    }
+  }
+
   statBarWidth(value?: number, max = 200): number {
     const safeValue = typeof value === 'number' && Number.isFinite(value) ? value : 0;
     const safeMax = typeof max === 'number' && Number.isFinite(max) && max > 0 ? max : 1;
@@ -190,6 +242,8 @@ export class Pokemon implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadUserFavorites();
+
     this.pokemonListStore.getList().subscribe((list: PokemonModel[]) => {
       const map = new Map<number, number[]>();
       for (const p of list ?? []) {
@@ -317,6 +371,45 @@ export class Pokemon implements OnInit {
     const str = id.toString();
     const [intPart, decPart] = str.split('.');
     return decPart ? intPart.padStart(4, '0') + '.' + decPart : intPart.padStart(4, '0');
+  }
+
+  get isUserLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  isFavorite(pokemon: PokemonModel | undefined): boolean {
+    if (!pokemon) return false;
+    return this.favorites().has(pokemon.id);
+  }
+
+  toggleFavorite(pokemon: PokemonModel | undefined): void {
+    if (!pokemon) return;
+
+    const user = this.authService.currentUser();
+    if (!user?._id) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const pokemonId = pokemon.id;
+    const currentlyFav = this.favorites().has(pokemonId);
+
+    const request$ = currentlyFav
+      ? this.authService.removeFavorite(user._id, pokemonId)
+      : this.authService.addFavorite(user._id, pokemonId);
+
+    request$.subscribe({
+      next: (favorites) => {
+        this.favorites.set(new Set<number>(favorites ?? []));
+        const updated = this.authService.currentUser();
+        if (updated) {
+          this.authService.currentUser.set({ ...updated, favorites: favorites ?? [] });
+        }
+      },
+      error: (err) => {
+        console.error('Error toggling favorite:', err);
+      },
+    });
   }
 
   formatGenderRate(rate: string): SafeHtml {

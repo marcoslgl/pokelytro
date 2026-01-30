@@ -287,6 +287,10 @@ export class PokemonList implements OnInit {
     this.totalPages = Math.max(1, Math.ceil(count / this.pageSize));
   }
 
+  get isUserLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
   isFavorite(pokemon: Pokemon): boolean {
     return this.favorites().has(pokemon.id);
   }
