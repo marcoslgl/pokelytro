@@ -8,6 +8,7 @@ import {
   Output,
   ViewChild,
   inject,
+  signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,8 @@ import { Pokemon } from '../../models/pokemon/pokemon';
 import { tap } from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
+import { AuthService } from '../../services/auth.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -24,11 +27,10 @@ import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list
   styleUrls: ['./pokemon-list.css'],
 })
 export class PokemonList implements OnInit {
-
-
   private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private authService = inject(AuthService);
   //  Pokemon list
 
   pokemons!: Pokemon[];
@@ -41,14 +43,16 @@ export class PokemonList implements OnInit {
   page = 1;
   pageSize = 32;
   totalPages = 1;
+
+  private favorites = signal<Set<number>>(new Set<number>());
+  public favoritesLoading = signal<boolean>(false);
   @Input() teamBuilding = false;
   @Input() teamDetails = false;
   @Input() currentTeam: Pokemon[] = [];
   @Output() addPokemon = new EventEmitter<Pokemon>();
 
-  @Input() replacePokemon= false;
+  @Input() replacePokemon = false;
   @Output() onReplacePokemon = new EventEmitter<Pokemon>();
-
 
   @ViewChild('filtersPanel') filtersPanel?: ElementRef<HTMLElement>;
   @ViewChild('filterButton') filterButton?: ElementRef<HTMLElement>;
@@ -115,6 +119,8 @@ export class PokemonList implements OnInit {
       this.restoreFromUrl();
     }
 
+    this.loadUserFavorites();
+
     this.pokemonListStore
       .getList()
       .pipe(
@@ -128,21 +134,65 @@ export class PokemonList implements OnInit {
           }
           this.types = Array.from(typeSet).sort();
           this.generations = Array.from(
-            new Set<number>(data.map((p: Pokemon) => p.generation))
+            new Set<number>(data.map((p: Pokemon) => p.generation)),
           ).sort((a, b) => a - b);
           this.recomputeTotalPages();
           if (this.page > this.totalPages) this.page = this.totalPages;
           if (this.page < 1) this.page = 1;
           this.syncUrl();
           console.log('Number of pokemons:', data.length);
-        })
+        }),
       )
       .subscribe({
-        next: () => { },
+        next: () => {},
         error: (err) => {
           console.error('Error loading pokemons:', err);
-        }
+        },
       });
+  }
+
+  private loadUserFavorites(): void {
+    const current = this.authService.currentUser();
+
+    if (current?._id) {
+      this.favoritesLoading.set(true);
+      this.authService
+        .getFavorites(current._id)
+        .pipe(finalize(() => this.favoritesLoading.set(false)))
+        .subscribe({
+          next: (favorites) => {
+            this.favorites.set(new Set<number>(favorites ?? []));
+
+            const updatedUser = this.authService.currentUser();
+            if (updatedUser) {
+              this.authService.currentUser.set({ ...updatedUser, favorites: favorites ?? [] });
+            }
+          },
+          error: (err) => {
+            console.error('Error loading favorites:', err);
+          },
+        });
+      return;
+    }
+
+    // Si hay token pero no hay usuario cargado aún, intentamos recuperar el perfil
+    const token = this.authService.getToken();
+    if (token) {
+      this.favoritesLoading.set(true);
+      this.authService
+        .getProfile()
+        .pipe(finalize(() => this.favoritesLoading.set(false)))
+        .subscribe({
+          next: (profile) => {
+            this.authService.currentUser.set(profile);
+            this.authService.isAuthenticated.set(true);
+            this.favorites.set(new Set<number>(profile?.favorites ?? []));
+          },
+          error: () => {
+            // Si el token es inválido, AuthService ya acabará cerrando sesión en otros flujos
+          },
+        });
+    }
   }
 
   nextPage(): void {
@@ -235,5 +285,37 @@ export class PokemonList implements OnInit {
   private recomputeTotalPages(): void {
     const count = this.filteredPokemons.length;
     this.totalPages = Math.max(1, Math.ceil(count / this.pageSize));
+  }
+
+  isFavorite(pokemon: Pokemon): boolean {
+    return this.favorites().has(pokemon.id);
+  }
+
+  toggleFavorite(pokemon: Pokemon): void {
+    const user = this.authService.currentUser();
+    if (!user?._id) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const pokemonId = pokemon.id;
+    const currentlyFav = this.favorites().has(pokemonId);
+
+    const request$ = currentlyFav
+      ? this.authService.removeFavorite(user._id, pokemonId)
+      : this.authService.addFavorite(user._id, pokemonId);
+
+    request$.subscribe({
+      next: (favorites) => {
+        this.favorites.set(new Set<number>(favorites ?? []));
+        const updated = this.authService.currentUser();
+        if (updated) {
+          this.authService.currentUser.set({ ...updated, favorites: favorites ?? [] });
+        }
+      },
+      error: (err) => {
+        console.error('Error toggling favorite:', err);
+      },
+    });
   }
 }

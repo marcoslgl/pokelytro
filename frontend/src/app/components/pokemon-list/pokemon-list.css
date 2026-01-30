@@ -161,6 +161,7 @@ a.pokemon-card:hover {
   display: flex;
   align-items: center;
   width: 100%;
+  justify-content: flex-end;
 }
 
 /* Acciones dentro de la tarjeta (botones) */
@@ -450,4 +451,8 @@ span {
   background: rgba(245, 158, 11, 0.32);
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
+}
+.favorite-icon {
+  display: flex;
+  align-items: right;
 }
