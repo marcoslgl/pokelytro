@@ -13,13 +13,8 @@
   justify-content: space-around;
 }
 
-.about > section,
-.about > header {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 .about-hero {
+  margin-top: 2.5rem;
   border-radius: 16px;
   padding: 18px;
   background: rgb(17, 23, 39);
@@ -124,7 +119,8 @@
   aspect-ratio: 1 / 1;
   border-radius: 18px;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.14), transparent 55%), #0b0f1a;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.14), transparent 55%), #0b0f1a;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
 }
@@ -132,7 +128,8 @@
 .scanner-grid {
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
+  background:
+    repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.06) 0px,
       rgba(255, 255, 255, 0.06) 1px,
@@ -166,7 +163,8 @@
 .scanner-reticle {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 50% 50%,
       transparent 0 38%,
       rgba(255, 255, 255, 0.14) 38% 38.5%,
