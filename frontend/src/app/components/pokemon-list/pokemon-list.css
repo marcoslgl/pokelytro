@@ -29,12 +29,17 @@
 
 @media (max-width: 810px) {
   .pokemon-grid {
-    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
     gap: 0.6rem;
     padding: 0.5rem 0.5vw;
   }
   .filter-button {
     display: none !important;
+  }
+}
+@media (max-width: 770px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(1, minmax(370px, 1fr));
   }
 }
 
@@ -251,6 +256,7 @@ a.pokemon-card:hover {
   color: inherit;
   padding: 0.3rem 0.5rem;
   border-radius: 0.4rem;
+  cursor: pointer;
 }
 
 option {
@@ -299,6 +305,7 @@ option {
 .filters-row {
   display: flex;
   gap: 0.6rem;
+  align-items: center;
 }
 
 /* Acciones de filtros */
@@ -316,6 +323,33 @@ option {
   padding: 0.3rem 0.6rem;
   border-radius: 0.4rem;
   cursor: pointer;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Checkbox de filtro */
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  transition: background 0.2s;
+}
+
+.filter-checkbox:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.filter-checkbox input[type='checkbox'] {
+  cursor: pointer;
+  accent-color: rgba(34, 197, 94, 0.8);
+  width: 1rem;
+  height: 1rem;
 }
 
 /* Input de búsqueda (posición) */
@@ -452,7 +486,48 @@ span {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
 }
+
 .favorite-icon {
   display: flex;
-  align-items: right;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.favorite-icon svg {
+  transition: all 0.35s ease-in-out;
+}
+
+.favorite-icon.favorited svg {
+  animation: heartLight 0.5s ease-out forwards;
+}
+
+.favorite-icon:not(.favorited) svg {
+  animation: heartDim 0.4s ease-out forwards;
+}
+
+@keyframes heartLight {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(255, 68, 68, 0));
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 68, 68, 0.7));
+  }
+}
+
+@keyframes heartDim {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 68, 68, 0.7));
+  }
+  100% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 0px rgba(255, 68, 68, 0));
+  }
 }

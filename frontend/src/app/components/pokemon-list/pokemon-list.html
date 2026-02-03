@@ -67,6 +67,15 @@
               }
             </select>
           </label>
+          <label class="filter-checkbox">
+            <input
+              type="checkbox"
+              [(ngModel)]="onlyFavorites"
+              (ngModelChange)="onFavoritesChange($event)"
+              aria-label="Show only favorites"
+            />
+            Favorites
+          </label>
           <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
         </div>
       </div>
@@ -97,28 +106,7 @@
             <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
           </a>
         </div>
-          <div
-            class="favorite-icon"
-            [ngClass]="{ favorited: isFavorite(pokemon) }"
-            (click)="toggleFavorite(pokemon); $event.stopPropagation(); $event.preventDefault()"
-            [attr.aria-label]="isFavorite(pokemon) ? 'Remove from favorites' : 'Add to favorites'"
-            title="Toggle Favorite"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              width="28"
-              height="28"
-              [attr.fill]="isFavorite(pokemon) ? '#ff4444' : 'none'"
-              [attr.stroke]="isFavorite(pokemon) ? '#ff4444' : 'currentColor'"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-              />
-            </svg>
-          </div>
+
         <div class="card-info">
           <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
           <div class="card-types">
@@ -140,6 +128,28 @@
                 <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
               }
             </div>
+            <div
+              class="favorite-icon"
+              [ngClass]="{ favorited: isFavorite(pokemon) }"
+              (click)="toggleFavorite(pokemon); $event.stopPropagation(); $event.preventDefault()"
+              [attr.aria-label]="isFavorite(pokemon) ? 'Remove from favorites' : 'Add to favorites'"
+              title="Toggle Favorite"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="28"
+                height="28"
+                [attr.fill]="isFavorite(pokemon) ? '#ff4444' : 'none'"
+                [attr.stroke]="isFavorite(pokemon) ? '#ff4444' : 'currentColor'"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -150,30 +160,7 @@
         <div class="card-img-col">
           <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
         </div>
-              @if (isUserLoggedIn) {
-          <div
-            class="favorite-icon"
-            [ngClass]="{ favorited: isFavorite(pokemon) }"
-            (click)="toggleFavorite(pokemon); $event.stopPropagation(); $event.preventDefault()"
-            [attr.aria-label]="isFavorite(pokemon) ? 'Remove from favorites' : 'Add to favorites'"
-            title="Toggle Favorite"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              width="28"
-              height="28"
-              [attr.fill]="isFavorite(pokemon) ? '#ff4444' : 'none'"
-              [attr.stroke]="isFavorite(pokemon) ? '#ff4444' : 'currentColor'"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-              />
-            </svg>
-          </div>
-      }
+        @if (isUserLoggedIn) {}
         <div class="card-info">
           <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
           <div class="card-types">
@@ -182,6 +169,28 @@
               <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
             }
           </div>
+        </div>
+        <div
+          class="favorite-icon"
+          [ngClass]="{ favorited: isFavorite(pokemon) }"
+          (click)="toggleFavorite(pokemon); $event.stopPropagation(); $event.preventDefault()"
+          [attr.aria-label]="isFavorite(pokemon) ? 'Remove from favorites' : 'Add to favorites'"
+          title="Toggle Favorite"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            [attr.fill]="isFavorite(pokemon) ? '#ff4444' : 'none'"
+            [attr.stroke]="isFavorite(pokemon) ? '#ff4444' : 'currentColor'"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            />
+          </svg>
         </div>
       </a>
     }

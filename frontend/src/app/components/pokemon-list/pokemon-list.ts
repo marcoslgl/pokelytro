@@ -37,6 +37,7 @@ export class PokemonList implements OnInit {
   searchTerm = '';
   selectedType = '';
   selectedGen = '';
+  onlyFavorites = false;
   types: string[] = [];
   generations: number[] = [];
   showFilters = false;
@@ -103,7 +104,8 @@ export class PokemonList implements OnInit {
         !this.selectedType || p.type1 === this.selectedType || p.type2 === this.selectedType;
       const genNum = this.selectedGen ? Number(this.selectedGen) : undefined;
       const matchesGen = !genNum || p.generation === genNum;
-      return matchesSearch && matchesType && matchesGen;
+      const matchesFavorites = !this.onlyFavorites || this.isFavorite(p);
+      return matchesSearch && matchesType && matchesGen && matchesFavorites;
     });
     return list;
   }
@@ -250,6 +252,13 @@ export class PokemonList implements OnInit {
     this.syncUrl();
   }
 
+  onFavoritesChange(value: boolean): void {
+    this.onlyFavorites = value;
+    this.page = 1;
+    this.recomputeTotalPages();
+    this.syncUrl();
+  }
+
   onAddPokemon(pokemon: Pokemon): void {
     this.addPokemon.emit(pokemon);
   }
@@ -277,6 +286,7 @@ export class PokemonList implements OnInit {
   clearFilters(): void {
     this.selectedType = '';
     this.selectedGen = '';
+    this.onlyFavorites = false;
     this.page = 1;
     this.recomputeTotalPages();
     this.syncUrl();
