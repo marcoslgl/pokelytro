@@ -1,0 +1,53 @@
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 0.5rem;
+  background-color: black;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.dialog-subtitle {
+  margin: 0;
+  opacity: 0.85;
+  text-align: center;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+:host ::ng-deep .dialog-list .pokemon-grid {
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 0.75rem;
+  padding: 0.5rem 0.5vw;
+}
+
+@media (max-width: 900px) {
+  :host ::ng-deep .dialog-list .pokemon-grid {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+  }
+}
+
+:host ::ng-deep .dialog-list .pokemon-card {
+  padding: 0.45rem;
+}
+
+:host ::ng-deep .dialog-list .pokemon-card img {
+  width: 48px;
+  height: 48px;
+}

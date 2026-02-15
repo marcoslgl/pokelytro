@@ -4,16 +4,29 @@ import { FormsModule } from '@angular/forms';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
-import { PokemonList } from '../../components/pokemon-list/pokemon-list';
 import { RouterLink } from '@angular/router';
 
 import { Team as TeamService } from '../../services/team/team';
 import { Team as TeamModel } from '../../models/team/team';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { TeamDetailReplaceDialog } from '../team-detail-replace-dialog/team-detail-replace-dialog';
+
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, PokemonList, RouterLink],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    MatTableModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
   templateUrl: './team-detail.html',
   styleUrls: ['./team-detail.css'],
 })
@@ -22,6 +35,8 @@ export class TeamDetail implements OnInit {
   private route = inject(ActivatedRoute);
   private pokemonListStore = inject(PokemonListStore);
   private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
+  private dialog = inject(MatDialog);
 
   team: TeamModel | null = null;
   teamPokemons: Pokemon[] = [];
@@ -30,6 +45,7 @@ export class TeamDetail implements OnInit {
   errorMessage: string | null = null;
   isEditingName: boolean = false;
   newTeamName: string = '';
+  displayedColumns: string[] = ['image', 'name', 'types', 'actions'];
 
   ngOnInit() {
     // Leer queryParams primero
@@ -73,6 +89,20 @@ export class TeamDetail implements OnInit {
 
   onUpdatePokemon(pokemon: Pokemon) {
     this.selectedPokemonToReplace = pokemon;
+    const dialogRef = this.dialog.open(TeamDetailReplaceDialog, {
+      data: { selectedPokemon: pokemon },
+      width: '980px',
+      maxWidth: '96vw',
+      panelClass: 'team-detail-dialog-panel',
+    });
+
+    dialogRef.afterClosed().subscribe((result: Pokemon | null) => {
+      if (result) {
+        this.onReplacePokemon(result);
+      } else {
+        this.selectedPokemonToReplace = null;
+      }
+    });
   }
 
   onReplacePokemon(newPokemon: Pokemon) {
@@ -94,11 +124,13 @@ export class TeamDetail implements OnInit {
         this.teamPokemons[idx] = newPokemon;
         this.selectedPokemonToReplace = null;
         this.errorMessage = null;
+        this.mostrarNotificacion('Pokemon replaced successfully!');
       },
       error: (err) => {
         this.errorMessage = err?.error?.message || 'Could not update the team';
         this.team!.pokemons = previousIds;
         this.selectedPokemonToReplace = null;
+        this.mostrarNotificacion('Error updating team');
       },
     });
   }
@@ -126,6 +158,7 @@ export class TeamDetail implements OnInit {
           this.isEditingName = false;
           this.newTeamName = '';
           this.errorMessage = null;
+          this.mostrarNotificacion('Team name updated successfully!');
         },
         error: (err) => {
           this.errorMessage = err?.error?.message || 'Could not update the team name';
@@ -136,5 +169,11 @@ export class TeamDetail implements OnInit {
   onCancelEditName() {
     this.isEditingName = false;
     this.newTeamName = '';
+  }
+  mostrarNotificacion(mensaje: string) {
+    this.snackBar.open(mensaje, 'Cerrar', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
   }
 }

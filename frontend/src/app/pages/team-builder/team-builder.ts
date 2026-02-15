@@ -13,6 +13,8 @@ import { Team as TeamModel } from '../../models/team/team';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user/user';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-team-builder',
   standalone: true,
@@ -26,7 +28,7 @@ export class TeamBuilder implements OnInit {
   private router = inject(Router);
   private sessionService = inject(SessionService);
   private authService = inject(AuthService);
-
+  private snackBar = inject(MatSnackBar);
   teams: TeamModel[] = [];
   currentTeam: Pokemon[] = this.sessionService.getData('currentTeam') || [];
   allPokemons: Pokemon[] = [];
@@ -109,6 +111,7 @@ export class TeamBuilder implements OnInit {
         this.refreshTeams();
       },
     });
+    this.mostrarNotificacion('Team saved successfully!');
   }
 
   onSelectEquipo(teamId: string) {
@@ -124,10 +127,17 @@ export class TeamBuilder implements OnInit {
           this.refreshTeams();
         },
       });
+      this.mostrarNotificacion('Team deleted successfully!');
     }
   }
 
   pokemonName(id: number): string {
     return this.pokemonMap.get(id)?.name ?? `#${id}`;
+  }
+  mostrarNotificacion(mensaje: string) {
+    this.snackBar.open(mensaje, 'Cerrar', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
   }
 }
