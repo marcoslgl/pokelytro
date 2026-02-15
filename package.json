@@ -1,0 +1,22 @@
+{
+  "name": "pokelytro",
+  "version": "1.0.0",
+  "description": "Pokemon App - Frontend + Backend",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --prefix frontend && npm install --prefix backend",
+    "start": "node backend/app.js",
+    "dev": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.20.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

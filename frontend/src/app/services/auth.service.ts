@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { LoginResponse } from '../models/auth/login-response';
 import { User } from '../models/user/user';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 interface AuthCredentials {
   email: string;
@@ -19,7 +20,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private router = inject(Router);
-  private apiUrl = 'http://localhost:3000/api/users';
+  private apiUrl = `${environment.apiUrl}/users`;
   private isBrowser = isPlatformBrowser(this.platformId);
 
   public isAuthenticated = signal<boolean>(false);

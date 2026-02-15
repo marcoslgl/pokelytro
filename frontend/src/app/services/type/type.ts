@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface TypeModel {
   _id?: string;
@@ -13,7 +14,7 @@ export interface TypeModel {
   providedIn: 'root',
 })
 export class Type {
-  private api = 'http://localhost:3000/api/types';
+  private api = `${environment.apiUrl}/types`;
 
   constructor(private http: HttpClient) {}
 

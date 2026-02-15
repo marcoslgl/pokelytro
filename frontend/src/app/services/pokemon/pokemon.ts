@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon as PokemonModel } from '../../models/pokemon/pokemon';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Pokemon {
-  private api = 'http://localhost:3000/api/pokemons';
+  private api = `${environment.apiUrl}/pokemons`;
 
   constructor(private http: HttpClient) {}
   //Get methods
