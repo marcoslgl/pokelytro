@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class Team {
-  private api = `${environment.apiUrl}/teams`;
+  private api = `${environment.apiUrl}${environment.api.teams}`;
 
   constructor(private http: HttpClient) {}
   //Get methods

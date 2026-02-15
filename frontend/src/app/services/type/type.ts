@@ -14,7 +14,7 @@ export interface TypeModel {
   providedIn: 'root',
 })
 export class Type {
-  private api = `${environment.apiUrl}/types`;
+  private api = `${environment.apiUrl}${environment.api.types}`;
 
   constructor(private http: HttpClient) {}
 

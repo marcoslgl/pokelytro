@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class Pokemon {
-  private api = `${environment.apiUrl}/pokemons`;
+  private api = `${environment.apiUrl}${environment.api.pokemons}`;
 
   constructor(private http: HttpClient) {}
   //Get methods

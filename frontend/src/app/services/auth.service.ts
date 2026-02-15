@@ -20,7 +20,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private router = inject(Router);
-  private apiUrl = `${environment.apiUrl}/users`;
+  private apiUrl = `${environment.apiUrl}${environment.api.users}`;
   private isBrowser = isPlatformBrowser(this.platformId);
 
   public isAuthenticated = signal<boolean>(false);
