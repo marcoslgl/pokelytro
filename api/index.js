@@ -5,8 +5,19 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware CORS
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:4200",
+    "https://pokelytro.vercel.app",
+    /\.vercel\.app$/,
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Conectar a MongoDB
