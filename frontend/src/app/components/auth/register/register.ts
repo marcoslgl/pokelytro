@@ -1,42 +1,43 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators,
-  FormGroup
-} from '@angular/forms';
-
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './register.html',
-  styleUrl: './register.css'
+  styleUrl: './register.css',
 })
 export class RegisterComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  public errorMessage = '';
+  errorMessage = signal('');
 
-  registerForm: FormGroup = this.fb.group({
-    username: ['', Validators.required],
+  registerForm = this.fb.group({
+    username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d)/),
+      ],
+    ],
   });
 
-  get username() { return this.registerForm.get('username'); }
-  get email() { return this.registerForm.get('email'); }
-  get password() { return this.registerForm.get('password'); }
+  readonly ctrl = {
+    username: this.registerForm.get('username')!,
+    email: this.registerForm.get('email')!,
+    password: this.registerForm.get('password')!,
+  };
 
   onSubmit(): void {
-    this.errorMessage = '';
+    this.errorMessage.set('');
 
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
@@ -45,15 +46,21 @@ export class RegisterComponent {
 
     const data = this.registerForm.value;
 
-    this.authService.register(data).subscribe({
-      next: (response) => {
-        console.log('Registro exitoso:', response.message);
-        this.router.navigate(['/profile']);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.errorMessage = error.error?.message || 'Error desconocido al registrar el usuario. Intenta de nuevo.';
-        console.error('Error de Registro:', error);
-      }
-    });
+    this.authService
+      .register({
+        username: data.username!,
+        email: data.email!,
+        password: data.password!,
+      })
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/profile']);
+        },
+        error: (error: HttpErrorResponse) => {
+          this.errorMessage.set(
+            error.error?.message || 'Unknown error while registering. Please try again.',
+          );
+        },
+      });
   }
 }

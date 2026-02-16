@@ -1,51 +1,34 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {
-    FormBuilder,
-    ReactiveFormsModule,
-    Validators,
-    FormGroup
-} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
-    standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, RouterModule],
+    imports: [ReactiveFormsModule, RouterModule],
     templateUrl: './login.html',
-    styleUrl: './login.css'
+    styleUrl: './login.css',
 })
 export class LoginComponent {
     private fb = inject(FormBuilder);
     private authService = inject(AuthService);
     private router = inject(Router);
-    public errorMessage = '';
 
-    loginForm: FormGroup = this.fb.group({
+    errorMessage = signal('');
+
+    loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]]
+        password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
-    constructor() {
-        if (this.authService.isAuthenticated()) {
-            this.router.navigate(['/profile']);
-        }
-    }
+    readonly ctrl = {
+        email: this.loginForm.get('email')!,
+        password: this.loginForm.get('password')!,
+    };
 
-    // --- GETTERS para acceder a los controles fácilmente en el HTML ---
-    get email() {
-        return this.loginForm.get('email');
-    }
-
-    get password() {
-        return this.loginForm.get('password');
-    }
-
-    // --- LÓGICA DE ENVÍO ---
     onSubmit(): void {
-        this.errorMessage = '';
+        this.errorMessage.set('');
 
         if (this.loginForm.invalid) {
             this.loginForm.markAllAsTouched();
@@ -54,15 +37,15 @@ export class LoginComponent {
 
         const { email, password } = this.loginForm.value;
 
-        this.authService.login({ email, password }).subscribe({
-            next: (response) => {
-                console.log('Login exitoso:', response.message);
+        this.authService.login({ email: email!, password: password! }).subscribe({
+            next: () => {
                 this.router.navigate(['/profile']);
             },
             error: (error: HttpErrorResponse) => {
-                this.errorMessage = error.error?.message || 'Error desconocido al iniciar sesión. Intenta de nuevo.';
-                console.error('Error de Login:', error);
-            }
+                this.errorMessage.set(
+                    error.error?.message || 'Unknown error while signing in. Please try again.',
+                );
+            },
         });
     }
 }

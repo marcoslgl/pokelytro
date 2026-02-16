@@ -1,55 +1,59 @@
 <div class="register-container">
   <h2>Pokémon Trainer Registration</h2>
 
-  @if (errorMessage) {
-    <div class="alert alert-error">{{ errorMessage }}</div>
+  @if (errorMessage()) {
+  <div class="alert alert-error">{{ errorMessage() }}</div>
   }
 
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username</label>
       <input id="username" type="text" formControlName="username" placeholder="AshKetchum" />
-      @if (username?.invalid && (username?.dirty || username?.touched)) {
-        <div class="error-message">
-          @if (username?.errors?.['required']) {
-            <span>Username is required.</span>
-          }
-        </div>
+      @if (ctrl.username.invalid && (ctrl.username.dirty || ctrl.username.touched)) {
+      <div class="error-message">
+        @if (ctrl.username.errors?.['required']) {
+        <span>Username is required.</span>
+        }
+        @if (ctrl.username.errors?.['minlength']) {
+        <span>Username must be at least 3 characters.</span>
+        }
+        @if (ctrl.username.errors?.['maxlength']) {
+        <span>Username cannot exceed 20 characters.</span>
+        }
+      </div>
       }
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
       <input id="email" type="email" formControlName="email" placeholder="your@email.com" />
-      @if (email?.invalid && (email?.dirty || email?.touched)) {
-        <div class="error-message">
-          @if (email?.errors?.['required']) {
-            <span>Email is required.</span>
-          }
-          @if (email?.errors?.['email']) {
-            <span>Invalid email format.</span>
-          }
-        </div>
+      @if (ctrl.email.invalid && (ctrl.email.dirty || ctrl.email.touched)) {
+      <div class="error-message">
+        @if (ctrl.email.errors?.['required']) {
+        <span>Email is required.</span>
+        }
+        @if (ctrl.email.errors?.['email']) {
+        <span>Invalid email format.</span>
+        }
+      </div>
       }
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        formControlName="password"
-        placeholder="Minimum 6 characters"
-      />
-      @if (password?.invalid && (password?.dirty || password?.touched)) {
-        <div class="error-message">
-          @if (password?.errors?.['required']) {
-            <span>Password is required.</span>
-          }
-          @if (password?.errors?.['minlength']) {
-            <span>Must be at least 6 characters long.</span>
-          }
-        </div>
+      <input id="password" type="password" formControlName="password" placeholder="Minimum 6 characters" />
+      @if (ctrl.password.invalid && (ctrl.password.dirty || ctrl.password.touched)) {
+      <div class="error-message">
+        @if (ctrl.password.errors?.['required']) {
+        <span>Password is required.</span>
+        }
+        @if (ctrl.password.errors?.['minlength']) {
+        <span>Must be at least 6 characters long.</span>
+        }
+        @if (ctrl.password.errors?.['pattern']) {
+        <span> Must include at least one uppercase letter and one number.</span>
+        }
+      </div>
       }
     </div>
 

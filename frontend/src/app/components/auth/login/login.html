@@ -1,38 +1,38 @@
 <div class="login-container">
   <h2>Pokemon Trainer Sign In</h2>
 
-  @if (errorMessage) {
-    <div class="alert alert-error">{{ errorMessage }}</div>
+  @if (errorMessage()) {
+  <div class="alert alert-error">{{ errorMessage() }}</div>
   }
 
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="email">Email</label>
       <input id="email" type="email" formControlName="email" placeholder="your@email.com" />
-      @if (email?.invalid && (email?.dirty || email?.touched)) {
-        <div class="error-message">
-          @if (email?.errors?.['required']) {
-            <span>Email is required.</span>
-          }
-          @if (email?.errors?.['email']) {
-            <span>Invalid email format.</span>
-          }
-        </div>
+      @if (ctrl.email.invalid && (ctrl.email.dirty || ctrl.email.touched)) {
+      <div class="error-message">
+        @if (ctrl.email.errors?.['required']) {
+        <span>Email is required.</span>
+        }
+        @if (ctrl.email.errors?.['email']) {
+        <span>Invalid email format.</span>
+        }
+      </div>
       }
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
       <input id="password" type="password" formControlName="password" placeholder="********" />
-      @if (password?.invalid && (password?.dirty || password?.touched)) {
-        <div class="error-message">
-          @if (password?.errors?.['required']) {
-            <span>Password is required.</span>
-          }
-          @if (password?.errors?.['minlength']) {
-            <span>Must be at least 6 characters long.</span>
-          }
-        </div>
+      @if (ctrl.password.invalid && (ctrl.password.dirty || ctrl.password.touched)) {
+      <div class="error-message">
+        @if (ctrl.password.errors?.['required']) {
+        <span>Password is required.</span>
+        }
+        @if (ctrl.password.errors?.['minlength']) {
+        <span>Must be at least 6 characters long.</span>
+        }
+      </div>
       }
     </div>
 
