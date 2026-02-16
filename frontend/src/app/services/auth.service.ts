@@ -59,18 +59,11 @@ export class AuthService {
 
       this.getProfile().subscribe({
         next: (user) => {
-          console.log('Sesión restaurada correctamente:', user.email);
           this.currentUser.set(user);
         },
         error: (err) => {
-          console.error('Error al restaurar sesión (getProfile):', err);
           if (err.status === 401 || err.status === 403) {
-            console.warn('Token inválido o expirado. Cerrando sesión.');
             this.logout();
-          } else {
-            console.warn(
-              'Error de red o servidor. No cerramos sesión todavía, pero el usuario podría no estar actualizado.',
-            );
           }
         },
       });
