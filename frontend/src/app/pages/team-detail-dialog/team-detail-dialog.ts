@@ -10,14 +10,14 @@ type TeamDetailDialogData = {
 };
 
 @Component({
-  selector: 'app-team-detail-replace-dialog',
+  selector: 'app-team-detail-dialog',
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule, PokemonList],
-  templateUrl: './team-detail-replace-dialog.html',
-  styleUrls: ['./team-detail-replace-dialog.css'],
+  templateUrl: './team-detail-dialog.html',
+  styleUrls: ['./team-detail-dialog.css'],
 })
-export class TeamDetailReplaceDialog {
-  private dialogRef = inject(MatDialogRef<TeamDetailReplaceDialog>);
+export class TeamDetailDialog {
+  private dialogRef = inject(MatDialogRef<TeamDetailDialog>);
   data = inject(MAT_DIALOG_DATA) as TeamDetailDialogData;
 
   onReplace(pokemon: Pokemon) {

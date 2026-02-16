@@ -121,6 +121,10 @@ export class PokemonList implements OnInit {
       this.restoreFromUrl();
     }
 
+    if (this.teamDetails) {
+      this.pageSize = 10;
+    }
+
     this.loadUserFavorites();
 
     this.pokemonListStore

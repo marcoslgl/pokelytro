@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { TeamDetailReplaceDialog } from '../team-detail-replace-dialog/team-detail-replace-dialog';
+import { TeamDetailDialog } from '../team-detail-dialog/team-detail-dialog';
 
 @Component({
   selector: 'app-team-detail',
@@ -89,7 +89,7 @@ export class TeamDetail implements OnInit {
 
   onUpdatePokemon(pokemon: Pokemon) {
     this.selectedPokemonToReplace = pokemon;
-    const dialogRef = this.dialog.open(TeamDetailReplaceDialog, {
+    const dialogRef = this.dialog.open(TeamDetailDialog, {
       data: { selectedPokemon: pokemon },
       width: '980px',
       maxWidth: '96vw',
