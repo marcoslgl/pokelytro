@@ -12,6 +12,7 @@ export class About {
   private fb = inject(FormBuilder);
 
   submitted = signal(false);
+  isContactOpen = signal(false);
 
   contactForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -30,6 +31,10 @@ export class About {
     message: this.contactForm.get('message')!,
     terms: this.contactForm.get('terms')!,
   };
+
+  toggleContact(): void {
+    this.isContactOpen.update(v => !v);
+  }
 
   onSubmit(): void {
     if (this.contactForm.invalid) {

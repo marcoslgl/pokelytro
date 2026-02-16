@@ -492,7 +492,6 @@ span {
   align-items: center;
   cursor: pointer;
   flex-shrink: 0;
-  margin-left: auto;
 }
 
 .favorite-icon svg {

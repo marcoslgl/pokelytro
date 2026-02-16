@@ -485,6 +485,54 @@
   pointer-events: none;
 }
 
+.contact-header {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  border-radius: 12px;
+  padding: 16px;
+  margin: -16px;
+  margin-bottom: 0;
+}
+
+.contact-header:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.contact-header:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.6);
+  outline-offset: 2px;
+}
+
+.contact-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.contact-toggle-icon {
+  color: #ccc;
+  font-size: 1.1em;
+  margin-left: auto;
+  letter-spacing: -0.1em;
+  display: inline-block;
+  transition:
+    transform 0.25s cubic-bezier(0.4, 1.6, 0.6, 1),
+    color 0.2s;
+  transform: rotate(0deg);
+}
+
+.contact-toggle-icon:hover {
+  scale: 1.2;
+  transform: translateX(2px);
+}
+
+.contact-toggle-icon.open {
+  transform: rotate(90deg);
+}
+
 .contact-success {
   padding: 14px 18px;
   border-radius: 12px;
@@ -493,7 +541,7 @@
   color: rgb(34, 197, 94);
   font-weight: 600;
   margin-bottom: 16px;
-  animation: fadeIn 0.4s ease-out;
+  animation: slideDown 0.3s ease-out;
 }
 
 @keyframes fadeIn {
@@ -507,7 +555,19 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .contact-form {
+  animation: slideDown 0.3s ease-out;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -556,7 +616,9 @@
   color: #fff;
   font-size: 0.95rem;
   font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .contact-form input[type='text']:focus,
@@ -606,7 +668,9 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   flex: 1;
 }
 
@@ -671,7 +735,9 @@
   position: relative;
   cursor: pointer;
   flex-shrink: 0;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
 
 .checkbox-label input[type='checkbox']:checked {
@@ -708,7 +774,15 @@
   font-weight: 700;
   border: none;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+}
+
+.contact-toggle-icon {
+  color: #ccc;
+  font-size: 2em;
 }
 
 .contact-submit:hover:not(:disabled) {

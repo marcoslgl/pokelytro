@@ -288,21 +288,21 @@
 }
 
 .btn-save {
-  background-color: #52c41a;
+  background-color: #389e0d;
   color: white;
 }
 
 .btn-save:hover {
-  background-color: #389e0d;
+  background-color: #52c41a;
 }
 
 .btn-cancel {
-  background-color: #ff7875;
+  background-color: #d9363e;
   color: white;
 }
 
 .btn-cancel:hover {
-  background-color: #d9363e;
+  background-color: #ff7875;
 }
 
 .pokemon-img-link:hover {

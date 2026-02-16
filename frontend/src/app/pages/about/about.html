@@ -101,127 +101,150 @@
   </section>
 
   <section class="about-section contact-section" aria-label="Contact Us">
-    <header class="section-header">
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle">Have a question, feedback, or just want to say hi? Drop us a message.</p>
+    <header
+      class="section-header contact-header"
+      (click)="toggleContact()"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="toggleContact()"
+      (keydown.space)="toggleContact()"
+    >
+      <div class="contact-header-content">
+        <h2 class="section-title">Contact Us</h2>
+        <span class="contact-toggle-icon" [class.open]="isContactOpen()">&#8594;</span>
+      </div>
+      <p class="section-subtitle">
+        Have a question, feedback, or just want to say hi? Drop us a message.
+      </p>
     </header>
 
-    @if (submitted()) {
-      <div class="contact-success">
-        <span>✓ Message sent successfully! We'll get back to you soon.</span>
-      </div>
+    @if (isContactOpen()) {
+      @if (submitted()) {
+        <div class="contact-success">
+          <span>✓ Message sent successfully! We'll get back to you soon.</span>
+        </div>
+      }
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" type="text" formControlName="name" placeholder="Ash Ketchum" />
+            @if (ctrl.name.invalid && (ctrl.name.dirty || ctrl.name.touched)) {
+              <div class="error-message">
+                @if (ctrl.name.errors?.['required']) {
+                  <span>Name is required.</span>
+                }
+                @if (ctrl.name.errors?.['minlength']) {
+                  <span>Name must be at least 2 characters.</span>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input
+              id="contact-email"
+              type="email"
+              formControlName="email"
+              placeholder="trainer@pokemon.com"
+            />
+            @if (ctrl.email.invalid && (ctrl.email.dirty || ctrl.email.touched)) {
+              <div class="error-message">
+                @if (ctrl.email.errors?.['required']) {
+                  <span>Email is required.</span>
+                }
+                @if (ctrl.email.errors?.['email']) {
+                  <span>Invalid email format.</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-reason">Reason</label>
+            <select id="contact-reason" formControlName="reason">
+              <option value="" disabled>Select a reason</option>
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+              <option value="general">General Inquiry</option>
+              <option value="partnership">Partnership</option>
+            </select>
+            @if (ctrl.reason.invalid && (ctrl.reason.dirty || ctrl.reason.touched)) {
+              <div class="error-message">
+                <span>Please select a reason.</span>
+              </div>
+            }
+          </div>
+
+          <fieldset class="form-group radio-group">
+            <legend>Urgency</legend>
+            <div class="radio-options">
+              <label class="radio-label">
+                <input type="radio" formControlName="urgency" value="low" />
+                <span class="radio-text">Low</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" formControlName="urgency" value="medium" />
+                <span class="radio-text">Medium</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" formControlName="urgency" value="high" />
+                <span class="radio-text">High</span>
+              </label>
+            </div>
+            @if (ctrl.urgency.invalid && ctrl.urgency.touched) {
+              <div class="error-message">
+                <span>Please select an urgency level.</span>
+              </div>
+            }
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            formControlName="message"
+            rows="5"
+            placeholder="Tell us what's on your mind..."
+          ></textarea>
+          @if (ctrl.message.invalid && (ctrl.message.dirty || ctrl.message.touched)) {
+            <div class="error-message">
+              @if (ctrl.message.errors?.['required']) {
+                <span>Message is required.</span>
+              }
+              @if (ctrl.message.errors?.['minlength']) {
+                <span>Message must be at least 10 characters.</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="terms" />
+            <span class="checkbox-text">I agree to the terms and conditions</span>
+          </label>
+          @if (ctrl.terms.invalid && ctrl.terms.touched) {
+            <div class="error-message">
+              <span>You must accept the terms.</span>
+            </div>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary contact-submit"
+          [disabled]="contactForm.invalid"
+        >
+          Send Message
+        </button>
+      </form>
     }
-
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="contact-name">Name</label>
-          <input id="contact-name" type="text" formControlName="name" placeholder="Ash Ketchum" />
-          @if (ctrl.name.invalid && (ctrl.name.dirty || ctrl.name.touched)) {
-            <div class="error-message">
-              @if (ctrl.name.errors?.['required']) {
-                <span>Name is required.</span>
-              }
-              @if (ctrl.name.errors?.['minlength']) {
-                <span>Name must be at least 2 characters.</span>
-              }
-            </div>
-          }
-        </div>
-
-        <div class="form-group">
-          <label for="contact-email">Email</label>
-          <input id="contact-email" type="email" formControlName="email" placeholder="trainer@pokemon.com" />
-          @if (ctrl.email.invalid && (ctrl.email.dirty || ctrl.email.touched)) {
-            <div class="error-message">
-              @if (ctrl.email.errors?.['required']) {
-                <span>Email is required.</span>
-              }
-              @if (ctrl.email.errors?.['email']) {
-                <span>Invalid email format.</span>
-              }
-            </div>
-          }
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="contact-reason">Reason</label>
-          <select id="contact-reason" formControlName="reason">
-            <option value="" disabled>Select a reason</option>
-            <option value="bug">Bug Report</option>
-            <option value="feature">Feature Request</option>
-            <option value="general">General Inquiry</option>
-            <option value="partnership">Partnership</option>
-          </select>
-          @if (ctrl.reason.invalid && (ctrl.reason.dirty || ctrl.reason.touched)) {
-            <div class="error-message">
-              <span>Please select a reason.</span>
-            </div>
-          }
-        </div>
-
-        <fieldset class="form-group radio-group">
-          <legend>Urgency</legend>
-          <div class="radio-options">
-            <label class="radio-label">
-              <input type="radio" formControlName="urgency" value="low" />
-              <span class="radio-text">Low</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" formControlName="urgency" value="medium" />
-              <span class="radio-text">Medium</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" formControlName="urgency" value="high" />
-              <span class="radio-text">High</span>
-            </label>
-          </div>
-          @if (ctrl.urgency.invalid && ctrl.urgency.touched) {
-            <div class="error-message">
-              <span>Please select an urgency level.</span>
-            </div>
-          }
-        </fieldset>
-      </div>
-
-      <div class="form-group">
-        <label for="contact-message">Message</label>
-        <textarea
-          id="contact-message"
-          formControlName="message"
-          rows="5"
-          placeholder="Tell us what's on your mind..."
-        ></textarea>
-        @if (ctrl.message.invalid && (ctrl.message.dirty || ctrl.message.touched)) {
-          <div class="error-message">
-            @if (ctrl.message.errors?.['required']) {
-              <span>Message is required.</span>
-            }
-            @if (ctrl.message.errors?.['minlength']) {
-              <span>Message must be at least 10 characters.</span>
-            }
-          </div>
-        }
-      </div>
-
-      <div class="form-group checkbox-group">
-        <label class="checkbox-label">
-          <input type="checkbox" formControlName="terms" />
-          <span class="checkbox-text">I agree to the terms and conditions</span>
-        </label>
-        @if (ctrl.terms.invalid && ctrl.terms.touched) {
-          <div class="error-message">
-            <span>You must accept the terms.</span>
-          </div>
-        }
-      </div>
-
-      <button type="submit" class="btn btn-primary contact-submit" [disabled]="contactForm.invalid">
-        Send Message
-      </button>
-    </form>
   </section>
 
   <footer class="about-footer" aria-label="Footer">
