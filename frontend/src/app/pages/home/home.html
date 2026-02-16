@@ -1,16 +1,11 @@
 <section class="home" aria-label="Portada">
-  <video
+  <img
     #homeVideo
+    src="/pokemon_loop.gif"
     class="home-video"
-    muted
-    loop
-    playsinline
-    preload="auto"
-    aria-label="Pikachu en bucle"
-  >
-    <source src="/pikachu_loop.mp4" type="video/mp4" />
-    Tu navegador no soporta video HTML5.
-  </video>
+    aria-label="pokemon loop video"
+    loading="eager"
+  />
 </section>
 
 @if (loading) {
