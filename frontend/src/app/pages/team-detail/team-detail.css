@@ -23,7 +23,7 @@
    Team list grid (3 per row)
    ===================== */
 .team {
-  background: #000;
+  background: rgb(17, 23, 39);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 1.5rem;
@@ -42,9 +42,11 @@
 
 .team-table {
   width: 100%;
-  background: #000;
+  background: rgb(17, 23, 39);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #fff;
   border-collapse: collapse;
+  border-radius: 16px;
 }
 
 .team-table .mat-mdc-header-cell,
@@ -308,9 +310,9 @@
 }
 
 :host ::ng-deep .team-detail-dialog-panel .mat-mdc-dialog-container .mdc-dialog__surface {
-  background: #000;
-  color: #fff;
+  background: rgb(17, 23, 39);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
 }
 
 :host ::ng-deep .team-detail-dialog-panel .mat-mdc-dialog-container .mdc-dialog__surface * {
