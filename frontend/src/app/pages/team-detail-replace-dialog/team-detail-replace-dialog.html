@@ -1,10 +1,9 @@
 <div class="dialog-container">
-  <br />
-  <h2 class="dialog-title">Replace Pokemon</h2>
-  <p class="dialog-subtitle">Replace "{{ data.selectedPokemon.name }}" with a new Pokemon:</p>
   <div class="dialog-actions">
     <button mat-stroked-button (click)="onCancel()">Cancel</button>
   </div>
+  <h2 class="dialog-title">Replace Pokemon</h2>
+  <p class="dialog-subtitle">Replace "{{ data.selectedPokemon.name }}" with a new Pokemon:</p>
   <div class="dialog-list">
     <app-pokemon-list
       [teamDetails]="true"

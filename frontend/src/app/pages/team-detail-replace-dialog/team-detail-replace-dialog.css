@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 0.75rem;
   padding-bottom: 0.5rem;
-  background-color: black;
+  background: rgb(17, 23, 39);
   max-height: 80vh;
   overflow: hidden;
 }
