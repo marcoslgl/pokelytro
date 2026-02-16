@@ -1,16 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Pokemon } from '../../models/pokemon/pokemon';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { ApiConfigService } from '../api-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Team {
-  private api = `${environment.apiUrl}${environment.api.teams}`;
+  private apiConfigService = inject(ApiConfigService);
 
   constructor(private http: HttpClient) {}
+
+  private get api(): string {
+    return `${this.apiConfigService.getApiUrl()}${environment.api.teams}`;
+  }
+
   //Get methods
   get(): Observable<Team[]> {
     return this.http.get<Team[]>(this.api);

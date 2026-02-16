@@ -6,6 +6,7 @@ import { LoginResponse } from '../models/auth/login-response';
 import { User } from '../models/user/user';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { ApiConfigService } from './api-config.service';
 
 interface AuthCredentials {
   email: string;
@@ -20,7 +21,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private router = inject(Router);
-  private apiUrl = `${environment.apiUrl}${environment.api.users}`;
+  private apiConfigService = inject(ApiConfigService);
   private isBrowser = isPlatformBrowser(this.platformId);
 
   public isAuthenticated = signal<boolean>(false);
@@ -28,6 +29,10 @@ export class AuthService {
 
   constructor() {
     this.checkAuthenticationStatus();
+  }
+
+  private get apiUrl(): string {
+    return `${this.apiConfigService.getApiUrl()}${environment.api.users}`;
   }
 
   private saveToken(token: string): void {

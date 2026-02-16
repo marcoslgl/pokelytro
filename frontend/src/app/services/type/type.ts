@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { ApiConfigService } from '../api-config.service';
 
 export interface TypeModel {
   _id?: string;
@@ -14,9 +15,13 @@ export interface TypeModel {
   providedIn: 'root',
 })
 export class Type {
-  private api = `${environment.apiUrl}${environment.api.types}`;
+  private apiConfigService = inject(ApiConfigService);
 
   constructor(private http: HttpClient) {}
+
+  private get api(): string {
+    return `${this.apiConfigService.getApiUrl()}${environment.api.types}`;
+  }
 
   // Get methods
   get(): Observable<TypeModel[]> {

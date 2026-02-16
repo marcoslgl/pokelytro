@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon as PokemonModel } from '../../models/pokemon/pokemon';
 import { environment } from '../../../environments/environment';
+import { ApiConfigService } from '../api-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Pokemon {
-  private api = `${environment.apiUrl}${environment.api.pokemons}`;
+  private apiConfigService = inject(ApiConfigService);
 
   constructor(private http: HttpClient) {}
+
+  private get api(): string {
+    return `${this.apiConfigService.getApiUrl()}${environment.api.pokemons}`;
+  }
+
   //Get methods
   get(): Observable<PokemonModel[]> {
     return this.http.get<any[]>(this.api).pipe(
