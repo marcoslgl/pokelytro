@@ -1,5 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { Pokemon as PokemonService } from '../../services/pokemon/pokemon';
 import { Pokemon } from '../../models/pokemon/pokemon';
@@ -11,8 +10,7 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   styleUrl: './home.css',
   imports: [RouterLink, RouterLinkActive],
 })
-export class Home implements AfterViewInit, OnInit {
-  @ViewChild('homeVideo') videoElement?: ElementRef<HTMLVideoElement>;
+export class Home implements OnInit {
   randomPokemons: Pokemon[] = [];
   loading = true;
   error: string | null = null;
@@ -24,15 +22,6 @@ export class Home implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.loadRandomPokemons();
-  }
-
-  ngAfterViewInit(): void {
-    // Solo ejecutar en el navegador, no en SSR
-    if (isPlatformBrowser(this.platformId) && this.videoElement?.nativeElement) {
-      this.videoElement.nativeElement.play().catch((err) => {
-        console.error('Error al reproducir video:', err);
-      });
-    }
   }
 
   loadRandomPokemons(): void {

@@ -6,6 +6,7 @@ import { LoginResponse } from '../models/auth/login-response';
 import { User } from '../models/user/user';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { ApiConfigService } from './api-config.service';
 
 interface AuthCredentials {
   email: string;
@@ -20,7 +21,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private router = inject(Router);
-  private apiUrl = `${environment.apiUrl}${environment.api.users}`;
+  private apiConfigService = inject(ApiConfigService);
   private isBrowser = isPlatformBrowser(this.platformId);
 
   public isAuthenticated = signal<boolean>(false);
@@ -28,6 +29,10 @@ export class AuthService {
 
   constructor() {
     this.checkAuthenticationStatus();
+  }
+
+  private get apiUrl(): string {
+    return `${this.apiConfigService.getApiUrl()}${environment.api.users}`;
   }
 
   private saveToken(token: string): void {
@@ -54,18 +59,11 @@ export class AuthService {
 
       this.getProfile().subscribe({
         next: (user) => {
-          console.log('Sesión restaurada correctamente:', user.email);
           this.currentUser.set(user);
         },
         error: (err) => {
-          console.error('Error al restaurar sesión (getProfile):', err);
           if (err.status === 401 || err.status === 403) {
-            console.warn('Token inválido o expirado. Cerrando sesión.');
             this.logout();
-          } else {
-            console.warn(
-              'Error de red o servidor. No cerramos sesión todavía, pero el usuario podría no estar actualizado.',
-            );
           }
         },
       });
