@@ -50,7 +50,7 @@ export class TeamDetail implements OnInit {
   ngOnInit() {
     // Leer queryParams primero
     this.route.queryParams.subscribe((params) => {
-      const idParam = params['teamId'] ?? params['equipoId'];
+      const idParam = params['teamId'];
       const teamId = idParam as string;
 
       if (!teamId) {
