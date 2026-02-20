@@ -108,16 +108,10 @@ npm start
 
 ---
 
-## Notas
 
-- No subas `.env` al repositorio.
-- En MongoDB Atlas, revisa:
-  - IP Access List
-  - usuario/roles de la base de datos
-  - cadena de conexión correcta
-
----
-
-## Autor
+## Autores
 
 - @pitumola
+- @RubenMMPS
+- @ahmad-azhari
+
