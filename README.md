@@ -53,10 +53,6 @@ PORT=3000
 MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>/<db>?retryWrites=true&w=majority"
 ```
 
-> Si tu backend usa otro nombre para la URI (`MONGO_URI`, `DATABASE_URL`, etc.), ajusta el nombre según tu código.
-
----
-
 ## Instalación y ejecución (local)
 
 ### 1) Backend (API)
