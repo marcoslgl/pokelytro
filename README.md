@@ -104,7 +104,7 @@ npm start
 
 - **Frontend**: Vercel (demo: https://pokelytro.vercel.app)
 - **Base de datos**: MongoDB Atlas
-- **Backend**: Node + Express (indica proveedor si aplica: Render/Railway/Fly.io/etc.)
+- **Backend**: Node + Express
 
 ---
 
