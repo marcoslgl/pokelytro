@@ -7,12 +7,7 @@ const app = express();
 
 // Middleware CORS
 const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "http://localhost:4200",
-    "https://pokelytro.vercel.app",
-    /\.vercel\.app$/,
-  ],
+  origin: ["http://localhost:3000", "http://localhost:4200", "https://pokelytro.vercel.app", /\.vercel\.app$/],
   credentials: true,
   optionsSuccessStatus: 200,
 };
