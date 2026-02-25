@@ -100,9 +100,9 @@
     >
     <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">&#9654;</button>
     <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-      <input #pageInput type="number" placeholder="Page" />
+      <input class="right-search" #pageInput type="number" placeholder="Page" />
     </form>
-    <button (click)="goToPage(pageInput.value)">Go</button>
+    <button class="right-search" (click)="goToPage(pageInput.value)">Go</button>
   </div>
 </div>
 
