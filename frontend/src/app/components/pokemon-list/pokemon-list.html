@@ -83,7 +83,10 @@
   </div>
   <div class="pagination-actions">
     <button (click)="prevPage()" [disabled]="page === 1" aria-label="Previous">&#9664;</button>
-    <span class="page-indicator">Page {{ page }} / {{ totalPages }}</span>
+    <span class="page-indicator"
+      >Page {{ page.toString().padStart(2, '0') }} /
+      {{ totalPages.toString().padStart(2, '0') }}</span
+    >
     <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">&#9654;</button>
     <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
       <input #pageInput type="number" placeholder="Page" />
