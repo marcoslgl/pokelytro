@@ -331,6 +331,7 @@ option {
 
 /* Checkbox de filtro */
 .filter-checkbox {
+  width: max-content;
   display: flex;
   align-items: center;
   gap: 0.4rem;

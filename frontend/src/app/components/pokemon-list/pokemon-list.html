@@ -67,15 +67,26 @@
               }
             </select>
           </label>
-          <label class="filter-checkbox">
-            <input
-              type="checkbox"
-              [(ngModel)]="onlyFavorites"
-              (ngModelChange)="onFavoritesChange($event)"
-              aria-label="Show only favorites"
-            />
-            Favorites
-          </label>
+          <div class="filter-checkboxes">
+            <label class="filter-checkbox">
+              <input
+                type="checkbox"
+                [(ngModel)]="simpleList"
+                (ngModelChange)="onSimpleListChange($event)"
+                aria-label="Show only simple list"
+              />
+              Simple List
+            </label>
+            <label class="filter-checkbox">
+              <input
+                type="checkbox"
+                [(ngModel)]="onlyFavorites"
+                (ngModelChange)="onFavoritesChange($event)"
+                aria-label="Show only favorites"
+              />
+              Favorites
+            </label>
+          </div>
           <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
         </div>
       </div>
