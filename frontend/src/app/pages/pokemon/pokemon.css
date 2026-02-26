@@ -1,12 +1,22 @@
 .pokemon-title-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 18px;
   font-size: 2.2rem;
   margin-bottom: 0.5em;
   line-height: 1.4;
   min-height: 4rem;
+  position: relative;
+}
+
+.pokemon-title-nav .nav-arrow {
+  flex-shrink: 0;
+}
+
+.pokemon-title-nav .pokemon-title-text {
+  flex: 1;
+  text-align: center;
 }
 
 .pokemon-title-text {
@@ -95,6 +105,55 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.pokemon-media .favorite-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.pokemon-media .favorite-icon svg {
+  transition: all 0.35s ease-in-out;
+}
+
+.pokemon-media .favorite-icon.favorited svg {
+  animation: heartLight 0.5s ease-out forwards;
+}
+
+.pokemon-media .favorite-icon:not(.favorited) svg {
+  animation: heartDim 0.4s ease-out forwards;
+}
+
+@keyframes heartLight {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(255, 68, 68, 0));
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 68, 68, 0.7));
+  }
+}
+
+@keyframes heartDim {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 68, 68, 0.7));
+  }
+  100% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 0px rgba(255, 68, 68, 0));
+  }
 }
 
 .pokemon-media img {
