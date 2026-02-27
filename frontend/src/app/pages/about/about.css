@@ -68,6 +68,7 @@
   background: radial-gradient(700px circle at 20% 30%, rgba(59, 130, 246, 0.16), transparent 55%);
 }
 .scan-layout {
+  margin-top: 0.5rem;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 14px;

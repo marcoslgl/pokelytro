@@ -10,7 +10,19 @@
         >
       }
       <span class="pokemon-title-text">{{ pokemon.name }}</span>
-      @if (isUserLoggedIn) {
+      @if (navNextId() !== null) {
+        <a
+          [routerLink]="['/pokedex', navNextId()]"
+          class="nav-arrow nav-arrow-next"
+          aria-label="Siguiente Pokémon"
+          >→</a
+        >
+      }
+    </h1>
+    <div class="pokedex-data">
+      <div class="pokemon-media">
+        <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+        @if (isUserLoggedIn) {
           <div
             class="favorite-icon"
             [ngClass]="{ favorited: isFavorite(pokemon) }"
@@ -33,19 +45,7 @@
               />
             </svg>
           </div>
-      }
-      @if (navNextId() !== null) {
-        <a
-          [routerLink]="['/pokedex', navNextId()]"
-          class="nav-arrow nav-arrow-next"
-          aria-label="Siguiente Pokémon"
-          >→</a
-        >
-      }
-    </h1>
-    <div class="pokedex-data">
-      <div class="pokemon-media">
-        <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
+        }
       </div>
       <div>
         <p>Pokedex Data</p>
