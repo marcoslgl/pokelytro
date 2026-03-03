@@ -11,7 +11,6 @@ import { Team as TeamModel } from '../../models/team/team';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { TeamDetailDialog } from '../team-detail-dialog/team-detail-dialog';
@@ -19,14 +18,7 @@ import { TeamDetailDialog } from '../team-detail-dialog/team-detail-dialog';
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterLink,
-    MatTableModule,
-    MatDialogModule,
-    MatButtonModule,
-  ],
+  imports: [CommonModule, FormsModule, RouterLink, MatDialogModule, MatButtonModule],
   templateUrl: './team-detail.html',
   styleUrls: ['./team-detail.css'],
 })
@@ -45,7 +37,6 @@ export class TeamDetail implements OnInit {
   errorMessage: string | null = null;
   isEditingName: boolean = false;
   newTeamName: string = '';
-  displayedColumns: string[] = ['image', 'name', 'types', 'actions'];
 
   ngOnInit() {
     // Leer queryParams primero
@@ -130,7 +121,6 @@ export class TeamDetail implements OnInit {
         this.errorMessage = err?.error?.message || 'Could not update the team';
         this.team!.pokemons = previousIds;
         this.selectedPokemonToReplace = null;
-        this.mostrarNotificacion('Error updating team');
       },
     });
   }

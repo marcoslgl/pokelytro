@@ -18,54 +18,34 @@
         @if (errorMessage) {
           <div class="error-banner">{{ errorMessage }}</div>
         }
-        <div class="team-table-wrapper">
-          <table mat-table [dataSource]="teamPokemons" class="team-table">
-            <ng-container matColumnDef="image">
-              <th mat-header-cell *matHeaderCellDef>Image</th>
-              <td mat-cell *matCellDef="let pokemon">
-                <a
-                  class="pokemon-img-link"
-                  [routerLink]="['/pokedex', pokemon.id]"
-                  title="Open in Pokédex"
-                >
-                  <img
-                    [src]="'/images/' + pokemon.id + '.png'"
-                    [alt]="pokemon.name"
-                    class="equipo-img"
-                  />
-                </a>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>Name</th>
-              <td mat-cell *matCellDef="let pokemon">
+        <div class="team-pokemons-grid">
+          @for (pokemon of teamPokemons; track pokemon.id) {
+            <div class="pokemon-card">
+              <a
+                class="pokemon-img-link"
+                [routerLink]="['/pokedex', pokemon.id]"
+                title="Open in Pokédex"
+              >
+                <img
+                  [src]="'/images/' + pokemon.id + '.png'"
+                  [alt]="pokemon.name"
+                  class="equipo-img"
+                />
+              </a>
+              <div class="equipo-info">
                 <span class="equipo-name">{{ pokemon.id }} - {{ pokemon.name }}</span>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="types">
-              <th mat-header-cell *matHeaderCellDef>Types</th>
-              <td mat-cell *matCellDef="let pokemon">
                 <div class="pokemon-types">
                   <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
                   @if (pokemon.type2) {
                     <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
                   }
                 </div>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef>Actions</th>
-              <td mat-cell *matCellDef="let pokemon">
-                <button mat-flat-button (click)="onUpdatePokemon(pokemon)">Replace</button>
-              </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
+              </div>
+              <div class="card-actions">
+                <button class="btn-replace" (click)="onUpdatePokemon(pokemon)">Replace</button>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </section>
