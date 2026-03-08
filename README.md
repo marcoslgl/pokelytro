@@ -2,10 +2,10 @@
 
 # Pokelytro
 
-App web para explorar Pokémon usando stack **MEAN**: **Angular (frontend)** + **Node/Express (backend)** + **MongoDB Atlas (DB)**.
+A web app to explore Pokémon using the **MEAN** stack: **Angular (frontend)** + **Node/Express (backend)** + **MongoDB Atlas (DB)**.
 
 <a href="https://pokelytro.vercel.app" target="_blank">
-  <img alt="Ver Demo" src="https://img.shields.io/badge/Ver%20Demo-pokelytro.vercel.app-000?style=for-the-badge&logo=vercel" />
+  <img alt="Live Demo" src="https://img.shields.io/badge/Live%20Demo-pokelytro.vercel.app-000?style=for-the-badge&logo=vercel" />
 </a>
 
 <br/><br/>
@@ -25,7 +25,7 @@ App web para explorar Pokémon usando stack **MEAN**: **Angular (frontend)** + *
 
 ---
 
-## Estructura del proyecto
+## Project structure
 
 ```text
 /
@@ -35,38 +35,19 @@ App web para explorar Pokémon usando stack **MEAN**: **Angular (frontend)** + *
 
 ---
 
-## Requisitos
+## Requirements
 
-- Node.js (LTS recomendado)
+- Node.js (LTS recommended)
 - npm
-- Angular CLI (`npm i -g @angular/cli`) si vas a usar `ng` en local
-- MongoDB Atlas (una URI de conexión válida)
+- Angular CLI (`npm i -g @angular/cli`) if you want to use `ng` locally
 
 ---
 
-## Configuración (MongoDB Atlas + variables de entorno)
+## Installation and local development
 
-En `./backend` crea un archivo `.env` (si tu proyecto usa dotenv) con algo como:
+The frontend automatically connects to our hosted API — no local backend setup is needed.
 
-```bash
-PORT=3000
-MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>/<db>?retryWrites=true&w=majority"
-```
-
-## Instalación y ejecución (local)
-
-### 1) Backend (API)
-
-```bash
-cd backend
-npm install
-npm run dev
-```
-
-La API normalmente quedará en:
-- `http://localhost:3000`
-
-### 2) Frontend (Angular)
+### Frontend (Angular)
 
 ```bash
 cd frontend
@@ -74,12 +55,12 @@ npm install
 ng serve -o
 ```
 
-Frontend en:
+Frontend available at:
 - `http://localhost:4200`
 
 ---
 
-## Build (producción)
+## Build (production)
 
 ### Frontend
 ```bash
@@ -87,25 +68,18 @@ cd frontend
 ng build
 ```
 
-### Backend
-```bash
-cd backend
-npm run build
-npm start
-```
-
 ---
 
-## Despliegue
+## Deployment
 
 - **Frontend**: Vercel (demo: https://pokelytro.vercel.app)
-- **Base de datos**: MongoDB Atlas
+- **Database**: MongoDB Atlas
 - **Backend**: Node + Express
 
 ---
 
 
-## Autores
+## Authors
 
 - @pitumola
 - @RubenMMPS
