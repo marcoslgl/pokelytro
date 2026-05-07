@@ -12,7 +12,7 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 process.env['NG_ALLOWED_HOSTS'] = 'localhost';
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+let angularApp: AngularNodeAppEngine | undefined;
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -41,6 +41,7 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use((req, res, next) => {
+  angularApp ??= new AngularNodeAppEngine();
   angularApp
     .handle(req)
     .then((response) =>
