@@ -13,31 +13,8 @@
       [value]="searchTerm"
       (input)="onSearch($any($event.target).value)"
     />
-    <button
-      #filterButton
-      class="filter-button"
-      type="button"
-      (click)="toggleFilters()"
-      aria-label="Filters"
-      title="Filters"
-    >
-      <svg
-        viewBox="0 0 24 24"
-        width="18"
-        height="18"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-        focusable="false"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M3 4h18l-7 9v6l-4-2v-4z" />
-      </svg>
-    </button>
-    @if (showFilters) {
-      <div class="filters-panel" #filtersPanel>
+    <app-filter-panel>
+      <ng-template #filterContent>
         <div class="filters-row">
           <label>
             Type
@@ -89,21 +66,16 @@
           </div>
           <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
         </div>
-      </div>
-    }
+      </ng-template>
+    </app-filter-panel>
   </div>
-  <div class="pagination-actions">
-    <button (click)="prevPage()" [disabled]="page === 1" aria-label="Previous">&#9664;</button>
-    <span class="page-indicator"
-      >Page {{ page.toString().padStart(2, '0') }} /
-      {{ totalPages.toString().padStart(2, '0') }}</span
-    >
-    <button (click)="nextPage()" [disabled]="page === totalPages" aria-label="Next">&#9654;</button>
-    <form class="page-jump" (submit)="goToPage(pageInput.value); $event.preventDefault()">
-      <input class="right-search" #pageInput type="number" placeholder="Page" />
-    </form>
-    <button class="right-search" (click)="goToPage(pageInput.value)">Go</button>
-  </div>
+  <app-pagination-controls
+    [page]="page"
+    [totalPages]="totalPages"
+    (nextPage)="nextPage()"
+    (prevPage)="prevPage()"
+    (goToPage)="goToPage($event)"
+  ></app-pagination-controls>
 </div>
 
 <div class="pokemon-grid">
@@ -139,7 +111,7 @@
                 </button>
               }
               @if (replacePokemon) {
-                <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">Replace</button>
+                <button (click)="onReplacePokemonClick(pokemon)" class="btn-select">{{ replaceButtonText }}</button>
               }
             </div>
             <div
@@ -174,7 +146,6 @@
         <div class="card-img-col">
           <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" />
         </div>
-        @if (isUserLoggedIn) {}
         <div class="card-info">
           <span class="card-title">{{ pokemon.id }} - {{ pokemon.name }}</span>
           <div class="card-types">
@@ -184,28 +155,30 @@
             }
           </div>
         </div>
-        <div
-          class="favorite-icon"
-          [ngClass]="{ favorited: isFavorite(pokemon) }"
-          (click)="toggleFavorite(pokemon); $event.stopPropagation(); $event.preventDefault()"
-          [attr.aria-label]="isFavorite(pokemon) ? 'Remove from favorites' : 'Add to favorites'"
-          title="Toggle Favorite"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="28"
-            height="28"
-            [attr.fill]="isFavorite(pokemon) ? '#ff4444' : 'none'"
-            [attr.stroke]="isFavorite(pokemon) ? '#ff4444' : 'currentColor'"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+        @if (isUserLoggedIn) {
+          <div
+            class="favorite-icon"
+            [ngClass]="{ favorited: isFavorite(pokemon) }"
+            (click)="toggleFavorite(pokemon); $event.stopPropagation(); $event.preventDefault()"
+            [attr.aria-label]="isFavorite(pokemon) ? 'Remove from favorites' : 'Add to favorites'"
+            title="Toggle Favorite"
           >
-            <path
-              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-            />
-          </svg>
-        </div>
+            <svg
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+              [attr.fill]="isFavorite(pokemon) ? '#ff4444' : 'none'"
+              [attr.stroke]="isFavorite(pokemon) ? '#ff4444' : 'currentColor'"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              />
+            </svg>
+          </div>
+        }
       </a>
     }
   }

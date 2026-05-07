@@ -1,0 +1,83 @@
+.pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+:host {
+  display: contents;
+}
+
+button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input[type='number'] {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  width: 4.5rem;
+}
+
+.page-jump {
+  display: inline-flex;
+  align-items: stretch;
+  border: none;
+  border-radius: 0.4rem;
+  overflow: visible;
+}
+
+.page-jump input[type='number'] {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  width: 5.2rem;
+  border-radius: 0.4rem;
+  margin-left: 0;
+}
+
+.right-search {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.page-indicator {
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 810px) {
+  .right-search {
+    display: none !important;
+  }
+}

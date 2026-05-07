@@ -18,7 +18,17 @@
     </li>
 
     <li>
+      <a [routerLink]="'/combat'" routerLinkActive="active" (click)="closenav()">Combat</a>
+    </li>
+
+    <li>
       <a [routerLink]="'/type-chart'" routerLinkActive="active" (click)="closenav()">Type Chart</a>
+    </li>
+    <li>
+      <a [routerLink]="'/items'" routerLinkActive="active" (click)="closenav()">Items</a>
+    </li>
+    <li>
+      <a [routerLink]="'/moves'" routerLinkActive="active" (click)="closenav()">Moves</a>
     </li>
     <li>
       <a [routerLink]="'/about'" routerLinkActive="active" (click)="closenav()">About Us</a>

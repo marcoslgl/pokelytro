@@ -2,6 +2,7 @@
   @if (team) {
     <h1>Team Details</h1>
     <section class="equipo-actual">
+      <a (click)="router.navigate(['/team-builder'])" class="btn-volver">Volver</a>
       <div class="team">
         <div class="team-header">
           @if (!isEditingName) {
@@ -11,35 +12,50 @@
             <div class="edit-name-form">
               <input [(ngModel)]="newTeamName" placeholder="New team name" class="name-input" />
               <button (click)="onSaveName()" class="btn-save">Save</button>
-              <button (click)="onCancelEditName()" class="btn-cancel">Cancel</button>
+              <button (click)="cancelEditName()" class="btn-cancel">Cancel</button>
             </div>
           }
         </div>
+
         @if (errorMessage) {
           <div class="error-banner">{{ errorMessage }}</div>
         }
+
         <div class="team-pokemons-grid">
           @for (pokemon of teamPokemons; track pokemon.id) {
             <div class="pokemon-card">
-              <a
-                class="pokemon-img-link"
-                [routerLink]="['/pokedex', pokemon.id]"
-                title="Open in Pokédex"
-              >
-                <img
-                  [src]="'/images/' + pokemon.id + '.png'"
-                  [alt]="pokemon.name"
-                  class="equipo-img"
-                />
+              <a class="pokemon-img-link" [routerLink]="['/pokedex', pokemon.id]" title="Open in Pokédex">
+                <img [src]="'/images/' + pokemon.id + '.png'" [alt]="pokemon.name" class="equipo-img" />
               </a>
               <div class="equipo-info">
-                <span class="equipo-name">{{ pokemon.id }} - {{ pokemon.name }}</span>
+                <span class="equipo-name">{{ pokemon.name }}</span>
                 <div class="pokemon-types">
-                  <span class="type" [ngClass]="pokemon.type1">{{ pokemon.type1 }}</span>
+                  <span class="type" [ngClass]="pokemon.type1">
+                    <span class="full-text">{{ pokemon.type1 }}</span>
+                    <span class="abbr-text">{{ pokemon.type1 | slice: 0 : 3 }}</span>
+                  </span>
                   @if (pokemon.type2) {
-                    <span class="type" [ngClass]="pokemon.type2">{{ pokemon.type2 }}</span>
+                    <span class="type" [ngClass]="pokemon.type2">
+                      <span class="full-text">{{ pokemon.type2 }}</span>
+                      <span class="abbr-text">{{ pokemon.type2 | slice: 0 : 3 }}</span>
+                    </span>
                   }
                 </div>
+              </div>
+              <div class="moves-grid">
+                @for (slot of moveSlots; track slot) {
+                  @if (isLoading) {
+                    <div class="move-slot loading">Loading...</div>
+                  } @else {
+                    @if (getMoveIdForSlot(pokemon.id, slot)) {
+                      <button class="move-slot filled" (click)="onOpenMoveEditor(pokemon, slot)">
+                        {{ getMoveNameForSlot(pokemon.id, slot) }}
+                      </button>
+                    } @else {
+                      <button class="move-slot empty" (click)="onOpenMovePicker(pokemon)">+</button>
+                    }
+                  }
+                }
               </div>
               <div class="card-actions">
                 <button class="btn-replace" (click)="onUpdatePokemon(pokemon)">Replace</button>
@@ -47,6 +63,130 @@
             </div>
           }
         </div>
+
+        <!-- Editor de Movimientos -->
+        @if (editingMoveSlot !== null && getEditingMove()) {
+          @let move = getEditingMove()!;
+          <section class="global-move-editor">
+            <div class="global-move-editor-header">
+              <h4>{{ formatMoveName(move.name) }} - {{ getEditingPokemonName() }}</h4>
+              <div class="action-buttons">
+                <button class="btn-replace-move" (click)="onReplaceMove()">Replace</button>
+                <button class="btn-delete-move" (click)="onDeleteMove()">Delete</button>
+                <button class="btn-close-editor" (click)="editingMoveSlot = null">Close</button>
+              </div>
+            </div>
+
+            <div class="move-editor-details">
+              <div class="detail-row">
+                <strong>Type:</strong>
+                <span class="type" [ngClass]="move.type">
+                  <span class="full-text">{{ move.type }}</span>
+                  <span class="abbr-text">{{ move.type | slice: 0 : 3 }}</span>
+                </span>
+              </div>
+              <div class="detail-row">
+                <strong>Category:</strong>
+                <span><img [src]="'/' + move.damage_class + '.png'" [alt]="move.damage_class" /></span>
+              </div>
+              <div class="detail-row"><strong>Power: {{ move.power || '-' }}</strong></div>
+              <div class="detail-row"><strong>Accuracy: {{ move.accuracy || '-' }}</strong></div>
+              <div class="detail-row"><strong>PP: {{ move.pp }}</strong></div>
+              <div class="detail-row description">
+                <strong>Description:</strong>
+                <p>{{ move.description }}</p>
+              </div>
+            </div>
+          </section>
+        }
+
+        <!-- Selector de Movimientos Global -->
+        @if (activeMovePickerPokemonId !== null) {
+          <section class="global-move-picker">
+            <div class="global-move-picker-header">
+              <h4>Available moves for {{ getActiveMovePickerPokemonName() }}</h4>
+              <button class="btn-cancel-move" (click)="closeMovePicker()">Close</button>
+            </div>
+
+            <div class="pagination-controls">
+              <div class="left-controls">
+                <input
+                  class="search-input"
+                  type="text"
+                  placeholder="Search by name"
+                  [(ngModel)]="movesSearchTerm"
+                  (input)="onMoveSearch(movesSearchTerm)"
+                />
+                <app-filter-panel>
+                  <ng-template #filterContent>
+                    <div class="filters-row">
+                      <label>Type
+                        <select class="filter-select" [(ngModel)]="selectedMoveType" (ngModelChange)="onMoveTypeChange($event)">
+                          <option value="">All</option>
+                          @for (type of moveTypes; track type) {
+                            <option [value]="type">{{ type }}</option>
+                          }
+                        </select>
+                      </label>
+                      <label>Category
+                        <select class="filter-select" [(ngModel)]="selectedMoveDamageClass" (ngModelChange)="onMoveDamageClassChange($event)">
+                          <option value="">All</option>
+                          @for (damageClass of moveDamageClasses; track damageClass) {
+                            <option [value]="damageClass">{{ damageClass }}</option>
+                          }
+                        </select>
+                      </label>
+                      <label>Sort
+                        <select class="filter-select" [(ngModel)]="moveSortBy" (ngModelChange)="onMoveSortChange($event)">
+                          <option value="name">A-Z</option>
+                          <option value="power">Power</option>
+                          <option value="accuracy">Accuracy</option>
+                          <option value="pp">PP</option>
+                        </select>
+                      </label>
+                      <button type="button" class="clear-filters" (click)="clearMoveFilters()">Clear</button>
+                    </div>
+                  </ng-template>
+                </app-filter-panel>
+              </div>
+
+              <app-pagination-controls
+                [page]="movePage"
+                [totalPages]="moveTotalPages"
+                (nextPage)="nextMovePage()"
+                (prevPage)="prevMovePage()"
+                (goToPage)="goToMovePage($event)"
+              ></app-pagination-controls>
+            </div>
+
+            @if (availableMovesForSelectedPokemon.length === 0) {
+              <p class="moves-empty">No available moves to add.</p>
+            } @else {
+              <div class="move-table-wrap">
+                <div class="move-table-head">
+                  <span>Name</span><span>Type</span><span>Cat.</span>
+                  <span>Pow</span><span>Acc</span><span>PP</span>
+                  <span>Description</span><span>Action</span>
+                </div>
+                @for (move of availableMovesForSelectedPokemon; track move._id) {
+                  <div class="move-table-row">
+                    <span><strong>{{ formatMoveName(move.name) }}</strong></span>
+                    <span class="type" [ngClass]="move.type">
+                      <span class="full-text">{{ move.type }}</span>
+                      <span class="abbr-text">{{ move.type | slice: 0 : 3 }}</span>
+                    </span>
+                    <span><img [src]="'/' + move.damage_class + '.png'" [alt]="move.damage_class" /></span>
+                    <span><strong>{{ move.power || '-' }}</strong></span>
+                    <span><strong>{{ move.accuracy || '-' }}</strong></span>
+                    <span><strong>{{ move.pp || '-' }}</strong></span>
+                    <span class="move-description">{{ move.description }}</span>
+                    <button class="btn-add-move" (click)="onAddMoveToPokemon(move._id)">Add</button>
+                  </div>
+                }
+              </div>
+            }
+          </section>
+        }
       </div>
     </section>
   }

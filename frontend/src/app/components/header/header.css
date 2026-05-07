@@ -24,6 +24,7 @@ h1 {
 }
 
 .user-icon {
+  background: #121212;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,7 +37,7 @@ h1 {
 }
 
 .user-icon:hover {
-  background: #f5f5f5;
+  background: #666666;
   border-color: rgb(59, 130, 246);
   transform: scale(1.1);
 }
@@ -45,6 +46,6 @@ h1 {
   width: max-content;
   height: auto;
   object-fit: contain;
-  background: #ffffff;
   border-radius: 50%;
+  padding: 2px;
 }

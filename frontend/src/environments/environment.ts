@@ -10,4 +10,7 @@ export const environment = {
     types: '/api/types',
     chatbot: '/api/chatbot/message'
   }
+    items: '/api/items',
+    moves: '/api/moves',
+  },
 };

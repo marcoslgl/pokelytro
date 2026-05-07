@@ -1,0 +1,155 @@
+<div class="combat-page">
+  <h1 class="title">Pokémon Battle</h1>
+
+  @if (loading()) {
+    <p class="status">Loading...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!loading() && !error()) {
+    <div class="selectors">
+      <label class="field">
+        <span>Team</span>
+        <select
+          class="select"
+          [ngModel]="selectedTeamId()"
+          (ngModelChange)="onSelectTeam($event)"
+          aria-label="Select team"
+        >
+          @for (t of teams(); track t._id) {
+            <option [value]="t._id">{{ t.name }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Your Pokémon</span>
+        <select
+          class="select"
+          [ngModel]="selectedPokemonId()"
+          (ngModelChange)="onSelectPokemon($event)"
+          aria-label="Select your Pokémon"
+        >
+          @for (p of teamPokemons(); track p.id) {
+            <option [ngValue]="p.id">{{ p.id }} - {{ p.name }}</option>
+          }
+        </select>
+      </label>
+
+      <button type="button" class="btn" (click)="resetBattle()">Reset</button>
+      <button type="button" class="btn" (click)="openEnemyPicker()">Choose Enemy</button>
+    </div>
+
+    @if (isReady()) {
+      @let myPokemon = you();
+      @let enemyPokemon = enemy();
+
+      <div class="arena">
+        <div class="pokemon-side">
+          <h2 class="side-title">You</h2>
+          <div class="pokemon-card">
+            <img class="sprite" [src]="'/images/' + myPokemon!.pokemon.id + '.png'" [alt]="myPokemon!.pokemon.name" />
+            <div class="info">
+              <div class="name">{{ myPokemon!.pokemon.name }}</div>
+              <div class="types">
+                <span class="type" [ngClass]="myPokemon!.pokemon.type1">{{ myPokemon!.pokemon.type1 }}</span>
+                @if (myPokemon!.pokemon.type2) {
+                  <span class="type" [ngClass]="myPokemon!.pokemon.type2">{{ myPokemon!.pokemon.type2 }}</span>
+                }
+              </div>
+              <div class="hp">
+                <div class="hp-bar">
+                  <div class="hp-fill" [style.width.%]="hpPct(myPokemon)"></div>
+                </div>
+                <div class="hp-text">{{ myPokemon!.hpCurrent }} / {{ myPokemon!.hpMax }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pokemon-side">
+          <h2 class="side-title">Enemy</h2>
+          <div class="pokemon-card">
+            <img class="sprite" [src]="'/images/' + enemyPokemon!.pokemon.id + '.png'" [alt]="enemyPokemon!.pokemon.name" />
+            <div class="info">
+              <div class="name">{{ enemyPokemon!.pokemon.name }}</div>
+              <div class="types">
+                <span class="type" [ngClass]="enemyPokemon!.pokemon.type1">{{ enemyPokemon!.pokemon.type1 }}</span>
+                @if (enemyPokemon!.pokemon.type2) {
+                  <span class="type" [ngClass]="enemyPokemon!.pokemon.type2">{{ enemyPokemon!.pokemon.type2 }}</span>
+                }
+              </div>
+              <div class="hp">
+                <div class="hp-bar">
+                  <div class="hp-fill" [style.width.%]="hpPct(enemyPokemon)"></div>
+                </div>
+                <div class="hp-text">{{ enemyPokemon!.hpCurrent }} / {{ enemyPokemon!.hpMax }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @if (isFinished()) {
+        <div class="result">
+          @switch (battleResult) {
+            @case ('won')  { <strong>You won!</strong> }
+            @case ('lost') { <strong>You lost...</strong> }
+            @default       { <strong>Battle finished.</strong> }
+          }
+        </div>
+      }
+
+      <div class="moves">
+        <h3 class="moves-title">Moves</h3>
+        <div class="moves-grid">
+          @for (m of yourMoves(); track m._id) {
+            <button
+              type="button"
+              class="move-btn"
+              (click)="useMove(m)"
+              [disabled]="isFinished()"
+              [attr.aria-label]="'Use move ' + formatMoveName(m.name)"
+            >
+              <div class="move-meta">
+                <div class="move-name">{{ formatMoveName(m.name) }}</div>
+                <span class="move-power">Power: {{ m.power }}</span>
+              </div>
+              <span class="move-type" [ngClass]="m.type">{{ m.type }}</span>
+            </button>
+          }
+        </div>
+        @if (yourMoves().length === 0) {
+          <p class="status">This Pokémon has no damage moves available.</p>
+        }
+      </div>
+
+      <div class="log">
+        <h3 class="log-title">Log</h3>
+        @if (log().length === 0) {
+          <p class="status">Use a move to start.</p>
+        } @else {
+          <ul class="log-list">
+            @for (e of log(); track $index) {
+              <li class="log-entry" [class.enemy]="e.actor === 'enemy'" [class.you]="e.actor === 'you'">
+                <span class="who">{{ e.actor === 'you' ? 'You' : 'Enemy' }}</span>
+                <span class="text">
+                  use <strong>{{ formatMoveName(e.moveName) }}</strong> and deal
+                  <strong>{{ e.damage }}</strong> damage
+                  @if (e.crit) {
+                    (Critical Hit!! 1.5, ROLL {{ e.roll }}, STAB {{ e.stab }}, EFFECTIVENESS {{ formatEffectiveness(e.effectiveness) }})
+                  } @else {
+                    (ROLL {{ e.roll }}, STAB {{ e.stab }}, EFFECTIVENESS {{ formatEffectiveness(e.effectiveness) }})
+                  }
+                </span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    }
+  }
+</div>

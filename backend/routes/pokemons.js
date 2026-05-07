@@ -2,6 +2,21 @@ const express = require("express");
 const router = express.Router();
 const Pokemon = require("../models/Pokemon");
 
+// GET: list by IDs (for team optimization)
+router.get("/by-ids", async (req, res) => {
+  try {
+    const ids = req.query.ids ? req.query.ids.split(",").map(Number) : [];
+    if (ids.length === 0) {
+      return res.status(400).json({ message: "No IDs provided" });
+    }
+
+    const pokemons = await Pokemon.find({ _id: { $in: ids } });
+    res.status(200).json(pokemons);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // GET: list
 router.get("/", async (req, res) => {
   try {

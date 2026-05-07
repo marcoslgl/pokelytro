@@ -1,0 +1,48 @@
+.filter-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: currentColor;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.filter-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filter-button svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.filters-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(17, 23, 39, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  min-width: 320px;
+}

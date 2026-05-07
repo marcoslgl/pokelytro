@@ -57,7 +57,7 @@
                 <b>{{ formatId(pokemon.id) }}</b>
               </td>
             </tr>
-            @if (pokemon.pokemon_type.length > 0) {
+            @if (pokemon.pokemon_type && pokemon.pokemon_type.length > 0) {
               <tr>
                 <th>
                   @if (pokemon.pokemon_type.length < 2) {
@@ -77,23 +77,23 @@
                   }
                 </td>
               </tr>
-              <tr>
-                <th>
-                  @if (!pokemon.type2) {
-                    Type
-                  } @else {
-                    Types
-                  }
-                </th>
-                <td>
-                  <b class="{{ pokemon.type1 }}">{{ pokemon.type1 }}</b>
-                  @if (pokemon.type2) {
-                    &nbsp;/&nbsp;
-                    <b class="{{ pokemon.type2 }}">{{ pokemon.type2 }}</b>
-                  }
-                </td>
-              </tr>
             }
+            <tr>
+              <th>
+                @if (!pokemon.type2) {
+                  Type
+                } @else {
+                  Types
+                }
+              </th>
+              <td>
+                <b class="{{ pokemon.type1 }}">{{ pokemon.type1 }}</b>
+                @if (pokemon.type2) {
+                  &nbsp;/&nbsp;
+                  <b class="{{ pokemon.type2 }}">{{ pokemon.type2 }}</b>
+                }
+              </td>
+            </tr>
 
             <tr>
               <th>Height</th>

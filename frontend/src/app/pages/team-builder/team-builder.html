@@ -63,7 +63,8 @@
             <li class="equipo-card">
               <h3>{{ team.name || 'Team ' + team._id }}</h3>
               <ul class="team-preview">
-                @for (id of team.pokemons; track $index) {
+                @for (entry of team.pokemons; track $index) {
+                  @let id = getPokemonId(entry);
                   <li>
                     {{ pokemonName(id) }}
                     @if (pokemonMap.get(id)) {

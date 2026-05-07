@@ -8,6 +8,49 @@
     <div class="profile-details">
       <section class="user-info">
         <h3>Your Information</h3>
+
+        <div class="profile-image-section">
+          <div class="profile-image-container">
+            <img
+              [src]="'/profiles/' + (currentUserBasic()?.profileImage || 1) + '.png'"
+              [alt]="'Profile image ' + (currentUserBasic()?.profileImage || 1)"
+              class="profile-image-display"
+            />
+          </div>
+          <button
+            (click)="toggleProfileImageSelector()"
+            class="btn-change-profile"
+            [disabled]="isUpdatingProfileImage()"
+          >
+            {{ showProfileImageSelector() ? 'Close' : 'Change Profile Image' }}
+          </button>
+
+          @if (showProfileImageSelector()) {
+            <div class="profile-image-selector">
+              <p class="selector-title">Choose your profile image:</p>
+              <div class="images-grid">
+                @for (imageNum of profileImageOptions; track imageNum) {
+                  <button
+                    class="image-option"
+                    [class.selected]="imageNum === (currentUserBasic()?.profileImage || 1)"
+                    (click)="selectProfileImage(imageNum)"
+                    [disabled]="isUpdatingProfileImage()"
+                    [title]="'Profile ' + imageNum"
+                  >
+                    <img
+                      [src]="'/profiles/' + imageNum + '.png'"
+                      [alt]="'Profile image ' + imageNum"
+                    />
+                  </button>
+                }
+              </div>
+              @if (isUpdatingProfileImage()) {
+                <p class="updating-text">Actualizando...</p>
+              }
+            </div>
+          }
+        </div>
+
         <p><strong>Email:</strong> {{ profile.email }}</p>
         <p><strong>Member since:</strong> {{ profile.createdAt | date: 'mediumDate' }}</p>
       </section>
@@ -41,8 +84,11 @@
               <h4>{{ team.name }}</h4>
               <div class="team-members">
                 @for (pokeId of team.pokemons; track $index) {
-                  <a routerLink="/pokedex/{{ pokeId }}" class="pokemon-icon">
-                    <img [src]="'/images/' + pokeId + '.png'" [alt]="'Pokemon ' + pokeId" />
+                  <a routerLink="/pokedex/{{ getPokemonId(pokeId) }}" class="pokemon-icon">
+                    <img
+                      [src]="'/images/' + getPokemonId(pokeId) + '.png'"
+                      [alt]="'Pokemon ' + getPokemonId(pokeId)"
+                    />
                   </a>
                 }
               </div>
@@ -57,13 +103,7 @@
         }
       </section>
     </div>
-  } @else if (isLoading()) {
-    <p>Loading profile...</p>
   } @else {
-    <div class="error-state">
-      <h3>Loading Error</h3>
-      <p>Could not load profile information. Please try signing in again.</p>
-      <button (click)="onLogout()">Go to Login</button>
-    </div>
+    <p>Loading your profile...</p>
   }
 </div>

@@ -1,10 +1,13 @@
 :host {
   width: 100%;
+  height: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 16px;
-  gap: 16px;
+  gap: 28px;
+  overflow: hidden;
 }
 
 .home {
@@ -23,7 +26,8 @@
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  max-height: 52vh;
+  max-height: 42vh;
+  flex-shrink: 0;
 }
 
 .carousel {
@@ -52,8 +56,8 @@
 .card {
   width: 15vw;
   height: 15vw;
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 220px;
+  max-height: 220px;
   flex-shrink: 0;
   margin: 0 10px;
   background-color: #121212;
@@ -92,6 +96,29 @@
   background-color: #151515;
 }
 
+@media (max-height: 740px) {
+  :host {
+    gap: 12px;
+  }
+  .home-video {
+    max-height: 50vh;
+  }
+
+  .card {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .card p {
+    display: none !important;
+  }
+}
+
+@media (max-height: 670px) {
+  .home-video {
+    max-height: 40vh;
+  }
+}
 @media (max-width: 1300px) {
   .card p {
     display: none !important;

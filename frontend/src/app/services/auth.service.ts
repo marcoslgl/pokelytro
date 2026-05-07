@@ -1,6 +1,6 @@
 import { inject, Injectable, signal, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map, tap, timeout } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { LoginResponse } from '../models/auth/login-response';
 import { User } from '../models/user/user';
@@ -26,9 +26,14 @@ export class AuthService {
 
   public isAuthenticated = signal<boolean>(false);
   public currentUser = signal<User | null>(null);
+  private authChecked = signal<boolean>(false);
 
   constructor() {
     this.checkAuthenticationStatus();
+  }
+
+  isAuthChecked(): boolean {
+    return this.authChecked();
   }
 
   private get apiUrl(): string {
@@ -50,6 +55,7 @@ export class AuthService {
 
   private checkAuthenticationStatus(): void {
     if (!this.isBrowser) {
+      this.authChecked.set(true);
       return;
     }
 
@@ -57,16 +63,27 @@ export class AuthService {
     if (token) {
       this.isAuthenticated.set(true);
 
-      this.getProfile().subscribe({
-        next: (user) => {
-          this.currentUser.set(user);
-        },
-        error: (err) => {
-          if (err.status === 401 || err.status === 403) {
-            this.logout();
-          }
-        },
-      });
+      this.getProfile()
+        .pipe(timeout(5000)) // 5 segundos de timeout
+        .subscribe({
+          next: (user) => {
+            this.currentUser.set(user);
+            this.authChecked.set(true);
+          },
+          error: (err) => {
+            // Solo hacer logout si es error de autenticación explícito
+            // 401: No autorizado, 403: Prohibido
+            if (err.status === 401 || err.status === 403) {
+              this.logout();
+            } else {
+              // Para otros errores (conexión, servidor, timeout, etc)
+              // mantener la sesión pero marcar como verificado
+              this.authChecked.set(true);
+            }
+          },
+        });
+    } else {
+      this.authChecked.set(true);
     }
   }
 
@@ -127,5 +144,17 @@ export class AuthService {
         body: { pokemonId },
       })
       .pipe(map((resp) => resp?.favorites ?? []));
+  }
+
+  updateProfileImage(id: string, profileImage: number): Observable<{ user: User }> {
+    return this.http
+      .put<{ user: User }>(`${this.apiUrl}/${id}/profile-image`, { profileImage })
+      .pipe(
+        tap((response) => {
+          if (response.user) {
+            this.currentUser.set(response.user);
+          }
+        }),
+      );
   }
 }

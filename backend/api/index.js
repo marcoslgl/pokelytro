@@ -7,7 +7,12 @@ const app = express();
 
 // Middleware CORS
 const corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:4200", "https://pokelytro.vercel.app", /\.vercel\.app$/],
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:4200",
+    "https://pokelytro.vercel.app",
+    /\.vercel\.app$/,
+  ],
   credentials: true,
   optionsSuccessStatus: 200,
 };
@@ -32,6 +37,8 @@ const pokemonRoutes = require("../routes/pokemons");
 const teamRoutes = require("../routes/teams");
 const typeRoutes = require("../routes/types");
 const lytroBotRoutes = require("../routes/chatbot");
+const itemRoutes = require("../routes/items");
+const movesRoutes = require("../routes/moves");
 
 // Rutas
 app.use("/api/users", userRoutes);
@@ -39,6 +46,8 @@ app.use("/api/pokemons", pokemonRoutes);
 app.use("/api/teams", teamRoutes);
 app.use("/api/types", typeRoutes);
 app.use("/api/chatbot", lytroBotRoutes);
+app.use("/api/items", itemRoutes);
+app.use("/api/moves", movesRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

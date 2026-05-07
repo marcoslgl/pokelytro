@@ -7,6 +7,10 @@ const sanitizeUser = (user) => {
   const userObject = user.toObject ? user.toObject() : user;
   delete userObject.password;
   delete userObject.__v;
+  // Asegurar que profileImage siempre existe
+  if (!userObject.profileImage) {
+    userObject.profileImage = 1;
+  }
   return userObject;
 };
 
@@ -76,7 +80,15 @@ router.post("/login", async (req, res) => {
 
 // GET: /profile (Ruta Protegida)
 router.get("/profile", protect, async (req, res) => {
-  res.status(200).json(req.user);
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado." });
+    }
+    res.status(200).json(sanitizeUser(user));
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // GET: Listar todos los usuarios
@@ -134,12 +146,10 @@ router.post("/:id/favorites", protect, async (req, res) => {
     }
     user.favorites.push(pokemonId);
     await user.save();
-    res
-      .status(200)
-      .json({
-        message: "Pokémon agregado a favoritos.",
-        favorites: user.favorites,
-      });
+    res.status(200).json({
+      message: "Pokémon agregado a favoritos.",
+      favorites: user.favorites,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -162,12 +172,51 @@ router.delete("/:id/favorites", protect, async (req, res) => {
     }
     user.favorites.splice(index, 1);
     await user.save();
-    res
-      .status(200)
-      .json({
-        message: "Pokémon eliminado de favoritos.",
-        favorites: user.favorites,
-      });
+    res.status(200).json({
+      message: "Pokémon eliminado de favoritos.",
+      favorites: user.favorites,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// PUT: Actualizar foto de perfil (PROTEGIDA)
+router.put("/:id/profile-image", protect, async (req, res) => {
+  try {
+    if (!assertOwner(req, res)) return;
+
+    let { profileImage } = req.body;
+
+    // Convertir a número si es string
+    if (typeof profileImage === "string") {
+      profileImage = parseInt(profileImage, 10);
+    }
+
+    if (
+      typeof profileImage !== "number" ||
+      profileImage < 1 ||
+      profileImage > 20
+    ) {
+      return res
+        .status(400)
+        .json({ message: "profileImage debe ser un número entre 1 y 20." });
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      { $set: { profileImage: profileImage } },
+      { new: true },
+    );
+
+    if (!updatedUser)
+      return res.status(404).json({ message: "Usuario no encontrado" });
+
+    const sanitized = sanitizeUser(updatedUser);
+    res.status(200).json({
+      message: "Foto de perfil actualizada correctamente.",
+      user: sanitized,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -186,9 +235,11 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// PUT: Actualizar usuario
-router.put("/:id", async (req, res) => {
+// PUT: Actualizar usuario (PROTEGIDA)
+router.put("/:id", protect, async (req, res) => {
   try {
+    if (!assertOwner(req, res)) return;
+
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
@@ -198,7 +249,7 @@ router.put("/:id", async (req, res) => {
     if (!updatedUser)
       return res.status(404).json({ message: "Usuario no encontrado" });
 
-    res.status(200).json(updatedUser);
+    res.status(200).json(sanitizeUser(updatedUser));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

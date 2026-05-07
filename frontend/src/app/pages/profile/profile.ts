@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
   public currentUserBasic = this.authService.currentUser;
   private teamService = inject(TeamService);
   public teams: TeamModel[] = [];
+  public isUpdatingProfileImage = signal<boolean>(false);
+  public profileImageOptions = Array.from({ length: 20 }, (_, i) => i + 1);
+  public showProfileImageSelector = signal<boolean>(false);
 
   ngOnInit(): void {
     this.userProfile$ = this.authService.getProfile().pipe(
@@ -36,7 +39,6 @@ export class ProfileComponent implements OnInit {
         }
       }),
       catchError((error) => {
-        console.error('Error al cargar el perfil. Token inválido o expirado.', error);
         if (error.status === 401) {
           this.authService.logout();
           this.router.navigate(['/login']);
@@ -68,14 +70,48 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  getPokemonId(entry: number | { pokemonId?: number | string }): number {
+    if (typeof entry === 'number') return entry;
+    return Number(entry?.pokemonId);
+  }
+
   private refreshTeams(userId: string) {
     this.teamService.getByUserId(userId).subscribe({
       next: (teams: any) => {
         this.teams = teams as TeamModel[];
       },
       error: (err) => {
-        console.error('Error loading teams for user', err);
-        this.teams = [];
+      },
+    });
+  }
+
+  toggleProfileImageSelector(): void {
+    this.showProfileImageSelector.update(val => !val);
+  }
+
+  selectProfileImage(imageNumber: number): void {
+    const currentUser = this.authService.currentUser();
+    if (!currentUser?._id) {
+      return;
+    }
+
+    // Guardar estado anterior por si hay que revertir
+    const previousUser = { ...currentUser };
+    const updatedUser = { ...currentUser, profileImage: imageNumber };
+
+    // Actualizar de forma optimista en el frontend
+    this.authService.currentUser.set(updatedUser);
+    this.isUpdatingProfileImage.set(true);
+
+    // Actualizar en el backend
+    this.authService.updateProfileImage(currentUser._id, imageNumber).subscribe({
+      next: (response) => {
+        this.isUpdatingProfileImage.set(false);
+        // Cerrar el selector solo si fue exitosa la actualización
+        this.showProfileImageSelector.set(false);
+      },
+      error: (err) => {
+        this.isUpdatingProfileImage.set(false);
       },
     });
   }

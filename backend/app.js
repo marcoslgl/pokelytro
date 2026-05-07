@@ -11,16 +11,18 @@ app.use(express.json());
 
 const pokemonRoutes = require("./routes/pokemons");
 app.use("/api/pokemons", pokemonRoutes);
-
 const typeRoutes = require("./routes/types");
 app.use("/api/types", typeRoutes);
-
 const userRoutes = require("./routes/user");
 app.use("/api/users", userRoutes);
 const teamRoutes = require("./routes/teams");
 app.use("/api/teams", teamRoutes);
 const lytroBotRoutes = require("./routes/chatbot");
 app.use("/api/chatbot", lytroBotRoutes);
+const itemRoutes = require("./routes/items");
+app.use("/api/items", itemRoutes);
+const moveRoutes = require("./routes/moves");
+app.use("/api/moves", moveRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello from the backend!");
@@ -41,6 +43,6 @@ async function main() {
   await mongoose.connect(connectionString);
   mongoose.set("strictQuery", true);
   console.log("Connected to MongoDB");
-  
+
   lytroBotRoutes.initVectorStore();
 }

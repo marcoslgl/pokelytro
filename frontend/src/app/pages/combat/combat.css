@@ -1,0 +1,235 @@
+.combat-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.title {
+  margin: 8px 0 16px;
+}
+
+.status {
+  opacity: 0.85;
+}
+
+.error {
+  color: #b00020;
+}
+
+.selectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+  margin: 12px 0 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.select {
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  cursor: pointer;
+}
+
+.arena {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 12px 0 16px;
+}
+
+@media (min-width: 900px) {
+  .arena {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.side-title {
+  margin: 0 0 8px;
+}
+
+.pokemon-card {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.sprite {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.types {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0 10px;
+}
+
+.type {
+  padding: 4px 8px;
+  border-radius: 0.3rem;
+  font-weight: normal;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--type-color, transparent);
+  border-color: var(--type-color, currentColor);
+  color: #fff;
+}
+
+.stats {
+}
+
+.hp {
+  display: grid;
+  gap: 6px;
+}
+
+.hp-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.hp-fill {
+  height: 100%;
+  width: 0;
+  background: #4caf50;
+}
+
+.hp-text {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.result {
+  text-align: center;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  color: #fff;
+  margin: 6px 0 12px;
+}
+
+.moves {
+  margin: 14px 0;
+}
+
+.moves-title {
+  margin: 0 0 10px;
+}
+
+.moves-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 900px) {
+  .moves-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.move-btn {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  color: #fff;
+}
+
+.move-type {
+  padding: 4px 8px;
+  border-radius: 0.3rem;
+  font-weight: normal;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--type-color, transparent);
+  border-color: var(--type-color, currentColor);
+  color: #fff;
+}
+
+.move-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.move-name {
+  font-weight: 700;
+}
+
+.move-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.9;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.log {
+  margin: 14px 0;
+  color: white;
+}
+
+.log-title {
+  margin: 0 0 10px;
+}
+
+.log-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.log-entry {
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  gap: 10px;
+}
+
+.log-entry .who {
+  font-weight: 700;
+  min-width: 70px;
+}

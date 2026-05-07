@@ -3,10 +3,6 @@ const User = require("../models/User");
 
 const protect = async (req, res, next) => {
   let token;
-  console.log(
-    "JWT Secret usado:",
-    process.env.JWT_SECRET ? "Cargado" : "NO CARGADO",
-  );
 
   if (
     req.headers.authorization &&
@@ -25,9 +21,8 @@ const protect = async (req, res, next) => {
           .json({ message: "Token inválido o usuario no encontrado." });
       }
 
-      next();
+      return next();
     } catch (error) {
-      console.error("Error de autenticación JWT:", error.message);
       return res
         .status(401)
         .json({ message: "No autorizado, token fallido o expirado." });

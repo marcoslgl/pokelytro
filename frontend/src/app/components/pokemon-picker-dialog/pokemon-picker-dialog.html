@@ -1,0 +1,19 @@
+<div class="dialog-container">
+  <div class="dialog-actions">
+    <button mat-flat-button (click)="onCancel()">Cancel</button>
+  </div>
+
+  <h2 class="dialog-title">{{ data.title }}</h2>
+  @if (data.subtitle) {
+    <p class="dialog-subtitle">{{ data.subtitle }}</p>
+  }
+
+  <div class="dialog-list">
+    <app-pokemon-list
+      [teamDetails]="true"
+      [replacePokemon]="true"
+      [replaceButtonText]="data.actionLabel ?? 'Select'"
+      (onReplacePokemon)="onPick($event)"
+    ></app-pokemon-list>
+  </div>
+</div>

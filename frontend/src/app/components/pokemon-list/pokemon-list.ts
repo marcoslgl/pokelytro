@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   OnInit,
   Output,
@@ -18,11 +17,13 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PokemonListStore } from '../../services/pokemon-list-store/pokemon-list-store';
 import { AuthService } from '../../services/auth.service';
 import { finalize } from 'rxjs/operators';
+import { PaginationControls } from '../pagination-controls/pagination-controls';
+import { FilterPanel } from '../filter-panel/filter-panel';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, PaginationControls, FilterPanel],
   templateUrl: './pokemon-list.html',
   styleUrls: ['./pokemon-list.css'],
 })
@@ -31,7 +32,6 @@ export class PokemonList implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private authService = inject(AuthService);
-  //  Pokemon list
 
   pokemons!: Pokemon[];
   searchTerm = '';
@@ -41,7 +41,6 @@ export class PokemonList implements OnInit {
   simpleList = false;
   types: string[] = [];
   generations: number[] = [];
-  showFilters = false;
   page = 1;
   pageSize = 32;
   totalPages = 1;
@@ -54,10 +53,10 @@ export class PokemonList implements OnInit {
   @Output() addPokemon = new EventEmitter<Pokemon>();
 
   @Input() replacePokemon = false;
+  @Input() replaceButtonText = 'Replace';
   @Output() onReplacePokemon = new EventEmitter<Pokemon>();
 
-  @ViewChild('filtersPanel') filtersPanel?: ElementRef<HTMLElement>;
-  @ViewChild('filterButton') filterButton?: ElementRef<HTMLElement>;
+  @ViewChild(FilterPanel) filterPanel?: FilterPanel;
 
   private SyncToUrl(): boolean {
     return true;
@@ -65,7 +64,6 @@ export class PokemonList implements OnInit {
 
   private restoreFromUrl(): void {
     const qp = this.route.snapshot.queryParamMap;
-
     const page = Number(qp.get('page'));
     const pageSize = Number(qp.get('pageSize'));
     const q = qp.get('q');
@@ -113,9 +111,7 @@ export class PokemonList implements OnInit {
   }
 
   get pagedPokemons(): Pokemon[] {
-    const list = this.filteredPokemons;
-    const start = (this.page - 1) * this.pageSize;
-    return list.slice(start, start + this.pageSize);
+    return PaginationControls.getPagedItems(this.filteredPokemons, this.page, this.pageSize);
   }
 
   ngOnInit(): void {
@@ -145,16 +141,13 @@ export class PokemonList implements OnInit {
             new Set<number>(data.map((p: Pokemon) => p.generation)),
           ).sort((a, b) => a - b);
           this.recomputeTotalPages();
-          if (this.page > this.totalPages) this.page = this.totalPages;
-          if (this.page < 1) this.page = 1;
+          this.page = PaginationControls.normalizePage(this.page, this.totalPages);
           this.syncUrl();
-          console.log('Number of pokemons:', data.length);
         }),
       )
       .subscribe({
         next: () => {},
         error: (err) => {
-          console.error('Error loading pokemons:', err);
         },
       });
   }
@@ -177,7 +170,6 @@ export class PokemonList implements OnInit {
             }
           },
           error: (err) => {
-            console.error('Error loading favorites:', err);
           },
         });
       return;
@@ -204,15 +196,17 @@ export class PokemonList implements OnInit {
   }
 
   nextPage(): void {
-    if (this.page < this.totalPages) {
-      this.page++;
+    const nextPage = PaginationControls.getNextPage(this.page, this.totalPages);
+    if (nextPage !== undefined) {
+      this.page = nextPage;
       this.syncUrl();
     }
   }
 
   prevPage(): void {
-    if (this.page > 1) {
-      this.page--;
+    const prevPage = PaginationControls.getPrevPage(this.page);
+    if (prevPage !== undefined) {
+      this.page = prevPage;
       this.syncUrl();
     }
   }
@@ -227,13 +221,7 @@ export class PokemonList implements OnInit {
   goToPage(target: number | string): void {
     const desired = Number(target);
     if (!Number.isFinite(desired)) return;
-    if (desired < 1) {
-      this.page = 1;
-    } else if (desired > this.totalPages) {
-      this.page = this.totalPages;
-    } else {
-      this.page = desired;
-    }
+    this.page = PaginationControls.normalizePage(desired, this.totalPages);
     this.syncUrl();
   }
 
@@ -280,22 +268,6 @@ export class PokemonList implements OnInit {
     this.onReplacePokemon.emit(pokemon);
   }
 
-  toggleFilters(): void {
-    this.showFilters = !this.showFilters;
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
-    if (!this.showFilters) return;
-    const target = event.target as Node | null;
-    const panel = this.filtersPanel?.nativeElement;
-    const button = this.filterButton?.nativeElement;
-    if (target && (panel?.contains(target) || button?.contains(target))) {
-      return;
-    }
-    this.showFilters = false;
-  }
-
   clearFilters(): void {
     this.selectedType = '';
     this.selectedGen = '';
@@ -304,11 +276,12 @@ export class PokemonList implements OnInit {
     this.page = 1;
     this.recomputeTotalPages();
     this.syncUrl();
+    this.filterPanel?.closeFilters();
   }
 
   private recomputeTotalPages(): void {
     const count = this.filteredPokemons.length;
-    this.totalPages = Math.max(1, Math.ceil(count / this.pageSize));
+    this.totalPages = PaginationControls.calculateTotalPages(count, this.pageSize);
   }
 
   get isUserLoggedIn(): boolean {
@@ -342,7 +315,6 @@ export class PokemonList implements OnInit {
         }
       },
       error: (err) => {
-        console.error('Error toggling favorite:', err);
       },
     });
   }

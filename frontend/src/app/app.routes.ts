@@ -12,11 +12,15 @@ import { TeamDetail } from './pages/team-detail/team-detail';
 import { Pokemon } from './pages/pokemon/pokemon';
 import { pokemonListResolver } from './resolvers/pokemon-list.resolver';
 import { Types } from './pages/types/types';
+import { Items } from './pages/item/item';
+import { Moves } from './pages/moves/moves';
+import { Combat } from './pages/combat/combat';
 
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'pokedex', component: Pokedex, resolve: { pokemonList: pokemonListResolver } },
   { path: 'pokedex/:id', component: Pokemon },
+  { path: 'combat', component: Combat, canActivate: [authGuard] },
   {
     path: 'team-builder',
     component: TeamBuilder,
@@ -31,6 +35,8 @@ export const routes: Routes = [
   },
   { path: 'type-chart', component: Types },
   { path: 'about', component: About },
+  { path: 'items', component: Items },
+  { path: 'moves', component: Moves },
   { path: 'login', component: LoginComponent, canActivate: [guestGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [guestGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },

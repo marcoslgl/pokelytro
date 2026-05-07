@@ -1,0 +1,14 @@
+<div class="pagination-actions">
+  <button (click)="onPrevClick()" [disabled]="page === 1" aria-label="Previous">&#9664;</button>
+  <span class="page-indicator">
+    Page {{ page.toString().padStart(2, '0') }} /
+    {{ totalPages.toString().padStart(2, '0') }}
+  </span>
+  <button (click)="onNextClick()" [disabled]="page === totalPages" aria-label="Next">
+    &#9654;
+  </button>
+  <form class="page-jump" (submit)="onGoToPage(pageInput.value); $event.preventDefault()">
+    <input #pageInput type="number" placeholder="Page" class="right-search" />
+  </form>
+  <button class="right-search" (click)="onGoToPage(pageInput.value)">Go</button>
+</div>

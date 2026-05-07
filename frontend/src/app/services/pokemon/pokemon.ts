@@ -20,14 +20,23 @@ export class Pokemon {
 
   //Get methods
   get(): Observable<PokemonModel[]> {
-    return this.http.get<any[]>(this.api).pipe(
-      map((pokemons) => pokemons.map((p) => ({ ...p, id: p._id }) as PokemonModel))
-    );
+    return this.http
+      .get<any[]>(this.api)
+      .pipe(map((pokemons) => pokemons.map((p) => ({ ...p, id: p._id }) as PokemonModel)));
   }
+
+  getByIds(ids: number[]): Observable<PokemonModel[]> {
+    if (ids.length === 0) return new Observable((observer) => observer.next([]));
+    const idsParam = ids.join(',');
+    return this.http
+      .get<any[]>(`${this.api}/by-ids?ids=${idsParam}`)
+      .pipe(map((pokemons) => pokemons.map((p) => ({ ...p, id: p._id }) as PokemonModel)));
+  }
+
   getById(id: number): Observable<PokemonModel> {
-    return this.http.get<any>(`${this.api}/${id}`).pipe(
-      map((p) => ({ ...p, id: p._id }) as PokemonModel)
-    );
+    return this.http
+      .get<any>(`${this.api}/${id}`)
+      .pipe(map((p) => ({ ...p, id: p._id }) as PokemonModel));
   }
 
   // Create, Update, Delete methods
@@ -40,5 +49,4 @@ export class Pokemon {
   delete(id: number): Observable<Pokemon> {
     return this.http.delete<Pokemon>(`${this.api}/${id}`);
   }*/
-
 }

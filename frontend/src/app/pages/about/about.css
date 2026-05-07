@@ -222,6 +222,9 @@
   height: 72px;
   border-radius: 14px;
   padding: 8px;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
 }
 .team-meta {
   display: flex;

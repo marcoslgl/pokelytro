@@ -1,0 +1,102 @@
+<h1 class="title">Moves</h1>
+
+@if (loading) {
+  <div class="state">Loading moves…</div>
+} @else if (error) {
+  <div class="state state-error">{{ error }}</div>
+} @else {
+  <div class="pagination-controls">
+    <div class="left-controls">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Search by name"
+        [value]="searchTerm"
+        (input)="onSearch($any($event.target).value)"
+      />
+      <app-filter-panel>
+        <ng-template #filterContent>
+          <div class="filters-row">
+            <label>
+              Type
+              <select
+                class="filter-select"
+                [(ngModel)]="selectedType"
+                (ngModelChange)="onTypeChange($event)"
+                aria-label="Filter by type"
+              >
+                <option value="">All</option>
+                @for (type of types; track type) {
+                  <option [value]="type">{{ type }}</option>
+                }
+              </select>
+            </label>
+            <label>
+              Category
+              <select
+                class="filter-select"
+                [(ngModel)]="selectedDamageClass"
+                (ngModelChange)="onDamageClassChange($event)"
+                aria-label="Filter by damage class"
+              >
+                <option value="">All</option>
+                @for (damageClass of damageClasses; track damageClass) {
+                  <option [value]="damageClass">{{ damageClass }}</option>
+                }
+              </select>
+            </label>
+            <label>
+              Sort
+              <select
+                class="filter-select"
+                [(ngModel)]="sortBy"
+                (ngModelChange)="onSortChange($event)"
+                aria-label="Sort moves"
+              >
+                <option value="name">A-Z</option>
+                <option value="power">Power</option>
+                <option value="accuracy">Accuracy</option>
+                <option value="pp">PP</option>
+              </select>
+            </label>
+            <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
+          </div>
+        </ng-template>
+      </app-filter-panel>
+    </div>
+
+    <app-pagination-controls
+      [page]="page"
+      [totalPages]="totalPages"
+      (nextPage)="nextPage()"
+      (prevPage)="prevPage()"
+      (goToPage)="goToPage($event)"
+    ></app-pagination-controls>
+  </div>
+
+  <div class="moves-container">
+    @for (move of pagedMoves; track move._id) {
+      <article class="move-card type" [ngClass]="move.type">
+        <div class="move-header">
+          <h3 class="move-name">{{ move.name }}</h3>
+          <span class="type" [ngClass]="move.type">{{ move.type }}</span>
+        </div>
+        <div class="move-meta">
+          <span
+            >Category: <img [src]="'/' + move.damage_class + '.png'" [alt]="move.damage_class"
+          /></span>
+          <span
+            >Power: <strong>{{ move.power ? move.power : '-' }}</strong></span
+          >
+          <span
+            >Accuracy: <strong>{{ move.accuracy ? move.accuracy : '-' }}</strong></span
+          >
+          <span
+            >PP: <strong>{{ move.pp ? move.pp : '-' }}</strong></span
+          >
+        </div>
+        <p class="move-description">{{ move.description }}</p>
+      </article>
+    }
+  </div>
+}

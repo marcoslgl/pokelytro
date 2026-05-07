@@ -1,0 +1,79 @@
+<h1 class="title">Items</h1>
+
+@if (loading) {
+  <div class="state">Loading items…</div>
+} @else if (error) {
+  <div class="state state-error">{{ error }}</div>
+} @else {
+  <div class="pagination-controls">
+    <div class="left-controls">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Search by name"
+        [value]="searchTerm"
+        (input)="onSearch($any($event.target).value)"
+      />
+      <app-filter-panel>
+        <ng-template #filterContent>
+          <div class="filters-row">
+            <label>
+              Generation
+              <select
+                class="filter-select"
+                [(ngModel)]="selectedGen"
+                (ngModelChange)="onGenChange($event)"
+                aria-label="Filter by generation"
+              >
+                <option value="">All</option>
+                @for (g of generations; track g) {
+                  <option [value]="g">Gen {{ g }}</option>
+                }
+              </select>
+            </label>
+            <label>
+              Sort
+              <select
+                class="filter-select"
+                [(ngModel)]="sortBy"
+                (ngModelChange)="onSortChange($event)"
+                aria-label="Sort by"
+              >
+                <option value="name">A-Z</option>
+                <option value="gen">Generation</option>
+              </select>
+            </label>
+            <button type="button" class="clear-filters" (click)="clearFilters()">Clear</button>
+          </div>
+        </ng-template>
+      </app-filter-panel>
+    </div>
+    <app-pagination-controls
+      [page]="page"
+      [totalPages]="totalPages"
+      (nextPage)="nextPage()"
+      (prevPage)="prevPage()"
+      (goToPage)="goToPage($event)"
+    ></app-pagination-controls>
+  </div>
+
+  <div class="items-container">
+    @for (item of pagedItems; track $index) {
+      <div class="item-card">
+        <img
+          [src]="'/items/' + item.name + '.png'"
+          [alt]="item.name"
+          class="item-image"
+          onerror="this.src = '/items/Poké Ball.png'"
+        />
+        <div class="item-info">
+          <div class="item-header">
+            <h3 class="item-name">{{ item.name }}</h3>
+            <p class="item-gen"><strong>Gen:</strong> {{ item.gen }}</p>
+          </div>
+          <p class="item-desc">{{ item.desc }}</p>
+        </div>
+      </div>
+    }
+  </div>
+}
